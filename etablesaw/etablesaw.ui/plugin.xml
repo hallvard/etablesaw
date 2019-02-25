@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="etablesaw.ui.editor.TablesawEditor"
+            contributorClass="etablesaw.ui.editor.TablesawEditorActionBarContributor"
+            default="false"
+            extensions="cvs"
+            id="etablesaw.ui.cvs"
+            name="Tablesaw CVS editor">
+      </editor>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="etablesaw.ui.nattable.NatTablesawCvsEditor"
+            contributorClass="etablesaw.ui.editor.TablesawEditorActionBarContributor"
+            default="true"
+            extensions="cvs"
+            id="etablesaw.ui.nattable.cvs"
+            name="Nat Tablesaw CVS editor">
+      </editor>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="etablesaw.ui.category"
+            name="Tablesaw">
+      </category>
+
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.nattable.NatTablesawView"
+            id="etablesaw.ui.NatTablesawView"
+            allowMultiple="true"
+            name="Table">
+      </view>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.SummaryTableView"
+            id="etablesaw.ui.SummaryTableView"
+            allowMultiple="true"
+            name="Summary">
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.CrossTableView"
+            id="etablesaw.ui.CrossTableView"
+            allowMultiple="true"
+            name="Cross Table">
+      </view>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.BarPlotView"
+            id="etablesaw.ui.BarPlotView"
+            allowMultiple="true"
+            name="Bar Plot">
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.PiePlotView"
+            id="etablesaw.ui.PiePlotView"
+            allowMultiple="true"
+            name="Pie Plot">
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.LinePlotView"
+            id="etablesaw.ui.LinePlotView"
+            allowMultiple="true"
+            name="Line Plot">
+      </view>
+   </extension>
+
+   <extension-point id="exprSupport" name="Expression Support" schema="schema/exprSupport.exsd"/>
+   
+   	<extension point="etablesaw.ui.exprSupport">
+		<exprSupport
+			langName="js"
+			supportClass="etablesaw.ui.javaxscript.ScriptEngineExprSupport"
+		/>
+	</extension>
+   
+   <extension-point id="fileFormatSupport" name="File format support" schema="schema/fileFormatSupport.exsd"/>
+   
+   	<extension point="etablesaw.ui.fileFormatSupport">
+		<fileFormatSupport
+			fileFormats="csv"
+			supportClass="etablesaw.ui.editor.CsvFileFormatSupport"
+		/>
+		<fileFormatSupport
+			fileFormats="xlsx"
+			supportClass="etablesaw.ui.editor.XlsxFileFormatSupport"
+		/>
+	</extension>
+   
+</plugin>

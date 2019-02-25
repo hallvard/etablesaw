@@ -1,0 +1,42 @@
+import tech.tablesaw.io.csv.CsvReadOptions
+
+xaw etablesaw.ui.examples.tdt4100n
+
+val tdt4100 = # tdt4100 : String programkode, int studentnr, String karakter, String vurderingsstatus, short year, String semester #
+
+val here = "/Users/hal/java/git/tablesaw/eclipse/tablesaw.ui.examples/src/tablesaw/ui/examples/"
+val nameFormat = "tdt4100-%2$s%1$s"
+
+for (var year = 2010; year <= 2018; year++) {
+	val tdt4100n = readCsv(nameFormat, year as short, "v", here)
+	appendColumns(tdt4100, tdt4100n, year as short, "v")
+}
+for (var year = 2010; year <= 2018; year++) {
+	val tdt4100n = readCsv(nameFormat, year as short, "s", here)
+	appendColumns(tdt4100, tdt4100n, year as short, "s")
+}
+
+def readCsv(String nameFormat, short year, String semester, String dir) {
+	val name = String.format(nameFormat, year, semester)
+	Table.read().csv(CsvReadOptions.builder(dir + name + ".csv")
+						.tableName(name)
+						.separator(";")
+						.build())
+}
+
+def appendColumns(Table tdt4100, Table tdt4100n, short year, String semester) {
+	tdt4100.column("programkode") of String 		+= tdt4100n.column("studieprogramkode") of String
+	val studnrCol = tdt4100n.column("studentnr") of int
+	tdt4100.column("studentnr") of int 				+= studnrCol
+	tdt4100.column("karakter") of String 			+= tdt4100n.column("karakter") of String
+	tdt4100.column("vurderingsstatus") of String 	+= tdt4100n.column("vurdresstatnavn") of String
+	val yearCol = ShortColumn.create("year", studnrCol.size)
+	yearCol.set(studnrCol.isNotMissing, year)
+	tdt4100.column("year") of short 				+= yearCol
+	val semesterCol = StringColumn.create("semester", studnrCol.size)
+	semesterCol.set(studnrCol.isNotMissing, semester)
+	tdt4100.column("semester") of String 			+= semesterCol
+}
+
+val sorted = tdt4100.sortOn("studentnr", "year", "-semester")
+sorted.size -> sorted.columns()

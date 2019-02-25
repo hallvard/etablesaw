@@ -1,0 +1,56 @@
+﻿studieprogramkode;studieprogramnavn;arstall_kull;terminkode_kull;arstall_und;terminkode_und;arstall_eks;terminkode_eks;studentnr;karakter;vurdresstatnavn
+BIELKR-F;Bachelor i ingeniørfag - Elkraft-nettbasert;2017;HØST;2010;VÅR;2010;VÅR;714943;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2006;HØST;2008;VÅR;2008;VÅR;690391;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2006;HØST;2007;VÅR;2007;VÅR;689532;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2006;HØST;2010;SOM;2010;SOM;690376;D;Bestått
+BIT;Informatikk - bachelorstudium;2007;HØST;2008;VÅR;2008;VÅR;691573;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2007;HØST;2009;VÅR;2009;VÅR;698835;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2007;HØST;2010;VÅR;2010;VÅR;698856;;Trekk under eksamen (Avbrutt eksamen)
+BIT;Informatikk - bachelorstudium;2007;HØST;2008;VÅR;2008;VÅR;698866;E;Bestått
+BIT;Informatikk - bachelorstudium;2007;HØST;2009;VÅR;2009;VÅR;698833;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2008;HØST;2013;HØST;2013;HØST;705362;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2008;HØST;2010;VÅR;2010;VÅR;80249;;Trekk under eksamen (Avbrutt eksamen)
+BIT;Informatikk - bachelorstudium;2008;HØST;2009;VÅR;2009;VÅR;705347;E;Bestått
+BIT;Informatikk - bachelorstudium;2008;HØST;2010;VÅR;2010;VÅR;705365;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2008;HØST;2011;VÅR;2011;VÅR;705388;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2008;HØST;2009;VÅR;2009;VÅR;701643;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2009;HØST;2011;VÅR;2011;VÅR;705383;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2009;HØST;2012;VÅR;2012;VÅR;712808;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2009;HØST;2010;VÅR;2010;VÅR;713730;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2009;HØST;2012;VÅR;2012;VÅR;713718;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2010;HØST;2011;VÅR;2011;VÅR;705809;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2010;HØST;2011;VÅR;2011;VÅR;705409;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2016;HØST;2014;VÅR;2014;VÅR;705385;;Trekk under eksamen (Avbrutt eksamen)
+MTDT;Datateknologi - masterstudium (5-årig);2007;HØST;2007;VÅR;2007;VÅR;689809;E;Bestått
+MTDT;Datateknologi - masterstudium (5-årig);2008;HØST;2009;VÅR;2009;VÅR;707755;F;Ikke bestått
+MTDT;Datateknologi - masterstudium (5-årig);2009;HØST;2009;VÅR;2009;VÅR;707739;C;Bestått
+MTDT;Datateknologi - masterstudium (5-årig);2010;HØST;2010;VÅR;2010;VÅR;715601;E;Bestått
+MTDT;Datateknologi - masterstudium (5-årig);2010;HØST;2009;VÅR;2009;VÅR;707717;F;Ikke bestått
+MTDT;Datateknologi - masterstudium (5-årig);2013;HØST;2010;VÅR;2010;VÅR;715544;;Ikke møtt
+MTEL;Elektronikk - masterstudium (5-årig);2014;HØST;2004;VÅR;2004;VÅR;669327;;Ikke møtt
+MTGEOP;Geofag og petroleumsteknologi - masterstudium (5-årig);2005;HØST;2004;VÅR;2004;VÅR;669506;;Ikke møtt
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2009;HØST;2009;VÅR;2009;VÅR;708302;F;Ikke bestått
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2009;HØST;2010;VÅR;2010;VÅR;708300;E;Bestått
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2009;HØST;2010;VÅR;2010;VÅR;714944;;Ikke møtt
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2010;HØST;2010;VÅR;2010;VÅR;714954;F;Ikke bestått
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2011;HØST;2009;VÅR;2009;VÅR;699052;F;Ikke bestått
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2012;HØST;2006;VÅR;2006;VÅR;685291;;Ikke møtt
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2009;HØST;2010;VÅR;2010;VÅR;708439;;Trekk under eksamen (Avbrutt eksamen)
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2009;HØST;2010;VÅR;2010;VÅR;716076;E;Bestått
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2009;HØST;2010;VÅR;2010;VÅR;716119;D;Bestått
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2009;HØST;2010;VÅR;2010;VÅR;716070;F;Ikke bestått
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2010;HØST;2010;VÅR;2010;VÅR;708128;B;Bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2007;HØST;2007;VÅR;2007;VÅR;690069;D;Bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2008;HØST;2009;VÅR;2009;VÅR;708364;D;Bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2009;HØST;2009;VÅR;2009;VÅR;708377;F;Ikke bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2009;HØST;2010;VÅR;2010;VÅR;716300;F;Ikke bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2009;HØST;2009;VÅR;2009;VÅR;708356;F;Ikke bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2009;HØST;2009;VÅR;2009;VÅR;708378;F;Ikke bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2009;HØST;2010;VÅR;2010;VÅR;708227;;Ikke møtt
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2009;HØST;2009;VÅR;2009;VÅR;708359;F;Ikke bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2009;HØST;2010;VÅR;2010;VÅR;716320;F;Ikke bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2010;HØST;2010;VÅR;2010;VÅR;716281;;Ikke møtt
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2010;HØST;2010;VÅR;2010;VÅR;716310;;Ikke møtt
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2010;HØST;2010;VÅR;2010;VÅR;716305;E;Bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2010;HØST;2010;VÅR;2010;VÅR;716301;F;Ikke bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2011;HØST;2010;VÅR;2010;VÅR;716290;C;Bestått
