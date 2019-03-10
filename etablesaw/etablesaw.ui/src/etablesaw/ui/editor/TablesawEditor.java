@@ -1,10 +1,7 @@
 package etablesaw.ui.editor;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -39,6 +36,7 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
 
+import etablesaw.io.FileFormatSupport;
 import etablesaw.ui.AbstractTablesawColumnLabelProvider;
 import etablesaw.ui.AbstractTablesawContentProvider;
 import etablesaw.ui.Activator;
@@ -51,8 +49,6 @@ import etablesaw.ui.expr.ExprSupport;
 import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
-import tech.tablesaw.io.csv.CsvReadOptions;
-import tech.tablesaw.io.csv.CsvReader;
 import tech.tablesaw.io.csv.CsvWriteOptions;
 import tech.tablesaw.io.csv.CsvWriter;
 
@@ -72,7 +68,7 @@ public class TablesawEditor extends EditorPart implements TableProvider, ISelect
 		if (input instanceof IFileEditorInput) {
 			final IFile file = ((IFileEditorInput) input).getFile();
 			setPartName(file.getName());
-			loadCsv(file, null);
+			load(file, null);
 			Activator.getInstance().getTableProviderRegistry().registerTableProvider(file.getFullPath().toString(), this);
 		}
 	}
@@ -87,16 +83,29 @@ public class TablesawEditor extends EditorPart implements TableProvider, ISelect
 		super.dispose();
 	}
 
-	protected void loadCsv(final IFile file, final IProgressMonitor monitor) {
+	protected void load(final IFile file, final IProgressMonitor monitor) throws PartInitException {
 		try {
-			final CsvReadOptions csvOptions = new CsvReadOptions.Builder(new BufferedReader(new InputStreamReader(file.getContents()))).build();
-			modelTable = new CsvReader().read(csvOptions);
+		    FileFormatSupport ffs = Activator.getInstance().getFileFormatSupport(file.getFileExtension());
+		    if (ffs == null) {
+		        throw new PartInitException("Unsupported file format: " + file.getName());
+		    }
+	        Table[] tables = ffs.read(file.getName(), () -> {
+                try {
+                    return file.getContents();
+                } catch (CoreException e) {
+                }
+                return null;
+            });
+	        if (tables == null || tables.length == 0) {
+	            throw new PartInitException("Couldn't read table from: " + file.getName());
+	        }
+	        modelTable = tables[0];
 			exprViewerRowFilterSupport.setModelTable(modelTable);
 			booleanViewerColumnFilterSupport.setModelTable(modelTable);
 			columnFilterTable = booleanViewerColumnFilterSupport.getFilterTable();
 			rowFilterTable = exprViewerRowFilterSupport.getFilterTable();
-		} catch (final CoreException e) {
-		} catch (final IOException e) {
+		} catch (final Exception e) {
+		    throw new PartInitException("Couldn't read table from: " + file.getName(), e);
 		}
 	}
 

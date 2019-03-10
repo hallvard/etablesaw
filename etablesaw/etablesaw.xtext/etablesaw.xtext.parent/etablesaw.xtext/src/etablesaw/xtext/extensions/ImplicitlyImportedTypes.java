@@ -5,7 +5,15 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import etablesaw.xtext.lib.TablesawExtensions;
+import etablesaw.xtext.lib.ColumnExtensions;
+import etablesaw.xtext.lib.DateTimeFillersExtensions;
+import etablesaw.xtext.lib.DateTimeFiltersExtensions;
+import etablesaw.xtext.lib.DoubleColumnExtensions;
+import etablesaw.xtext.lib.LocalDateTimeExtensions;
+import etablesaw.xtext.lib.NumberFillersExtensions;
+import etablesaw.xtext.lib.NumberFiltersExtensions;
+import etablesaw.xtext.lib.SelectionExtensions;
+import etablesaw.xtext.lib.TableExtensions;
 
 public class ImplicitlyImportedTypes extends org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures {
 
@@ -18,7 +26,15 @@ public class ImplicitlyImportedTypes extends org.eclipse.xtext.xbase.scoping.bat
 	@Override
 	protected List<Class<?>> getExtensionClasses() {
 		return sorted(super.getExtensionClasses(),
-				TablesawExtensions.class
+		        SelectionExtensions.class,
+				TableExtensions.class,
+				ColumnExtensions.class,
+				NumberFillersExtensions.class,
+				NumberFiltersExtensions.class,
+				DoubleColumnExtensions.class,
+				LocalDateTimeExtensions.class,
+				DateTimeFillersExtensions.class,
+				DateTimeFiltersExtensions.class
 				);
 	}
 

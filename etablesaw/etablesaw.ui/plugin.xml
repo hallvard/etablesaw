@@ -3,6 +3,7 @@
 <plugin>
    <extension
          point="org.eclipse.ui.editors">
+         <!--
       <editor
             class="etablesaw.ui.editor.TablesawEditor"
             contributorClass="etablesaw.ui.editor.TablesawEditorActionBarContributor"
@@ -11,17 +12,14 @@
             id="etablesaw.ui.cvs"
             name="Tablesaw CVS editor">
       </editor>
-   </extension>
-
-   <extension
-         point="org.eclipse.ui.editors">
+      -->
       <editor
-            class="etablesaw.ui.nattable.NatTablesawCvsEditor"
+            class="etablesaw.ui.nattable.NatTablesawEditor"
             contributorClass="etablesaw.ui.editor.TablesawEditorActionBarContributor"
             default="true"
             extensions="cvs"
             id="etablesaw.ui.nattable.cvs"
-            name="Nat Tablesaw CVS editor">
+            name="Tablesaw editor">
       </editor>
    </extension>
 
@@ -83,26 +81,27 @@
             name="Line Plot">
       </view>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="etablesaw.ui.preferences.TablesawPreferenceInitializer">
+      </initializer>
+   </extension>
 
+    <extension
+      point = "org.eclipse.ui.preferencePages">
+       <page id="etablesaw.ui.preferences.TablesawPreferencePage"
+            class="etablesaw.ui.preferences.TablesawPreferencePage"
+            name="Tablesaw">
+       </page>
+   </extension>
+   
    <extension-point id="exprSupport" name="Expression Support" schema="schema/exprSupport.exsd"/>
    
    	<extension point="etablesaw.ui.exprSupport">
 		<exprSupport
 			langName="js"
 			supportClass="etablesaw.ui.javaxscript.ScriptEngineExprSupport"
-		/>
-	</extension>
-   
-   <extension-point id="fileFormatSupport" name="File format support" schema="schema/fileFormatSupport.exsd"/>
-   
-   	<extension point="etablesaw.ui.fileFormatSupport">
-		<fileFormatSupport
-			fileFormats="csv"
-			supportClass="etablesaw.ui.editor.CsvFileFormatSupport"
-		/>
-		<fileFormatSupport
-			fileFormats="xlsx"
-			supportClass="etablesaw.ui.editor.XlsxFileFormatSupport"
 		/>
 	</extension>
    

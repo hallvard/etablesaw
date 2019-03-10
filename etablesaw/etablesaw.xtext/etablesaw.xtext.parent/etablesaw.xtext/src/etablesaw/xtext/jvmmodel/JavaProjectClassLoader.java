@@ -12,6 +12,10 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jdt.core.ElementChangedEvent;
+import org.eclipse.jdt.core.IElementChangedListener;
+import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IJavaElementDelta;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.launching.JavaRuntime;
@@ -20,14 +24,34 @@ import org.eclipse.jdt.launching.JavaRuntime;
 
 public class JavaProjectClassLoader extends ClassLoader {
 
-	Collection<URLClassLoader> loaders = new ArrayList<>();
+	private Collection<URLClassLoader> loaders = new ArrayList<>();
 
-	public JavaProjectClassLoader() {
+	public JavaProjectClassLoader(IProject... projects) {
 		for (final IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
 			loaders.add(getProjectClassLoader(JavaCore.create(project)));
 		}
+		addClasspathChangeListener();
+	}
+	
+	public JavaProjectClassLoader() {
+		this(ResourcesPlugin.getWorkspace().getRoot().getProjects());
 	}
 
+	public JavaProjectClassLoader(IProject project) {
+		this(new IProject[]{project});
+	}
+
+	private ClasspathChangeListener classpathChangeListener;
+	
+	private void addClasspathChangeListener() {
+		classpathChangeListener = new ClasspathChangeListener();
+		JavaCore.addElementChangedListener(classpathChangeListener, ElementChangedEvent.POST_CHANGE);
+	}
+
+	public void dispose() {
+		JavaCore.removeElementChangedListener(classpathChangeListener);		
+	}
+	
 	private URLClassLoader getProjectClassLoader(final IJavaProject javaProject) {
 		final ClassLoader parentClassLoader = javaProject.getClass().getClassLoader();
 		try {
@@ -63,5 +87,41 @@ public class JavaProjectClassLoader extends ClassLoader {
 			}
 		}
 		throw new ClassNotFoundException(name + " not found");
+	}
+	
+	// https://stackoverflow.com/questions/10173053/how-to-detect-changes-to-eclipse-classpath-container-contents
+	
+	public void notifyClasspathChanged(IJavaProject el) {
+		
+	}
+	
+	private class ClasspathChangeListener implements IElementChangedListener {
+
+	    @Override
+	    public void elementChanged(ElementChangedEvent event) {
+	        visit(event.getDelta());
+	    }
+
+	    private void visit(IJavaElementDelta delta) {
+	        IJavaElement el = delta.getElement();
+	        switch (el.getElementType()) {
+	        case IJavaElement.JAVA_MODEL:
+	        	for (IJavaElementDelta c : delta.getAffectedChildren()) {
+	        		visit(c);
+	        	}
+	            break;
+	        case IJavaElement.JAVA_PROJECT:
+	            if (isClasspathChanged(delta.getFlags())) {
+	                notifyClasspathChanged((IJavaProject)el);
+	            }
+	            break;
+	        default:
+	            break;
+	        }
+	    }
+
+	    private boolean isClasspathChanged(int flags) {
+	        return (flags & (IJavaElementDelta.F_CLASSPATH_CHANGED | IJavaElementDelta.F_RESOLVED_CLASSPATH_CHANGED)) != 0;
+	    }
 	}
 }

@@ -22,7 +22,8 @@ Require-Bundle: etablesaw.xtext,
  tablesaw.core;bundle-version="0.25.3",
  etablesaw.ui;bundle-version="0.1.0",
  etablesaw.xtext.lib;bundle-version="0.1.0"
-Import-Package: org.apache.log4j,
+Import-Package: etablesaw.ui,
+ org.apache.log4j,
  org.eclipse.ui.console
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: etablesaw.xtext.ui.contentassist,

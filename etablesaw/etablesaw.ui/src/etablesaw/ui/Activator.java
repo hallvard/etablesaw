@@ -2,18 +2,21 @@ package etablesaw.ui;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
-import org.osgi.framework.BundleActivator;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import etablesaw.io.FileFormatSupport;
 import etablesaw.ui.expr.ExprSupport;
 
-public class Activator implements BundleActivator {
+public class Activator extends AbstractUIPlugin {
 
 	private static Activator instance = null;
 
@@ -38,6 +41,8 @@ public class Activator implements BundleActivator {
 		return tableProviderRegistry;
 	}
 
+	//
+	
 	private Collection<ExprSupport> exprSupports = null;
 
 	public ExprSupport[] getExprSupports() {
@@ -49,7 +54,7 @@ public class Activator implements BundleActivator {
 	}
 
 	private void processExprSupportExtensions() {
-		final IExtensionPoint ep = Platform.getExtensionRegistry().getExtensionPoint("tablesaw.ui.exprSupport");
+		final IExtensionPoint ep = Platform.getExtensionRegistry().getExtensionPoint("etablesaw.ui.exprSupport");
 		for (final IExtension extension : ep.getExtensions()) {
 			for (final IConfigurationElement ces : extension.getConfigurationElements()) {
 				if ("exprSupport".equals(ces.getName())) {
@@ -62,5 +67,34 @@ public class Activator implements BundleActivator {
 				}
 			}
 		}
+	}
+	
+	//
+
+	private Map<String, FileFormatSupport> fileFormatSupports = null;
+	
+	public FileFormatSupport getFileFormatSupport(String key) {
+	    if (fileFormatSupports == null) {
+	        fileFormatSupports = new HashMap<String, FileFormatSupport>();
+	        processFileFormatSupportExtensions();
+	    }
+	    return fileFormatSupports.get(key);
+	}
+
+	private void processFileFormatSupportExtensions() {
+	    final IExtensionPoint ep = Platform.getExtensionRegistry().getExtensionPoint("etablesaw.bridge.fileFormatSupport");
+	    for (final IExtension extension : ep.getExtensions()) {
+	        for (final IConfigurationElement ces : extension.getConfigurationElements()) {
+	            if ("fileFormatSupport".equals(ces.getName())) {
+	                try {
+	                    final FileFormatSupport ffs = (FileFormatSupport) ces.createExecutableExtension("supportClass");
+	                    for (String fileFormat : ces.getAttribute("fileFormats").split(",\\s*")) {
+	                        fileFormatSupports.put(fileFormat, ffs);
+	                    }
+	                } catch (final CoreException e) {
+	                }
+	            }
+	        }
+	    }
 	}
 }

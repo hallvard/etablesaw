@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ETablesaw core
+Bundle-SymbolicName: etablesaw.core;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
+Export-Package: etablesaw.io.csv
+Import-Package: etablesaw.io,
+ tech.tablesaw.api,
+ tech.tablesaw.io,
+ tech.tablesaw.io.csv

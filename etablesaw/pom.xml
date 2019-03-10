@@ -104,10 +104,19 @@
   	<module>etablesaw.target</module>
   	<module>tablesaw.core</module>
   	<module>tablesaw.jsplot</module>
+
+  	<module>etablesaw.bridge</module>
   	<module>etablesaw.ui</module>
   	<module>etablesaw.ui.aql</module>
   	<module>etablesaw.xtext/etablesaw.xtext.parent</module>
-  	<!-- 
-  	 -->
+
+    <!-- optional file formats -->
+  	<module>tablesaw.excel</module>
+  	<module>etablesaw.excel</module>
+  	<module>tablesaw.json</module>
+  	<module>etablesaw.json</module>
+  	<module>tablesaw.html</module>
+  	<module>etablesaw.html</module>
+
   </modules>
 </project>

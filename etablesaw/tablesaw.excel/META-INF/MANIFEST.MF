@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tablesaw excel
+Bundle-SymbolicName: tablesaw.excel
+Bundle-Version: 0.31.1.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: libs/tablesaw-excel-0.31.1-SNAPSHOT-shaded.jar
+Export-Package: tech.tablesaw.io.xlsx
+Require-Bundle: tablesaw.core;bundle-version="0.31.1"

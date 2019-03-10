@@ -7,8 +7,11 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
 import etablesaw.ui.AbstractTablesawView;
+import etablesaw.ui.Activator;
+import etablesaw.ui.preferences.TablesawPreferenceInitializer;
 import tech.tablesaw.plotly.components.Layout;
 import tech.tablesaw.plotly.components.Margin;
+import tech.tablesaw.plotly.components.TemplateUtils;
 
 public abstract class AbstractPlotView extends AbstractTablesawView {
 
@@ -46,7 +49,16 @@ public abstract class AbstractPlotView extends AbstractTablesawView {
 		if (browser != null) {
 			String plotHtml = null;
 			if (getViewTable() != null) {
-				plotHtml = computeBrowserContents(browser.getSize());
+			    String templatesLocation = Activator.getInstance().getPreferenceStore().getString(TablesawPreferenceInitializer.TEMPLATES_LOCATION_PREFERENCE);
+				try {
+				    if (templatesLocation != null && templatesLocation.trim().length() > 0) {
+				        System.out.println(templatesLocation);
+				        TemplateUtils.setTemplateLocations(templatesLocation);
+				    }
+                    plotHtml = computeBrowserContents(browser.getSize());
+                } finally {
+                    TemplateUtils.setTemplateLocations();
+                }
 			}
 			if (plotHtml == null) {
 				plotHtml = "<h2>no plot data</h2>";

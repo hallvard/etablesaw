@@ -1,6 +1,7 @@
 package tablesaw.ui.examples;
 
-import etablesaw.xtext.lib.TablesawExtensions;
+import etablesaw.xtext.lib.LocalDateTimeExtensions;
+import etablesaw.xtext.lib.TableExtensions;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -21,8 +22,8 @@ public class Test1 implements Runnable {
     final LocalDate date1 = java.time.LocalDate.of(1966, java.time.Month.NOVEMBER, 16);
     final boolean later = (date1.compareTo(java.time.LocalDate.of(1966, java.time.Month.NOVEMBER, 17)) > 0);
     final LocalDate date2 = java.time.LocalDate.of(1966, 11, 16);
-    final LocalDateTime dateTime1 = TablesawExtensions.operator_plus(date2, java.time.LocalTime.of(23, 53, 0));
-    final LocalDateTime dateTime2 = TablesawExtensions.operator_plus(time, java.time.LocalDate.of(1966, java.time.Month.NOVEMBER, 16));
+    final LocalDateTime dateTime1 = LocalDateTimeExtensions.operator_plus(date2, java.time.LocalTime.of(23, 53, 0));
+    final LocalDateTime dateTime2 = LocalDateTimeExtensions.operator_plus(time, java.time.LocalDate.of(1966, java.time.Month.NOVEMBER, 16));
     StringColumn nameColumn = StringColumn.create("name");
     DoubleColumn ageColumn = DoubleColumn.create("age");
     nameColumn.append("Hallvard");
@@ -43,7 +44,7 @@ public class Test1 implements Runnable {
       return s.startsWith("H");
     };
     Selection _eval = stringCol.eval(_function);
-    final Table tab3 = TablesawExtensions.operator_minus(tab2, _eval);
+    final Table tab3 = TableExtensions.operator_minus(tab2, _eval);
   }
   
   public static void main(final String[] args) {
