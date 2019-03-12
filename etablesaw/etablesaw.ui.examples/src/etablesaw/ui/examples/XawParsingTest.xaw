@@ -1,0 +1,7 @@
+xaw etablesaw.xtext.tests.LoadModelTest
+val halAge = 52.0
+val table1 =
+# String name, double age #
+| "Hallvard", halAge |
+def String helper1(Object o) String.valueOf(o)
+helper1(table1.column("age").get(0))

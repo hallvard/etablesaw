@@ -28,7 +28,7 @@ class XawParsingTest {
 		val table1 =
 		# String name, double age #
 		| "Hallvard", halAge |
-		def String helper1(String s) s
+		def String helper1(Object o) String.valueOf(o)
 		helper1(table1.column("age").get(0))
 		''').assertNoErrors
 	}

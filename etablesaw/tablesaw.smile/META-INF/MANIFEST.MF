@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Smile library, as needed by tablesaw
+Bundle-SymbolicName: com.github.haifengl.smile.core
+Bundle-Version: 1.5.2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: libs/smile-core-1.5.2.jar,
+ libs/smile-data-1.5.2.jar,
+ libs/smile-graph-1.5.2.jar,
+ libs/smile-math-1.5.2.jar
+Export-Package: smile.data

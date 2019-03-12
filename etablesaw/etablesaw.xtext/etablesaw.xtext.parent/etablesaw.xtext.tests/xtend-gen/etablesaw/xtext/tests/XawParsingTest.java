@@ -42,7 +42,7 @@ public class XawParsingTest {
       _builder.newLine();
       _builder.append("| \"Hallvard\", halAge |");
       _builder.newLine();
-      _builder.append("def String helper1(String s) s");
+      _builder.append("def String helper1(Object o) String.valueOf(o)");
       _builder.newLine();
       _builder.append("helper1(table1.column(\"age\").get(0))");
       _builder.newLine();

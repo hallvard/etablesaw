@@ -35,32 +35,32 @@
 					<includePluginDependencies>true</includePluginDependencies>
 					<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.eclipse.emf</groupId>
-						<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
-						<version>2.9.0.201605261059</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>org.eclipse.xtext.common.types</artifactId>
-						<version>${xtextVersion}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-						<version>${xtextVersion}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>org.eclipse.xtext.xbase</artifactId>
-						<version>${xtextVersion}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>xtext-antlr-generator</artifactId>
-						<version>[2.1.1, 3)</version>
-					</dependency>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.eclipse.emf</groupId>
+                        <artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+                        <version>2.9.1.201705291010</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.xtext</groupId>
+                        <artifactId>org.eclipse.xtext.common.types</artifactId>
+                        <version>${xtextVersion}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.xtext</groupId>
+                        <artifactId>org.eclipse.xtext.xtext.generator</artifactId>
+                        <version>${xtextVersion}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.xtext</groupId>
+                        <artifactId>org.eclipse.xtext.xbase</artifactId>
+                        <version>${xtextVersion}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.xtext</groupId>
+                        <artifactId>xtext-antlr-generator</artifactId>
+                        <version>[2.1.1, 3)</version>
+                    </dependency>
 				</dependencies>
 			</plugin>
 			<plugin>
@@ -121,15 +121,9 @@
 							<pluginExecutions>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.mojo
-										</groupId>
-										<artifactId>
-											exec-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.2.1,)
-										</versionRange>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>exec-maven-plugin</artifactId>
+										<versionRange>[1.2.1,)</versionRange>
 										<goals>
 											<goal>java</goal>
 										</goals>

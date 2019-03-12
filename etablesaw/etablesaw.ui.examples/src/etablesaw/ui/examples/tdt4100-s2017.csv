@@ -1,0 +1,57 @@
+﻿studieprogramkode;studieprogramnavn;arstall_kull;terminkode_kull;arstall_und;terminkode_und;arstall_eks;terminkode_eks;studentnr;karakter;vurdresstatnavn
+BIT;Informatikk - bachelorstudium;2012;HØST;2013;VÅR;2013;VÅR;718721;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2013;HØST;2014;VÅR;2014;VÅR;751439;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2013;HØST;2014;VÅR;2014;VÅR;751431;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2014;HØST;2015;VÅR;2015;VÅR;748083;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2014;HØST;2015;VÅR;2015;VÅR;755546;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2014;HØST;2015;VÅR;2015;VÅR;757734;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2014;HØST;2015;VÅR;2015;VÅR;757699;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2015;HØST;2015;VÅR;2015;VÅR;748403;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2015;HØST;2014;VÅR;2014;VÅR;751374;E;Bestått
+BIT;Informatikk - bachelorstudium;2015;HØST;2016;VÅR;2016;VÅR;757108;E;Bestått
+BIT;Informatikk - bachelorstudium;2015;HØST;2017;VÅR;2017;VÅR;739448;E;Bestått
+BIT;Informatikk - bachelorstudium;2015;HØST;2016;VÅR;2016;VÅR;766797;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2015;HØST;2016;VÅR;2016;VÅR;766834;E;Bestått
+BIT;Informatikk - bachelorstudium;2015;HØST;2016;VÅR;2016;VÅR;705775;C;Bestått
+BIT;Informatikk - bachelorstudium;2015;HØST;2016;VÅR;2016;VÅR;766915;E;Bestått
+BIT;Informatikk - bachelorstudium;2015;HØST;2016;VÅR;2016;VÅR;766848;D;Bestått
+BIT;Informatikk - bachelorstudium;2015;HØST;2016;VÅR;2016;VÅR;765325;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2015;HØST;2015;VÅR;2015;VÅR;757683;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;766844;;Trekk under eksamen (Avbrutt eksamen)
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;476768;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;476747;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;258588;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;765316;E;Bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;476704;E;Bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;759803;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;476745;;Ikke møtt
+BIT;Informatikk - bachelorstudium;2016;HØST;2019;VÅR;2019;VÅR;475611;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;476732;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;476678;C;Bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;476700;E;Bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;742481;F;Ikke bestått
+BIT;Informatikk - bachelorstudium;2016;HØST;2017;VÅR;2017;VÅR;476771;F;Ikke bestått
+MLREAL;Lektorutdanning i realfag - masterstudium (5-årig);2017;HØST;2019;VÅR;2019;VÅR;478519;F;Ikke bestått
+MTDESIG;Industriell design - masterstudium (5-årig);2013;HØST;2017;VÅR;2017;VÅR;738869;E;Bestått
+MTDESIG;Industriell design - masterstudium (5-årig);2013;HØST;2015;VÅR;2015;VÅR;723260;E;Bestått
+MTDESIG;Industriell design - masterstudium (5-årig);2015;HØST;2017;VÅR;2017;VÅR;741397;;Ikke møtt
+MTDT;Datateknologi - masterstudium (5-årig);2014;HØST;2015;VÅR;2015;VÅR;757501;B;Bestått
+MTDT;Datateknologi - masterstudium (5-årig);2016;HØST;2017;VÅR;2017;VÅR;758063;F;Ikke bestått
+MTDT;Datateknologi - masterstudium (5-årig);2016;HØST;2017;VÅR;2017;VÅR;767796;F;Ikke bestått
+MTDT;Datateknologi - masterstudium (5-årig);2016;HØST;2017;VÅR;2017;VÅR;477313;D;Bestått
+MTDT;Datateknologi - masterstudium (5-årig);2016;HØST;2017;VÅR;2017;VÅR;477638;D;Bestått
+MTDT;Datateknologi - masterstudium (5-årig);2016;HØST;2018;VÅR;2018;VÅR;750791;;Legeattest
+MTDT;Datateknologi - masterstudium (5-årig);2017;HØST;2019;VÅR;2019;VÅR;767773;;Ikke møtt
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2015;HØST;2016;VÅR;2016;VÅR;769513;D;Bestått
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2016;HØST;2017;VÅR;2017;VÅR;477373;F;Ikke bestått
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2016;HØST;2017;VÅR;2017;VÅR;479350;E;Bestått
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2016;HØST;2017;VÅR;2017;VÅR;479364;C;Bestått
+MTING;Ingeniørvitenskap og IKT - masterstudium (5-årig);2017;HØST;2017;VÅR;2017;VÅR;759750;E;Bestått
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2012;HØST;2017;VÅR;2017;VÅR;741866;C;Bestått
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2015;HØST;2016;VÅR;2016;VÅR;763038;F;Ikke bestått
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2015;HØST;2017;VÅR;2017;VÅR;697480;F;Ikke bestått
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2016;HØST;2018;VÅR;2018;VÅR;478222;;Legeattest
+MTIØT;Industriell økonomi og teknologiledelse - masterstudium (5-årig);2017;HØST;2017;VÅR;2017;VÅR;478137;;Ikke møtt
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2015;HØST;2016;VÅR;2016;VÅR;758070;F;Ikke bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2015;HØST;2014;VÅR;2014;VÅR;752095;F;Ikke bestått
+MTKOM;Kommunikasjonsteknologi - masterstudium (5-årig);2017;HØST;2013;VÅR;2013;VÅR;741997;;Ikke møtt
