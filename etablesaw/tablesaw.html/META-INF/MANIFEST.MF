@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Tablesaw html
-Bundle-SymbolicName: tablesaw.html
-Bundle-Version: 0.32.4.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ClassPath: libs/tablesaw-html-0.32.4-SNAPSHOT-shaded.jar
-Export-Package: tech.tablesaw.io.html
-Require-Bundle: tablesaw.core;bundle-version="0.32.4"

@@ -110,7 +110,7 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	private boolean processFileFormatSupportExtensions(String key) {
-	    final IExtensionPoint ep = Platform.getExtensionRegistry().getExtensionPoint("etablesaw.bridge.fileFormatSupport");
+	    final IExtensionPoint ep = Platform.getExtensionRegistry().getExtensionPoint("etablesaw.core.fileFormatSupport");
 	    for (final IExtension extension : ep.getExtensions()) {
 	        for (final IConfigurationElement ces : extension.getConfigurationElements()) {
 	            if ("fileFormatSupport".equals(ces.getName())) {

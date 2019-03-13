@@ -3,22 +3,12 @@
 <plugin>
    <extension
          point="org.eclipse.ui.editors">
-         <!--
       <editor
-            class="etablesaw.ui.editor.TablesawEditor"
-            contributorClass="etablesaw.ui.editor.TablesawEditorActionBarContributor"
-            default="false"
-            extensions="cvs"
-            id="etablesaw.ui.cvs"
-            name="Tablesaw CVS editor">
-      </editor>
-      -->
-      <editor
-            class="etablesaw.ui.nattable.NatTablesawEditor"
+            class="etablesaw.ui.editor.NatTablesawEditor"
             contributorClass="etablesaw.ui.editor.TablesawEditorActionBarContributor"
             default="true"
             extensions="cvs"
-            id="etablesaw.ui.nattable.cvs"
+            id="etablesaw.ui.editor.table"
             name="Tablesaw editor">
       </editor>
    </extension>
@@ -32,7 +22,7 @@
 
       <view
             category="etablesaw.ui.category"
-            class="etablesaw.ui.nattable.NatTablesawView"
+            class="etablesaw.ui.editor.NatTablesawView"
             id="etablesaw.ui.NatTablesawView"
             allowMultiple="true"
             name="Table">

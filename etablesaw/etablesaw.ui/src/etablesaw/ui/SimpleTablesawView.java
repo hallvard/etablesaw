@@ -2,7 +2,7 @@ package etablesaw.ui;
 
 import org.eclipse.swt.widgets.Composite;
 
-import etablesaw.ui.nattable.NatTablesawViewer;
+import etablesaw.ui.editor.NatTablesawViewer;
 import tech.tablesaw.api.Table;
 
 public class SimpleTablesawView extends AbstractTablesawView {

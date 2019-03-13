@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    
-   	<extension point="etablesaw.bridge.fileFormatSupport">
+   	<extension point="etablesaw.core.fileFormatSupport">
 		<fileFormatSupport
 			fileFormats="html"
 			supportClass="etablesaw.io.html.HtmlFileFormatSupport"

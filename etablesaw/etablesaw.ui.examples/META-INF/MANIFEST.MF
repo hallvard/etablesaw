@@ -6,5 +6,5 @@ Bundle-Version: 0.1.0.qualifier
 Automatic-Module-Name: tablesaw.ui.examples
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
- tablesaw.core;bundle-version="0.25.3",
+ etablesaw.core,
  etablesaw.xtext.lib;bundle-version="0.1.0"

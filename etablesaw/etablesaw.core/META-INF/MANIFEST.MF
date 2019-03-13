@@ -4,9 +4,38 @@ Bundle-Name: ETablesaw core
 Bundle-SymbolicName: etablesaw.core;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ClassPath: .
-Export-Package: etablesaw.io.csv
+Bundle-ClassPath: .,
+ libs/tablesaw-core-0.32.4-SNAPSHOT-shaded.jar
+Export-Package: com.google.common.cache,
+ etablesaw.io,
+ etablesaw.io.csv,
+ it.unimi.dsi.fastutil.doubles,
+ tech.tablesaw.aggregate,
+ tech.tablesaw.api,
+ tech.tablesaw.columns,
+ tech.tablesaw.columns.booleans,
+ tech.tablesaw.columns.booleans.fillers,
+ tech.tablesaw.columns.dates,
+ tech.tablesaw.columns.datetimes,
+ tech.tablesaw.columns.datetimes.fillers,
+ tech.tablesaw.columns.numbers,
+ tech.tablesaw.columns.numbers.fillers,
+ tech.tablesaw.columns.strings,
+ tech.tablesaw.columns.times,
+ tech.tablesaw.filtering.predicates,
+ tech.tablesaw.index,
+ tech.tablesaw.io,
+ tech.tablesaw.io.csv,
+ tech.tablesaw.io.jdbc,
+ tech.tablesaw.io.string,
+ tech.tablesaw.joining,
+ tech.tablesaw.selection,
+ tech.tablesaw.sorting,
+ tech.tablesaw.sorting.comparators,
+ tech.tablesaw.table,
+ tech.tablesaw.util
 Import-Package: etablesaw.io,
  tech.tablesaw.api,
  tech.tablesaw.io,
  tech.tablesaw.io.csv
+Require-Bundle: com.github.haifengl.smile.core;bundle-version="1.5.2";resolution:=optional

@@ -4,8 +4,10 @@ Bundle-Name: ETablesaw json
 Bundle-SymbolicName: etablesaw.json;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ClassPath: .
-Export-Package: etablesaw.io.json
+Bundle-ClassPath: .,
+ libs/tablesaw-json-0.32.4-SNAPSHOT-shaded.jar
+Export-Package: etablesaw.io.json,
+ tech.tablesaw.io.json
 Import-Package: etablesaw.io,
  org.osgi.framework;version="1.9.0",
  tech.tablesaw.api,

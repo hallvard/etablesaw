@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import etablesaw.ui.nattable.NatTablesawEditor;
+import etablesaw.ui.editor.NatTablesawEditor;
 
 public class NatTablesawEditorTest extends AbstractWorkbenchTest {
     
@@ -22,19 +22,20 @@ public class NatTablesawEditorTest extends AbstractWorkbenchTest {
         project = createProject(projectName);
     }
 
-    private void testOpenEditor(String path, String expected) throws Exception {
+    private NatTablesawEditor testOpenEditor(String path) throws Exception {
         IFile file = createFile(new Path("/" + projectName + "/" + path), getPluginTestFileContents(pluginProject, "/editor-test-files/" + path));
-        IEditorPart editor = openEditor(file, "etablesaw.ui.nattable.cvs");
+        IEditorPart editor = openEditor(file, "etablesaw.ui.editor.table");
         Assert.assertTrue(editor instanceof NatTablesawEditor);
         NatTablesawEditor tableEditor = (NatTablesawEditor) editor;
         Assert.assertNotNull(tableEditor.getTable());
+        return tableEditor;
     }
 
     @Test
     public void testOpenTestFiles() throws Exception {
-        testOpenEditor("csv-example1.csv", "tja");
-        testOpenEditor("json-example1.json", "tja");
-        testOpenEditor("json-example1.json", "tja");
-        testOpenEditor("xlsx-example1.xlsx", "tja");
+        NatTablesawEditor csvEditor = testOpenEditor("csv-example1.csv");
+        NatTablesawEditor jsonEditor1 = testOpenEditor("json-example1.json");
+        NatTablesawEditor jsonEditor2 = testOpenEditor("json-example1.json");
+        NatTablesawEditor xlsxEditor = testOpenEditor("xlsx-example1.xlsx");
     }
 }
