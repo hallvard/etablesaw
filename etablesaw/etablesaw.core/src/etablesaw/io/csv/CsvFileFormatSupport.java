@@ -33,7 +33,8 @@ public class CsvFileFormatSupport implements FileFormatSupport {
             separator = guessSeparator(inputStream, ",;\t", 5);
         }
         try (InputStream inputStream = input.get()) {
-            CsvReadOptions options = CsvReadOptions.builder(inputStream, name)
+            CsvReadOptions options = CsvReadOptions.builder(inputStream)
+                    .tableName(name)
                     .separator(separator)
                     .build();
             final Table table = Table.read().csv(options);

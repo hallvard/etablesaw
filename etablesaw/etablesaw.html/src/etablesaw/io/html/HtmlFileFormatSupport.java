@@ -7,8 +7,8 @@ import java.util.function.Supplier;
 
 import etablesaw.io.FileFormatSupport;
 import tech.tablesaw.api.Table;
-import tech.tablesaw.io.ReadOptions;
-import tech.tablesaw.io.html.HtmlTableReader;
+import tech.tablesaw.io.html.HtmlReadOptions;
+import tech.tablesaw.io.html.HtmlReader;
 
 public class HtmlFileFormatSupport implements FileFormatSupport {
 
@@ -25,9 +25,10 @@ public class HtmlFileFormatSupport implements FileFormatSupport {
 
 	@Override
 	public Table[] read(final String name, final Supplier<InputStream> input) throws IOException {
-		final ReadOptions.Builder builder = new ReadOptions.Builder(input.get());
-		builder.tableName(name);
-		Table table = new HtmlTableReader().read(name);
+        final HtmlReadOptions builder = HtmlReadOptions.builder(input.get())
+                .tableName(name)
+                .build();
+		Table table = new HtmlReader().read(builder);
 		return (table != null ? new Table[]{ table } : new Table[0]);
 	}
 

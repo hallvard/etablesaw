@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.13.0",
  org.eclipse.ui.editors;bundle-version="3.11.0",
  org.eclipse.ui.ide;bundle-version="3.13.0"
 Export-Package: etablesaw.ui,
- etablesaw.ui.expr
+ etablesaw.ui.expr,
+ etablesaw.ui.nattable
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: etablesaw.ui.Activator
 Import-Package: etablesaw.io,
@@ -35,6 +36,7 @@ Import-Package: etablesaw.io,
  tech.tablesaw.columns,
  tech.tablesaw.columns.booleans,
  tech.tablesaw.columns.numbers,
+ tech.tablesaw.io,
  tech.tablesaw.io.csv,
  tech.tablesaw.plotly,
  tech.tablesaw.plotly.api,

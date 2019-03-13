@@ -26,9 +26,10 @@ public class XlsxFileFormatSupport implements FileFormatSupport {
 
 	@Override
 	public Table[] read(final String name, final Supplier<InputStream> input) throws IOException {
-		final XlsxReadOptions.Builder builder = new XlsxReadOptions.Builder(input.get());
-		builder.tableName(name);
-		final Collection<Table> tables = new XlsxReader().read(builder.build());
+		final XlsxReadOptions options = new XlsxReadOptions.Builder(input.get())
+		        .tableName(name)
+		        .build();
+		final Collection<Table> tables = new XlsxReader().readMultiple(options);
 		return tables.toArray(new Table[tables.size()]);
 	}
 

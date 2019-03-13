@@ -49,8 +49,6 @@ import etablesaw.ui.expr.ExprSupport;
 import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
-import tech.tablesaw.io.csv.CsvWriteOptions;
-import tech.tablesaw.io.csv.CsvWriter;
 
 public class TablesawEditor extends EditorPart implements TableProvider, ISelectionProvider {
 
@@ -123,8 +121,7 @@ public class TablesawEditor extends EditorPart implements TableProvider, ISelect
 	protected void saveCsv(final IFile file, final IProgressMonitor monitor) {
 		try {
 			final ByteArrayOutputStream output = new ByteArrayOutputStream();
-			final CsvWriteOptions csvOptions = new CsvWriteOptions.Builder(output).build();
-			new CsvWriter(modelTable, csvOptions).write();
+			modelTable.write().csv(output);
 			file.setContents(new ByteArrayInputStream(output.toByteArray()), 0, monitor);
 			setDirty(false);
 		} catch (final CoreException e) {

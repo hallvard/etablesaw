@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 
 import etablesaw.io.FileFormatSupport;
 import tech.tablesaw.api.Table;
-import tech.tablesaw.io.ReadOptions;
+import tech.tablesaw.io.json.JsonReadOptions;
 import tech.tablesaw.io.json.JsonReader;
 
 public class JsonFileFormatSupport implements FileFormatSupport {
@@ -25,9 +25,10 @@ public class JsonFileFormatSupport implements FileFormatSupport {
 
 	@Override
 	public Table[] read(final String name, final Supplier<InputStream> input) throws IOException {
-		final ReadOptions.Builder builder = new ReadOptions.Builder(input.get());
-		builder.tableName(name);
-		Table table = new JsonReader().read(builder.build());
+		final JsonReadOptions builder = JsonReadOptions.builder(input.get())
+		        .tableName(name)
+		        .build();
+		Table table = new JsonReader().read(builder);
 		return (table != null ? new Table[]{ table } : new Table[0]);
 	}
 

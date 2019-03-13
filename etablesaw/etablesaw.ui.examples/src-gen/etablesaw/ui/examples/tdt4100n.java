@@ -51,7 +51,7 @@ public class tdt4100n implements Runnable {
       Table _xblockexpression = null;
       {
         final String name = String.format(nameFormat, Short.valueOf(year), semester);
-        _xblockexpression = Table.read().csv(CsvReadOptions.builder(((dir + name) + ".csv")).tableName(name).separator(';').build());
+        _xblockexpression = Table.read().csv(CsvReadOptions.builder(((dir + name) + ".csv")).tableName(name).separator(Character.valueOf(';')).build());
       }
       return _xblockexpression;
     } catch (Throwable _e) {

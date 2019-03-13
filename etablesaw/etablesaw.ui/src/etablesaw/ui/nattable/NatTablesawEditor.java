@@ -44,8 +44,9 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 
     protected void load(final IFile file, final IProgressMonitor monitor) throws PartInitException {
         try {
-            FileFormatSupport ffs = Activator.getInstance().getFileFormatSupport(file.getFileExtension());
-            if (ffs == null) {
+            String fileFormat = file.getFileExtension();
+            FileFormatSupport ffs = Activator.getInstance().getFileFormatSupport(fileFormat);
+            if (ffs == null || Boolean.FALSE.equals(ffs.supportsFormat(fileFormat))) {
                 throw new PartInitException("Unsupported file format: " + file.getName());
             }
             Table[] tables = ffs.read(file.getName(), () -> {
@@ -77,7 +78,13 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 
 	protected void save(final IFile file, final IProgressMonitor monitor) {
         try {
-            FileFormatSupport ffs = Activator.getInstance().getFileFormatSupport(file.getFileExtension());
+            String fileFormat = file.getFileExtension();
+            FileFormatSupport ffs = Activator.getInstance().getFileFormatSupport(fileFormat);
+            if (ffs == null) {
+                throw new RuntimeException("Unsupported file format: " + file.getName());
+            } else if (! Boolean.TRUE.equals(ffs.supportsFormat(fileFormat))) {
+                throw new RuntimeException("Write of file format not supported: " + file.getName());
+            }
 			final ByteArrayOutputStream output = new ByteArrayOutputStream();
 			ffs.write(new Table[]{ modelTable }, file.getName(), output);
 			file.setContents(new ByteArrayInputStream(output.toByteArray()), 0, monitor);

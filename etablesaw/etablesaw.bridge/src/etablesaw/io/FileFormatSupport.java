@@ -11,7 +11,7 @@ public interface FileFormatSupport {
 	/**
 	 * Indicates support for a specific file format.
 	 * @param format File extension of format
-	 * @return true if both read and write is supported, null for read-only support and false of no support at all.
+	 * @return true if both read and write is supported, null for read-only support and false if no support at all.
 	 */
 	public Boolean supportsFormat(String format);
 

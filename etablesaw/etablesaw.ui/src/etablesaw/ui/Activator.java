@@ -1,9 +1,13 @@
 package etablesaw.ui;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -15,6 +19,7 @@ import org.osgi.framework.BundleContext;
 
 import etablesaw.io.FileFormatSupport;
 import etablesaw.ui.expr.ExprSupport;
+import tech.tablesaw.api.Table;
 
 public class Activator extends AbstractUIPlugin {
 
@@ -71,30 +76,62 @@ public class Activator extends AbstractUIPlugin {
 	
 	//
 
+	private final static FileFormatSupport unsupportedFileFormat = new FileFormatSupport() {
+	    @Override
+	    public Boolean supportsFormat(String format) {
+	        return false;
+	    }
+	    @Override
+	    public Table[] read(String name, Supplier<InputStream> input) throws IOException {
+	        throw new UnsupportedOperationException("Write is not supported");
+	    }
+	    @Override
+	    public void write(Table[] tables, String name, OutputStream output) throws IOException {
+	        throw new UnsupportedOperationException("Write is not supported");
+	    }
+	};
+
+	private boolean readAllAtOnce = false;
 	private Map<String, FileFormatSupport> fileFormatSupports = null;
 	
 	public FileFormatSupport getFileFormatSupport(String key) {
 	    if (fileFormatSupports == null) {
 	        fileFormatSupports = new HashMap<String, FileFormatSupport>();
-	        processFileFormatSupportExtensions();
+	        if (readAllAtOnce) {
+	            processFileFormatSupportExtensions(null);	            
+	        }
 	    }
+	    if ((! readAllAtOnce) && (! fileFormatSupports.containsKey(key))) {
+    	    if (! processFileFormatSupportExtensions(key)) {
+    	        fileFormatSupports.put(key, unsupportedFileFormat);
+    	    }
+    	}
 	    return fileFormatSupports.get(key);
 	}
 
-	private void processFileFormatSupportExtensions() {
+	private boolean processFileFormatSupportExtensions(String key) {
 	    final IExtensionPoint ep = Platform.getExtensionRegistry().getExtensionPoint("etablesaw.bridge.fileFormatSupport");
 	    for (final IExtension extension : ep.getExtensions()) {
 	        for (final IConfigurationElement ces : extension.getConfigurationElements()) {
 	            if ("fileFormatSupport".equals(ces.getName())) {
 	                try {
-	                    final FileFormatSupport ffs = (FileFormatSupport) ces.createExecutableExtension("supportClass");
+	                    FileFormatSupport ffs = null;
 	                    for (String fileFormat : ces.getAttribute("fileFormats").split(",\\s*")) {
-	                        fileFormatSupports.put(fileFormat, ffs);
+	                        if (key == null || key.equals(fileFormat)) {
+	                            if (ffs == null) {
+	                                ffs = (FileFormatSupport) ces.createExecutableExtension("supportClass");
+	                            }
+	                            fileFormatSupports.put(fileFormat, ffs);
+	                            if (key != null) {
+	                                return true;
+	                            }
+	                        }
 	                    }
-	                } catch (final CoreException e) {
+	                } catch (final Exception e) {
 	                }
 	            }
 	        }
 	    }
+	    return false;
 	}
 }

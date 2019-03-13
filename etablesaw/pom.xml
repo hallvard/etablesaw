@@ -94,6 +94,7 @@
   	<module>etablesaw.bridge</module>
   	<module>etablesaw.core</module>
   	<module>etablesaw.ui</module>
+  	<module>etablesaw.ui.tests</module>
   	<module>etablesaw.ui.aql</module>
   	<module>etablesaw.xtext/etablesaw.xtext.parent</module>
 
