@@ -6,9 +6,9 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
-import etablesaw.ui.AbstractTablesawView;
 import etablesaw.ui.Activator;
 import etablesaw.ui.preferences.TablesawPreferenceInitializer;
+import etablesaw.ui.views.AbstractTablesawView;
 import tech.tablesaw.plotly.components.Layout;
 import tech.tablesaw.plotly.components.Margin;
 import tech.tablesaw.plotly.components.TemplateUtils;

@@ -1,6 +1,7 @@
-package etablesaw.ui;
+package etablesaw.ui.views;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,6 +28,10 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.events.FocusAdapter;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -38,6 +43,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IPartListener;
@@ -49,6 +55,9 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
+import etablesaw.ui.Activator;
+import etablesaw.ui.TableProvider;
+import etablesaw.ui.TableProviderRegistry;
 import etablesaw.ui.util.MultiCheckSelectionCombo;
 import tech.tablesaw.aggregate.AggregateFunction;
 import tech.tablesaw.aggregate.AggregateFunctions;
@@ -226,8 +235,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 
 	protected ComboViewer createTableProviderSelector(final String label, final Composite parent) {
 		if (label != null) {
-			final Label swtLabel = new Label(parent, SWT.NONE);
-			swtLabel.setText(label);
+			createControlLabel(parent, label);
 		}
 		final ComboViewer viewer = new ComboViewer(parent);
 		viewer.getControl().getDisplay().asyncExec(new Runnable() {
@@ -457,8 +465,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	protected final String noColumn = "<none>";
 
 	protected StructuredViewer createColumnSelector(final String label, final Composite parent, final Boolean mode, final Class<?> columnClass) {
-		final Label swtLabel = new Label(parent, SWT.NONE);
-		swtLabel.setText(label);
+		createControlLabel(parent, label);
 		final boolean multi = Boolean.TRUE.equals(mode);
 		final StructuredViewer selector = (multi ? new ListViewer(parent) : new ComboViewer(parent));
 		selector.setContentProvider(new IStructuredContentProvider() {
@@ -500,9 +507,8 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		updateTableControls();
 	}
 
-	protected Control createColumnControl(final String label, final Composite parent, final Boolean mode, final Class<?> columnClass) {
-		final Label swtLabel = new Label(parent, SWT.NONE);
-		swtLabel.setText(label);
+	protected Control createColumnControl(final Composite parent, final String label, final Boolean mode, final Class<?> columnClass) {
+		createControlLabel(parent, label);
 		final boolean multi = Boolean.TRUE.equals(mode);
 		final Supplier<String[]> itemsProvider = () -> {
 			final Table table = getViewTable();
@@ -533,6 +539,11 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		control.setLayoutData(gridData);
 		return control;
 	}
+
+    protected void createControlLabel(final Composite parent, final String label) {
+        final Label swtLabel = new Label(parent, SWT.NONE);
+		swtLabel.setText(label);
+    }
 
 	public String[] getColumnNames(final Table table, final Class<?> columnClass) {
 		final Collection<String> columnNames = new ArrayList<>();
@@ -588,9 +599,8 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		}
 	}
 
-	protected Control createAggregateFunctionSelector(final String label, final Composite parent, final boolean multi) {
-		final Label swtLabel = new Label(parent, SWT.NONE);
-		swtLabel.setText(label);
+	protected Control createAggregateFunctionSelector(final Composite parent, final String label, final boolean multi) {
+		createControlLabel(parent, label);
 		final Collection<String> items = new ArrayList<>();
 		for (final AggregateFunction<?, ?> aggregateFunction : aggregateFunctions) {
 			items.add(aggregateFunction.functionName());
@@ -646,6 +656,42 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	    return getAggregateFunctions(aggregateFunctionSelector, columnTypes);
 	}
 
+	protected <T extends Number> Control createNumbericParameterControl(Composite parent, String label, Class<T> numClass, T def) {
+        createControlLabel(parent, label);
+        Text paramText = new Text(parent, SWT.BORDER);
+        paramText.setText(String.valueOf(def));
+        paramText.addModifyListener(new ModifyListener() {
+            @Override
+            public void modifyText(ModifyEvent e) {
+                try {
+                    Method valueOfMethod = numClass.getMethod("valueOf", String.class);
+                    valueOfMethod.invoke(null, paramText.getText());
+                    paramText.setForeground(null);
+                } catch (Exception e1) {
+                    paramText.setForeground(parent.getDisplay().getSystemColor(SWT.COLOR_RED));
+                }
+            }
+        });
+        paramText.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                updateTableControls();
+            }
+        });
+        return paramText;
+	}
+	
+	@SuppressWarnings("unchecked")
+    protected <T extends Number> T getNumbericParameter(Control control, Class<T> numClass, T def) {
+        try {
+            Method getTextMethod = control.getClass().getMethod("getText");
+            Method valueOfMethod = numClass.getMethod("valueOf", String.class);
+            return (T) valueOfMethod.invoke(null, getTextMethod.invoke(control));
+        } catch (Exception e1) {
+            return def;
+        }
+	}
+	
 	protected abstract void updateTableControls();
 
 	protected void updateConfigControls() {

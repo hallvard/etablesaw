@@ -18,7 +18,7 @@ public class HistogramView extends AbstractPlotView {
 	@Override
 	public void createConfigControls(final Composite parent) {
 		super.createConfigControls(parent);
-		numericsSelector = createColumnControl("Numbers: ", parent, null, NumberColumn.class);
+		numericsSelector = createColumnControl(parent, "Numbers: ", null, NumberColumn.class);
 	}
 
 	@Override

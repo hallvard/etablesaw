@@ -1,14 +1,15 @@
-package etablesaw.ui;
+package etablesaw.ui.smile;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
+import etablesaw.ui.views.DerivedTableView;
 import smile.regression.OLS;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.NumericColumn;
 import tech.tablesaw.api.Table;
 
-public class OlsRegressionView extends DerivedTableView implements TableProvider {
+public class OlsRegressionView extends DerivedTableView {
 
     public OlsRegressionView() {
         super("Coefficients", "Values");
@@ -20,8 +21,8 @@ public class OlsRegressionView extends DerivedTableView implements TableProvider
 	@Override
 	protected void createConfigControls(final Composite configParent) {
 		super.createConfigControls(configParent);
-		dependentColumnsSelector = createColumnControl("Dependent column: ", configParent, null, NumericColumn.class);
-		independentColumnsSelector = createColumnControl("Independent columns: ", configParent, true, NumericColumn.class);
+		dependentColumnsSelector = createColumnControl(configParent, "Dependent column: ", null, NumericColumn.class);
+		independentColumnsSelector = createColumnControl(configParent, "Independent columns: ", true, NumericColumn.class);
 	}
 
 	@Override
@@ -58,7 +59,11 @@ public class OlsRegressionView extends DerivedTableView implements TableProvider
 			        ttestColumns[colNum].append(ttest[rowNum][colNum]);
 			    }
 			    derivedTables[0] = Table.create("Coefficients", ttestColumns);
-			    derivedTables[1] = Table.create("Values", DoubleColumn.create("Residuals", ols.residuals()), DoubleColumn.create("Fitted", ols.fittedValues()));
+			    derivedTables[1] = Table.create("Values",
+			            table.numberColumn(dependentColumn[0]),
+			            DoubleColumn.create("Fitted", ols.fittedValues()),
+			            DoubleColumn.create("Residuals", ols.residuals())
+			            );
 			}
 		}
 		super.updateTableControls();

@@ -33,24 +33,17 @@
          point="org.eclipse.ui.views">
       <view
             category="etablesaw.ui.category"
-            class="etablesaw.ui.SummaryTableView"
+            class="etablesaw.ui.views.SummaryTableView"
             id="etablesaw.ui.SummaryTableView"
             allowMultiple="true"
             name="Summary">
       </view>
       <view
             category="etablesaw.ui.category"
-            class="etablesaw.ui.CrossTableView"
+            class="etablesaw.ui.views.CrossTableView"
             id="etablesaw.ui.CrossTableView"
             allowMultiple="true"
             name="Cross Table">
-      </view>
-      <view
-            category="etablesaw.ui.category"
-            class="etablesaw.ui.OlsRegressionView"
-            id="etablesaw.ui.OlsRegressionView"
-            allowMultiple="true"
-            name="OLS Regression">
       </view>
    </extension>
 

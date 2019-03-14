@@ -17,9 +17,9 @@ public abstract class XYPlotView extends AbstractPlotView {
 	@Override
 	public void createConfigControls(final Composite parent) {
 		super.createConfigControls(parent);
-		xSelector = createColumnControl("x: ", parent, null, NumericColumn.class);
-		ySelector = createColumnControl("y: ", parent, null, NumericColumn.class);
-		categorySelector = createColumnControl("[Category]: ", parent, false, CategoricalColumn.class);
+		xSelector = createColumnControl(parent, "x: ", null, NumericColumn.class);
+		ySelector = createColumnControl(parent, "y: ", null, NumericColumn.class);
+		categorySelector = createColumnControl(parent, "[Category]: ", false, CategoricalColumn.class);
 	}
 
 	@Override

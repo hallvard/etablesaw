@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+        point="org.eclipse.ui.views">
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.smile.OlsRegressionView"
+            id="etablesaw.ui.smile.OlsRegressionView"
+            allowMultiple="true"
+            name="OLS Regression">
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.smile.RidgeRegressionView"
+            id="etablesaw.ui.smile.RidgeRegressionView"
+            allowMultiple="true"
+            name="Ridge Regression">
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.smile.LassoRegressionView"
+            id="etablesaw.ui.smile.LassoRegressionView"
+            allowMultiple="true"
+            name="Lasso Regression">
+      </view>
+   </extension>
+   
+</plugin>

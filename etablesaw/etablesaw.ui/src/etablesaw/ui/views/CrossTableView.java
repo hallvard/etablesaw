@@ -1,4 +1,4 @@
-package etablesaw.ui;
+package etablesaw.ui.views;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -12,7 +12,7 @@ import tech.tablesaw.aggregate.CrossTab;
 import tech.tablesaw.api.CategoricalColumn;
 import tech.tablesaw.api.Table;
 
-public class CrossTableView extends DerivedTableView implements TableProvider {
+public class CrossTableView extends DerivedTableView {
 
     public CrossTableView() {
         super("Cross table");
@@ -25,8 +25,8 @@ public class CrossTableView extends DerivedTableView implements TableProvider {
 	@Override
 	protected void createConfigControls(final Composite configParent) {
 		super.createConfigControls(configParent);
-		rowCategorySelector = createColumnControl("Row category: ", configParent, null, CategoricalColumn.class);
-		columnCategorySelector = createColumnControl("[Column Category]: ", configParent, null, CategoricalColumn.class);
+		rowCategorySelector = createColumnControl(configParent, "Row category: ", null, CategoricalColumn.class);
+		columnCategorySelector = createColumnControl(configParent, "[Column Category]: ", null, CategoricalColumn.class);
 		final Label modeLabel = new Label(configParent, SWT.NONE);
 		modeLabel.setText("Count: ");
 		modeSelector = new Combo(configParent, SWT.READ_ONLY);

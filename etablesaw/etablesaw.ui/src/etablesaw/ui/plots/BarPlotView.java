@@ -27,9 +27,9 @@ public class BarPlotView extends AbstractPlotView {
 	@Override
 	public void createConfigControls(final Composite parent) {
 		super.createConfigControls(parent);
-		categorySelector = createColumnControl("Category: ", parent, null, CategoricalColumn.class);
-		numericsSelector = createColumnControl("Numbers: ", parent, true, NumberColumn.class);
-		aggregateFunctionSelector = createAggregateFunctionSelector("[Aggregate with]: ", parent, true);
+		categorySelector = createColumnControl(parent, "Category: ", null, CategoricalColumn.class);
+		numericsSelector = createColumnControl(parent, "Numbers: ", true, NumberColumn.class);
+		aggregateFunctionSelector = createAggregateFunctionSelector(parent, "[Aggregate with]: ", true);
 	}
 
 	@Override

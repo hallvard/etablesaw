@@ -1,7 +1,9 @@
-package etablesaw.ui;
+package etablesaw.ui.views;
 
 import org.eclipse.swt.widgets.Composite;
 
+import etablesaw.ui.TableProvider;
+import etablesaw.ui.TableProvider.Listener;
 import tech.tablesaw.api.Table;
 
 public abstract class DerivedTableView extends SimpleTablesawView implements TableProvider {

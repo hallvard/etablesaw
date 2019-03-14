@@ -1,4 +1,4 @@
-package etablesaw.ui;
+package etablesaw.ui.views;
 
 import org.eclipse.nebula.widgets.nattable.NatTable;
 import org.eclipse.swt.SWT;

@@ -1,4 +1,4 @@
-package etablesaw.ui;
+package etablesaw.ui.views;
 
 import java.util.Arrays;
 
@@ -11,7 +11,7 @@ import tech.tablesaw.api.CategoricalColumn;
 import tech.tablesaw.api.NumberColumn;
 import tech.tablesaw.api.Table;
 
-public class SummaryTableView extends DerivedTableView implements TableProvider {
+public class SummaryTableView extends DerivedTableView {
 
     public SummaryTableView() {
         super("Summary");
@@ -24,9 +24,9 @@ public class SummaryTableView extends DerivedTableView implements TableProvider 
 	@Override
 	protected void createConfigControls(final Composite configParent) {
 		super.createConfigControls(configParent);
-		numericsSelector = createColumnControl("Numbers: ", configParent, true, NumberColumn.class);
-		categorySelector = createColumnControl("[Category]: ", configParent, true, CategoricalColumn.class);
-		aggregateFunctionSelector = createAggregateFunctionSelector("Aggregate with: ", configParent, true);
+		numericsSelector = createColumnControl(configParent, "Numbers: ", true, NumberColumn.class);
+		categorySelector = createColumnControl(configParent, "[Category]: ", true, CategoricalColumn.class);
+		aggregateFunctionSelector = createAggregateFunctionSelector(configParent, "Aggregate with: ", true);
 	}
 
 	@Override
