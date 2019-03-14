@@ -8,4 +8,6 @@ Bundle-ClassPath: libs/smile-core-1.5.2.jar,
  libs/smile-data-1.5.2.jar,
  libs/smile-graph-1.5.2.jar,
  libs/smile-math-1.5.2.jar
-Export-Package: smile.data
+Export-Package: smile.data,
+ smile.regression
+Require-Bundle: org.slf4j.api;bundle-version="1.7.2"

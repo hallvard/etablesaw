@@ -511,13 +511,10 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			}
 			return getColumnNames(table, columnClass);
 		};
-		final SelectionListener selectionListener = new SelectionListener() {
+		final SelectionListener selectionListener = new SelectionAdapter() {
 			@Override
 			public void widgetSelected(final SelectionEvent e) {
-				configControlUpdated();
-			}
-			@Override
-			public void widgetDefaultSelected(final SelectionEvent e) {
+			    configControlUpdated();
 			}
 		};
 		Control control;
@@ -551,8 +548,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		final String[] columnNames = (table != null ? table.columnNames().toArray(noStrings) : noStrings);
 		if (columnCombo instanceof MultiCheckSelectionCombo) {
 			final MultiCheckSelectionCombo multiCheckSelectionCombo = (MultiCheckSelectionCombo) columnCombo;
-			multiCheckSelectionCombo.setItems(columnNames);
-			multiCheckSelectionCombo.removeAll();
+			multiCheckSelectionCombo.setItems(columnNames, true);
 		} else if (columnCombo instanceof Combo) {
 			((Combo) columnCombo).setItems(columnNames);
 		}
@@ -593,31 +589,6 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	}
 
 	protected Control createAggregateFunctionSelector(final String label, final Composite parent, final boolean multi) {
-		//		final Label swtLabel = new Label(parent, SWT.NONE);
-		//		swtLabel.setText(label);
-		//		final StructuredViewer selector = (multi ? new ListViewer(parent) : new ComboViewer(parent));
-		//		selector.setContentProvider(new IStructuredContentProvider() {
-		//			@Override
-		//			public Object[] getElements(final Object inputElement) {
-		//				if (inputElement instanceof Collection<?>) {
-		//					return ((Collection<?>) inputElement).toArray();
-		//				}
-		//				return null;
-		//			}
-		//		});
-		//		selector.addSelectionChangedListener(new ISelectionChangedListener() {
-		//			@Override
-		//			public void selectionChanged(final SelectionChangedEvent event) {
-		//				updateTableControls();
-		//			}
-		//		});
-		//		selector.setInput(aggregateFunctions);
-		//		final GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, false);
-		//		if (multi) {
-		//			gridData.heightHint = 60;
-		//		}
-		//		selector.getControl().setLayoutData(gridData);
-		//		return selector;
 		final Label swtLabel = new Label(parent, SWT.NONE);
 		swtLabel.setText(label);
 		final Collection<String> items = new ArrayList<>();
@@ -647,9 +618,6 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			control = combo;
 		}
 		final GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, false);
-		//		if (multi) {
-		//			gridData.heightHint = 60;
-		//		}
 		control.setLayoutData(gridData);
 		return control;
 	}
@@ -669,6 +637,13 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			funs.add(fun);
 		}
 		return funs.toArray(new AggregateFunction<?, ?>[funs.size()]);
+	}
+	protected AggregateFunction<?,?>[] getAggregateFunctions(final Control aggregateFunctionSelector, final Table table, final String... columnNames) {
+        final ColumnType[] columnTypes = new ColumnType[columnNames != null ? columnNames.length : 0];
+        for (int i = 0; i < columnTypes.length; i++) {
+            columnTypes[i] = table.column(columnNames[i]).type();
+        }
+	    return getAggregateFunctions(aggregateFunctionSelector, columnTypes);
 	}
 
 	protected abstract void updateTableControls();

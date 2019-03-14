@@ -89,9 +89,7 @@
   	<module>etablesaw.target</module>
   	<module>etablesaw.core</module>
   	<module>etablesaw.jsplot</module>
-  	<!-- 
-  	<module>tablesaw.smile</module>
-  	 -->
+  	<module>com.github.haifengl.smile.core</module>
 
   	<module>etablesaw.ui</module>
   	<module>etablesaw.ui.tests</module>

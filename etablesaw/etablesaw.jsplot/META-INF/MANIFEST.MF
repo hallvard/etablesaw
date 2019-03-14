@@ -9,4 +9,5 @@ Export-Package: tech.tablesaw.plotly,
  tech.tablesaw.plotly.api,
  tech.tablesaw.plotly.components,
  tech.tablesaw.plotly.traces
-Require-Bundle: etablesaw.core
+Require-Bundle: etablesaw.core,
+ com.google.guava;bundle-version="21.0.0"

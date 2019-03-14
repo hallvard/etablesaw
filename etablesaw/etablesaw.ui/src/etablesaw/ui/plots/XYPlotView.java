@@ -19,7 +19,7 @@ public abstract class XYPlotView extends AbstractPlotView {
 		super.createConfigControls(parent);
 		xSelector = createColumnControl("x: ", parent, null, NumericColumn.class);
 		ySelector = createColumnControl("y: ", parent, null, NumericColumn.class);
-		categorySelector = createColumnControl("Category: ", parent, false, CategoricalColumn.class);
+		categorySelector = createColumnControl("[Category]: ", parent, false, CategoricalColumn.class);
 	}
 
 	@Override
@@ -32,9 +32,10 @@ public abstract class XYPlotView extends AbstractPlotView {
 
 	@Override
 	protected String computeBrowserContents(final Point size) {
-		final String[] xs = getSelectedStrings(xSelector), ys = getSelectedStrings(ySelector);
+		final String[] xs = getSelectedStrings(xSelector);
+		final String[] ys = getSelectedStrings(ySelector);
 		final String[] categories = getSelectedStrings(categorySelector);
-		if (xs != null && xs.length == 1 && ys != null && ys.length == 1) {
+		if (xs != null && xs.length > 0 && ys != null && ys.length > 0) {
 			final Table table = getViewTable();
 			return computeBrowserContents(table.numberColumn(xs[0]), table.numberColumn(ys[0]),
 					(categories != null && categories.length == 1 ? table.categoricalColumn(categories[0]) : null));

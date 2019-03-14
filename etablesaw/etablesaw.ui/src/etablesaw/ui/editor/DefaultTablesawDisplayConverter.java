@@ -1,6 +1,7 @@
 package etablesaw.ui.editor;
 
 import tech.tablesaw.columns.numbers.DoubleColumnType;
+import tech.tablesaw.columns.numbers.IntColumnType;
 import tech.tablesaw.columns.numbers.ShortColumnType;
 
 public class DefaultTablesawDisplayConverter extends AbstractTablesawDisplayConverter {
@@ -30,6 +31,15 @@ public class DefaultTablesawDisplayConverter extends AbstractTablesawDisplayConv
 	}
 
 	@Override
+	protected Object intDisplayValue(final int intValue, final boolean missing) {
+	    return (missing ? missingIntDisplayValue() : Integer.toString(intValue));
+	}
+	@Override
+	protected String missingIntDisplayValue() {
+	    return missingDisplayValue();
+	}
+	
+	@Override
 	protected Object shortDisplayValue(final short shortValue, final boolean missing) {
 		return (missing ? missingShortDisplayValue() : Short.toString(shortValue));
 	}
@@ -48,6 +58,10 @@ public class DefaultTablesawDisplayConverter extends AbstractTablesawDisplayConv
 	@Override
 	protected Object doubleCanonicalValue(final Object value) {
 		return (value != null ? Double.valueOf(String.valueOf(value)) : Double.valueOf(DoubleColumnType.missingValueIndicator()));
+	}
+	@Override
+	protected Object intCanonicalValue(final Object value) {
+	    return (value != null ? Integer.valueOf(String.valueOf(value)) : Integer.valueOf(IntColumnType.missingValueIndicator()));
 	}
 	@Override
 	protected Object shortCanonicalValue(final Object value) {

@@ -1,8 +1,6 @@
 package etablesaw.ui.plots;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.swt.graphics.Point;
@@ -12,7 +10,6 @@ import org.eclipse.swt.widgets.Control;
 import tech.tablesaw.aggregate.AggregateFunction;
 import tech.tablesaw.aggregate.Summarizer;
 import tech.tablesaw.api.CategoricalColumn;
-import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.NumberColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.plotly.components.Figure;
@@ -48,11 +45,7 @@ public class BarPlotView extends AbstractPlotView {
 		final String[] categories = getSelectedStrings(categorySelector);
 		if (categories != null && categories.length > 0 && numerics != null && numerics.length > 0) {
 			Table table = getViewTable();
-			final Collection<ColumnType> columnTypes = new ArrayList<ColumnType>();
-			for (final String numericColumn : numerics) {
-				columnTypes.add(table.column(numericColumn).type());
-			}
-			final AggregateFunction<?, ?>[] aggregateFunctions = getAggregateFunctions(aggregateFunctionSelector, new ColumnType[columnTypes.size()]);
+			final AggregateFunction<?, ?>[] aggregateFunctions = getAggregateFunctions(aggregateFunctionSelector, table, numerics);
 			final boolean summarize = aggregateFunctions != null && aggregateFunctions.length > 0;
 			if (summarize) {
 				final Summarizer summarizer = table.summarize(Arrays.asList(numerics), aggregateFunctions);

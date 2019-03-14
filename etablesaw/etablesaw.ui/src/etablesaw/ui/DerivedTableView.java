@@ -6,11 +6,16 @@ import tech.tablesaw.api.Table;
 
 public abstract class DerivedTableView extends SimpleTablesawView implements TableProvider {
 
-	protected Table derivedTable = null;
+    protected Table[] derivedTables;
+    
+	public DerivedTableView(String... tableNames) {
+        super(tableNames);
+        derivedTables = new Table[tableNames.length];
+    }
 
 	@Override
-	protected Table getTableViewerInput() {
-		return derivedTable;
+	protected Table getTableViewerInput(int n) {
+		return derivedTables[n];
 	}
 
 	@Override
@@ -20,44 +25,49 @@ public abstract class DerivedTableView extends SimpleTablesawView implements Tab
 
 	//
 
+	protected Table getTable(int n) {
+		return natTablesawViewers[n].getTable();
+	}
 	@Override
 	public Table getTable() {
-		return natTablesawViewer.getTable();
+	    return getTable(getSelectedTableViewer());
 	}
+
+    protected void selectedTableViewerChanged() {
+        fireTableChanged(true);
+    }
 
 	@Override
 	public void addTableDataProviderListener(final TableProvider.Listener listener) {
-		natTablesawViewer.addTableDataProviderListener(listener);
+	    for (int i = 0; i < natTablesawViewers.length; i++) {
+	        natTablesawViewers[i].addTableDataProviderListener(listener);
+	    }
 	}
 
 	@Override
 	public void removeTableDataProviderListener(final TableProvider.Listener listener) {
-		natTablesawViewer.removeTableDataProviderListener(listener);
+	    for (int i = 0; i < natTablesawViewers.length; i++) {
+	        natTablesawViewers[i].removeTableDataProviderListener(listener);
+	    }
 	}
 
 	protected void fireTableChanged(final boolean async) {
 		if (async) {
-			getTableViewerParent().getDisplay().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					natTablesawViewer.getTableProviderHelper().fireTableChanged(DerivedTableView.this);
-				}
-			});
+			getTableViewerParent().getDisplay().asyncExec(() -> fireTableChanged(false));
 		} else {
-			natTablesawViewer.getTableProviderHelper().fireTableChanged(DerivedTableView.this);
+		    for (int i = 0; i < natTablesawViewers.length; i++) {
+		        natTablesawViewers[i].getTableProviderHelper().fireTableChanged(DerivedTableView.this);
+		    }
 		}
 	}
 
 	protected void fireTableDataChanged(final boolean async) {
 		if (async) {
-			getTableViewerParent().getDisplay().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					natTablesawViewer.getTableProviderHelper().fireTableDataChanged(DerivedTableView.this);
-				}
-			});
+		    getTableViewerParent().getDisplay().asyncExec(() -> fireTableDataChanged(false));
 		} else {
-			natTablesawViewer.getTableProviderHelper().fireTableDataChanged(DerivedTableView.this);
+		    for (int i = 0; i < natTablesawViewers.length; i++) {
+		        natTablesawViewers[i].getTableProviderHelper().fireTableDataChanged(DerivedTableView.this);
+		    }
 		}
 	}
 }

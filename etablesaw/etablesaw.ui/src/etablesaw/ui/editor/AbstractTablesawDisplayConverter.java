@@ -7,6 +7,7 @@ import org.eclipse.nebula.widgets.nattable.layer.cell.ILayerCell;
 import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.columns.booleans.BooleanColumnType;
 import tech.tablesaw.columns.numbers.DoubleColumnType;
+import tech.tablesaw.columns.numbers.IntColumnType;
 import tech.tablesaw.columns.numbers.ShortColumnType;
 
 public abstract class AbstractTablesawDisplayConverter extends DefaultDisplayConverter {
@@ -49,6 +50,9 @@ public abstract class AbstractTablesawDisplayConverter extends DefaultDisplayCon
 		} else if (type instanceof DoubleColumnType && value instanceof Number) {
 			final double doubleValue = ((Number) value).doubleValue();
 			return doubleDisplayValue(doubleValue, DoubleColumnType.isMissingValue(doubleValue));
+		} else if (type instanceof IntColumnType && value instanceof Number) {
+		    final int intValue = ((Number) value).intValue();
+		    return intDisplayValue(intValue, IntColumnType.isMissingValue(intValue));
 		} else if (type instanceof ShortColumnType && value instanceof Number) {
 			final short shortValue = ((Number) value).shortValue();
 			return shortDisplayValue(shortValue, ShortColumnType.isMissingValue(shortValue));
@@ -63,6 +67,9 @@ public abstract class AbstractTablesawDisplayConverter extends DefaultDisplayCon
 	protected abstract Object doubleDisplayValue(final double doubleValue, final boolean missing);
 	protected abstract String missingDoubleDisplayValue();
 
+	protected abstract Object intDisplayValue(final int intValue, final boolean missing);
+	protected abstract String missingIntDisplayValue();
+
 	protected abstract Object shortDisplayValue(final short shortValue, final boolean missing);
 	protected abstract String missingShortDisplayValue();
 
@@ -73,13 +80,16 @@ public abstract class AbstractTablesawDisplayConverter extends DefaultDisplayCon
 			return booleanCanonicalValue(value);
 		} else if (type instanceof DoubleColumnType) {
 			return doubleCanonicalValue(value);
+		} else if (type instanceof IntColumnType) {
+			return intCanonicalValue(value);
 		} else if (type instanceof ShortColumnType) {
-			return shortCanonicalValue(value);
+		    return shortCanonicalValue(value);
 		}
 		return null;
 	}
 
 	protected abstract Object booleanCanonicalValue(final Object value);
 	protected abstract Object doubleCanonicalValue(final Object value);
+	protected abstract Object intCanonicalValue(final Object value);
 	protected abstract Object shortCanonicalValue(final Object value);
 }

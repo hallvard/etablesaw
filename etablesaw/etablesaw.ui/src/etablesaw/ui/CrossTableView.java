@@ -14,6 +14,10 @@ import tech.tablesaw.api.Table;
 
 public class CrossTableView extends DerivedTableView implements TableProvider {
 
+    public CrossTableView() {
+        super("Cross table");
+    }
+    
 	private Control rowCategorySelector;
 	private Control columnCategorySelector;
 	private Combo modeSelector;
@@ -59,12 +63,12 @@ public class CrossTableView extends DerivedTableView implements TableProvider {
 				final CategoricalColumn<?> rowCategory = table.categoricalColumn(rowCategories[0]);
 				final CategoricalColumn<?> columnCategory = (columnCategories != null && columnCategories.length > 0 ? table.categoricalColumn(columnCategories[0]) : null);
 				if (modeSelector.getSelectionIndex() == 0) {
-					derivedTable = (columnCategories != null && columnCategories.length > 0 ?
+					derivedTables[0] = (columnCategories != null && columnCategories.length > 0 ?
 							CrossTab.counts(table, rowCategory, columnCategory) :
 								CrossTab.counts(table, rowCategories[0])
 							);
 				} else {
-					derivedTable = (columnCategories != null && columnCategories.length > 0 ?
+					derivedTables[0] = (columnCategories != null && columnCategories.length > 0 ?
 							(modeSelector.getSelectionIndex() == 1 ?
 									CrossTab.rowPercents(table, rowCategory, columnCategory) :
 										CrossTab.columnPercents(table, rowCategory, columnCategory)

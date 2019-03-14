@@ -1,93 +1,85 @@
 package etablesaw.ui;
 
+import org.eclipse.nebula.widgets.nattable.NatTable;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
 
 import etablesaw.ui.editor.NatTablesawViewer;
 import tech.tablesaw.api.Table;
 
 public class SimpleTablesawView extends AbstractTablesawView {
 
-	//	private TableViewer tablesawViewer;
-	protected NatTablesawViewer natTablesawViewer;
+    private final String[] tableNames;
+    
+	public SimpleTablesawView(boolean autoSelectTableDataProvider, String... tableNames) {
+        super(autoSelectTableDataProvider);
+        this.tableNames = tableNames;
+    }
 
-	public SimpleTablesawView() {
-		super(false);
+
+	public SimpleTablesawView(String... tableNames) {
+		this(false, tableNames);
 	}
 
 	@Override
 	protected void createConfigControls(final Composite configParent) {
 		createTableRegistrySelector("Source: ", configParent, null);
-		//		createWorkbenchTableProvideSelector("Source: ", configParent);
 	}
+	
+	private TabFolder tabFolder = null; 
+	protected NatTablesawViewer[] natTablesawViewers;
 
 	@Override
 	protected void createTableDataControls(final Composite parent) {
-		super.createTableDataControls(parent);
-		natTablesawViewer = new NatTablesawViewer();
-		natTablesawViewer.createPartControl(parent);
-		//		natTablesawViewer.setInput(getTableViewerInput());
-		//		if (table != null) {
-		//			tablesawViewer = new TableViewer(parent, SWT.VIRTUAL | SWT.V_SCROLL);
-		//			tablesawViewer.setContentProvider(new AbstractTablesawContentProvider() {
-		//				@Override
-		//				protected boolean isContentTable(final Table table) {
-		//					return true;
-		//				}
-		//			});
-		//			tablesawViewer.getTable().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-		//			tablesawViewer.getTable().setHeaderVisible(true);
-		//
-		//			addTableColumn(null);
-		//			for (int colNum = 0; colNum < table.columnCount(); colNum++) {
-		//				final Column<?> col = table.column(colNum);
-		//				addTableColumn(col);
-		//			}
-		//			tablesawViewer.setInput(table);
-		//
-		//			parent.getDisplay().asyncExec(new Runnable() {
-		//				@Override
-		//				public void run() {
-		//					final org.eclipse.swt.widgets.Table swtTable = tablesawViewer.getTable();
-		//					if (swtTable != null && (! swtTable.isDisposed())) {
-		//						for (final TableColumn column : swtTable.getColumns()) {
-		//							column.pack();
-		//						}
-		//					}
-		//				}
-		//			});
-		//		}
+	    natTablesawViewers = new NatTablesawViewer[tableNames.length];
+	    GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
+        if (tableNames.length > 1) {
+	        tabFolder = new TabFolder(parent, SWT.HORIZONTAL);
+	        super.createTableDataControls(tabFolder);
+            tabFolder.setLayoutData(layoutData);
+            tabFolder.addSelectionListener(new SelectionAdapter() {
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    selectedTableViewerChanged();
+                }
+            });
+	    } else {
+	        super.createTableDataControls(parent);
+		}
+        for (int i = 0; i < natTablesawViewers.length; i++) {
+            NatTablesawViewer viewer = new NatTablesawViewer();
+            natTablesawViewers[i] = viewer;
+            viewer.createPartControl(getTableViewerParent());            
+            NatTable control = natTablesawViewers[i].getControl();
+            if (tabFolder != null) {
+                TabItem item = new TabItem(tabFolder, SWT.NONE);
+                item.setText(tableNames[i]);
+                item.setControl(control);
+            } else {
+                control.setLayoutData(layoutData);                
+            }
+        }
 	}
 
-	protected Table getTableViewerInput() {
+    protected int getSelectedTableViewer() {
+	    return (tabFolder != null ? tabFolder.getSelectionIndex() : 0);
+	}
+    protected void selectedTableViewerChanged() {
+    }
+	
+	protected Table getTableViewerInput(int n) {
 		return getViewTable();
 	}
 
 	@Override
 	protected void updateTableControls() {
-		//		if (tablesawViewer != null) {
-		//			tablesawViewer.getTable().dispose();
-		//			tablesawViewer = null;
-		//		}
-		//		createTableViewer(getTableViewerParent());
-		//		getTableViewerParent().layout(true);
-		natTablesawViewer.setInput(getTableViewerInput());
+        for (int i = 0; i < natTablesawViewers.length; i++) {
+            natTablesawViewers[i].setInput(getTableViewerInput(i));
+        }
 	}
-	//
-	//	protected void addTableColumn(final Column<?> column) {
-	//		final TableViewerColumn viewerColumn = new TableViewerColumn(tablesawViewer, SWT.NONE);
-	//		final AbstractTablesawColumnLabelProvider labelProvider = new AbstractTablesawColumnLabelProvider() {
-	//			@Override
-	//			protected String getColumnName() {
-	//				return (column != null ? column.name() : null);
-	//			}
-	//			@Override
-	//			protected String getColumnTitle() {
-	//				final String name = getColumnName();
-	//				return (name != null ? name : "#");
-	//			}
-	//		};
-	//		viewerColumn.setLabelProvider(labelProvider);
-	//		viewerColumn.getColumn().setText(labelProvider.getColumnTitle());
-	//		viewerColumn.getColumn().setWidth(labelProvider.getColumnTitle().length() * 10);
-	//	}
 }

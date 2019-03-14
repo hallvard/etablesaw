@@ -1,5 +1,4 @@
 package etablesaw.ui.util;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -8,45 +7,26 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 // https://github.com/lawhcd/SWTMultiCheckSelectionCombo
 public class MultiCheckSelectionCombo extends Composite {
 
-	private List<Option> options = new ArrayList<Option>();
-	private Button[] buttons;
+    MultiCheckSelectionShell selector;
 	private final List<ModifyListener> modifyListeners = new ArrayList<ModifyListener>();
 	private final List<SelectionListener> selectionListeners = new ArrayList<SelectionListener>();
 	private final List<VerifyListener> verifyListeners = new ArrayList<VerifyListener>();
 
 	private String defaultText = "options";
 	private Text display;
-
-	private class Option {
-		String text;
-		boolean selection = false;
-		Option(final String text) {
-			if (text == null) throw new IllegalArgumentException();
-			this.text = text;
-		}
-		Option(final String text, final boolean selection) {
-			if (text == null) throw new IllegalArgumentException();
-			this.text = text;
-			this.selection = selection;
-		}
-	}
 
 	/**
 	 *
@@ -88,12 +68,6 @@ public class MultiCheckSelectionCombo extends Composite {
 		init();
 	}
 
-	private Supplier<String[]> itemsProvider;
-
-	public void setItemsProvider(final Supplier<String[]> itemsProvider) {
-		this.itemsProvider = itemsProvider;
-	}
-
 	private void init() {
 		final GridLayout layout = new GridLayout();
 		layout.marginBottom = 0;
@@ -106,90 +80,47 @@ public class MultiCheckSelectionCombo extends Composite {
 		display = new Text(this, SWT.BORDER | SWT.READ_ONLY);
 		display.setLayoutData(new GridData(GridData.FILL_BOTH));
 		display.setText(defaultText);
-		display.addListener(SWT.MouseDown, e -> {
-			if (itemsProvider != null) {
-				final String[] newItems = itemsProvider.get();
-				if (newItems != null) {
-					setItems(newItems);
-				}
-			}
-			showFloatShell(display);
-		});
+		selector = new MultiCheckSelectionShell(display, event -> {
+		    if (event.type == SWT.Deactivate) {
+		        for (final VerifyListener listener : verifyListeners) {
+		            final VerifyEvent verifyEvent = new VerifyEvent(event);
+		            verifyEvent.doit = false;
+		            listener.verifyText(verifyEvent);
+		        }
+		        displayText(display);
+		        for (final ModifyListener listener : modifyListeners) {
+		            listener.modifyText(new ModifyEvent(event));
+		        }
+		    }
+		}, SWT.MouseDown);
 	}
 
-	private void showFloatShell(final Text display) {
-		final Point p = display.getParent().toDisplay(display.getLocation());
-		final Point size = display.getSize();
-		final Rectangle shellRect = new Rectangle(p.x, p.y + size.y, size.x, 0);
-		final Shell shell = new Shell(MultiCheckSelectionCombo.this.getShell(), SWT.BORDER);
-		shell.setLayout(new GridLayout());
-
-		final Button toggle = new Button(shell, SWT.BUTTON1);
-		toggle.setText("Toggle");
-		toggle.addListener(SWT.MouseDown, e -> {
-			toggleAll();
-			for (final SelectionListener l : selectionListeners) {
-				l.widgetSelected(new SelectionEvent(e));
-			}
-		});
-
-		buttons = new Button[options.size()];
-		for (int i =0; i < options.size(); i++) {
-			final Button b = new Button(shell, SWT.CHECK);
-			final Option o = options.get(i);
-			b.setText(o.text);
-			b.setSelection(o.selection);
-			b.addListener(SWT.Selection, e -> {
-				o.selection = b.getSelection();
-				for (final SelectionListener l : selectionListeners) {
-					l.widgetSelected(new SelectionEvent(e));
-				}
-			});
-			b.pack();
-			buttons[i] = b;
-		}
-
-		shell.pack();
-		shell.setLocation(shellRect.x, shellRect.y);
-
-		shell.addListener(SWT.Deactivate, e-> {
-			if (shell != null && !shell.isDisposed()) {
-				shell.setVisible(false);
-				for (final SelectionListener l : selectionListeners) {
-					l.widgetDefaultSelected(new SelectionEvent(e));
-				}
-				for (final VerifyListener l : verifyListeners) {
-					final VerifyEvent v = new VerifyEvent(e);
-					v.doit =false;
-					l.verifyText(v);
-				}
-
-				displayText(display);
-
-				for (final ModifyListener l : modifyListeners) {
-					l.modifyText(new ModifyEvent(e));
-				}
-				for (final Button b : buttons) {
-					b.dispose();
-				}
-				buttons = null;
-				shell.dispose();
-			}
-		});
-
-		shell.open();
+	public void setItemsProvider(final Supplier<String[]> itemsProvider) {
+	    selector.setItemsProvider(itemsProvider);
+	}
+	
+	public void setToggleButtonText(String toggleButtonText) {
+	    selector.setToggleButtonText(toggleButtonText);
+    }
+	
+	public void setNotifyOnSelection(boolean notifyOnSelection) {
+	    selector.setNotifyOnSelection(notifyOnSelection);
+    }
+	
+	public void setNotifyOnClose(boolean notifyOnClose) {
+	    selector.setNotifyOnClose(notifyOnClose);
 	}
 
 	private void displayText(final Text display) {
-		final StringBuffer sb = new StringBuffer();
+		final StringBuilder buffer = new StringBuilder();
 		boolean first = true;
-		for (final Option o : options) {
-			if (o.selection) {
-				sb.append(first? o.text : ", " + o.text);
+		for (final MultiCheckSelectionShell.Option option : selector.getOptions()) {
+			if (option.selection) {
+				buffer.append(first? option.text : ", " + option.text);
 				first = false;
 			}
 		}
-		display.setText((sb.length() > 0)? sb.toString() : defaultText);
+		display.setText(buffer.length() > 0 ? buffer.toString() : defaultText);
 		display.pack();
 		this.pack();
 	}
@@ -218,7 +149,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void add(final String string) {
-		options.add(new Option(string));
+		selector.add(string);
 	}
 
 	/**
@@ -231,7 +162,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void add(final String string, final boolean selection) {
-		options.add(new Option(string, selection));
+		selector.add(string, selection);
 	}
 
 	/**
@@ -245,8 +176,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void add(final String string, final int index) {
-		if (index < 0 || index > options.size()) throw new IllegalArgumentException("ERROR_INVALID_RANGE");
-		options.add(index, new Option(string));
+	    selector.add(string, index);
 	}
 
 	/**
@@ -261,8 +191,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void add(final String string, final boolean selection, final int index) {
-		if (index < 0 || index > options.size()) throw new IllegalArgumentException("ERROR_INVALID_RANGE");
-		options.add(index, new Option(string, selection));
+	    selector.add(string, selection, index);
 	}
 
 	/**
@@ -289,8 +218,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void addSelectionListener(final SelectionListener listener) {
-		if (listener == null) throw new IllegalArgumentException();
-		selectionListeners.add(listener);
+	    selector.addSelectionListener(listener);
 	}
 
 	/**
@@ -332,12 +260,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void deselect(final int index) {
-		if (index >= 0 && index < options.size()) {
-			options.get(index).selection = false;
-			if (buttons != null) {
-				buttons[index].setSelection(false);
-			}
-		}
+	    selector.deselect(index);
 	}
 
 	/**
@@ -347,14 +270,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void deselectAll() {
-		for (final Option o : options) {
-			o.selection = false;
-		}
-		if (buttons != null) {
-			for (int i=0; i < options.size(); i++){
-				buttons[i].setSelection(false);
-			}
-		}
+	    selector.deselectAll();
 	}
 
 	/**
@@ -367,11 +283,8 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public String getItem(final int index) {
-		checkrange(index);
-		return options.get(index).text;
+	    return selector.getItem(index);
 	}
-
-
 
 	/**
 	 *
@@ -381,7 +294,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public int getItemCount() {
-		return options.size();
+	    return selector.getItemCount();
 	}
 
 	/**
@@ -392,13 +305,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public int[] getSelectionIndices() {
-		final ArrayDeque<Integer> selections = new ArrayDeque<Integer>();
-		for (int i = 0; i<options.size(); i++) {
-			if (options.get(i).selection) {
-				selections.add(i);
-			}
-		}
-		return selections.stream().mapToInt(i->i).toArray();
+	    return selector.getSelectionIndices();
 	}
 
 	/**
@@ -409,14 +316,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public String[] getSelections() {
-		final ArrayDeque<String> selections = new ArrayDeque<String>();
-		for (int i = 0; i<options.size(); i++) {
-			final Option o = options.get(i);
-			if (o.selection) {
-				selections.add(o.text);
-			}
-		}
-		return selections.toArray(new String[selections.size()]);
+	    return selector.getSelections();
 	}
 
 	/**
@@ -462,13 +362,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public int indexOf(final String string) {
-		if (string == null) throw new IllegalArgumentException();
-		for (int i=0; i <options.size(); i++) {
-			if (options.get(i).text.equals(string)) {
-				return i;
-			}
-		}
-		return -1;
+	    return selector.indexOf(string);
 	}
 
 	/**
@@ -482,14 +376,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public int indexOf(final String string, final int start) {
-		if (string == null) throw new IllegalArgumentException();
-		if (start < 0 || start >= options.size()) return -1;
-		for (int i=start; i <options.size(); i++) {
-			if (options.get(i).text.equals(string)) {
-				return i;
-			}
-		}
-		return -1;
+	    return selector.indexOf(string, start);
 	}
 
 	/**
@@ -503,11 +390,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void remove(final int index) {
-		checkrange(index);
-		options.remove(index);
-		if (buttons != null) {
-			buttons[index].setEnabled(false);
-		}
+	    selector.remove(index);
 	}
 
 	/**
@@ -522,15 +405,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void remove(final int start, final int end) {
-		checkrange(start);
-		checkrange(end);
-		assert start <= end;
-		for (int i = start; i <= end; i++) {
-			options.remove(i);
-			if (buttons != null) {
-				buttons[i].setEnabled(false);
-			}
-		}
+	    selector.remove(start, end);
 	}
 
 	/**
@@ -545,18 +420,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void remove(final String string) {
-		if (string != null) {
-			for (int i=0; i < options.size(); i++) {
-				if (options.get(i).text.equals(string)) {
-					options.remove(i);
-					if (buttons != null) {
-						buttons[i].setEnabled(false);
-					}
-					return;
-				}
-			}
-		}
-		throw new IllegalArgumentException();
+	    selector.remove(string);
 	}
 
 	/**
@@ -568,12 +432,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void removeAll() {
-		options.clear();
-		if (buttons != null) {
-			for (final Button b : buttons) {
-				b.setEnabled(false);
-			}
-		}
+	    selector.removeAll();
 		display.setText(defaultText);
 		display.pack();
 	}
@@ -625,12 +484,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void select(final int index) {
-		if (index >= 0 && index < options.size()) {
-			options.get(index).selection = true;
-			if (buttons != null) {
-				buttons[index].setSelection(true);
-			}
-		}
+	    selector.select(index);
 	}
 
 	/**
@@ -641,9 +495,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void select(final int[] indices) {
-		for (final int i : indices) {
-			select(i);
-		}
+	    selector.select(indices);
 	}
 
 	/**
@@ -669,13 +521,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void setItem(final int index, final String string) {
-		checkrange(index);
-		if (string == null) throw new IllegalArgumentException();
-		options.get(index).text = string;
-		if (buttons != null) {
-			buttons[index].setText(string);
-			buttons[index].pack();
-		}
+	    selector.setItem(index, string);
 	}
 
 	/**
@@ -689,11 +535,12 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void setItems(final String[] items) {
-		options = new ArrayList<Option>(items.length);
-		for (final String s : items) {
-			add(s);
-		}
+	    selector.setItems(items);
 	}
+
+    public void setItems(final String[] newItems, boolean keepSelections) {
+        selector.setItems(newItems, keepSelections);
+    }
 
 	/**
 	 *
@@ -702,18 +549,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public void toggleAll() {
-		for (final Option o : options) {
-			o.selection = !o.selection;
-		}
-		if (buttons != null) {
-			for (final Button b : buttons) {
-				b.setSelection(!b.getSelection());
-			}
-		}
-	}
-
-	private void checkrange(final int index) {
-		if (index < 0 || index >= options.size()) throw new IllegalArgumentException("ERROR_INVALID_RANGE");
+	    selector.toggleAll();
 	}
 
 }

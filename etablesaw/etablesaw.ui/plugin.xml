@@ -45,6 +45,13 @@
             allowMultiple="true"
             name="Cross Table">
       </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.OlsRegressionView"
+            id="etablesaw.ui.OlsRegressionView"
+            allowMultiple="true"
+            name="OLS Regression">
+      </view>
    </extension>
 
    <extension
@@ -55,6 +62,13 @@
             id="etablesaw.ui.BarPlotView"
             allowMultiple="true"
             name="Bar Plot">
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.HistogramView"
+            id="etablesaw.ui.HistogramView"
+            allowMultiple="true"
+            name="Histogram">
       </view>
       <view
             category="etablesaw.ui.category"
@@ -69,6 +83,13 @@
             id="etablesaw.ui.LinePlotView"
             allowMultiple="true"
             name="Line Plot">
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.ScatterPlotView"
+            id="etablesaw.ui.ScatterPlotView"
+            allowMultiple="true"
+            name="Scatter Plot">
       </view>
    </extension>
    <extension

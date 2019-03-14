@@ -52,7 +52,6 @@ public abstract class AbstractPlotView extends AbstractTablesawView {
 			    String templatesLocation = Activator.getInstance().getPreferenceStore().getString(TablesawPreferenceInitializer.TEMPLATES_LOCATION_PREFERENCE);
 				try {
 				    if (templatesLocation != null && templatesLocation.trim().length() > 0) {
-				        System.out.println(templatesLocation);
 				        TemplateUtils.setTemplateLocations(templatesLocation);
 				    }
                     plotHtml = computeBrowserContents(browser.getSize());
