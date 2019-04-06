@@ -1,6 +1,10 @@
 package etablesaw.xtext.jvmmodel;
 
+import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
 import java.util.Iterator;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
@@ -11,6 +15,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import com.google.inject.Inject;
 
+import etablesaw.xtext.validation.XawValidator;
 import etablesaw.xtext.xaw.InlineTableRow;
 import etablesaw.xtext.xaw.TableColumn;
 import etablesaw.xtext.xaw.TableLiteral;
@@ -88,9 +93,14 @@ public class XawCompiler extends XbaseCompiler {
 
 	final static String defaultTableName = "A table";
 
+	@Inject
+	private XawUtil xawUtil;
+	
 	protected void _toJavaExpression(final TableLiteral literal, final ITreeAppendable b) {
 		final String name = literal.getName();
-		b.append("Table.create(" + "\"" + (name != null ? name : defaultTableName) + "\"");
+		String tableTypeName = xawUtil.getTableTypeName(literal);
+		b.append(tableTypeName != null ? "new " + tableTypeName : "Table.create");
+		b.append("(" + "\"" + (name != null ? name : defaultTableName) + "\"");
 		for (final TableColumn column : getTableColumns(literal)) {
 			b.append(", ");
 			if (b.hasName(column)) {
@@ -109,8 +119,8 @@ public class XawCompiler extends XbaseCompiler {
 		int colNum = 0;
 		final Iterable<TableColumn> tableColumns = getTableColumns(literal);
 		for (final TableColumn column : tableColumns) {
-			final String name = column.getName();
-			final JvmTypeReference columnType = columnTypeProvider.getColumnTypeReference(column.getType());
+			final String name = column.getColumnDef().getName();
+			final JvmTypeReference columnType = columnTypeProvider.getColumnTypeReference(column.getColumnDef().getType());
 			final XExpression colExpr = column.getExpression();
 			if (colExpr != null) {
 				internalToJavaStatement(colExpr, b, true);
@@ -182,10 +192,13 @@ public class XawCompiler extends XbaseCompiler {
 		b.append(")");
 	}
 
+	@Inject
+	private XawValidator xawValidator;
+	
 	protected void _toJavaExpression(final XURLLiteral url, final ITreeAppendable b) {
 		b.append("java.net.URI.create(\"");
 		try {
-			b.append(XawInterpreter.createURI(url).toString());
+			b.append(createURI(url).toString());
 		} catch (final URISyntaxException e) {
 			b.append(e.getMessage());
 		}
@@ -222,4 +235,48 @@ public class XawCompiler extends XbaseCompiler {
 	//		b.newLine();
 	//		b.append("}");
 	//	}
+	
+    public static LocalTime createLocalTime(final XLocalTimeLiteral time) {
+        return LocalTime.of(time.getHour(), time.getMin(), time.getSecond());
+    }
+    
+    public static LocalDate createLocalDate(final XLocalDateLiteral date) {
+        try {
+            final int month = Integer.valueOf(date.getMonth());
+            return LocalDate.of(date.getYear(), month, date.getDay());
+        } catch (final NumberFormatException e) {
+            return LocalDate.of(date.getYear(), Month.valueOf(date.getMonth().toUpperCase()), date.getDay());
+        }
+    }
+    
+    public static URI createURI(final XURLLiteral url) throws URISyntaxException {
+        if (url.getUrl() != null) {
+            return new URI(url.getUrl());
+        } else {
+            String urlString = url.getPath();
+            if (url.getHost() != null) {
+                if (url.getPort() != 0) {
+                    urlString = ":" + url.getPort() + urlString;
+                }
+                urlString = "//" + url.getHost() + urlString;
+            }
+            String scheme = url.getScheme();
+            if (scheme == null) {
+                scheme = "file";
+            }
+            urlString = scheme + ":" + urlString;
+            if (! url.getParams().isEmpty()) {
+                String params = "";
+                for (final String param : url.getParams()) {
+                    params = (params.length() == 0 ? "?" : "&") + param;
+                }
+                urlString = urlString + params;
+            }
+            if (url.getFrag() != null) {
+                urlString = urlString + "#" + url.getFrag();
+            }
+            return new URI(urlString);
+        }
+    }
+
 }

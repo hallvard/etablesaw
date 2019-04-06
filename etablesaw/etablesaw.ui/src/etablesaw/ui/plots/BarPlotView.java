@@ -35,8 +35,8 @@ public class BarPlotView extends AbstractPlotView {
 	@Override
 	protected void updateConfigControls() {
 		super.updateConfigControls();
-		setColumnNames(categorySelector, getViewTable());
-		setColumnNames(numericsSelector, getViewTable());
+		setColumnNames(categorySelector, getViewTable(), CategoricalColumn.class);
+		setColumnNames(numericsSelector, getViewTable(), NumberColumn.class);
 	}
 
 	@Override

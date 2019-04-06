@@ -24,7 +24,7 @@ public class HistogramView extends AbstractPlotView {
 	@Override
 	protected void updateConfigControls() {
 		super.updateConfigControls();
-		setColumnNames(numericsSelector, getViewTable());
+		setColumnNames(numericsSelector, getViewTable(), NumberColumn.class);
 	}
 
 	@Override

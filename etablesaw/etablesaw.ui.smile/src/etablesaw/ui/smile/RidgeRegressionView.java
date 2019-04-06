@@ -31,7 +31,7 @@ public class RidgeRegressionView extends DerivedTableView {
 	@Override
 	protected void updateConfigControls() {
 		super.updateConfigControls();
-		setColumnNames(dependentColumnsSelector, getViewTable());
+		setColumnNames(dependentColumnsSelector, getViewTable(), NumericColumn.class);
 	}
 
 	@Override

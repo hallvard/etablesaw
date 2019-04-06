@@ -35,12 +35,13 @@ public class TableExtensions {
 
 	// selection/range
 
-	public static Table operator_add(final Table table1, final Table table2) {
-		return table1.append(table2);
+	public static <T extends Table> T operator_add(final T table1, final Table table2) {
+		table1.append(table2);
+		return table1;
 	}
 
 	@Pure
-	public static Table operator_divide(final Table table, final Selection selection) {
+	public static Table operator_singleAnd(final Table table, final Selection selection) {
 		return table.where(selection);
 	}
 
@@ -50,7 +51,19 @@ public class TableExtensions {
 	}
 
 	@Pure
-	public static Table operator_divide(final Table table, final IntegerRange range) {
+	public static Table operator_singleAnd(final Table table, final IntegerRange range) {
 		return table.inRange(range.getStart(), range.getEnd());
 	}
+	
+	@Pure
+	public static Table operator_minus(final Table table, final IntegerRange range) {
+	    return table.dropRange(range.getStart(), range.getEnd());
+	}
+	
+	// =>
+
+    public static <T extends Table> T operator_doubleArrow(final Table table1, final T table2) {
+        table2.append(table1);
+        return table2;
+    }
 }

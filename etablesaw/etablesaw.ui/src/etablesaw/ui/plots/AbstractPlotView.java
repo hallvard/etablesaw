@@ -24,6 +24,7 @@ public abstract class AbstractPlotView extends AbstractTablesawView {
 
 	@Override
 	public void createTableDataControls(final Composite parent) {
+	    super.createTableDataControls(parent);
 		browser = new Browser(parent, SWT.NONE);
 		browser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		browser.setJavascriptEnabled(true);
@@ -46,7 +47,7 @@ public abstract class AbstractPlotView extends AbstractTablesawView {
 
 	@Override
 	protected void updateTableControls() {
-		if (browser != null) {
+		if (browser != null && (! browser.isDisposed())) {
 			String plotHtml = null;
 			if (getViewTable() != null) {
 			    String templatesLocation = Activator.getInstance().getPreferenceStore().getString(TablesawPreferenceInitializer.TEMPLATES_LOCATION_PREFERENCE);

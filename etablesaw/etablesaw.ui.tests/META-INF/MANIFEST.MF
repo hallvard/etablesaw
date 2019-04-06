@@ -14,7 +14,6 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.13.0",
  etablesaw.excel;bundle-version="0.1.0",
  etablesaw.html;bundle-version="0.1.0",
  etablesaw.json;bundle-version="0.1.0",
- etablesaw.ui.aql;bundle-version="0.1.0",
  etablesaw.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: etablesaw.ui.tests;x-internal=true

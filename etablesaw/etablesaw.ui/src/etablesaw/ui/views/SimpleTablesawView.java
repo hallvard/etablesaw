@@ -37,7 +37,7 @@ public class SimpleTablesawView extends AbstractTablesawView {
 	@Override
 	protected void createTableDataControls(final Composite parent) {
 	    natTablesawViewers = new NatTablesawViewer[tableNames.length];
-	    GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
+	    GridData layoutData = new GridData(GridData.FILL_BOTH);
         if (tableNames.length > 1) {
 	        tabFolder = new TabFolder(parent, SWT.HORIZONTAL);
 	        super.createTableDataControls(tabFolder);
@@ -67,7 +67,7 @@ public class SimpleTablesawView extends AbstractTablesawView {
 	}
 
     protected int getSelectedTableViewer() {
-	    return (tabFolder != null ? tabFolder.getSelectionIndex() : 0);
+	    return (tabFolder != null && (! tabFolder.isDisposed()) ? tabFolder.getSelectionIndex() : 0);
 	}
     protected void selectedTableViewerChanged() {
     }

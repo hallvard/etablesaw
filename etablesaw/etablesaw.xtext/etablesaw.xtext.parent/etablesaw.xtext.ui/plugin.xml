@@ -8,6 +8,7 @@
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="xaw"
+			icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
 			id="etablesaw.xtext.Xaw"
 			matchingStrategy="etablesaw.xtext.ui.XawExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
 			name="Xaw Editor">
@@ -626,7 +627,8 @@
         point="org.eclipse.ui.handlers">
         <handler
             class="etablesaw.xtext.ui.commands.XawEditorRunXawHandler"
-            commandId="etablesaw.xtext.Xaw.run">
+            commandId="etablesaw.xtext.Xaw.run"
+            >
             <activeWhen>
                 <reference
                     definitionId="etablesaw.xtext.Xaw.Editor.opened">
@@ -640,6 +642,7 @@
              <command
                  commandId="etablesaw.xtext.Xaw.run"
                  style="push"
+                 icon="icons/run_xaw.png"
                  tooltip="Run Xaw">
                 <visibleWhen checkEnabled="false">
                     <reference
@@ -660,4 +663,12 @@
             >
        </key>
     </extension>
+    
+    <extension point="etablesaw.ui.exprSupport">
+        <exprSupport
+            langName="xaw"
+            supportClass="etablesaw.xtext.ui.expr.XawExprSupport"
+        />
+    </extension>
+    
 </plugin>

@@ -76,6 +76,20 @@ public class XawSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
+      case XawPackage.TABLE_DEF:
+      {
+        TableDef tableDef = (TableDef)theEObject;
+        T result = caseTableDef(tableDef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XawPackage.TABLE_COLUMN_DEF:
+      {
+        TableColumnDef tableColumnDef = (TableColumnDef)theEObject;
+        T result = caseTableColumnDef(tableColumnDef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case XawPackage.XMETHOD:
       {
         XMethod xMethod = (XMethod)theEObject;
@@ -168,6 +182,38 @@ public class XawSwitch<T> extends Switch<T>
       }
       default: return defaultCase(theEObject);
     }
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Table Def</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Table Def</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTableDef(TableDef object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Table Column Def</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Table Column Def</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTableColumnDef(TableColumnDef object)
+  {
+    return null;
   }
 
   /**

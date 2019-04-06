@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtext.common.types.JvmFormalParameter;
+import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
@@ -21,6 +22,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link etablesaw.xtext.xaw.XMethod#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.XMethod#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.XMethod#getName <em>Name</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.XMethod#getParameters <em>Parameters</em>}</li>
@@ -33,6 +35,22 @@ import org.eclipse.xtext.xbase.XExpression;
  */
 public interface XMethod extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Type Parameters</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.xtext.common.types.JvmTypeParameter}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type Parameters</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type Parameters</em>' containment reference list.
+   * @see etablesaw.xtext.xaw.XawPackage#getXMethod_TypeParameters()
+   * @model containment="true"
+   * @generated
+   */
+  EList<JvmTypeParameter> getTypeParameters();
+
   /**
    * Returns the value of the '<em><b>Return Type</b></em>' containment reference.
    * <!-- begin-user-doc -->

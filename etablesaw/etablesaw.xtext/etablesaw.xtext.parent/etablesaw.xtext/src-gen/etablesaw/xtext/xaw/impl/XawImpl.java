@@ -3,6 +3,7 @@
  */
 package etablesaw.xtext.xaw.impl;
 
+import etablesaw.xtext.xaw.TableDef;
 import etablesaw.xtext.xaw.XMethod;
 import etablesaw.xtext.xaw.Xaw;
 import etablesaw.xtext.xaw.XawPackage;
@@ -36,6 +37,7 @@ import org.eclipse.xtext.xtype.XImportSection;
  * <ul>
  *   <li>{@link etablesaw.xtext.xaw.impl.XawImpl#getImportSection <em>Import Section</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.impl.XawImpl#getQName <em>QName</em>}</li>
+ *   <li>{@link etablesaw.xtext.xaw.impl.XawImpl#getTableDefs <em>Table Defs</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.impl.XawImpl#getMethods <em>Methods</em>}</li>
  * </ul>
  *
@@ -72,6 +74,16 @@ public class XawImpl extends XBlockExpressionImpl implements Xaw
    * @ordered
    */
   protected String qName = QNAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTableDefs() <em>Table Defs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTableDefs()
+   * @generated
+   * @ordered
+   */
+  protected EList<TableDef> tableDefs;
 
   /**
    * The cached value of the '{@link #getMethods() <em>Methods</em>}' containment reference list.
@@ -180,6 +192,20 @@ public class XawImpl extends XBlockExpressionImpl implements Xaw
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<TableDef> getTableDefs()
+  {
+    if (tableDefs == null)
+    {
+      tableDefs = new EObjectContainmentEList<TableDef>(TableDef.class, this, XawPackage.XAW__TABLE_DEFS);
+    }
+    return tableDefs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<XMethod> getMethods()
   {
     if (methods == null)
@@ -201,6 +227,8 @@ public class XawImpl extends XBlockExpressionImpl implements Xaw
     {
       case XawPackage.XAW__IMPORT_SECTION:
         return basicSetImportSection(null, msgs);
+      case XawPackage.XAW__TABLE_DEFS:
+        return ((InternalEList<?>)getTableDefs()).basicRemove(otherEnd, msgs);
       case XawPackage.XAW__METHODS:
         return ((InternalEList<?>)getMethods()).basicRemove(otherEnd, msgs);
     }
@@ -221,6 +249,8 @@ public class XawImpl extends XBlockExpressionImpl implements Xaw
         return getImportSection();
       case XawPackage.XAW__QNAME:
         return getQName();
+      case XawPackage.XAW__TABLE_DEFS:
+        return getTableDefs();
       case XawPackage.XAW__METHODS:
         return getMethods();
     }
@@ -243,6 +273,10 @@ public class XawImpl extends XBlockExpressionImpl implements Xaw
         return;
       case XawPackage.XAW__QNAME:
         setQName((String)newValue);
+        return;
+      case XawPackage.XAW__TABLE_DEFS:
+        getTableDefs().clear();
+        getTableDefs().addAll((Collection<? extends TableDef>)newValue);
         return;
       case XawPackage.XAW__METHODS:
         getMethods().clear();
@@ -268,6 +302,9 @@ public class XawImpl extends XBlockExpressionImpl implements Xaw
       case XawPackage.XAW__QNAME:
         setQName(QNAME_EDEFAULT);
         return;
+      case XawPackage.XAW__TABLE_DEFS:
+        getTableDefs().clear();
+        return;
       case XawPackage.XAW__METHODS:
         getMethods().clear();
         return;
@@ -289,6 +326,8 @@ public class XawImpl extends XBlockExpressionImpl implements Xaw
         return importSection != null;
       case XawPackage.XAW__QNAME:
         return QNAME_EDEFAULT == null ? qName != null : !QNAME_EDEFAULT.equals(qName);
+      case XawPackage.XAW__TABLE_DEFS:
+        return tableDefs != null && !tableDefs.isEmpty();
       case XawPackage.XAW__METHODS:
         return methods != null && !methods.isEmpty();
     }

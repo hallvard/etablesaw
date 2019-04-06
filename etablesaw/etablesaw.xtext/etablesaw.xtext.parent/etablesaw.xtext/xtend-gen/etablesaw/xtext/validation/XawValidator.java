@@ -3,7 +3,7 @@
  */
 package etablesaw.xtext.validation;
 
-import etablesaw.xtext.jvmmodel.XawInterpreter;
+import etablesaw.xtext.jvmmodel.XawCompiler;
 import etablesaw.xtext.validation.AbstractXawValidator;
 import etablesaw.xtext.xaw.InlineTableRow;
 import etablesaw.xtext.xaw.TableLiteral;
@@ -82,7 +82,7 @@ public class XawValidator extends AbstractXawValidator {
       this.checkInt(time.getSecond(), 0, 59, "Second", XawPackage.Literals.XLOCAL_TIME_LITERAL__SECOND);
       LocalTime _xtrycatchfinallyexpression = null;
       try {
-        _xtrycatchfinallyexpression = XawInterpreter.createLocalTime(time);
+        _xtrycatchfinallyexpression = XawCompiler.createLocalTime(time);
       } catch (final Throwable _t) {
         if (_t instanceof RuntimeException) {
           final RuntimeException e = (RuntimeException)_t;
@@ -104,7 +104,7 @@ public class XawValidator extends AbstractXawValidator {
       this.checkInt(date.getDay(), 1, 31, "Day", XawPackage.Literals.XLOCAL_DATE_LITERAL__DAY);
       LocalDate _xtrycatchfinallyexpression = null;
       try {
-        _xtrycatchfinallyexpression = XawInterpreter.createLocalDate(date);
+        _xtrycatchfinallyexpression = XawCompiler.createLocalDate(date);
       } catch (final Throwable _t) {
         if (_t instanceof RuntimeException) {
           final RuntimeException e = (RuntimeException)_t;
@@ -123,7 +123,7 @@ public class XawValidator extends AbstractXawValidator {
     try {
       URI _xtrycatchfinallyexpression = null;
       try {
-        _xtrycatchfinallyexpression = XawInterpreter.createURI(url);
+        _xtrycatchfinallyexpression = XawCompiler.createURI(url);
       } catch (final Throwable _t) {
         if (_t instanceof RuntimeException) {
           final RuntimeException e = (RuntimeException)_t;

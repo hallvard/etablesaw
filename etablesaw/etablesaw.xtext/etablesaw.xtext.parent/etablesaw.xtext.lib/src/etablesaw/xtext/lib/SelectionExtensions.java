@@ -29,10 +29,10 @@ public class SelectionExtensions {
 		return selection.flip(0, selection.size());
 	}
 
-	public static Selection operator_divideAssign(final Selection sel1, final Selection sel2) {
+	public static Selection operator_singleAndAssign(final Selection sel1, final Selection sel2) {
 		return sel1.and(sel2);
 	}
-	public static Selection operator_add(final Selection sel1, final Selection sel2) {
+	public static Selection operator_singleOrAssign(final Selection sel1, final Selection sel2) {
 		return sel1.or(sel2);
 	}
 	public static Selection operator_remove(final Selection sel1, final Selection sel2) {

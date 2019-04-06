@@ -15,10 +15,12 @@ Bundle-Activator: etablesaw.ui.Activator
 Import-Package: etablesaw.io,
  etablesaw.ui,
  etablesaw.ui.views,
+ smile.classification,
  smile.data,
  smile.regression,
  tech.tablesaw.api,
  tech.tablesaw.columns,
  tech.tablesaw.columns.numbers,
+ tech.tablesaw.conversion,
  tech.tablesaw.conversion.smile,
  tech.tablesaw.table

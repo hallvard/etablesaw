@@ -36,17 +36,17 @@ public class ColumnExtensions {
 	}
 
 	@Pure
-	public static <T> Column<T> operator_divide(final Column<T> col, final Selection selection) {
+	public static <T> Column<T> operator_singleAnd(final Column<T> col, final Selection selection) {
 		return col.where(selection);
 	}
 
 	@Pure
-	public static <T> Column<T> operator_divide(final Column<T> col, final IntegerRange range) {
+	public static <T> Column<T> operator_singleAnd(final Column<T> col, final IntegerRange range) {
 		return col.inRange(range.getStart(), range.getEnd());
 	}
 	
 	@Pure
-    public static <T> Column<T> operator_divide(Column<T> numericColumn, Predicate<T> pred) {
+    public static <T> Column<T> operator_singleAnd(Column<T> numericColumn, Predicate<T> pred) {
         return numericColumn.filter(pred);
     }
 	

@@ -22,6 +22,7 @@ public class LassoRegressionView extends DerivedTableView {
 	private Control lambdaControl;
 	private Control toleranceControl;
 	private Control maxIterationsControl;
+
 	@Override
 	protected void createConfigControls(final Composite configParent) {
 		super.createConfigControls(configParent);
@@ -35,7 +36,7 @@ public class LassoRegressionView extends DerivedTableView {
 	@Override
 	protected void updateConfigControls() {
 		super.updateConfigControls();
-		setColumnNames(dependentColumnsSelector, getViewTable());
+		setColumnNames(dependentColumnsSelector, getViewTable(), NumericColumn.class);
 	}
 
 	@Override

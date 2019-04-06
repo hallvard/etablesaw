@@ -3,7 +3,6 @@ package etablesaw.ui.views;
 import org.eclipse.swt.widgets.Composite;
 
 import etablesaw.ui.TableProvider;
-import etablesaw.ui.TableProvider.Listener;
 import tech.tablesaw.api.Table;
 
 public abstract class DerivedTableView extends SimpleTablesawView implements TableProvider {
@@ -65,7 +64,9 @@ public abstract class DerivedTableView extends SimpleTablesawView implements Tab
 
 	protected void fireTableDataChanged(final boolean async) {
 		if (async) {
-		    getTableViewerParent().getDisplay().asyncExec(() -> fireTableDataChanged(false));
+		    if (! getTableViewerParent().isDisposed()) {
+		        getTableViewerParent().getDisplay().asyncExec(() -> fireTableDataChanged(false));
+		    }
 		} else {
 		    for (int i = 0; i < natTablesawViewers.length; i++) {
 		        natTablesawViewers[i].getTableProviderHelper().fireTableDataChanged(DerivedTableView.this);

@@ -1,20 +1,19 @@
 package tablesaw.ui.examples;
 
 import etablesaw.xtext.lib.LocalDateTimeExtensions;
-import etablesaw.xtext.lib.TableExtensions;
+import etablesaw.xtext.lib.XawBase;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.function.Predicate;
+import tablesaw.ui.examples.Test1_tab1;
+import tablesaw.ui.examples.Test1_tab2;
 import tech.tablesaw.api.DoubleColumn;
-import tech.tablesaw.api.ShortColumn;
+import tech.tablesaw.api.IntColumn;
 import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
-import tech.tablesaw.columns.Column;
-import tech.tablesaw.selection.Selection;
 
 @SuppressWarnings("all")
-public class Test1 implements Runnable {
+public class Test1 extends XawBase implements Runnable {
   public void run() {
     final String var1 = "Aud";
     final int var2 = 1;
@@ -30,21 +29,11 @@ public class Test1 implements Runnable {
     ageColumn.append((50 + var2));
     nameColumn.append(var1);
     ageColumn.append(80);
-    final Table tab1 = Table.create("A table", nameColumn, ageColumn);
-    Column<?> _column = tab1.column("name");
-    ShortColumn ageColumn_1 = ShortColumn.create("age");
-    final Table tab2 = Table.create("tab2", ((StringColumn) _column), ageColumn_1);
-    Column<?> _column_1 = tab2.column("age");
-    ((ShortColumn) _column_1).append(((short) 42));
-    Column<?> _column_2 = tab2.column("age");
-    ((ShortColumn) _column_2).append(((short) 48));
-    Column<?> _column_3 = tab1.column("name");
-    final StringColumn stringCol = ((StringColumn) _column_3);
-    final Predicate<String> _function = (String s) -> {
-      return s.startsWith("H");
-    };
-    Selection _eval = stringCol.eval(_function);
-    final Table tab3 = TableExtensions.operator_minus(tab2, _eval);
+    final Test1_tab1 tab1 = new tablesaw.ui.examples.Test1_tab1("A table", nameColumn, ageColumn);
+    final StringColumn nameCol = tab1.getNameColumn();
+    IntColumn _create = IntColumn.create("age", new int[] { 42, 48 });
+    final Test1_tab2 tab2 = new tablesaw.ui.examples.Test1_tab2("tab2", nameCol, _create);
+    this.helper(tab1);
   }
   
   public static void main(final String[] args) {

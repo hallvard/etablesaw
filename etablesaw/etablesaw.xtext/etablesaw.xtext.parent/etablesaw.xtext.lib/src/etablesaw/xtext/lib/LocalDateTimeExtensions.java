@@ -44,32 +44,33 @@ public class LocalDateTimeExtensions {
 		}
 		return result;
 	}
-	@Pure
-	public static LocalDateTime operator_divide(final LocalDateTime dateTime, final LocalTime time) {
-		LocalDateTime result = dateTime;
-		if (dateTime.getHour() != time.getHour()) {
-			result = result.withHour(time.getHour());
-		}
-		if (dateTime.getMinute() != time.getMinute()) {
-			result = result.withMinute(time.getMinute());
-		}
-		if (dateTime.getSecond() != time.getSecond()) {
-			result = result.withSecond(time.getSecond());
-		}
-		return result;
-	}
-	@Pure
-	public static LocalDateTime operator_divide(final LocalDateTime dateTime, final LocalDate date) {
-		LocalDateTime result = dateTime;
-		if (dateTime.getYear() != date.getYear()) {
-			result = result.withYear(date.getYear());
-		}
-		if (dateTime.getMonthValue() != date.getMonthValue()) {
-			result = result.withMonth(date.getMonthValue());
-		}
-		if (dateTime.getDayOfMonth() != date.getDayOfMonth()) {
-			result = result.withDayOfMonth(date.getDayOfMonth());
-		}
-		return result;
-	}
+
+//	@Pure
+//	public static LocalDateTime operator_divide(final LocalDateTime dateTime, final LocalTime time) {
+//		LocalDateTime result = dateTime;
+//		if (dateTime.getHour() != time.getHour()) {
+//			result = result.withHour(time.getHour());
+//		}
+//		if (dateTime.getMinute() != time.getMinute()) {
+//			result = result.withMinute(time.getMinute());
+//		}
+//		if (dateTime.getSecond() != time.getSecond()) {
+//			result = result.withSecond(time.getSecond());
+//		}
+//		return result;
+//	}
+//	@Pure
+//	public static LocalDateTime operator_divide(final LocalDateTime dateTime, final LocalDate date) {
+//		LocalDateTime result = dateTime;
+//		if (dateTime.getYear() != date.getYear()) {
+//			result = result.withYear(date.getYear());
+//		}
+//		if (dateTime.getMonthValue() != date.getMonthValue()) {
+//			result = result.withMonth(date.getMonthValue());
+//		}
+//		if (dateTime.getDayOfMonth() != date.getDayOfMonth()) {
+//			result = result.withDayOfMonth(date.getDayOfMonth());
+//		}
+//		return result;
+//	}
 }

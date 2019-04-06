@@ -3,8 +3,6 @@
  */
 package etablesaw.xtext.xaw;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
-
 import org.eclipse.xtext.xbase.XExpression;
 
 /**
@@ -16,8 +14,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link etablesaw.xtext.xaw.TableColumn#getType <em>Type</em>}</li>
- *   <li>{@link etablesaw.xtext.xaw.TableColumn#getName <em>Name</em>}</li>
+ *   <li>{@link etablesaw.xtext.xaw.TableColumn#getColumnDef <em>Column Def</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.TableColumn#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -28,56 +25,30 @@ import org.eclipse.xtext.xbase.XExpression;
 public interface TableColumn extends XExpression
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Column Def</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Column Def</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(JvmTypeReference)
-   * @see etablesaw.xtext.xaw.XawPackage#getTableColumn_Type()
+   * @return the value of the '<em>Column Def</em>' containment reference.
+   * @see #setColumnDef(TableColumnDef)
+   * @see etablesaw.xtext.xaw.XawPackage#getTableColumn_ColumnDef()
    * @model containment="true"
    * @generated
    */
-  JvmTypeReference getType();
+  TableColumnDef getColumnDef();
 
   /**
-   * Sets the value of the '{@link etablesaw.xtext.xaw.TableColumn#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link etablesaw.xtext.xaw.TableColumn#getColumnDef <em>Column Def</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
+   * @param value the new value of the '<em>Column Def</em>' containment reference.
+   * @see #getColumnDef()
    * @generated
    */
-  void setType(JvmTypeReference value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see etablesaw.xtext.xaw.XawPackage#getTableColumn_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link etablesaw.xtext.xaw.TableColumn#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
+  void setColumnDef(TableColumnDef value);
 
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference.

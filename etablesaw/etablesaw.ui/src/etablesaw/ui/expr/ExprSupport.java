@@ -19,35 +19,29 @@ public abstract class ExprSupport {
 		this.lang = lang;
 	}
 
-	public abstract PreparedExpr prepareExpr(String expr, Map<String, ColumnType> varTypes, String thisToken);
+	public abstract PreparedExpr prepareExpr(String expr, Map<String, ColumnType> varTypes, String colVar);
 	public abstract Object evalExpr(PreparedExpr expr, Map<String, Object> varValues);
 
-	public Map<String, ColumnType> getVarTypes(final Table table, final String colNumPrefix) {
+	public Map<String, ColumnType> getVarTypes(final Table table) {
 		final Map<String, ColumnType> varTypes = new HashMap<String, ColumnType>();
 		for (int colNum = 0; colNum < table.columnCount(); colNum++) {
 			final Column<?> column = table.column(colNum);
 			final ColumnType colType = column.type();
 			varTypes.put(column.name(), colType);
-			if (colNumPrefix != null) {
-				varTypes.put(colNumPrefix + (colNum + 1), colType);
-			}
 		}
 		return varTypes;
 	}
 
-	public Map<String, Object> getVarValues(final Table table, final int rowNum, final String colNumPrefix, final Map<String, Object> varValues) {
+	public Map<String, Object> getVarValues(final Table table, final int rowNum, final Map<String, Object> varValues) {
 		for (int colNum = 0; colNum < table.columnCount(); colNum++) {
 			final Column<?> column = table.column(colNum);
 			final Object value = column.get(rowNum);
 			varValues.put(column.name(), value);
-			if (colNumPrefix != null) {
-				varValues.put(colNumPrefix + (colNum + 1), value);
-			}
 		}
 		return varValues;
 	}
 
-	public Map<String, Object> getVarValues(final Table table, final int rowNum, final String colNumPrefix) {
-		return getVarValues(table, rowNum, colNumPrefix, new HashMap<String, Object>());
+	public Map<String, Object> getVarValues(final Table table, final int rowNum) {
+		return getVarValues(table, rowNum, new HashMap<String, Object>());
 	}
 }

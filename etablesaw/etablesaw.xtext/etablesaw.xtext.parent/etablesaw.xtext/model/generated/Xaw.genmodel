@@ -6,7 +6,16 @@
     copyrightFields="false" runtimeVersion="2.14" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xtype">
   <genPackages prefix="Xaw" basePackage="etablesaw.xtext" disposableProviderFactory="true"
       fileExtensions="xaw" ecorePackage="Xaw.ecore#/">
+    <genClasses ecoreClass="Xaw.ecore#//TableDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xaw.ecore#//TableDef/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//TableDef/tableColumDefs"/>
+    </genClasses>
+    <genClasses ecoreClass="Xaw.ecore#//TableColumnDef">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//TableColumnDef/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xaw.ecore#//TableColumnDef/name"/>
+    </genClasses>
     <genClasses ecoreClass="Xaw.ecore#//XMethod">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//XMethod/typeParameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//XMethod/returnType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xaw.ecore#//XMethod/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//XMethod/parameters"/>
@@ -15,14 +24,14 @@
     <genClasses ecoreClass="Xaw.ecore#//Xaw">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//Xaw/importSection"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xaw.ecore#//Xaw/qName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//Xaw/tableDefs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//Xaw/methods"/>
     </genClasses>
     <genClasses ecoreClass="Xaw.ecore#//TableLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xaw.ecore#//TableLiteral/name"/>
     </genClasses>
     <genClasses ecoreClass="Xaw.ecore#//TableColumn">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//TableColumn/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xaw.ecore#//TableColumn/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//TableColumn/columnDef"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//TableColumn/expression"/>
     </genClasses>
     <genClasses ecoreClass="Xaw.ecore#//InlineTableRow"/>

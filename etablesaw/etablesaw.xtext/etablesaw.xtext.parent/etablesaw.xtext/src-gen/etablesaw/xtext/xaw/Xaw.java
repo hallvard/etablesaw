@@ -20,6 +20,7 @@ import org.eclipse.xtext.xtype.XImportSection;
  * <ul>
  *   <li>{@link etablesaw.xtext.xaw.Xaw#getImportSection <em>Import Section</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.Xaw#getQName <em>QName</em>}</li>
+ *   <li>{@link etablesaw.xtext.xaw.Xaw#getTableDefs <em>Table Defs</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.Xaw#getMethods <em>Methods</em>}</li>
  * </ul>
  *
@@ -80,6 +81,22 @@ public interface Xaw extends XBlockExpression
    * @generated
    */
   void setQName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Table Defs</b></em>' containment reference list.
+   * The list contents are of type {@link etablesaw.xtext.xaw.TableDef}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Table Defs</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Table Defs</em>' containment reference list.
+   * @see etablesaw.xtext.xaw.XawPackage#getXaw_TableDefs()
+   * @model containment="true"
+   * @generated
+   */
+  EList<TableDef> getTableDefs();
 
   /**
    * Returns the value of the '<em><b>Methods</b></em>' containment reference list.

@@ -21,6 +21,8 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XawGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_TableDef_CommaKeyword_3_1_0_q;
+	protected AbstractElementAlias match_TableLiteral_ColonKeyword_2_1_q;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
@@ -33,6 +35,8 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XawGrammarAccess) access;
+		match_TableDef_CommaKeyword_3_1_0_q = new TokenAlias(false, true, grammarAccess.getTableDefAccess().getCommaKeyword_3_1_0());
+		match_TableLiteral_ColonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getTableLiteralAccess().getColonKeyword_2_1());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
@@ -80,7 +84,11 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
+			if (match_TableDef_CommaKeyword_3_1_0_q.equals(syntax))
+				emit_TableDef_CommaKeyword_3_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TableLiteral_ColonKeyword_2_1_q.equals(syntax))
+				emit_TableLiteral_ColonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
 				emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
 				emit_XBlockExpression_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -100,6 +108,35 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     ','?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     tableColumDefs+=TableColumnDef (ambiguity) tableColumDefs+=TableColumnDef
+	 */
+	protected void emit_TableDef_CommaKeyword_3_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ':'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=STRING (ambiguity) '#' ')' (rule end)
+	 *     name=STRING (ambiguity) '#' (rule end)
+	 *     name=STRING (ambiguity) '#' expressions+=InlineTableRow
+	 *     name=STRING (ambiguity) expressions+=TableColumn
+	 *     name=ValidID (ambiguity) '#' ')' (rule end)
+	 *     name=ValidID (ambiguity) '#' (rule end)
+	 *     name=ValidID (ambiguity) '#' expressions+=InlineTableRow
+	 *     name=ValidID (ambiguity) expressions+=TableColumn
+	 */
+	protected void emit_TableLiteral_ColonKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     ('(' ')')?

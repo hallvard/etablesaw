@@ -10,6 +10,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import com.google.inject.Inject;
 
 import tech.tablesaw.api.BooleanColumn;
+import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.DateColumn;
 import tech.tablesaw.api.DateTimeColumn;
 import tech.tablesaw.api.DoubleColumn;
@@ -17,32 +18,77 @@ import tech.tablesaw.api.IntColumn;
 import tech.tablesaw.api.ShortColumn;
 import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.TimeColumn;
+import tech.tablesaw.columns.Column;
 
 public class DefaultColumnTypeProvider implements IColumnTypeProvider {
 
+    public static Class<?> getColumnType(final String elementClassName) {
+        switch (elementClassName) {
+        case "java.lang.String":            return StringColumn.class;
+        case "int": case "Integer" :        return IntColumn.class;
+        case "double": case "Double" :      return DoubleColumn.class;
+        case "boolean": case "Boolean" :    return BooleanColumn.class;
+        case "short": case "Short" :        return ShortColumn.class;
+
+        case "java.time.LocalTime": return TimeColumn.class;
+        case "java.time.LocalDateTime": return DateTimeColumn.class;
+        case "java.time.LocalDate": return DateColumn.class;
+        default: return null;
+        }
+    }
+    
+    public static Class<?> getElementType(final Class<? extends Column<?>> columnClass) {
+        return getElementType(columnClass.getName());
+    }
+    
+    public static Class<?> getElementType(final String columnClassName) {
+        switch (columnClassName) {
+        case "tech.tablesaw.api.StringColumn": return String.class;
+        case "tech.tablesaw.api.IntColumn": return int.class;
+        case "tech.tablesaw.api.DoubleColumn": return double.class;
+        case "tech.tablesaw.api.BooleanColumn": return boolean.class;
+        case "tech.tablesaw.api.ShortColumn": return short.class;
+
+        case "tech.tablesaw.api.TimeColumnn": return LocalTime.class;
+        case "tech.tablesaw.api.DateTimeColumnn": return LocalDateTime.class;
+        case "tech.tablesaw.api.DateColumnn": return LocalDate.class;
+        default: return null;
+        }
+    }
+    
+    public static Class<?> getElementType(final ColumnType columnType) {
+        if (columnType.equals(ColumnType.STRING)) {
+            return String.class;
+        } else if (columnType.equals(ColumnType.INTEGER)) {
+            return int.class;
+        } else if (columnType.equals(ColumnType.DOUBLE)) {
+            return double.class;
+        } else if (columnType.equals(ColumnType.BOOLEAN)) {
+            return boolean.class;
+        } else if (columnType.equals(ColumnType.SHORT)) {
+            return short.class;
+        } else
+            if (columnType.equals(ColumnType.LOCAL_TIME)) {
+            return LocalTime.class;
+        } else if (columnType.equals(ColumnType.LOCAL_DATE_TIME)) {
+            return LocalDateTime.class;
+        } else if (columnType.equals(ColumnType.LOCAL_DATE)) {
+            return LocalDate.class;
+        }
+        return null;
+    }
+    
 	@Inject
 	private JvmTypesBuilder typeRefBuilder;
 
 	@Override
 	public JvmTypeReference getColumnTypeReference(final JvmTypeReference elementType) {
-		if (isSame(String.class, elementType)) {
-			return typeRefBuilder.newTypeRef(elementType, StringColumn.class);
-		} else if (isSame(Boolean.TYPE, elementType) || isSame(Boolean.class, elementType)) {
-			return typeRefBuilder.newTypeRef(elementType, BooleanColumn.class);
-		} else if (isSame(Double.TYPE, elementType) || isSame(Double.class, elementType)) {
-			return typeRefBuilder.newTypeRef(elementType, DoubleColumn.class);
-		} else if (isSame(Integer.TYPE, elementType) || isSame(Integer.class, elementType)) {
-			return typeRefBuilder.newTypeRef(elementType, IntColumn.class);
-		} else if (isSame(Short.TYPE, elementType) || isSame(Short.class, elementType)) {
-			return typeRefBuilder.newTypeRef(elementType, ShortColumn.class);
-		} else if (isSame(LocalTime.class, elementType)) {
-			return typeRefBuilder.newTypeRef(elementType, TimeColumn.class);
-		} else if (isSame(LocalDate.class, elementType)) {
-			return typeRefBuilder.newTypeRef(elementType, DateColumn.class);
-		} else if (isSame(LocalDateTime.class, elementType)) {
-			return typeRefBuilder.newTypeRef(elementType, DateTimeColumn.class);
-		}
-		throw new RuntimeException("Unsupported column type: " + elementType.getQualifiedName());
+	    String qName = elementType.getQualifiedName();
+        Class<?> columnType = getColumnType(qName);
+	    if (columnType == null) {
+	        throw new RuntimeException("Unsupported column type: " + qName);	        
+	    }
+        return typeRefBuilder.newTypeRef(elementType, columnType);
 	}
 
 	protected boolean isSame(final Class<?> clazz, final JvmTypeReference type) {

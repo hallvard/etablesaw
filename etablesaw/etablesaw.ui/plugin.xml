@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="exprSupport" name="Expression support" schema="schema/exprSupport.exsd"/>
+
    <extension
          point="org.eclipse.ui.editors">
       <editor
@@ -9,7 +11,9 @@
             default="true"
             extensions="cvs"
             id="etablesaw.ui.editor.table"
-            name="Tablesaw editor">
+            name="Tablesaw editor"
+            icon="icons/xaw.png"
+            >
       </editor>
    </extension>
 
@@ -17,7 +21,8 @@
          point="org.eclipse.ui.views">
       <category
             id="etablesaw.ui.category"
-            name="Tablesaw">
+            name="Tablesaw"
+            >
       </category>
 
       <view
@@ -25,7 +30,9 @@
             class="etablesaw.ui.editor.NatTablesawView"
             id="etablesaw.ui.NatTablesawView"
             allowMultiple="true"
-            name="Table">
+            name="Table"
+            icon="icons/xaw.png"
+            >
       </view>
    </extension>
 
@@ -36,14 +43,18 @@
             class="etablesaw.ui.views.SummaryTableView"
             id="etablesaw.ui.SummaryTableView"
             allowMultiple="true"
-            name="Summary">
+            name="Summary"
+            icon="icons/xaw.png"
+            >
       </view>
       <view
             category="etablesaw.ui.category"
             class="etablesaw.ui.views.CrossTableView"
             id="etablesaw.ui.CrossTableView"
             allowMultiple="true"
-            name="Cross Table">
+            name="Cross Table"
+            icon="icons/xaw.png"
+            >
       </view>
    </extension>
 
@@ -54,35 +65,45 @@
             class="etablesaw.ui.plots.BarPlotView"
             id="etablesaw.ui.BarPlotView"
             allowMultiple="true"
-            name="Bar Plot">
+            name="Bar Plot"
+            icon="icons/xaw.png"
+            >
       </view>
       <view
             category="etablesaw.ui.category"
             class="etablesaw.ui.plots.HistogramView"
             id="etablesaw.ui.HistogramView"
             allowMultiple="true"
-            name="Histogram">
+            name="Histogram"
+            icon="icons/xaw.png"
+            >
       </view>
       <view
             category="etablesaw.ui.category"
             class="etablesaw.ui.plots.PiePlotView"
             id="etablesaw.ui.PiePlotView"
             allowMultiple="true"
-            name="Pie Plot">
+            name="Pie Plot"
+            icon="icons/xaw.png"
+            >
       </view>
       <view
             category="etablesaw.ui.category"
             class="etablesaw.ui.plots.LinePlotView"
             id="etablesaw.ui.LinePlotView"
             allowMultiple="true"
-            name="Line Plot">
+            name="Line Plot"
+            icon="icons/xaw.png"
+            >
       </view>
       <view
             category="etablesaw.ui.category"
             class="etablesaw.ui.plots.ScatterPlotView"
             id="etablesaw.ui.ScatterPlotView"
             allowMultiple="true"
-            name="Scatter Plot">
+            name="Scatter Plot"
+            icon="icons/xaw.png"
+            >
       </view>
    </extension>
    <extension
@@ -96,17 +117,10 @@
       point = "org.eclipse.ui.preferencePages">
        <page id="etablesaw.ui.preferences.TablesawPreferencePage"
             class="etablesaw.ui.preferences.TablesawPreferencePage"
-            name="Tablesaw">
+            name="Tablesaw"
+            >
        </page>
    </extension>
-   
-   <extension-point id="exprSupport" name="Expression Support" schema="schema/exprSupport.exsd"/>
-   
-   	<extension point="etablesaw.ui.exprSupport">
-		<exprSupport
-			langName="js"
-			supportClass="etablesaw.ui.javaxscript.ScriptEngineExprSupport"
-		/>
-	</extension>
-   
+
+
 </plugin>

@@ -30,6 +30,9 @@ public class XawTypeComputer extends XbaseWithAnnotationsTypeComputer {
 	@Inject
 	private IColumnTypeProvider columnTypeProvider;
 
+    @Inject
+    private XawUtil xawUtil;
+
 	@Override
 	public void computeTypes(final XExpression expression, final ITypeComputationState state) {
 		if (expression instanceof TableLiteral) {
@@ -38,7 +41,7 @@ public class XawTypeComputer extends XbaseWithAnnotationsTypeComputer {
 			for (final XExpression child : literal.getExpressions()) {
 				if (child instanceof TableColumn) {
 					final TableColumn column = (TableColumn) child;
-					colTypes.add(column.getType());
+					colTypes.add(column.getColumnDef().getType());
 					final XExpression colExp = column.getExpression();
 					if (colExp != null) {
 						// TODO should expect a parameterized Column type
@@ -54,13 +57,12 @@ public class XawTypeComputer extends XbaseWithAnnotationsTypeComputer {
 					}
 				}
 			}
-			final LightweightTypeReference result = getTypeForName(Table.class, state);
+			String typeName = xawUtil.getTableTypeName(literal);
+			final LightweightTypeReference result = (typeName != null ? getTypeForName(typeName, state) : getTypeForName(Table.class, state));
 			state.acceptActualType(result);
 		} else if (expression instanceof TableColumn) {
-			System.out.println("Type for " + expression);
 			super.computeTypes(expression, state);
 		} else if (expression instanceof InlineTableRow) {
-			System.out.println("Type for " + expression);
 			super.computeTypes(expression, state);
 		} else if (expression instanceof XCastedColumnExpression) {
 			// almost copied from XBaseTypeCompiler

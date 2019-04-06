@@ -24,6 +24,24 @@ public interface XawFactory extends EFactory
   XawFactory eINSTANCE = etablesaw.xtext.xaw.impl.XawFactoryImpl.init();
 
   /**
+   * Returns a new object of class '<em>Table Def</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Table Def</em>'.
+   * @generated
+   */
+  TableDef createTableDef();
+
+  /**
+   * Returns a new object of class '<em>Table Column Def</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Table Column Def</em>'.
+   * @generated
+   */
+  TableColumnDef createTableColumnDef();
+
+  /**
    * Returns a new object of class '<em>XMethod</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

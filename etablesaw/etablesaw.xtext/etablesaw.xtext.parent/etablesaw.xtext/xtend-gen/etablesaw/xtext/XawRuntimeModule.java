@@ -9,13 +9,18 @@ import etablesaw.xtext.AbstractXawRuntimeModule;
 import etablesaw.xtext.extensions.ImplicitlyImportedTypes;
 import etablesaw.xtext.extensions.XawImportSectionNamespaceScopeProvider;
 import etablesaw.xtext.jvmmodel.DefaultColumnTypeProvider;
+import etablesaw.xtext.jvmmodel.DefaultTableTypeNameProvider;
 import etablesaw.xtext.jvmmodel.IColumnTypeProvider;
+import etablesaw.xtext.jvmmodel.ITableTypeNameProvider;
 import etablesaw.xtext.jvmmodel.XawCompiler;
-import etablesaw.xtext.jvmmodel.XawInterpreter;
+import etablesaw.xtext.jvmmodel.XawIdentifiableSimpleNameProvider;
+import etablesaw.xtext.jvmmodel.XawReflectAccess;
 import etablesaw.xtext.jvmmodel.XawTypeComputer;
+import org.eclipse.xtext.common.types.util.JavaReflectAccess;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.eclipse.xtext.xbase.scoping.featurecalls.OperatorMapping;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
@@ -47,11 +52,20 @@ public class XawRuntimeModule extends AbstractXawRuntimeModule {
     return XawCompiler.class;
   }
   
-  public Class<? extends XawInterpreter> bindXawInterpreter() {
-    return XawInterpreter.class;
+  public Class<? extends JavaReflectAccess> bindJavaReflectAccess() {
+    return XawReflectAccess.class;
+  }
+  
+  @Override
+  public Class<? extends IdentifiableSimpleNameProvider> bindIdentifiableSimpleNameProvider() {
+    return XawIdentifiableSimpleNameProvider.class;
   }
   
   public Class<? extends IColumnTypeProvider> bindIColumnTypeProvider() {
     return DefaultColumnTypeProvider.class;
+  }
+  
+  public Class<? extends ITableTypeNameProvider> bindITableTypeNameProvider() {
+    return DefaultTableTypeNameProvider.class;
   }
 }

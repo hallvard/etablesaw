@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.common.types.JvmFormalParameter;
+import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
@@ -35,6 +36,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link etablesaw.xtext.xaw.impl.XMethodImpl#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.impl.XMethodImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.impl.XMethodImpl#getName <em>Name</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.impl.XMethodImpl#getParameters <em>Parameters</em>}</li>
@@ -45,6 +47,16 @@ import org.eclipse.xtext.xbase.XExpression;
  */
 public class XMethodImpl extends MinimalEObjectImpl.Container implements XMethod
 {
+  /**
+   * The cached value of the '{@link #getTypeParameters() <em>Type Parameters</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeParameters()
+   * @generated
+   * @ordered
+   */
+  protected EList<JvmTypeParameter> typeParameters;
+
   /**
    * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -114,6 +126,20 @@ public class XMethodImpl extends MinimalEObjectImpl.Container implements XMethod
   protected EClass eStaticClass()
   {
     return XawPackage.Literals.XMETHOD;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<JvmTypeParameter> getTypeParameters()
+  {
+    if (typeParameters == null)
+    {
+      typeParameters = new EObjectContainmentEList<JvmTypeParameter>(JvmTypeParameter.class, this, XawPackage.XMETHOD__TYPE_PARAMETERS);
+    }
+    return typeParameters;
   }
 
   /**
@@ -259,6 +285,8 @@ public class XMethodImpl extends MinimalEObjectImpl.Container implements XMethod
   {
     switch (featureID)
     {
+      case XawPackage.XMETHOD__TYPE_PARAMETERS:
+        return ((InternalEList<?>)getTypeParameters()).basicRemove(otherEnd, msgs);
       case XawPackage.XMETHOD__RETURN_TYPE:
         return basicSetReturnType(null, msgs);
       case XawPackage.XMETHOD__PARAMETERS:
@@ -279,6 +307,8 @@ public class XMethodImpl extends MinimalEObjectImpl.Container implements XMethod
   {
     switch (featureID)
     {
+      case XawPackage.XMETHOD__TYPE_PARAMETERS:
+        return getTypeParameters();
       case XawPackage.XMETHOD__RETURN_TYPE:
         return getReturnType();
       case XawPackage.XMETHOD__NAME:
@@ -302,6 +332,10 @@ public class XMethodImpl extends MinimalEObjectImpl.Container implements XMethod
   {
     switch (featureID)
     {
+      case XawPackage.XMETHOD__TYPE_PARAMETERS:
+        getTypeParameters().clear();
+        getTypeParameters().addAll((Collection<? extends JvmTypeParameter>)newValue);
+        return;
       case XawPackage.XMETHOD__RETURN_TYPE:
         setReturnType((JvmTypeReference)newValue);
         return;
@@ -329,6 +363,9 @@ public class XMethodImpl extends MinimalEObjectImpl.Container implements XMethod
   {
     switch (featureID)
     {
+      case XawPackage.XMETHOD__TYPE_PARAMETERS:
+        getTypeParameters().clear();
+        return;
       case XawPackage.XMETHOD__RETURN_TYPE:
         setReturnType((JvmTypeReference)null);
         return;
@@ -355,6 +392,8 @@ public class XMethodImpl extends MinimalEObjectImpl.Container implements XMethod
   {
     switch (featureID)
     {
+      case XawPackage.XMETHOD__TYPE_PARAMETERS:
+        return typeParameters != null && !typeParameters.isEmpty();
       case XawPackage.XMETHOD__RETURN_TYPE:
         return returnType != null;
       case XawPackage.XMETHOD__NAME:

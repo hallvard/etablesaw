@@ -28,7 +28,7 @@ public class OlsRegressionView extends DerivedTableView {
 	@Override
 	protected void updateConfigControls() {
 		super.updateConfigControls();
-		setColumnNames(dependentColumnsSelector, getViewTable());
+		setColumnNames(dependentColumnsSelector, getViewTable(), NumericColumn.class);
 	}
 
 	@Override
@@ -65,8 +65,8 @@ public class OlsRegressionView extends DerivedTableView {
 			            DoubleColumn.create("Residuals", ols.residuals())
 			            );
 			}
+			super.updateTableControls();
+			fireTableDataChanged(true);
 		}
-		super.updateTableControls();
-		fireTableDataChanged(true);
 	}
 }

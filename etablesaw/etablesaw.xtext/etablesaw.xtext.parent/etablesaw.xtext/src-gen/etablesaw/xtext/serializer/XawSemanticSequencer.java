@@ -7,6 +7,8 @@ import com.google.inject.Inject;
 import etablesaw.xtext.services.XawGrammarAccess;
 import etablesaw.xtext.xaw.InlineTableRow;
 import etablesaw.xtext.xaw.TableColumn;
+import etablesaw.xtext.xaw.TableColumnDef;
+import etablesaw.xtext.xaw.TableDef;
 import etablesaw.xtext.xaw.TableLiteral;
 import etablesaw.xtext.xaw.TableRowLiteral;
 import etablesaw.xtext.xaw.XCastedColumnExpression;
@@ -162,6 +164,12 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 			case XawPackage.TABLE_COLUMN:
 				sequence_TableColumn(context, (TableColumn) semanticObject); 
 				return; 
+			case XawPackage.TABLE_COLUMN_DEF:
+				sequence_TableColumnDef(context, (TableColumnDef) semanticObject); 
+				return; 
+			case XawPackage.TABLE_DEF:
+				sequence_TableDef(context, (TableDef) semanticObject); 
+				return; 
 			case XawPackage.TABLE_LITERAL:
 				sequence_TableLiteral(context, (TableLiteral) semanticObject); 
 				return; 
@@ -199,12 +207,13 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 				sequence_XBasicForLoopExpression(context, (XBasicForLoopExpression) semanticObject); 
 				return; 
 			case XbasePackage.XBINARY_OPERATION:
-				sequence_XAdditiveExpression_XAndExpression_XAssignment_XEqualityExpression_XMultiplicativeExpression_XOrExpression_XOtherOperatorExpression_XRelationalExpression(context, (XBinaryOperation) semanticObject); 
-				return; 
-			case XbasePackage.XBLOCK_EXPRESSION:
 				if (rule == grammarAccess.getXUnaryOperationRule()
 						|| rule == grammarAccess.getXCastedColumnExpressionRule()
 						|| action == grammarAccess.getXCastedColumnExpressionAccess().getXCastedColumnExpressionTargetAction_1_0_0_0()
+						|| rule == grammarAccess.getXAndExpressionRule()
+						|| action == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXSingleAndExpressionRule()
+						|| action == grammarAccess.getXSingleAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
 						|| rule == grammarAccess.getXAnnotationElementValueOrCommaListRule()
 						|| action == grammarAccess.getXAnnotationElementValueOrCommaListAccess().getXListLiteralElementsAction_1_1_0()
 						|| rule == grammarAccess.getXAnnotationElementValueRule()
@@ -214,8 +223,55 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 						|| action == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0()
 						|| rule == grammarAccess.getXOrExpressionRule()
 						|| action == grammarAccess.getXOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXEqualityExpressionRule()
+						|| action == grammarAccess.getXEqualityExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXRelationalExpressionRule()
+						|| action == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0()
+						|| action == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0()
+						|| rule == grammarAccess.getXOtherOperatorExpressionRule()
+						|| action == grammarAccess.getXOtherOperatorExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXAdditiveExpressionRule()
+						|| action == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXMultiplicativeExpressionRule()
+						|| action == grammarAccess.getXMultiplicativeExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXCastedExpressionRule()
+						|| action == grammarAccess.getXCastedExpressionAccess().getXCastedExpressionTargetAction_1_0_0_0()
+						|| rule == grammarAccess.getXPostfixOperationRule()
+						|| action == grammarAccess.getXPostfixOperationAccess().getXPostfixOperationOperandAction_1_0_0()
+						|| rule == grammarAccess.getXMemberFeatureCallRule()
+						|| action == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_0_0_0_0()
+						|| action == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_1_0_0_0()
+						|| rule == grammarAccess.getXPrimaryExpressionRule()
+						|| rule == grammarAccess.getXParenthesizedExpressionRule()
+						|| rule == grammarAccess.getXExpressionOrVarDeclarationRule()) {
+					sequence_XAdditiveExpression_XAndExpression_XAssignment_XEqualityExpression_XMultiplicativeExpression_XOrExpression_XOtherOperatorExpression_XRelationalExpression_XSingleAndExpression(context, (XBinaryOperation) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getXSingleOrExpressionRule()
+						|| action == grammarAccess.getXSingleOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()) {
+					sequence_XAdditiveExpression_XAndExpression_XAssignment_XEqualityExpression_XMultiplicativeExpression_XOrExpression_XOtherOperatorExpression_XRelationalExpression_XSingleAndExpression_XSingleOrExpression(context, (XBinaryOperation) semanticObject); 
+					return; 
+				}
+				else break;
+			case XbasePackage.XBLOCK_EXPRESSION:
+				if (rule == grammarAccess.getXUnaryOperationRule()
+						|| rule == grammarAccess.getXCastedColumnExpressionRule()
+						|| action == grammarAccess.getXCastedColumnExpressionAccess().getXCastedColumnExpressionTargetAction_1_0_0_0()
 						|| rule == grammarAccess.getXAndExpressionRule()
 						|| action == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXSingleOrExpressionRule()
+						|| action == grammarAccess.getXSingleOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXSingleAndExpressionRule()
+						|| action == grammarAccess.getXSingleAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXAnnotationElementValueOrCommaListRule()
+						|| action == grammarAccess.getXAnnotationElementValueOrCommaListAccess().getXListLiteralElementsAction_1_1_0()
+						|| rule == grammarAccess.getXAnnotationElementValueRule()
+						|| rule == grammarAccess.getXAnnotationOrExpressionRule()
+						|| rule == grammarAccess.getXExpressionRule()
+						|| rule == grammarAccess.getXAssignmentRule()
+						|| action == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0()
+						|| rule == grammarAccess.getXOrExpressionRule()
+						|| action == grammarAccess.getXOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
 						|| rule == grammarAccess.getXEqualityExpressionRule()
 						|| action == grammarAccess.getXEqualityExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
 						|| rule == grammarAccess.getXRelationalExpressionRule()
@@ -262,6 +318,12 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 				if (rule == grammarAccess.getXUnaryOperationRule()
 						|| rule == grammarAccess.getXCastedColumnExpressionRule()
 						|| action == grammarAccess.getXCastedColumnExpressionAccess().getXCastedColumnExpressionTargetAction_1_0_0_0()
+						|| rule == grammarAccess.getXAndExpressionRule()
+						|| action == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXSingleOrExpressionRule()
+						|| action == grammarAccess.getXSingleOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXSingleAndExpressionRule()
+						|| action == grammarAccess.getXSingleAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
 						|| rule == grammarAccess.getXLiteralRule()
 						|| rule == grammarAccess.getXAnnotationElementValueOrCommaListRule()
 						|| action == grammarAccess.getXAnnotationElementValueOrCommaListAccess().getXListLiteralElementsAction_1_1_0()
@@ -272,8 +334,6 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 						|| action == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0()
 						|| rule == grammarAccess.getXOrExpressionRule()
 						|| action == grammarAccess.getXOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
-						|| rule == grammarAccess.getXAndExpressionRule()
-						|| action == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
 						|| rule == grammarAccess.getXEqualityExpressionRule()
 						|| action == grammarAccess.getXEqualityExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
 						|| rule == grammarAccess.getXRelationalExpressionRule()
@@ -334,6 +394,12 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 				else if (rule == grammarAccess.getXUnaryOperationRule()
 						|| rule == grammarAccess.getXCastedColumnExpressionRule()
 						|| action == grammarAccess.getXCastedColumnExpressionAccess().getXCastedColumnExpressionTargetAction_1_0_0_0()
+						|| rule == grammarAccess.getXAndExpressionRule()
+						|| action == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXSingleOrExpressionRule()
+						|| action == grammarAccess.getXSingleOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
+						|| rule == grammarAccess.getXSingleAndExpressionRule()
+						|| action == grammarAccess.getXSingleAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
 						|| rule == grammarAccess.getXLiteralRule()
 						|| action == grammarAccess.getXAnnotationElementValueOrCommaListAccess().getXListLiteralElementsAction_1_1_0()
 						|| rule == grammarAccess.getXAnnotationOrExpressionRule()
@@ -342,8 +408,6 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 						|| action == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0()
 						|| rule == grammarAccess.getXOrExpressionRule()
 						|| action == grammarAccess.getXOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
-						|| rule == grammarAccess.getXAndExpressionRule()
-						|| action == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
 						|| rule == grammarAccess.getXEqualityExpressionRule()
 						|| action == grammarAccess.getXEqualityExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0()
 						|| rule == grammarAccess.getXRelationalExpressionRule()
@@ -444,12 +508,36 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     TableColumnDef returns TableColumnDef
+	 *
+	 * Constraint:
+	 *     (type=JvmTypeReference (name=ValidID | name=STRING))
+	 */
+	protected void sequence_TableColumnDef(ISerializationContext context, TableColumnDef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     TableColumn returns TableColumn
 	 *
 	 * Constraint:
-	 *     (type=JvmTypeReference (name=ValidID | name=STRING) expression=XExpression?)
+	 *     (columnDef=TableColumnDef expression=XExpression?)
 	 */
 	protected void sequence_TableColumn(ISerializationContext context, TableColumn semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TableDef returns TableDef
+	 *
+	 * Constraint:
+	 *     (name=ValidID (tableColumDefs+=TableColumnDef tableColumDefs+=TableColumnDef*)?)
+	 */
+	protected void sequence_TableDef(ISerializationContext context, TableDef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -460,6 +548,12 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XUnaryOperation returns TableLiteral
 	 *     XCastedColumnExpression returns TableLiteral
 	 *     XCastedColumnExpression.XCastedColumnExpression_1_0_0_0 returns TableLiteral
+	 *     XAndExpression returns TableLiteral
+	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns TableLiteral
+	 *     XSingleOrExpression returns TableLiteral
+	 *     XSingleOrExpression.XBinaryOperation_1_0_0_0 returns TableLiteral
+	 *     XSingleAndExpression returns TableLiteral
+	 *     XSingleAndExpression.XBinaryOperation_1_0_0_0 returns TableLiteral
 	 *     XLiteral returns TableLiteral
 	 *     XAnnotationElementValueOrCommaList returns TableLiteral
 	 *     XAnnotationElementValueOrCommaList.XListLiteral_1_1_0 returns TableLiteral
@@ -470,8 +564,6 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XAssignment.XBinaryOperation_1_1_0_0_0 returns TableLiteral
 	 *     XOrExpression returns TableLiteral
 	 *     XOrExpression.XBinaryOperation_1_0_0_0 returns TableLiteral
-	 *     XAndExpression returns TableLiteral
-	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns TableLiteral
 	 *     XEqualityExpression returns TableLiteral
 	 *     XEqualityExpression.XBinaryOperation_1_0_0_0 returns TableLiteral
 	 *     XRelationalExpression returns TableLiteral
@@ -508,6 +600,12 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XUnaryOperation returns TableRowLiteral
 	 *     XCastedColumnExpression returns TableRowLiteral
 	 *     XCastedColumnExpression.XCastedColumnExpression_1_0_0_0 returns TableRowLiteral
+	 *     XAndExpression returns TableRowLiteral
+	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns TableRowLiteral
+	 *     XSingleOrExpression returns TableRowLiteral
+	 *     XSingleOrExpression.XBinaryOperation_1_0_0_0 returns TableRowLiteral
+	 *     XSingleAndExpression returns TableRowLiteral
+	 *     XSingleAndExpression.XBinaryOperation_1_0_0_0 returns TableRowLiteral
 	 *     XLiteral returns TableRowLiteral
 	 *     XAnnotationElementValueOrCommaList returns TableRowLiteral
 	 *     XAnnotationElementValueOrCommaList.XListLiteral_1_1_0 returns TableRowLiteral
@@ -518,8 +616,6 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XAssignment.XBinaryOperation_1_1_0_0_0 returns TableRowLiteral
 	 *     XOrExpression returns TableRowLiteral
 	 *     XOrExpression.XBinaryOperation_1_0_0_0 returns TableRowLiteral
-	 *     XAndExpression returns TableRowLiteral
-	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns TableRowLiteral
 	 *     XEqualityExpression returns TableRowLiteral
 	 *     XEqualityExpression.XBinaryOperation_1_0_0_0 returns TableRowLiteral
 	 *     XRelationalExpression returns TableRowLiteral
@@ -552,9 +648,97 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     XUnaryOperation returns XBinaryOperation
+	 *     XCastedColumnExpression returns XBinaryOperation
+	 *     XCastedColumnExpression.XCastedColumnExpression_1_0_0_0 returns XBinaryOperation
+	 *     XAndExpression returns XBinaryOperation
+	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XBinaryOperation
+	 *     XSingleAndExpression returns XBinaryOperation
+	 *     XSingleAndExpression.XBinaryOperation_1_0_0_0 returns XBinaryOperation
+	 *     XAnnotationElementValueOrCommaList returns XBinaryOperation
+	 *     XAnnotationElementValueOrCommaList.XListLiteral_1_1_0 returns XBinaryOperation
+	 *     XAnnotationElementValue returns XBinaryOperation
+	 *     XAnnotationOrExpression returns XBinaryOperation
+	 *     XExpression returns XBinaryOperation
+	 *     XAssignment returns XBinaryOperation
+	 *     XAssignment.XBinaryOperation_1_1_0_0_0 returns XBinaryOperation
+	 *     XOrExpression returns XBinaryOperation
+	 *     XOrExpression.XBinaryOperation_1_0_0_0 returns XBinaryOperation
+	 *     XEqualityExpression returns XBinaryOperation
+	 *     XEqualityExpression.XBinaryOperation_1_0_0_0 returns XBinaryOperation
+	 *     XRelationalExpression returns XBinaryOperation
+	 *     XRelationalExpression.XInstanceOfExpression_1_0_0_0_0 returns XBinaryOperation
+	 *     XRelationalExpression.XBinaryOperation_1_1_0_0_0 returns XBinaryOperation
+	 *     XOtherOperatorExpression returns XBinaryOperation
+	 *     XOtherOperatorExpression.XBinaryOperation_1_0_0_0 returns XBinaryOperation
+	 *     XAdditiveExpression returns XBinaryOperation
+	 *     XAdditiveExpression.XBinaryOperation_1_0_0_0 returns XBinaryOperation
+	 *     XMultiplicativeExpression returns XBinaryOperation
+	 *     XMultiplicativeExpression.XBinaryOperation_1_0_0_0 returns XBinaryOperation
+	 *     XCastedExpression returns XBinaryOperation
+	 *     XCastedExpression.XCastedExpression_1_0_0_0 returns XBinaryOperation
+	 *     XPostfixOperation returns XBinaryOperation
+	 *     XPostfixOperation.XPostfixOperation_1_0_0 returns XBinaryOperation
+	 *     XMemberFeatureCall returns XBinaryOperation
+	 *     XMemberFeatureCall.XAssignment_1_0_0_0_0 returns XBinaryOperation
+	 *     XMemberFeatureCall.XMemberFeatureCall_1_1_0_0_0 returns XBinaryOperation
+	 *     XPrimaryExpression returns XBinaryOperation
+	 *     XParenthesizedExpression returns XBinaryOperation
+	 *     XExpressionOrVarDeclaration returns XBinaryOperation
+	 *
+	 * Constraint:
+	 *     (
+	 *         (leftOperand=XAndExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpAnd] rightOperand=XSingleAndExpression) | 
+	 *         (leftOperand=XSingleAndExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpSingleAnd] rightOperand=XEqualityExpression) | 
+	 *         (leftOperand=XAssignment_XBinaryOperation_1_1_0_0_0 feature=[JvmIdentifiableElement|OpMultiAssign] rightOperand=XAssignment) | 
+	 *         (leftOperand=XOrExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpOr] rightOperand=XAndExpression) | 
+	 *         (leftOperand=XEqualityExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpEquality] rightOperand=XRelationalExpression) | 
+	 *         (leftOperand=XRelationalExpression_XBinaryOperation_1_1_0_0_0 feature=[JvmIdentifiableElement|OpCompare] rightOperand=XOtherOperatorExpression) | 
+	 *         (leftOperand=XOtherOperatorExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpOther] rightOperand=XAdditiveExpression) | 
+	 *         (leftOperand=XAdditiveExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpAdd] rightOperand=XMultiplicativeExpression) | 
+	 *         (leftOperand=XMultiplicativeExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpMulti] rightOperand=XUnaryOperation)
+	 *     )
+	 */
+	protected void sequence_XAdditiveExpression_XAndExpression_XAssignment_XEqualityExpression_XMultiplicativeExpression_XOrExpression_XOtherOperatorExpression_XRelationalExpression_XSingleAndExpression(ISerializationContext context, XBinaryOperation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XSingleOrExpression returns XBinaryOperation
+	 *     XSingleOrExpression.XBinaryOperation_1_0_0_0 returns XBinaryOperation
+	 *
+	 * Constraint:
+	 *     (
+	 *         (leftOperand=XAndExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpAnd] rightOperand=XSingleAndExpression) | 
+	 *         (leftOperand=XSingleOrExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpSingleOr] rightOperand=XSingleAndExpression) | 
+	 *         (leftOperand=XSingleAndExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpSingleAnd] rightOperand=XEqualityExpression) | 
+	 *         (leftOperand=XAssignment_XBinaryOperation_1_1_0_0_0 feature=[JvmIdentifiableElement|OpMultiAssign] rightOperand=XAssignment) | 
+	 *         (leftOperand=XOrExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpOr] rightOperand=XAndExpression) | 
+	 *         (leftOperand=XEqualityExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpEquality] rightOperand=XRelationalExpression) | 
+	 *         (leftOperand=XRelationalExpression_XBinaryOperation_1_1_0_0_0 feature=[JvmIdentifiableElement|OpCompare] rightOperand=XOtherOperatorExpression) | 
+	 *         (leftOperand=XOtherOperatorExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpOther] rightOperand=XAdditiveExpression) | 
+	 *         (leftOperand=XAdditiveExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpAdd] rightOperand=XMultiplicativeExpression) | 
+	 *         (leftOperand=XMultiplicativeExpression_XBinaryOperation_1_0_0_0 feature=[JvmIdentifiableElement|OpMulti] rightOperand=XUnaryOperation)
+	 *     )
+	 */
+	protected void sequence_XAdditiveExpression_XAndExpression_XAssignment_XEqualityExpression_XMultiplicativeExpression_XOrExpression_XOtherOperatorExpression_XRelationalExpression_XSingleAndExpression_XSingleOrExpression(ISerializationContext context, XBinaryOperation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     XUnaryOperation returns XCastedColumnExpression
 	 *     XCastedColumnExpression returns XCastedColumnExpression
 	 *     XCastedColumnExpression.XCastedColumnExpression_1_0_0_0 returns XCastedColumnExpression
+	 *     XAndExpression returns XCastedColumnExpression
+	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XCastedColumnExpression
+	 *     XSingleOrExpression returns XCastedColumnExpression
+	 *     XSingleOrExpression.XBinaryOperation_1_0_0_0 returns XCastedColumnExpression
+	 *     XSingleAndExpression returns XCastedColumnExpression
+	 *     XSingleAndExpression.XBinaryOperation_1_0_0_0 returns XCastedColumnExpression
 	 *     XAnnotationElementValueOrCommaList returns XCastedColumnExpression
 	 *     XAnnotationElementValueOrCommaList.XListLiteral_1_1_0 returns XCastedColumnExpression
 	 *     XAnnotationElementValue returns XCastedColumnExpression
@@ -564,8 +748,6 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XAssignment.XBinaryOperation_1_1_0_0_0 returns XCastedColumnExpression
 	 *     XOrExpression returns XCastedColumnExpression
 	 *     XOrExpression.XBinaryOperation_1_0_0_0 returns XCastedColumnExpression
-	 *     XAndExpression returns XCastedColumnExpression
-	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XCastedColumnExpression
 	 *     XEqualityExpression returns XCastedColumnExpression
 	 *     XEqualityExpression.XBinaryOperation_1_0_0_0 returns XCastedColumnExpression
 	 *     XRelationalExpression returns XCastedColumnExpression
@@ -611,6 +793,12 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XUnaryOperation returns XLocalDateLiteral
 	 *     XCastedColumnExpression returns XLocalDateLiteral
 	 *     XCastedColumnExpression.XCastedColumnExpression_1_0_0_0 returns XLocalDateLiteral
+	 *     XAndExpression returns XLocalDateLiteral
+	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XLocalDateLiteral
+	 *     XSingleOrExpression returns XLocalDateLiteral
+	 *     XSingleOrExpression.XBinaryOperation_1_0_0_0 returns XLocalDateLiteral
+	 *     XSingleAndExpression returns XLocalDateLiteral
+	 *     XSingleAndExpression.XBinaryOperation_1_0_0_0 returns XLocalDateLiteral
 	 *     XLiteral returns XLocalDateLiteral
 	 *     XAnnotationElementValueOrCommaList returns XLocalDateLiteral
 	 *     XAnnotationElementValueOrCommaList.XListLiteral_1_1_0 returns XLocalDateLiteral
@@ -621,8 +809,6 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XAssignment.XBinaryOperation_1_1_0_0_0 returns XLocalDateLiteral
 	 *     XOrExpression returns XLocalDateLiteral
 	 *     XOrExpression.XBinaryOperation_1_0_0_0 returns XLocalDateLiteral
-	 *     XAndExpression returns XLocalDateLiteral
-	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XLocalDateLiteral
 	 *     XEqualityExpression returns XLocalDateLiteral
 	 *     XEqualityExpression.XBinaryOperation_1_0_0_0 returns XLocalDateLiteral
 	 *     XRelationalExpression returns XLocalDateLiteral
@@ -671,6 +857,12 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XUnaryOperation returns XLocalTimeLiteral
 	 *     XCastedColumnExpression returns XLocalTimeLiteral
 	 *     XCastedColumnExpression.XCastedColumnExpression_1_0_0_0 returns XLocalTimeLiteral
+	 *     XAndExpression returns XLocalTimeLiteral
+	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XLocalTimeLiteral
+	 *     XSingleOrExpression returns XLocalTimeLiteral
+	 *     XSingleOrExpression.XBinaryOperation_1_0_0_0 returns XLocalTimeLiteral
+	 *     XSingleAndExpression returns XLocalTimeLiteral
+	 *     XSingleAndExpression.XBinaryOperation_1_0_0_0 returns XLocalTimeLiteral
 	 *     XLiteral returns XLocalTimeLiteral
 	 *     XAnnotationElementValueOrCommaList returns XLocalTimeLiteral
 	 *     XAnnotationElementValueOrCommaList.XListLiteral_1_1_0 returns XLocalTimeLiteral
@@ -681,8 +873,6 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XAssignment.XBinaryOperation_1_1_0_0_0 returns XLocalTimeLiteral
 	 *     XOrExpression returns XLocalTimeLiteral
 	 *     XOrExpression.XBinaryOperation_1_0_0_0 returns XLocalTimeLiteral
-	 *     XAndExpression returns XLocalTimeLiteral
-	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XLocalTimeLiteral
 	 *     XEqualityExpression returns XLocalTimeLiteral
 	 *     XEqualityExpression.XBinaryOperation_1_0_0_0 returns XLocalTimeLiteral
 	 *     XRelationalExpression returns XLocalTimeLiteral
@@ -718,7 +908,13 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XMethod returns XMethod
 	 *
 	 * Constraint:
-	 *     (returnType=JvmTypeReference? name=ID (parameters+=FullJvmFormalParameter parameters+=FullJvmFormalParameter*)? body=XExpression)
+	 *     (
+	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
+	 *         returnType=JvmTypeReference? 
+	 *         name=ID 
+	 *         (parameters+=FullJvmFormalParameter parameters+=FullJvmFormalParameter*)? 
+	 *         body=XExpression
+	 *     )
 	 */
 	protected void sequence_XMethod(ISerializationContext context, XMethod semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -731,6 +927,12 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XUnaryOperation returns XURLLiteral
 	 *     XCastedColumnExpression returns XURLLiteral
 	 *     XCastedColumnExpression.XCastedColumnExpression_1_0_0_0 returns XURLLiteral
+	 *     XAndExpression returns XURLLiteral
+	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XURLLiteral
+	 *     XSingleOrExpression returns XURLLiteral
+	 *     XSingleOrExpression.XBinaryOperation_1_0_0_0 returns XURLLiteral
+	 *     XSingleAndExpression returns XURLLiteral
+	 *     XSingleAndExpression.XBinaryOperation_1_0_0_0 returns XURLLiteral
 	 *     XLiteral returns XURLLiteral
 	 *     XAnnotationElementValueOrCommaList returns XURLLiteral
 	 *     XAnnotationElementValueOrCommaList.XListLiteral_1_1_0 returns XURLLiteral
@@ -741,8 +943,6 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XAssignment.XBinaryOperation_1_1_0_0_0 returns XURLLiteral
 	 *     XOrExpression returns XURLLiteral
 	 *     XOrExpression.XBinaryOperation_1_0_0_0 returns XURLLiteral
-	 *     XAndExpression returns XURLLiteral
-	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XURLLiteral
 	 *     XEqualityExpression returns XURLLiteral
 	 *     XEqualityExpression.XBinaryOperation_1_0_0_0 returns XURLLiteral
 	 *     XRelationalExpression returns XURLLiteral
@@ -788,6 +988,12 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XUnaryOperation returns XUnaryOperation
 	 *     XCastedColumnExpression returns XUnaryOperation
 	 *     XCastedColumnExpression.XCastedColumnExpression_1_0_0_0 returns XUnaryOperation
+	 *     XAndExpression returns XUnaryOperation
+	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XUnaryOperation
+	 *     XSingleOrExpression returns XUnaryOperation
+	 *     XSingleOrExpression.XBinaryOperation_1_0_0_0 returns XUnaryOperation
+	 *     XSingleAndExpression returns XUnaryOperation
+	 *     XSingleAndExpression.XBinaryOperation_1_0_0_0 returns XUnaryOperation
 	 *     XAnnotationElementValueOrCommaList returns XUnaryOperation
 	 *     XAnnotationElementValueOrCommaList.XListLiteral_1_1_0 returns XUnaryOperation
 	 *     XAnnotationElementValue returns XUnaryOperation
@@ -797,8 +1003,6 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XAssignment.XBinaryOperation_1_1_0_0_0 returns XUnaryOperation
 	 *     XOrExpression returns XUnaryOperation
 	 *     XOrExpression.XBinaryOperation_1_0_0_0 returns XUnaryOperation
-	 *     XAndExpression returns XUnaryOperation
-	 *     XAndExpression.XBinaryOperation_1_0_0_0 returns XUnaryOperation
 	 *     XEqualityExpression returns XUnaryOperation
 	 *     XEqualityExpression.XBinaryOperation_1_0_0_0 returns XUnaryOperation
 	 *     XRelationalExpression returns XUnaryOperation
@@ -843,7 +1047,11 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     Xaw returns Xaw
 	 *
 	 * Constraint:
-	 *     (importSection=XImportSection? qName=QualifiedName (expressions+=XExpression | expressions+=XVariableDeclaration | methods+=XMethod)*)
+	 *     (
+	 *         importSection=XImportSection? 
+	 *         qName=QualifiedName 
+	 *         (tableDefs+=TableDef | expressions+=XExpression | expressions+=XVariableDeclaration | methods+=XMethod)*
+	 *     )
 	 */
 	protected void sequence_Xaw(ISerializationContext context, Xaw semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

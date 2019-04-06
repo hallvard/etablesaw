@@ -3,7 +3,7 @@
 <schema targetNamespace="etablesaw.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="etablesaw.ui" id="exprSupport" name="Expression Support"/>
+         <meta.schema plugin="etablesaw.ui" id="exprSupport" name="Expression support"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -17,9 +17,6 @@
          </appinfo>
       </annotation>
       <complexType>
-         <sequence>
-            <element ref="exprSupport" minOccurs="1" maxOccurs="unbounded"/>
-         </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
                <documentation>
@@ -49,21 +46,21 @@
 
    <element name="exprSupport">
       <complexType>
+         <attribute name="langName" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
          <attribute name="supportClass" type="string" use="required">
             <annotation>
                <documentation>
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="no.hal.emfs.exporter.ExportSupport:"/>
+                  <meta.attribute kind="java" basedOn="etablesaw.ui.expr.ExprSupport:"/>
                </appinfo>
-            </annotation>
-         </attribute>
-         <attribute name="langName" type="string">
-            <annotation>
-               <documentation>
-                  
-               </documentation>
             </annotation>
          </attribute>
       </complexType>

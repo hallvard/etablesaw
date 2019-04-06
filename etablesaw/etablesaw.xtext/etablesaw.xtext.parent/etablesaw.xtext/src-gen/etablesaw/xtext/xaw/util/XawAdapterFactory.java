@@ -79,6 +79,16 @@ public class XawAdapterFactory extends AdapterFactoryImpl
     new XawSwitch<Adapter>()
     {
       @Override
+      public Adapter caseTableDef(TableDef object)
+      {
+        return createTableDefAdapter();
+      }
+      @Override
+      public Adapter caseTableColumnDef(TableColumnDef object)
+      {
+        return createTableColumnDefAdapter();
+      }
+      @Override
       public Adapter caseXMethod(XMethod object)
       {
         return createXMethodAdapter();
@@ -164,6 +174,36 @@ public class XawAdapterFactory extends AdapterFactoryImpl
     return modelSwitch.doSwitch((EObject)target);
   }
 
+
+  /**
+   * Creates a new adapter for an object of class '{@link etablesaw.xtext.xaw.TableDef <em>Table Def</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see etablesaw.xtext.xaw.TableDef
+   * @generated
+   */
+  public Adapter createTableDefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link etablesaw.xtext.xaw.TableColumnDef <em>Table Column Def</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see etablesaw.xtext.xaw.TableColumnDef
+   * @generated
+   */
+  public Adapter createTableColumnDefAdapter()
+  {
+    return null;
+  }
 
   /**
    * Creates a new adapter for an object of class '{@link etablesaw.xtext.xaw.XMethod <em>XMethod</em>}'.

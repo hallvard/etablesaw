@@ -58,6 +58,15 @@ public class Activator extends AbstractUIPlugin {
 		return exprSupports.toArray(new ExprSupport[exprSupports.size()]);
 	}
 
+	public ExprSupport getExprSupports(String name) {
+	    for (ExprSupport exprSupport : getExprSupports()) {
+	        if (exprSupport.getLang().equals(name)) {
+	            return exprSupport;
+	        }
+	    }
+	    return null;
+	}
+
 	private void processExprSupportExtensions() {
 		final IExtensionPoint ep = Platform.getExtensionRegistry().getExtensionPoint("etablesaw.ui.exprSupport");
 		for (final IExtension extension : ep.getExtensions()) {

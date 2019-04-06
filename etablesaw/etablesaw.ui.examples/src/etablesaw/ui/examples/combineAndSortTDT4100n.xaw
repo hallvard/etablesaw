@@ -1,0 +1,32 @@
+import tech.tablesaw.io.csv.CsvReadOptions
+import tech.tablesaw.io.csv.CsvWriteOptions
+
+xaw etablesaw.ui.examples.combineAndSortTDT4100n
+
+val tdt4100 = # String programkode, int studentnr, String karakter, String vurderingsstatus, int year, String semester #
+
+val here = "/Users/hal/java/git/etablesaw/etablesaw/etablesaw.ui.examples/src/etablesaw/ui/examples/"
+val nameFormat = "tdt4100-%2$s%1$s"
+
+for (semester : #["v", "s"]) {
+	for (var year = 2010; year <= 2018; year++) {
+		val name = String.format(nameFormat, year, semester)
+		val tdt4100n = # String studieprogramkode, int studentnr, String karakter, String vurdresstatnavn #
+		tdt4100n += Table.read().csv(CsvReadOptions.builder(here + name + ".csv")
+							.separator(";")
+							.build())
+		tdt4100.programkodeColumn 		+= tdt4100n.studieprogramkodeColumn
+		tdt4100.studentnrColumn 		+= tdt4100n.studentnrColumn
+		tdt4100.karakterColumn  		+= tdt4100n.karakterColumn
+		tdt4100.vurderingsstatusColumn 	+= tdt4100n.vurdresstatnavnColumn
+		tdt4100.yearColumn	+= IntColumn.create("year", tdt4100n.studentnrColumn.size).set(tdt4100n.studentnrColumn.isNotMissing, year)
+		val semesterCol = StringColumn.create("semester", tdt4100n.studentnrColumn.size)
+		semesterCol.set(tdt4100n.studentnrColumn.isNotMissing, semester)
+		tdt4100.semesterColumn += semesterCol
+	}
+}
+
+val sorted = tdt4100.sortOn("programkode", "studentnr", "year", "-semester")
+sorted.write.csv(CsvWriteOptions.builder(here + "tdt4100-2010-2018.csv").build)
+
+exportTable(sorted, "sorted")

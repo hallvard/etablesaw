@@ -25,9 +25,9 @@ public abstract class XYPlotView extends AbstractPlotView {
 	@Override
 	protected void updateConfigControls() {
 		super.updateConfigControls();
-		setColumnNames(xSelector, getViewTable());
-		setColumnNames(ySelector, getViewTable());
-		setColumnNames(categorySelector, getViewTable());
+		setColumnNames(xSelector, getViewTable(), NumericColumn.class);
+		setColumnNames(ySelector, getViewTable(), NumericColumn.class);
+		setColumnNames(categorySelector, getViewTable(), CategoricalColumn.class);
 	}
 
 	@Override

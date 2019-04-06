@@ -60,23 +60,14 @@ public interface XawPackage extends EPackage
   XawPackage eINSTANCE = etablesaw.xtext.xaw.impl.XawPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link etablesaw.xtext.xaw.impl.XMethodImpl <em>XMethod</em>}' class.
+   * The meta object id for the '{@link etablesaw.xtext.xaw.impl.TableDefImpl <em>Table Def</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see etablesaw.xtext.xaw.impl.XMethodImpl
-   * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getXMethod()
+   * @see etablesaw.xtext.xaw.impl.TableDefImpl
+   * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getTableDef()
    * @generated
    */
-  int XMETHOD = 0;
-
-  /**
-   * The feature id for the '<em><b>Return Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XMETHOD__RETURN_TYPE = 0;
+  int TABLE_DEF = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -85,7 +76,99 @@ public interface XawPackage extends EPackage
    * @generated
    * @ordered
    */
-  int XMETHOD__NAME = 1;
+  int TABLE_DEF__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Table Colum Defs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_DEF__TABLE_COLUM_DEFS = 1;
+
+  /**
+   * The number of structural features of the '<em>Table Def</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_DEF_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link etablesaw.xtext.xaw.impl.TableColumnDefImpl <em>Table Column Def</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see etablesaw.xtext.xaw.impl.TableColumnDefImpl
+   * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getTableColumnDef()
+   * @generated
+   */
+  int TABLE_COLUMN_DEF = 1;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_COLUMN_DEF__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_COLUMN_DEF__NAME = 1;
+
+  /**
+   * The number of structural features of the '<em>Table Column Def</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_COLUMN_DEF_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link etablesaw.xtext.xaw.impl.XMethodImpl <em>XMethod</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see etablesaw.xtext.xaw.impl.XMethodImpl
+   * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getXMethod()
+   * @generated
+   */
+  int XMETHOD = 2;
+
+  /**
+   * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XMETHOD__TYPE_PARAMETERS = 0;
+
+  /**
+   * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XMETHOD__RETURN_TYPE = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XMETHOD__NAME = 2;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -94,7 +177,7 @@ public interface XawPackage extends EPackage
    * @generated
    * @ordered
    */
-  int XMETHOD__PARAMETERS = 2;
+  int XMETHOD__PARAMETERS = 3;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -103,7 +186,7 @@ public interface XawPackage extends EPackage
    * @generated
    * @ordered
    */
-  int XMETHOD__BODY = 3;
+  int XMETHOD__BODY = 4;
 
   /**
    * The number of structural features of the '<em>XMethod</em>' class.
@@ -112,7 +195,7 @@ public interface XawPackage extends EPackage
    * @generated
    * @ordered
    */
-  int XMETHOD_FEATURE_COUNT = 4;
+  int XMETHOD_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link etablesaw.xtext.xaw.impl.XawImpl <em>Xaw</em>}' class.
@@ -122,7 +205,7 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getXaw()
    * @generated
    */
-  int XAW = 1;
+  int XAW = 3;
 
   /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -153,13 +236,22 @@ public interface XawPackage extends EPackage
   int XAW__QNAME = XbasePackage.XBLOCK_EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Table Defs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XAW__TABLE_DEFS = XbasePackage.XBLOCK_EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>Methods</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int XAW__METHODS = XbasePackage.XBLOCK_EXPRESSION_FEATURE_COUNT + 2;
+  int XAW__METHODS = XbasePackage.XBLOCK_EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Xaw</em>' class.
@@ -168,7 +260,7 @@ public interface XawPackage extends EPackage
    * @generated
    * @ordered
    */
-  int XAW_FEATURE_COUNT = XbasePackage.XBLOCK_EXPRESSION_FEATURE_COUNT + 3;
+  int XAW_FEATURE_COUNT = XbasePackage.XBLOCK_EXPRESSION_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link etablesaw.xtext.xaw.impl.TableLiteralImpl <em>Table Literal</em>}' class.
@@ -178,7 +270,7 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getTableLiteral()
    * @generated
    */
-  int TABLE_LITERAL = 2;
+  int TABLE_LITERAL = 4;
 
   /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -216,25 +308,16 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getTableColumn()
    * @generated
    */
-  int TABLE_COLUMN = 3;
+  int TABLE_COLUMN = 5;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Column Def</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TABLE_COLUMN__TYPE = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TABLE_COLUMN__NAME = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
+  int TABLE_COLUMN__COLUMN_DEF = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -243,7 +326,7 @@ public interface XawPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TABLE_COLUMN__EXPRESSION = XbasePackage.XEXPRESSION_FEATURE_COUNT + 2;
+  int TABLE_COLUMN__EXPRESSION = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Table Column</em>' class.
@@ -252,7 +335,7 @@ public interface XawPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TABLE_COLUMN_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 3;
+  int TABLE_COLUMN_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link etablesaw.xtext.xaw.impl.InlineTableRowImpl <em>Inline Table Row</em>}' class.
@@ -262,7 +345,7 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getInlineTableRow()
    * @generated
    */
-  int INLINE_TABLE_ROW = 4;
+  int INLINE_TABLE_ROW = 6;
 
   /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -291,7 +374,7 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getTableRowLiteral()
    * @generated
    */
-  int TABLE_ROW_LITERAL = 5;
+  int TABLE_ROW_LITERAL = 7;
 
   /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -319,7 +402,7 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getXLocalTimeLiteral()
    * @generated
    */
-  int XLOCAL_TIME_LITERAL = 6;
+  int XLOCAL_TIME_LITERAL = 8;
 
   /**
    * The feature id for the '<em><b>Hour</b></em>' attribute.
@@ -365,7 +448,7 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getXLocalDateLiteral()
    * @generated
    */
-  int XLOCAL_DATE_LITERAL = 7;
+  int XLOCAL_DATE_LITERAL = 9;
 
   /**
    * The feature id for the '<em><b>Day</b></em>' attribute.
@@ -411,7 +494,7 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getXURLLiteral()
    * @generated
    */
-  int XURL_LITERAL = 8;
+  int XURL_LITERAL = 10;
 
   /**
    * The feature id for the '<em><b>Url</b></em>' attribute.
@@ -493,7 +576,7 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getXUnaryOperation()
    * @generated
    */
-  int XUNARY_OPERATION = 9;
+  int XUNARY_OPERATION = 11;
 
   /**
    * The feature id for the '<em><b>Feature</b></em>' reference.
@@ -530,7 +613,7 @@ public interface XawPackage extends EPackage
    * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getXCastedColumnExpression()
    * @generated
    */
-  int XCASTED_COLUMN_EXPRESSION = 10;
+  int XCASTED_COLUMN_EXPRESSION = 12;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -561,6 +644,70 @@ public interface XawPackage extends EPackage
 
 
   /**
+   * Returns the meta object for class '{@link etablesaw.xtext.xaw.TableDef <em>Table Def</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Table Def</em>'.
+   * @see etablesaw.xtext.xaw.TableDef
+   * @generated
+   */
+  EClass getTableDef();
+
+  /**
+   * Returns the meta object for the attribute '{@link etablesaw.xtext.xaw.TableDef#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see etablesaw.xtext.xaw.TableDef#getName()
+   * @see #getTableDef()
+   * @generated
+   */
+  EAttribute getTableDef_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link etablesaw.xtext.xaw.TableDef#getTableColumDefs <em>Table Colum Defs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Table Colum Defs</em>'.
+   * @see etablesaw.xtext.xaw.TableDef#getTableColumDefs()
+   * @see #getTableDef()
+   * @generated
+   */
+  EReference getTableDef_TableColumDefs();
+
+  /**
+   * Returns the meta object for class '{@link etablesaw.xtext.xaw.TableColumnDef <em>Table Column Def</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Table Column Def</em>'.
+   * @see etablesaw.xtext.xaw.TableColumnDef
+   * @generated
+   */
+  EClass getTableColumnDef();
+
+  /**
+   * Returns the meta object for the containment reference '{@link etablesaw.xtext.xaw.TableColumnDef#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see etablesaw.xtext.xaw.TableColumnDef#getType()
+   * @see #getTableColumnDef()
+   * @generated
+   */
+  EReference getTableColumnDef_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link etablesaw.xtext.xaw.TableColumnDef#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see etablesaw.xtext.xaw.TableColumnDef#getName()
+   * @see #getTableColumnDef()
+   * @generated
+   */
+  EAttribute getTableColumnDef_Name();
+
+  /**
    * Returns the meta object for class '{@link etablesaw.xtext.xaw.XMethod <em>XMethod</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -569,6 +716,17 @@ public interface XawPackage extends EPackage
    * @generated
    */
   EClass getXMethod();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link etablesaw.xtext.xaw.XMethod#getTypeParameters <em>Type Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Type Parameters</em>'.
+   * @see etablesaw.xtext.xaw.XMethod#getTypeParameters()
+   * @see #getXMethod()
+   * @generated
+   */
+  EReference getXMethod_TypeParameters();
 
   /**
    * Returns the meta object for the containment reference '{@link etablesaw.xtext.xaw.XMethod#getReturnType <em>Return Type</em>}'.
@@ -647,6 +805,17 @@ public interface XawPackage extends EPackage
   EAttribute getXaw_QName();
 
   /**
+   * Returns the meta object for the containment reference list '{@link etablesaw.xtext.xaw.Xaw#getTableDefs <em>Table Defs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Table Defs</em>'.
+   * @see etablesaw.xtext.xaw.Xaw#getTableDefs()
+   * @see #getXaw()
+   * @generated
+   */
+  EReference getXaw_TableDefs();
+
+  /**
    * Returns the meta object for the containment reference list '{@link etablesaw.xtext.xaw.Xaw#getMethods <em>Methods</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -689,26 +858,15 @@ public interface XawPackage extends EPackage
   EClass getTableColumn();
 
   /**
-   * Returns the meta object for the containment reference '{@link etablesaw.xtext.xaw.TableColumn#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link etablesaw.xtext.xaw.TableColumn#getColumnDef <em>Column Def</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see etablesaw.xtext.xaw.TableColumn#getType()
+   * @return the meta object for the containment reference '<em>Column Def</em>'.
+   * @see etablesaw.xtext.xaw.TableColumn#getColumnDef()
    * @see #getTableColumn()
    * @generated
    */
-  EReference getTableColumn_Type();
-
-  /**
-   * Returns the meta object for the attribute '{@link etablesaw.xtext.xaw.TableColumn#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see etablesaw.xtext.xaw.TableColumn#getName()
-   * @see #getTableColumn()
-   * @generated
-   */
-  EAttribute getTableColumn_Name();
+  EReference getTableColumn_ColumnDef();
 
   /**
    * Returns the meta object for the containment reference '{@link etablesaw.xtext.xaw.TableColumn#getExpression <em>Expression</em>}'.
@@ -1013,6 +1171,58 @@ public interface XawPackage extends EPackage
   interface Literals
   {
     /**
+     * The meta object literal for the '{@link etablesaw.xtext.xaw.impl.TableDefImpl <em>Table Def</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see etablesaw.xtext.xaw.impl.TableDefImpl
+     * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getTableDef()
+     * @generated
+     */
+    EClass TABLE_DEF = eINSTANCE.getTableDef();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TABLE_DEF__NAME = eINSTANCE.getTableDef_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Table Colum Defs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TABLE_DEF__TABLE_COLUM_DEFS = eINSTANCE.getTableDef_TableColumDefs();
+
+    /**
+     * The meta object literal for the '{@link etablesaw.xtext.xaw.impl.TableColumnDefImpl <em>Table Column Def</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see etablesaw.xtext.xaw.impl.TableColumnDefImpl
+     * @see etablesaw.xtext.xaw.impl.XawPackageImpl#getTableColumnDef()
+     * @generated
+     */
+    EClass TABLE_COLUMN_DEF = eINSTANCE.getTableColumnDef();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TABLE_COLUMN_DEF__TYPE = eINSTANCE.getTableColumnDef_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TABLE_COLUMN_DEF__NAME = eINSTANCE.getTableColumnDef_Name();
+
+    /**
      * The meta object literal for the '{@link etablesaw.xtext.xaw.impl.XMethodImpl <em>XMethod</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1021,6 +1231,14 @@ public interface XawPackage extends EPackage
      * @generated
      */
     EClass XMETHOD = eINSTANCE.getXMethod();
+
+    /**
+     * The meta object literal for the '<em><b>Type Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference XMETHOD__TYPE_PARAMETERS = eINSTANCE.getXMethod_TypeParameters();
 
     /**
      * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
@@ -1081,6 +1299,14 @@ public interface XawPackage extends EPackage
     EAttribute XAW__QNAME = eINSTANCE.getXaw_QName();
 
     /**
+     * The meta object literal for the '<em><b>Table Defs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference XAW__TABLE_DEFS = eINSTANCE.getXaw_TableDefs();
+
+    /**
      * The meta object literal for the '<em><b>Methods</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1117,20 +1343,12 @@ public interface XawPackage extends EPackage
     EClass TABLE_COLUMN = eINSTANCE.getTableColumn();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Column Def</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TABLE_COLUMN__TYPE = eINSTANCE.getTableColumn_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TABLE_COLUMN__NAME = eINSTANCE.getTableColumn_Name();
+    EReference TABLE_COLUMN__COLUMN_DEF = eINSTANCE.getTableColumn_ColumnDef();
 
     /**
      * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.

@@ -65,6 +65,8 @@ public class XawFactoryImpl extends EFactoryImpl implements XawFactory
   {
     switch (eClass.getClassifierID())
     {
+      case XawPackage.TABLE_DEF: return createTableDef();
+      case XawPackage.TABLE_COLUMN_DEF: return createTableColumnDef();
       case XawPackage.XMETHOD: return createXMethod();
       case XawPackage.XAW: return createXaw();
       case XawPackage.TABLE_LITERAL: return createTableLiteral();
@@ -79,6 +81,28 @@ public class XawFactoryImpl extends EFactoryImpl implements XawFactory
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TableDef createTableDef()
+  {
+    TableDefImpl tableDef = new TableDefImpl();
+    return tableDef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TableColumnDef createTableColumnDef()
+  {
+    TableColumnDefImpl tableColumnDef = new TableColumnDefImpl();
+    return tableColumnDef;
   }
 
   /**

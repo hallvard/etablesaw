@@ -12,13 +12,26 @@ Xaw returns xbase::XBlockExpression :
 	(importSection = XImportSection)?
 	'xaw' qName = QualifiedName
 	(
+		(tableDefs += TableDef) |
 		(expressions += (XExpression | XVariableDeclaration)) |
 		(methods += XMethod)
 	)*
 ;
 
+TableDef:
+    'table' name = ValidID '{'
+        (tableColumDefs += TableColumnDef (','? tableColumDefs += TableColumnDef)*)?
+    '}'
+;
+
+TableColumnDef:
+	type = JvmTypeReference name = (ValidID | STRING)
+;
+
 XMethod:
-	'def' (returnType = JvmTypeReference)? name = ID
+	'def'
+	('<' typeParameters += JvmTypeParameter (',' typeParameters += JvmTypeParameter)* '>')?
+	(returnType = JvmTypeReference)? name = ID
 	'(' (parameters += FullJvmFormalParameter (',' parameters += FullJvmFormalParameter)*)? ')'
 	body = XExpression
 ;
@@ -27,7 +40,7 @@ XMethod:
 
 TableLiteral returns xbase::XBlockExpression :
 	{ TableLiteral }
-	'#' (name = (ValidID | STRING) ':')?
+	'#' (name = (ValidID | STRING) ':'?)?
 	(expressions += TableColumn (',' expressions += TableColumn)*)?
 	'#'
 	(expressions += InlineTableRow)*
@@ -36,13 +49,13 @@ TableLiteral returns xbase::XBlockExpression :
 // Column syntax
 
 TableColumn returns xbase::XExpression:
-	{ TableColumn } (type = JvmTypeReference name = (ValidID | STRING) ('=' expression = XExpression)?)
+	{ TableColumn } (columnDef = TableColumnDef) ('=' expression = XExpression)?
 ;
 
 // Row syntax
 
 InlineTableRow returns xbase::XBlockExpression:
-	{ InlineTableRow } '|' (expressions += XExpression (',' expressions += XExpression)*)? '|'
+	{ InlineTableRow } (=>('|' (expressions += XExpression (',' expressions += XExpression)*)? '|'))
 ;
 
 TableRowLiteral returns xbase::XExpression:
@@ -80,6 +93,32 @@ XUnaryOperation returns xbase::XExpression:
 XCastedColumnExpression returns xbase::XExpression:
 	XCastedExpression (=>({XCastedColumnExpression.target=current} 'of') type=JvmTypeReference)*
 ;
+
+// extend with | and & operator
+
+@Override
+OpMultiAssign:
+    '+=' | '-=' | '*=' | '/=' | '%=' |
+    '<' '<' '=' |
+    '>' '>'? '>=' |
+    '&=' | '|=';
+
+@Override
+XAndExpression returns xbase::XExpression:
+    XSingleAndExpression (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpAnd]) rightOperand=XSingleAndExpression)*;
+
+@Override 
+OpAnd: '&&';
+
+XSingleOrExpression returns xbase::XExpression:
+    XSingleAndExpression (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpSingleOr]) rightOperand=XSingleAndExpression)*;
+
+OpSingleOr: '|';
+
+XSingleAndExpression returns xbase::XExpression:
+    XEqualityExpression (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpSingleAnd]) rightOperand=XEqualityExpression)*;
+
+OpSingleAnd: '&';
 
 // extend with ? operator
 

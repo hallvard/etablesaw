@@ -90,6 +90,8 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 
 	@Override
 	public void dispose() {
+	    viewTable = null;
+	    setTableProvider(null);
 		setAutoSelectTableDataProvider(false);
 		super.dispose();
 	}
@@ -155,14 +157,18 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	@Override
 	public void createPartControl(final Composite parent) {
 		final GridLayout layout = new GridLayout(1, false);
-		layout.marginHeight = 0;
 		layout.marginWidth = 0;
-		layout.verticalSpacing = 0;
+		layout.marginHeight = 0;
 		layout.horizontalSpacing = 0;
+		layout.verticalSpacing = 0;
 		parent.setLayout(layout);
 
 		final Composite configParent = new Composite(parent, SWT.NONE);
 		final GridLayout configLayout = new GridLayout(2, false);
+		configLayout.marginWidth = 0;
+		configLayout.marginHeight = 0;
+		configLayout.horizontalSpacing = 0;
+		configLayout.verticalSpacing = 0;
 		configParent.setLayout(configLayout);
 		setDistinctPartName();
 		createConfigControls(configParent);
@@ -458,8 +464,10 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 
 	protected void updateView() {
 		viewTable = (tableProvider != null ? tableProvider.getTable() : null);
-		updateConfigControls();
-		updateTableControls();
+		if (getTableViewerParent() != null && (! getTableViewerParent().isDisposed())) {
+		    updateConfigControls();
+		    updateTableControls();
+		}
 	}
 
 	protected final String noColumn = "<none>";
@@ -485,11 +493,11 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			}
 		});
 		selector.setInput(getViewTable());
-		final GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, false);
-		if (multi) {
-			gridData.heightHint = 60;
-		}
-		selector.getControl().setLayoutData(gridData);
+//		final GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, false);
+//		if (multi) {
+//			gridData.heightHint = 60;
+//		}
+		setControlLayout(selector.getControl());
 		return selector;
 	}
 
@@ -535,8 +543,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			combo.addSelectionListener(selectionListener);
 			control = combo;
 		}
-		final GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, false);
-		control.setLayoutData(gridData);
+		setControlLayout(control);
 		return control;
 	}
 
@@ -547,16 +554,18 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 
 	public String[] getColumnNames(final Table table, final Class<?> columnClass) {
 		final Collection<String> columnNames = new ArrayList<>();
-		for (final Column<?> column : table.columns()) {
-			if (columnClass == null || columnClass.isInstance(column)) {
-				columnNames.add(column.name());
-			}
+		if (table != null) {
+    		for (final Column<?> column : table.columns()) {
+    			if (columnClass == null || columnClass.isInstance(column)) {
+    				columnNames.add(column.name());
+    			}
+    		}
 		}
 		return columnNames.toArray(new String[columnNames.size()]);
 	}
 
-	protected void setColumnNames(final Control columnCombo, final Table table) {
-		final String[] columnNames = (table != null ? table.columnNames().toArray(noStrings) : noStrings);
+	protected void setColumnNames(final Control columnCombo, final Table table, final Class<?> columnClass) {
+		final String[] columnNames = getColumnNames(table, columnClass);
 		if (columnCombo instanceof MultiCheckSelectionCombo) {
 			final MultiCheckSelectionCombo multiCheckSelectionCombo = (MultiCheckSelectionCombo) columnCombo;
 			multiCheckSelectionCombo.setItems(columnNames, true);
@@ -627,10 +636,14 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			combo.addSelectionListener(selectionListener);
 			control = combo;
 		}
-		final GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, false);
-		control.setLayoutData(gridData);
+		setControlLayout(control);
 		return control;
 	}
+
+    public void setControlLayout(Control control) {
+        final GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		control.setLayoutData(gridData);
+    }
 
 	protected AggregateFunction<?,?>[] getAggregateFunctions(final Control aggregateFunctionSelector, final ColumnType... columnTypes) {
 		final int[] aggregateFunctionIndices = getSelectedIndices(aggregateFunctionSelector);
@@ -660,6 +673,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
         createControlLabel(parent, label);
         Text paramText = new Text(parent, SWT.BORDER);
         paramText.setText(String.valueOf(def));
+        setControlLayout(paramText);
         paramText.addModifyListener(new ModifyListener() {
             @Override
             public void modifyText(ModifyEvent e) {

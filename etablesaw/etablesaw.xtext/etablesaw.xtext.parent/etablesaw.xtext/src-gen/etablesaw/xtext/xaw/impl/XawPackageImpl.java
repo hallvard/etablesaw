@@ -5,6 +5,8 @@ package etablesaw.xtext.xaw.impl;
 
 import etablesaw.xtext.xaw.InlineTableRow;
 import etablesaw.xtext.xaw.TableColumn;
+import etablesaw.xtext.xaw.TableColumnDef;
+import etablesaw.xtext.xaw.TableDef;
 import etablesaw.xtext.xaw.TableLiteral;
 import etablesaw.xtext.xaw.TableRowLiteral;
 import etablesaw.xtext.xaw.XCastedColumnExpression;
@@ -38,6 +40,20 @@ import org.eclipse.xtext.xtype.XtypePackage;
  */
 public class XawPackageImpl extends EPackageImpl implements XawPackage
 {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tableDefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tableColumnDefEClass = null;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -188,6 +204,66 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getTableDef()
+  {
+    return tableDefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTableDef_Name()
+  {
+    return (EAttribute)tableDefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTableDef_TableColumDefs()
+  {
+    return (EReference)tableDefEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTableColumnDef()
+  {
+    return tableColumnDefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTableColumnDef_Type()
+  {
+    return (EReference)tableColumnDefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTableColumnDef_Name()
+  {
+    return (EAttribute)tableColumnDefEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getXMethod()
   {
     return xMethodEClass;
@@ -198,7 +274,7 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getXMethod_ReturnType()
+  public EReference getXMethod_TypeParameters()
   {
     return (EReference)xMethodEClass.getEStructuralFeatures().get(0);
   }
@@ -208,9 +284,19 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getXMethod_ReturnType()
+  {
+    return (EReference)xMethodEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getXMethod_Name()
   {
-    return (EAttribute)xMethodEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)xMethodEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -220,7 +306,7 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    */
   public EReference getXMethod_Parameters()
   {
-    return (EReference)xMethodEClass.getEStructuralFeatures().get(2);
+    return (EReference)xMethodEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -230,7 +316,7 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    */
   public EReference getXMethod_Body()
   {
-    return (EReference)xMethodEClass.getEStructuralFeatures().get(3);
+    return (EReference)xMethodEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -268,9 +354,19 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getXaw_Methods()
+  public EReference getXaw_TableDefs()
   {
     return (EReference)xawEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getXaw_Methods()
+  {
+    return (EReference)xawEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -308,7 +404,7 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTableColumn_Type()
+  public EReference getTableColumn_ColumnDef()
   {
     return (EReference)tableColumnEClass.getEStructuralFeatures().get(0);
   }
@@ -318,19 +414,9 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTableColumn_Name()
-  {
-    return (EAttribute)tableColumnEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getTableColumn_Expression()
   {
-    return (EReference)tableColumnEClass.getEStructuralFeatures().get(2);
+    return (EReference)tableColumnEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -613,7 +699,16 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
     isCreated = true;
 
     // Create classes and their features
+    tableDefEClass = createEClass(TABLE_DEF);
+    createEAttribute(tableDefEClass, TABLE_DEF__NAME);
+    createEReference(tableDefEClass, TABLE_DEF__TABLE_COLUM_DEFS);
+
+    tableColumnDefEClass = createEClass(TABLE_COLUMN_DEF);
+    createEReference(tableColumnDefEClass, TABLE_COLUMN_DEF__TYPE);
+    createEAttribute(tableColumnDefEClass, TABLE_COLUMN_DEF__NAME);
+
     xMethodEClass = createEClass(XMETHOD);
+    createEReference(xMethodEClass, XMETHOD__TYPE_PARAMETERS);
     createEReference(xMethodEClass, XMETHOD__RETURN_TYPE);
     createEAttribute(xMethodEClass, XMETHOD__NAME);
     createEReference(xMethodEClass, XMETHOD__PARAMETERS);
@@ -622,14 +717,14 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
     xawEClass = createEClass(XAW);
     createEReference(xawEClass, XAW__IMPORT_SECTION);
     createEAttribute(xawEClass, XAW__QNAME);
+    createEReference(xawEClass, XAW__TABLE_DEFS);
     createEReference(xawEClass, XAW__METHODS);
 
     tableLiteralEClass = createEClass(TABLE_LITERAL);
     createEAttribute(tableLiteralEClass, TABLE_LITERAL__NAME);
 
     tableColumnEClass = createEClass(TABLE_COLUMN);
-    createEReference(tableColumnEClass, TABLE_COLUMN__TYPE);
-    createEAttribute(tableColumnEClass, TABLE_COLUMN__NAME);
+    createEReference(tableColumnEClass, TABLE_COLUMN__COLUMN_DEF);
     createEReference(tableColumnEClass, TABLE_COLUMN__EXPRESSION);
 
     inlineTableRowEClass = createEClass(INLINE_TABLE_ROW);
@@ -711,7 +806,16 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
     xCastedColumnExpressionEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 
     // Initialize classes and features; add operations and parameters
+    initEClass(tableDefEClass, TableDef.class, "TableDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTableDef_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTableDef_TableColumDefs(), this.getTableColumnDef(), null, "tableColumDefs", null, 0, -1, TableDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tableColumnDefEClass, TableColumnDef.class, "TableColumnDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTableColumnDef_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, TableColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTableColumnDef_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(xMethodEClass, XMethod.class, "XMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getXMethod_TypeParameters(), theTypesPackage.getJvmTypeParameter(), null, "typeParameters", null, 0, -1, XMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getXMethod_ReturnType(), theTypesPackage.getJvmTypeReference(), null, "returnType", null, 0, 1, XMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getXMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, XMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getXMethod_Parameters(), theTypesPackage.getJvmFormalParameter(), null, "parameters", null, 0, -1, XMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -720,14 +824,14 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
     initEClass(xawEClass, Xaw.class, "Xaw", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getXaw_ImportSection(), theXtypePackage.getXImportSection(), null, "importSection", null, 0, 1, Xaw.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getXaw_QName(), ecorePackage.getEString(), "qName", null, 0, 1, Xaw.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getXaw_TableDefs(), this.getTableDef(), null, "tableDefs", null, 0, -1, Xaw.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getXaw_Methods(), this.getXMethod(), null, "methods", null, 0, -1, Xaw.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tableLiteralEClass, TableLiteral.class, "TableLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTableLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tableColumnEClass, TableColumn.class, "TableColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTableColumn_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, TableColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTableColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTableColumn_ColumnDef(), this.getTableColumnDef(), null, "columnDef", null, 0, 1, TableColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTableColumn_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, TableColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(inlineTableRowEClass, InlineTableRow.class, "InlineTableRow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

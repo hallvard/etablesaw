@@ -46,9 +46,9 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
+import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
 import etablesaw.ui.TableProviderHelper;
-import etablesaw.ui.javaxscript.ScriptEngineExprSupport;
 import etablesaw.ui.util.MultiCheckSelectionShell;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
@@ -115,8 +115,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
 
         if (includeFilterRow) {
             final FilterRowHeaderComposite<Object> filterRowHeaderLayer = filterRowHeaderComposite = new FilterRowHeaderComposite<Object>(
-                    filterStrategy = new ExprSupportFilterStrategy<Object>(bodyDataProvider,
-                            new ScriptEngineExprSupport()),
+                    filterStrategy = new ExprSupportFilterStrategy<Object>(bodyDataProvider, Activator.getInstance().getExprSupports("xaw")),
                     columnHeaderLayer, columnHeaderDataProvider, null);
             filterRowHeaderLayer.addConfiguration(new DefaultEditConfiguration());
             columnHeaderLayer = filterRowHeaderLayer;
@@ -140,7 +139,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         final DataLayer cornerDataLayer = new DataLayer(cornerDataProvider);
         cornerLayer = new CornerLayer(cornerDataLayer, rowHeaderLayer, columnHeaderLayer);
         gridLayer = new GridLayer(viewportLayer, columnHeaderLayer, rowHeaderLayer, cornerLayer);
-        natTable = new NatTable(parent, gridLayer, false);
+        natTable = new NatTable(parent, NatTable.DEFAULT_STYLE_OPTIONS | SWT.BORDER, gridLayer, false);
         natTable.addConfiguration(new DefaultNatTableStyleConfiguration());
         configure(natTable);
         natTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
@@ -163,13 +162,13 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
                 new DefaultTablesawDisplayConverter(rowHeaderDataProvider), DisplayMode.NORMAL, GridRegion.ROW_HEADER);
         displayConverter = new DefaultTablesawDisplayConverter(bodyDataProvider);
-        configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER, displayConverter);
+        configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
+                displayConverter, DisplayMode.NORMAL, GridRegion.BODY);
         configRegistry.registerConfigAttribute(EditConfigAttributes.CELL_EDITABLE_RULE, new IEditableRule() {
             @Override
             public boolean isEditable(final int columnIndex, final int rowIndex) {
                 return editable;
             }
-
             @Override
             public boolean isEditable(final ILayerCell cell, final IConfigRegistry configRegistry) {
                 return editable;

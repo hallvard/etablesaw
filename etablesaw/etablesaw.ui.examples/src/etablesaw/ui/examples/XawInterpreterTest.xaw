@@ -6,5 +6,5 @@ val table1 =
 val table2 =
 #table3: String name, double age #
 | "Hallvard", halAge + 1 |
-val table3 = # String name = table1.column("name"), double age = table2.column("age")#
+val table3 = # String name = table1.nameColumn, double age = table2.ageColumn #
 table3

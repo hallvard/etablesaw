@@ -7,7 +7,7 @@ import tech.tablesaw.columns.numbers.NumberFillers;
 import tech.tablesaw.columns.numbers.fillers.DoubleRangeIterable;
 
 public class NumberFillersExtensions {
-	
+
 	// =>
 
 	public static <T> T operator_doubleArrow(DoubleIterator doubles, NumberFillers<T> doubleColumn) {

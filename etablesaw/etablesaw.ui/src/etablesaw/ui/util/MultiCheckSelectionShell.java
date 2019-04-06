@@ -74,6 +74,16 @@ public class MultiCheckSelectionShell {
 	    this(owner, null, -1);
 	}
 
+	private boolean multi = true;
+
+	public boolean isMulti() {
+        return multi;
+    }
+	
+	public void setMulti(boolean multi) {
+        this.multi = multi;
+    }
+	
 	private String title = null;
 	
 	public void setTitle(String title) {
@@ -125,23 +135,12 @@ public class MultiCheckSelectionShell {
 		    shell.setText(title);
 		}
 
-//		shell.setLayout(new FillLayout());
-//		ScrolledComposite scroll = new ScrolledComposite(shell, SWT.H_SCROLL | SWT.V_SCROLL);		
-//		final Composite buttonsParent = new Composite(scroll, SWT.NONE);
-//		scroll.setContent(buttonsParent);
-		
 		final Composite buttonsParent = shell;
 		int columnCount = (int) Math.pow(getItemCount(), 0.3);
         buttonsParent.setLayout(new GridLayout(columnCount, false));
-//        if (title != null) {
-//            final Label titleText = new Label(buttonsParent, SWT.NONE);
-//            titleText.setText(title);
-//            titleText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, columnCount, 1));
-//        }
 		if (toggleButtonText != null) {
 		    final Button toggle = new Button(buttonsParent, SWT.BUTTON1);
 		    toggle.setText(toggleButtonText);
-//		    toggle.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, columnCount, 1));
 		    toggle.addListener(SWT.MouseDown, e -> {
 		        toggleAll();
 		        for (final SelectionListener listener : selectionListeners) {
@@ -156,7 +155,7 @@ public class MultiCheckSelectionShell {
         };
 		buttons = new Button[options.size()];
 		for (int i = 0; i < options.size(); i++) {
-			final Button button = new Button(buttonsParent, SWT.CHECK);
+			final Button button = new Button(buttonsParent, isMulti()? SWT.CHECK : SWT.RADIO);
 			final Option option = options.get(i);
 			button.setText(option.text);
 			button.setSelection(option.selection);
@@ -182,6 +181,14 @@ public class MultiCheckSelectionShell {
 			closeShell(buttonsParent, event);
 		});
 		shell.open();
+		shell.getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                if (buttons.length > 0 && (! buttons[0].isDisposed())) {
+                    buttons[0].setFocus();
+                }
+            }
+        });
 	}
 
     private void closeShell(final Composite buttonsParent, Event event) {

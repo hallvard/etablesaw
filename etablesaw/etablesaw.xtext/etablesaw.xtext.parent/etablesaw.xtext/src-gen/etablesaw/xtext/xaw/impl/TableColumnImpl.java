@@ -4,6 +4,7 @@
 package etablesaw.xtext.xaw.impl;
 
 import etablesaw.xtext.xaw.TableColumn;
+import etablesaw.xtext.xaw.TableColumnDef;
 import etablesaw.xtext.xaw.XawPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -13,8 +14,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
 
@@ -28,8 +27,7 @@ import org.eclipse.xtext.xbase.impl.XExpressionImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link etablesaw.xtext.xaw.impl.TableColumnImpl#getType <em>Type</em>}</li>
- *   <li>{@link etablesaw.xtext.xaw.impl.TableColumnImpl#getName <em>Name</em>}</li>
+ *   <li>{@link etablesaw.xtext.xaw.impl.TableColumnImpl#getColumnDef <em>Column Def</em>}</li>
  *   <li>{@link etablesaw.xtext.xaw.impl.TableColumnImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -38,34 +36,14 @@ import org.eclipse.xtext.xbase.impl.XExpressionImpl;
 public class TableColumnImpl extends XExpressionImpl implements TableColumn
 {
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The cached value of the '{@link #getColumnDef() <em>Column Def</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getColumnDef()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference type;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected TableColumnDef columnDef;
 
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
@@ -103,9 +81,9 @@ public class TableColumnImpl extends XExpressionImpl implements TableColumn
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getType()
+  public TableColumnDef getColumnDef()
   {
-    return type;
+    return columnDef;
   }
 
   /**
@@ -113,13 +91,13 @@ public class TableColumnImpl extends XExpressionImpl implements TableColumn
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(JvmTypeReference newType, NotificationChain msgs)
+  public NotificationChain basicSetColumnDef(TableColumnDef newColumnDef, NotificationChain msgs)
   {
-    JvmTypeReference oldType = type;
-    type = newType;
+    TableColumnDef oldColumnDef = columnDef;
+    columnDef = newColumnDef;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XawPackage.TABLE_COLUMN__TYPE, oldType, newType);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XawPackage.TABLE_COLUMN__COLUMN_DEF, oldColumnDef, newColumnDef);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -130,43 +108,20 @@ public class TableColumnImpl extends XExpressionImpl implements TableColumn
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(JvmTypeReference newType)
+  public void setColumnDef(TableColumnDef newColumnDef)
   {
-    if (newType != type)
+    if (newColumnDef != columnDef)
     {
       NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XawPackage.TABLE_COLUMN__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XawPackage.TABLE_COLUMN__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
+      if (columnDef != null)
+        msgs = ((InternalEObject)columnDef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XawPackage.TABLE_COLUMN__COLUMN_DEF, null, msgs);
+      if (newColumnDef != null)
+        msgs = ((InternalEObject)newColumnDef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XawPackage.TABLE_COLUMN__COLUMN_DEF, null, msgs);
+      msgs = basicSetColumnDef(newColumnDef, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XawPackage.TABLE_COLUMN__TYPE, newType, newType));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XawPackage.TABLE_COLUMN__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, XawPackage.TABLE_COLUMN__COLUMN_DEF, newColumnDef, newColumnDef));
   }
 
   /**
@@ -227,8 +182,8 @@ public class TableColumnImpl extends XExpressionImpl implements TableColumn
   {
     switch (featureID)
     {
-      case XawPackage.TABLE_COLUMN__TYPE:
-        return basicSetType(null, msgs);
+      case XawPackage.TABLE_COLUMN__COLUMN_DEF:
+        return basicSetColumnDef(null, msgs);
       case XawPackage.TABLE_COLUMN__EXPRESSION:
         return basicSetExpression(null, msgs);
     }
@@ -245,10 +200,8 @@ public class TableColumnImpl extends XExpressionImpl implements TableColumn
   {
     switch (featureID)
     {
-      case XawPackage.TABLE_COLUMN__TYPE:
-        return getType();
-      case XawPackage.TABLE_COLUMN__NAME:
-        return getName();
+      case XawPackage.TABLE_COLUMN__COLUMN_DEF:
+        return getColumnDef();
       case XawPackage.TABLE_COLUMN__EXPRESSION:
         return getExpression();
     }
@@ -265,11 +218,8 @@ public class TableColumnImpl extends XExpressionImpl implements TableColumn
   {
     switch (featureID)
     {
-      case XawPackage.TABLE_COLUMN__TYPE:
-        setType((JvmTypeReference)newValue);
-        return;
-      case XawPackage.TABLE_COLUMN__NAME:
-        setName((String)newValue);
+      case XawPackage.TABLE_COLUMN__COLUMN_DEF:
+        setColumnDef((TableColumnDef)newValue);
         return;
       case XawPackage.TABLE_COLUMN__EXPRESSION:
         setExpression((XExpression)newValue);
@@ -288,11 +238,8 @@ public class TableColumnImpl extends XExpressionImpl implements TableColumn
   {
     switch (featureID)
     {
-      case XawPackage.TABLE_COLUMN__TYPE:
-        setType((JvmTypeReference)null);
-        return;
-      case XawPackage.TABLE_COLUMN__NAME:
-        setName(NAME_EDEFAULT);
+      case XawPackage.TABLE_COLUMN__COLUMN_DEF:
+        setColumnDef((TableColumnDef)null);
         return;
       case XawPackage.TABLE_COLUMN__EXPRESSION:
         setExpression((XExpression)null);
@@ -311,31 +258,12 @@ public class TableColumnImpl extends XExpressionImpl implements TableColumn
   {
     switch (featureID)
     {
-      case XawPackage.TABLE_COLUMN__TYPE:
-        return type != null;
-      case XawPackage.TABLE_COLUMN__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case XawPackage.TABLE_COLUMN__COLUMN_DEF:
+        return columnDef != null;
       case XawPackage.TABLE_COLUMN__EXPRESSION:
         return expression != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //TableColumnImpl

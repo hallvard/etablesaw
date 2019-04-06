@@ -1,0 +1,11 @@
+import tech.tablesaw.api.Table
+import tech.tablesaw.api.ShortColumn
+import tech.tablesaw.api.StringColumn
+
+xaw tablesaw.ui.examples.Test3
+
+table tab1 { String name, double age }
+
+val tab3 = # tab1 #
+
+System.out.println(tab3)

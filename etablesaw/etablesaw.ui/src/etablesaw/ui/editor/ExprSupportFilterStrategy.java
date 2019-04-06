@@ -11,6 +11,7 @@ import etablesaw.ui.expr.ExprSupport;
 import etablesaw.ui.expr.PreparedExpr;
 import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
+import tech.tablesaw.columns.Column;
 import tech.tablesaw.selection.BitmapBackedSelection;
 import tech.tablesaw.selection.Selection;
 
@@ -28,13 +29,13 @@ public class ExprSupportFilterStrategy<T> implements IFilterStrategy<T> {
 	@Override
 	public void applyFilter(final Map<Integer, Object> filterIndexToObjectMap) {
 		final Table table = dataProvider.getTable();
-		final Map<String,  ColumnType> varTypes = exprSupport.getVarTypes(table, "$");
+		final Map<String,  ColumnType> varTypes = exprSupport.getVarTypes(table);
 		final List<PreparedExpr> preparedExprs = new ArrayList<PreparedExpr>();
 		for (final int columnIndex : filterIndexToObjectMap.keySet()) {
 			final Object filter = filterIndexToObjectMap.get(columnIndex);
 			if (filter != null) {
-				varTypes.put("$", table.column(columnIndex).type());
-				final PreparedExpr expr = exprSupport.prepareExpr(String.valueOf(filter), varTypes, "$");
+				Column<?> column = table.column(columnIndex);
+				final PreparedExpr expr = exprSupport.prepareExpr(String.valueOf(filter), varTypes, column.name());
 				if (expr.getDiagnostics().isEmpty()) {
 					while (preparedExprs.size() <= columnIndex) {
 						preparedExprs.add(null);
@@ -49,7 +50,7 @@ public class ExprSupportFilterStrategy<T> implements IFilterStrategy<T> {
 			selection = new BitmapBackedSelection(rowCount);
 			final Map<String, Object> varValues = new HashMap<String, Object>();
 			outer: for (int rowNum = 0; rowNum < rowCount; rowNum++) {
-				exprSupport.getVarValues(table, rowNum, "$", varValues);
+				exprSupport.getVarValues(table, rowNum, varValues);
 				for (int colNum = 0; colNum < preparedExprs.size(); colNum++) {
 					final PreparedExpr expr = preparedExprs.get(colNum);
 					if (expr != null) {

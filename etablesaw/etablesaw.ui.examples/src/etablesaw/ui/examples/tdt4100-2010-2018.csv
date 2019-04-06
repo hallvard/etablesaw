@@ -1,0 +1,5414 @@
+programkode,studentnr,karakter,vurderingsstatus,year,semester
+BBI,716293,C,Bestått,2010,v
+BFI,707206,,Ikke møtt,2010,v
+BFI,707206,,Ikke møtt,2011,v
+BFI,751124,F,Ikke bestått,2014,v
+BFI,751124,F,Ikke bestått,2014,s
+BFI,751124,F,Ikke bestått,2016,s
+BFI,751124,F,Ikke bestått,2017,v
+BFI,751124,F,Ikke bestått,2018,v
+BFILMPROD,669355,,Ikke møtt,2010,v
+BFILMPROD,716502,F,Ikke bestått,2011,v
+BFILMPROD,716502,F,Ikke bestått,2011,s
+BFILMPROD,716502,E,Bestått,2012,v
+BFY,686011,,Manglende øvinger,2013,v
+BFY,715011,C,Bestått,2010,v
+BHIST,707678,D,Bestått,2013,v
+BIDAT,770209,,Manglende øvinger,2016,v
+BIDAT,770209,E,Bestått,2017,v
+BIELKR-F,714943,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIELKR-F,714943,F,Ikke bestått,2010,s
+BIELKR-F,714943,D,Bestått,2011,v
+BIT,1900,B,Bestått,2012,v
+BIT,5965,,Manglende øvinger,2015,v
+BIT,50925,A,Bestått,2010,v
+BIT,80249,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,80249,,Trekk under eksamen (Avbrutt eksamen),2010,s
+BIT,80249,F,Ikke bestått,2011,v
+BIT,80249,F,Ikke bestått,2011,s
+BIT,80249,F,Ikke bestått,2012,v
+BIT,80249,F,Ikke bestått,2012,s
+BIT,80249,F,Ikke bestått,2013,v
+BIT,80249,F,Ikke bestått,2013,s
+BIT,80249,,Ikke møtt,2014,v
+BIT,80249,,Ikke møtt,2015,v
+BIT,100518,B,Bestått,2015,v
+BIT,100875,B,Bestått,2012,v
+BIT,100926,C,Bestått,2012,v
+BIT,110255,B,Bestått,2013,v
+BIT,110474,D,Bestått,2013,v
+BIT,110562,,Trekk under eksamen (Avbrutt eksamen),2013,v
+BIT,110892,D,Bestått,2011,v
+BIT,130569,B,Bestått,2011,v
+BIT,131344,B,Bestått,2016,v
+BIT,140382,C,Bestått,2010,v
+BIT,140382,B,Bestått,2011,v
+BIT,140397,B,Bestått,2017,v
+BIT,246377,,Manglende øvinger,2017,v
+BIT,253293,F,Ikke bestått,2017,v
+BIT,253915,F,Ikke bestått,2017,v
+BIT,254894,C,Bestått,2017,v
+BIT,254918,F,Ikke bestått,2018,v
+BIT,254953,F,Ikke bestått,2018,v
+BIT,255141,,Manglende øvinger,2017,v
+BIT,257287,D,Bestått,2017,v
+BIT,257384,E,Bestått,2017,v
+BIT,257384,D,Bestått,2018,v
+BIT,258588,F,Ikke bestått,2017,v
+BIT,258588,F,Ikke bestått,2017,s
+BIT,258588,E,Bestått,2018,v
+BIT,258654,C,Bestått,2017,v
+BIT,259503,C,Bestått,2017,v
+BIT,259561,C,Bestått,2017,v
+BIT,260212,C,Bestått,2018,v
+BIT,260313,C,Bestått,2017,v
+BIT,260625,E,Bestått,2017,v
+BIT,260625,,Ikke møtt,2018,v
+BIT,265240,F,Ikke bestått,2018,v
+BIT,266426,C,Bestått,2010,v
+BIT,270284,C,Bestått,2017,v
+BIT,275760,F,Ikke bestått,2018,v
+BIT,275760,F,Ikke bestått,2018,s
+BIT,451593,A,Bestått,2016,v
+BIT,453809,F,Ikke bestått,2010,v
+BIT,453809,,Ikke møtt,2011,v
+BIT,453809,,Ikke møtt,2012,v
+BIT,453809,,Ikke møtt,2013,v
+BIT,453809,,Ikke møtt,2014,v
+BIT,458081,C,Bestått,2014,v
+BIT,473540,E,Bestått,2018,v
+BIT,473686,,Manglende øvinger,2018,v
+BIT,473688,F,Ikke bestått,2018,v
+BIT,473784,A,Bestått,2017,v
+BIT,473822,D,Bestått,2017,v
+BIT,473949,D,Bestått,2018,v
+BIT,474042,B,Bestått,2018,v
+BIT,474194,C,Bestått,2018,v
+BIT,474696,D,Bestått,2018,v
+BIT,475132,D,Bestått,2018,v
+BIT,475274,C,Bestått,2017,v
+BIT,475281,F,Ikke bestått,2018,v
+BIT,475281,,Ikke møtt,2018,s
+BIT,475332,D,Bestått,2018,v
+BIT,475611,F,Ikke bestått,2017,v
+BIT,475611,F,Ikke bestått,2017,s
+BIT,475611,F,Ikke bestått,2018,v
+BIT,475887,,Manglende øvinger,2018,v
+BIT,476047,C,Bestått,2018,v
+BIT,476101,E,Bestått,2018,v
+BIT,476627,D,Bestått,2018,v
+BIT,476675,C,Bestått,2017,v
+BIT,476677,C,Bestått,2017,v
+BIT,476678,F,Ikke bestått,2017,v
+BIT,476678,C,Bestått,2017,s
+BIT,476680,D,Bestått,2017,v
+BIT,476681,A,Bestått,2017,v
+BIT,476682,C,Bestått,2017,v
+BIT,476683,D,Bestått,2017,v
+BIT,476684,C,Bestått,2017,v
+BIT,476684,,Ikke møtt,2018,v
+BIT,476686,D,Bestått,2017,v
+BIT,476687,F,Ikke bestått,2017,v
+BIT,476688,B,Bestått,2017,v
+BIT,476689,E,Bestått,2017,v
+BIT,476690,C,Bestått,2017,v
+BIT,476691,C,Bestått,2017,v
+BIT,476691,B,Bestått,2018,v
+BIT,476692,D,Bestått,2017,v
+BIT,476692,,Ikke møtt,2018,v
+BIT,476693,D,Bestått,2017,v
+BIT,476693,D,Bestått,2018,v
+BIT,476694,C,Bestått,2017,v
+BIT,476695,B,Bestått,2017,v
+BIT,476695,A,Bestått,2018,v
+BIT,476696,B,Bestått,2017,v
+BIT,476697,B,Bestått,2017,v
+BIT,476698,B,Bestått,2017,v
+BIT,476699,F,Ikke bestått,2017,v
+BIT,476699,,Trekk under eksamen (Avbrutt eksamen),2018,v
+BIT,476700,,Trekk under eksamen (Avbrutt eksamen),2017,v
+BIT,476700,E,Bestått,2017,s
+BIT,476701,E,Bestått,2017,v
+BIT,476701,C,Bestått,2018,v
+BIT,476702,C,Bestått,2017,v
+BIT,476703,,Manglende øvinger,2017,v
+BIT,476704,F,Ikke bestått,2017,v
+BIT,476704,E,Bestått,2017,s
+BIT,476705,B,Bestått,2017,v
+BIT,476706,F,Ikke bestått,2017,v
+BIT,476707,B,Bestått,2017,v
+BIT,476708,E,Bestått,2017,v
+BIT,476708,D,Bestått,2018,v
+BIT,476709,E,Bestått,2017,v
+BIT,476710,,Manglende øvinger,2017,v
+BIT,476711,C,Bestått,2017,v
+BIT,476712,E,Bestått,2017,v
+BIT,476712,C,Bestått,2018,v
+BIT,476713,C,Bestått,2017,v
+BIT,476714,B,Bestått,2017,v
+BIT,476715,C,Bestått,2017,v
+BIT,476716,B,Bestått,2017,v
+BIT,476717,C,Bestått,2017,v
+BIT,476718,C,Bestått,2017,v
+BIT,476719,C,Bestått,2017,v
+BIT,476720,C,Bestått,2017,v
+BIT,476721,A,Bestått,2017,v
+BIT,476722,F,Ikke bestått,2017,v
+BIT,476723,E,Bestått,2017,v
+BIT,476724,A,Bestått,2017,v
+BIT,476725,C,Bestått,2017,v
+BIT,476726,C,Bestått,2017,v
+BIT,476727,C,Bestått,2017,v
+BIT,476728,B,Bestått,2017,v
+BIT,476730,C,Bestått,2017,v
+BIT,476731,F,Ikke bestått,2017,v
+BIT,476731,E,Bestått,2018,v
+BIT,476732,F,Ikke bestått,2017,v
+BIT,476732,F,Ikke bestått,2017,s
+BIT,476733,C,Bestått,2017,v
+BIT,476734,C,Bestått,2017,v
+BIT,476735,B,Bestått,2017,v
+BIT,476736,C,Bestått,2017,v
+BIT,476736,,Ikke møtt,2018,v
+BIT,476737,,Trekk under eksamen (Avbrutt eksamen),2017,v
+BIT,476738,F,Ikke bestått,2017,v
+BIT,476738,F,Ikke bestått,2018,v
+BIT,476739,D,Bestått,2017,v
+BIT,476740,C,Bestått,2017,v
+BIT,476740,B,Bestått,2018,v
+BIT,476741,F,Ikke bestått,2017,v
+BIT,476741,F,Ikke bestått,2018,v
+BIT,476742,B,Bestått,2017,v
+BIT,476743,C,Bestått,2017,v
+BIT,476744,C,Bestått,2017,v
+BIT,476745,F,Ikke bestått,2017,v
+BIT,476745,,Ikke møtt,2017,s
+BIT,476745,F,Ikke bestått,2018,v
+BIT,476746,F,Ikke bestått,2017,v
+BIT,476746,E,Bestått,2018,v
+BIT,476747,F,Ikke bestått,2017,v
+BIT,476747,F,Ikke bestått,2017,s
+BIT,476748,B,Bestått,2017,v
+BIT,476749,C,Bestått,2017,v
+BIT,476750,A,Bestått,2017,v
+BIT,476751,A,Bestått,2017,v
+BIT,476752,C,Bestått,2017,v
+BIT,476753,C,Bestått,2017,v
+BIT,476753,A,Bestått,2018,v
+BIT,476754,C,Bestått,2017,v
+BIT,476755,C,Bestått,2017,v
+BIT,476756,B,Bestått,2017,v
+BIT,476757,E,Bestått,2017,v
+BIT,476757,,Trekk under eksamen (Avbrutt eksamen),2018,v
+BIT,476758,C,Bestått,2017,v
+BIT,476759,,Trekk under eksamen (Avbrutt eksamen),2017,v
+BIT,476760,B,Bestått,2017,v
+BIT,476760,A,Bestått,2018,v
+BIT,476762,C,Bestått,2017,v
+BIT,476763,,Manglende øvinger,2017,v
+BIT,476764,C,Bestått,2017,v
+BIT,476764,C,Bestått,2018,v
+BIT,476765,D,Bestått,2017,v
+BIT,476765,C,Bestått,2018,v
+BIT,476766,F,Ikke bestått,2017,v
+BIT,476766,F,Ikke bestått,2018,v
+BIT,476766,F,Ikke bestått,2018,s
+BIT,476768,F,Ikke bestått,2017,v
+BIT,476768,F,Ikke bestått,2017,s
+BIT,476768,F,Ikke bestått,2018,v
+BIT,476770,C,Bestått,2017,v
+BIT,476771,F,Ikke bestått,2017,v
+BIT,476771,F,Ikke bestått,2017,s
+BIT,476772,E,Bestått,2018,v
+BIT,477579,,Legeattest,2017,v
+BIT,477579,,Trekk under eksamen (Avbrutt eksamen),2018,v
+BIT,477773,A,Bestått,2018,v
+BIT,479825,C,Bestått,2017,v
+BIT,479825,C,Bestått,2018,v
+BIT,481935,B,Bestått,2018,v
+BIT,485525,D,Bestått,2018,v
+BIT,486769,D,Bestått,2018,v
+BIT,486832,F,Ikke bestått,2018,v
+BIT,486933,D,Bestått,2018,v
+BIT,487814,D,Bestått,2018,v
+BIT,488659,D,Bestått,2018,v
+BIT,489180,F,Ikke bestått,2018,v
+BIT,489733,B,Bestått,2018,v
+BIT,490119,C,Bestått,2018,v
+BIT,491407,D,Bestått,2018,v
+BIT,492757,F,Ikke bestått,2018,v
+BIT,492764,D,Bestått,2018,v
+BIT,493374,C,Bestått,2018,v
+BIT,493375,C,Bestått,2018,v
+BIT,493377,A,Bestått,2018,v
+BIT,493378,,Ikke møtt,2018,v
+BIT,493379,C,Bestått,2018,v
+BIT,493380,D,Bestått,2018,v
+BIT,493382,,Ikke møtt,2018,v
+BIT,493385,A,Bestått,2018,v
+BIT,493386,B,Bestått,2018,v
+BIT,493387,E,Bestått,2018,v
+BIT,493388,C,Bestått,2018,v
+BIT,493389,C,Bestått,2018,v
+BIT,493390,A,Bestått,2018,v
+BIT,493392,B,Bestått,2018,v
+BIT,493393,C,Bestått,2018,v
+BIT,493394,B,Bestått,2018,v
+BIT,493395,D,Bestått,2018,v
+BIT,493396,E,Bestått,2018,v
+BIT,493397,D,Bestått,2018,v
+BIT,493398,D,Bestått,2018,v
+BIT,493399,F,Ikke bestått,2018,v
+BIT,493399,B,Bestått,2018,s
+BIT,493400,A,Bestått,2018,v
+BIT,493403,E,Bestått,2018,v
+BIT,493404,D,Bestått,2018,v
+BIT,493405,E,Bestått,2018,v
+BIT,493406,E,Bestått,2018,v
+BIT,493407,D,Bestått,2018,v
+BIT,493408,E,Bestått,2018,v
+BIT,493409,D,Bestått,2018,v
+BIT,493411,B,Bestått,2018,v
+BIT,493412,C,Bestått,2018,v
+BIT,493413,B,Bestått,2018,v
+BIT,493415,C,Bestått,2018,v
+BIT,493416,F,Ikke bestått,2018,v
+BIT,493416,,Ikke møtt,2018,s
+BIT,493417,F,Ikke bestått,2018,v
+BIT,493418,B,Bestått,2018,v
+BIT,493420,D,Bestått,2018,v
+BIT,493422,C,Bestått,2018,v
+BIT,493423,B,Bestått,2018,v
+BIT,493424,,Ikke møtt,2018,v
+BIT,493425,E,Bestått,2018,v
+BIT,493426,E,Bestått,2018,v
+BIT,493427,C,Bestått,2018,v
+BIT,493428,C,Bestått,2018,v
+BIT,493429,F,Ikke bestått,2018,v
+BIT,493431,D,Bestått,2018,v
+BIT,493433,C,Bestått,2018,v
+BIT,493434,E,Bestått,2018,v
+BIT,493435,B,Bestått,2018,v
+BIT,493436,E,Bestått,2018,v
+BIT,493437,E,Bestått,2018,v
+BIT,493439,E,Bestått,2018,v
+BIT,493440,F,Ikke bestått,2018,v
+BIT,493440,F,Ikke bestått,2018,s
+BIT,493441,F,Ikke bestått,2018,v
+BIT,493442,B,Bestått,2018,v
+BIT,493444,D,Bestått,2018,v
+BIT,493445,D,Bestått,2018,v
+BIT,493446,E,Bestått,2018,v
+BIT,493447,D,Bestått,2018,v
+BIT,494272,E,Bestått,2018,v
+BIT,494278,D,Bestått,2018,v
+BIT,494976,,Trekk under eksamen (Avbrutt eksamen),2018,v
+BIT,494976,F,Ikke bestått,2018,s
+BIT,625298,,Manglende øvinger,2012,v
+BIT,633687,,Manglende øvinger,2011,v
+BIT,637272,,Manglende øvinger,2010,v
+BIT,647199,E,Bestått,2012,v
+BIT,667708,F,Ikke bestått,2012,v
+BIT,670031,E,Bestått,2014,v
+BIT,673219,E,Bestått,2011,v
+BIT,674205,,Manglende øvinger,2010,v
+BIT,674205,,Manglende øvinger,2011,v
+BIT,674754,C,Bestått,2011,v
+BIT,674758,,Ikke møtt,2010,v
+BIT,674758,F,Ikke bestått,2011,v
+BIT,674758,C,Bestått,2011,s
+BIT,674758,,Ikke møtt,2012,v
+BIT,674894,C,Bestått,2013,v
+BIT,675681,C,Bestått,2013,v
+BIT,676380,D,Bestått,2010,v
+BIT,676861,A,Bestått,2012,v
+BIT,677117,C,Bestått,2011,v
+BIT,681040,C,Bestått,2012,v
+BIT,681657,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,681657,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,681968,,Ikke møtt,2010,v
+BIT,681968,E,Bestått,2011,v
+BIT,681973,E,Bestått,2010,v
+BIT,682093,E,Bestått,2010,v
+BIT,682093,C,Bestått,2013,v
+BIT,682868,C,Bestått,2011,v
+BIT,683569,E,Bestått,2010,v
+BIT,683569,,Ikke møtt,2012,v
+BIT,683827,D,Bestått,2010,v
+BIT,684529,,Manglende øvinger,2012,v
+BIT,684529,,Manglende øvinger,2014,v
+BIT,684529,,Manglende øvinger,2015,v
+BIT,685039,E,Bestått,2018,v
+BIT,685873,,Gyldig fravær,2010,v
+BIT,686246,D,Bestått,2010,v
+BIT,686263,A,Bestått,2011,v
+BIT,688007,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,688007,,Ikke møtt,2011,v
+BIT,688862,C,Bestått,2010,v
+BIT,689384,E,Bestått,2012,v
+BIT,689532,F,Ikke bestått,2010,v
+BIT,689532,,Ikke møtt,2010,s
+BIT,689776,,Manglende øvinger,2011,v
+BIT,689776,C,Bestått,2013,v
+BIT,689814,,Manglende øvinger,2010,v
+BIT,689814,,Manglende øvinger,2011,v
+BIT,689814,,Manglende øvinger,2013,v
+BIT,689814,,Manglende øvinger,2014,v
+BIT,689815,F,Ikke bestått,2010,v
+BIT,690181,D,Bestått,2010,v
+BIT,690365,D,Bestått,2010,v
+BIT,690374,,Gyldig fravær,2014,v
+BIT,690376,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,690376,D,Bestått,2010,s
+BIT,690376,C,Bestått,2012,v
+BIT,690388,,Gyldig fravær,2011,v
+BIT,690388,C,Bestått,2011,s
+BIT,690391,F,Ikke bestått,2010,v
+BIT,690391,F,Ikke bestått,2010,s
+BIT,690391,F,Ikke bestått,2011,v
+BIT,690391,F,Ikke bestått,2011,s
+BIT,690391,D,Bestått,2012,v
+BIT,690392,,Manglende øvinger,2010,v
+BIT,690401,F,Ikke bestått,2010,v
+BIT,690401,E,Bestått,2011,v
+BIT,690569,E,Bestått,2010,v
+BIT,691563,,Manglende øvinger,2010,v
+BIT,691573,,Gyldig fravær,2010,v
+BIT,691573,,Ikke møtt,2010,s
+BIT,691573,,Gyldig fravær,2011,v
+BIT,691573,F,Ikke bestått,2011,s
+BIT,691573,E,Bestått,2012,v
+BIT,691573,,Gyldig fravær,2013,v
+BIT,692558,,Ikke møtt,2010,v
+BIT,692558,,Ikke møtt,2011,v
+BIT,692558,,Ikke møtt,2012,v
+BIT,692937,,Manglende øvinger,2012,v
+BIT,693049,,Manglende øvinger,2011,v
+BIT,694086,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,694086,C,Bestått,2011,s
+BIT,694574,F,Ikke bestått,2011,v
+BIT,694574,F,Ikke bestått,2011,s
+BIT,694574,F,Ikke bestått,2012,v
+BIT,694574,,Ikke møtt,2012,s
+BIT,694574,,Trekk under eksamen (Avbrutt eksamen),2013,v
+BIT,694574,,Ikke møtt,2013,s
+BIT,694574,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,694574,,Ikke møtt,2014,s
+BIT,694574,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,694574,,Ikke møtt,2015,s
+BIT,694574,,Ikke møtt,2016,v
+BIT,694574,,Ikke møtt,2017,v
+BIT,697147,,Manglende øvinger,2010,v
+BIT,697147,,Manglende øvinger,2011,v
+BIT,697147,,Manglende øvinger,2012,v
+BIT,697670,B,Bestått,2014,v
+BIT,697719,B,Bestått,2011,v
+BIT,698425,D,Bestått,2011,v
+BIT,698647,D,Bestått,2011,v
+BIT,698813,F,Ikke bestått,2011,v
+BIT,698813,,Trekk under eksamen (Avbrutt eksamen),2011,s
+BIT,698813,F,Ikke bestått,2013,v
+BIT,698813,F,Ikke bestått,2013,s
+BIT,698813,F,Ikke bestått,2014,v
+BIT,698813,F,Ikke bestått,2014,s
+BIT,698813,F,Ikke bestått,2015,v
+BIT,698813,F,Ikke bestått,2015,s
+BIT,698813,F,Ikke bestått,2016,v
+BIT,698813,E,Bestått,2016,s
+BIT,698814,,Ikke møtt,2011,v
+BIT,698814,,Ikke møtt,2013,v
+BIT,698816,E,Bestått,2011,v
+BIT,698820,D,Bestått,2011,v
+BIT,698822,,Manglende øvinger,2010,v
+BIT,698823,,Gyldig fravær,2010,v
+BIT,698823,,Ikke møtt,2011,v
+BIT,698824,C,Bestått,2012,v
+BIT,698826,C,Bestått,2011,v
+BIT,698828,C,Bestått,2010,v
+BIT,698829,C,Bestått,2012,v
+BIT,698832,,Ikke møtt,2011,v
+BIT,698832,,Ikke møtt,2012,v
+BIT,698833,,Ikke møtt,2010,s
+BIT,698833,C,Bestått,2011,v
+BIT,698835,F,Ikke bestått,2010,v
+BIT,698835,F,Ikke bestått,2010,s
+BIT,698835,D,Bestått,2011,v
+BIT,698838,C,Bestått,2011,v
+BIT,698845,C,Bestått,2011,v
+BIT,698847,F,Ikke bestått,2010,v
+BIT,698847,E,Bestått,2011,v
+BIT,698848,B,Bestått,2011,v
+BIT,698855,C,Bestått,2010,v
+BIT,698856,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,698856,,Trekk under eksamen (Avbrutt eksamen),2010,s
+BIT,698856,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,698856,,Ikke møtt,2011,s
+BIT,698856,,Ikke møtt,2012,v
+BIT,698856,,Trekk under eksamen (Avbrutt eksamen),2013,v
+BIT,698856,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,698856,,Ikke møtt,2015,v
+BIT,698856,,Ikke møtt,2016,v
+BIT,698861,F,Ikke bestått,2012,v
+BIT,698861,F,Ikke bestått,2012,s
+BIT,698862,E,Bestått,2010,v
+BIT,698864,E,Bestått,2010,v
+BIT,698866,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,698866,E,Bestått,2010,s
+BIT,698866,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,698867,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,698867,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,698867,,Ikke møtt,2011,s
+BIT,698867,F,Ikke bestått,2012,v
+BIT,698867,E,Bestått,2013,v
+BIT,698868,C,Bestått,2010,v
+BIT,698870,D,Bestått,2010,v
+BIT,698900,E,Bestått,2016,v
+BIT,698900,C,Bestått,2017,v
+BIT,698964,C,Bestått,2011,v
+BIT,699049,C,Bestått,2014,v
+BIT,699073,,Manglende øvinger,2011,v
+BIT,699087,E,Bestått,2010,v
+BIT,699098,F,Ikke bestått,2010,v
+BIT,699098,F,Ikke bestått,2011,v
+BIT,699098,D,Bestått,2012,v
+BIT,699124,C,Bestått,2012,v
+BIT,699158,,Manglende øvinger,2010,v
+BIT,700861,C,Bestått,2013,v
+BIT,701221,C,Bestått,2014,v
+BIT,701377,E,Bestått,2010,v
+BIT,701566,E,Bestått,2010,v
+BIT,701566,B,Bestått,2012,v
+BIT,701643,F,Ikke bestått,2010,v
+BIT,701643,F,Ikke bestått,2010,s
+BIT,701643,E,Bestått,2011,v
+BIT,701643,C,Bestått,2012,v
+BIT,705096,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,705104,D,Bestått,2018,v
+BIT,705325,D,Bestått,2010,v
+BIT,705330,C,Bestått,2010,v
+BIT,705332,C,Bestått,2010,v
+BIT,705332,C,Bestått,2013,v
+BIT,705333,F,Ikke bestått,2010,v
+BIT,705333,,Ikke møtt,2011,v
+BIT,705336,D,Bestått,2010,v
+BIT,705336,,Gyldig fravær,2011,v
+BIT,705337,D,Bestått,2010,v
+BIT,705338,E,Bestått,2010,v
+BIT,705339,C,Bestått,2012,v
+BIT,705340,B,Bestått,2010,v
+BIT,705342,,Ikke møtt,2012,v
+BIT,705343,E,Bestått,2010,v
+BIT,705343,E,Bestått,2011,v
+BIT,705344,,Ikke møtt,2010,v
+BIT,705347,F,Ikke bestått,2010,v
+BIT,705347,E,Bestått,2010,s
+BIT,705347,,Ikke møtt,2012,v
+BIT,705349,,Manglende øvinger,2010,v
+BIT,705349,F,Ikke bestått,2011,v
+BIT,705349,D,Bestått,2012,v
+BIT,705350,,Ikke møtt,2011,v
+BIT,705356,B,Bestått,2010,v
+BIT,705357,E,Bestått,2010,v
+BIT,705359,F,Ikke bestått,2010,v
+BIT,705359,F,Ikke bestått,2011,v
+BIT,705359,E,Bestått,2012,v
+BIT,705361,D,Bestått,2010,v
+BIT,705362,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,705362,,Ikke møtt,2010,s
+BIT,705362,,Ikke møtt,2011,v
+BIT,705362,F,Ikke bestått,2012,v
+BIT,705362,F,Ikke bestått,2012,s
+BIT,705364,C,Bestått,2010,v
+BIT,705365,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,705365,F,Ikke bestått,2010,s
+BIT,705365,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,705365,E,Bestått,2011,s
+BIT,705370,C,Bestått,2010,v
+BIT,705373,F,Ikke bestått,2010,v
+BIT,705373,C,Bestått,2011,v
+BIT,705382,C,Bestått,2010,v
+BIT,705383,F,Ikke bestått,2010,v
+BIT,705383,,Ikke møtt,2010,s
+BIT,705383,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,705383,C,Bestått,2011,s
+BIT,705385,,Trekk under eksamen (Avbrutt eksamen),2010,s
+BIT,705385,,Trekk under eksamen (Avbrutt eksamen),2011,s
+BIT,705385,,Trekk under eksamen (Avbrutt eksamen),2012,v
+BIT,705385,,Trekk under eksamen (Avbrutt eksamen),2013,v
+BIT,705385,,Ikke møtt,2013,s
+BIT,705385,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,705385,,Ikke møtt,2015,v
+BIT,705385,,Legeattest,2016,v
+BIT,705388,F,Ikke bestått,2010,s
+BIT,705388,C,Bestått,2011,v
+BIT,705400,A,Bestått,2012,v
+BIT,705409,,Gyldig fravær,2010,v
+BIT,705409,,Ikke møtt,2010,s
+BIT,705409,E,Bestått,2012,v
+BIT,705409,D,Bestått,2013,v
+BIT,705662,,Manglende øvinger,2016,v
+BIT,705738,,Manglende øvinger,2011,v
+BIT,705738,,Manglende øvinger,2012,v
+BIT,705738,,Manglende øvinger,2013,v
+BIT,705775,,Trekk under eksamen (Avbrutt eksamen),2017,v
+BIT,705775,C,Bestått,2017,s
+BIT,705809,F,Ikke bestått,2010,v
+BIT,705809,F,Ikke bestått,2010,s
+BIT,705809,D,Bestått,2011,v
+BIT,705809,E,Bestått,2012,v
+BIT,705867,B,Bestått,2016,v
+BIT,707257,B,Bestått,2010,v
+BIT,707349,B,Bestått,2012,v
+BIT,707730,,Ikke møtt,2010,v
+BIT,707730,,Trekk under eksamen (Avbrutt eksamen),2012,v
+BIT,707730,,Trekk under eksamen (Avbrutt eksamen),2013,v
+BIT,707730,,Ikke møtt,2013,s
+BIT,707730,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,707730,F,Ikke bestått,2014,s
+BIT,707730,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,708347,C,Bestått,2010,v
+BIT,709492,D,Bestått,2011,v
+BIT,711357,E,Bestått,2010,v
+BIT,711357,F,Ikke bestått,2012,v
+BIT,712742,B,Bestått,2010,v
+BIT,712746,E,Bestått,2010,v
+BIT,712746,,Ikke møtt,2017,v
+BIT,712788,C,Bestått,2010,v
+BIT,712808,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,712808,F,Ikke bestått,2010,s
+BIT,712808,D,Bestått,2012,v
+BIT,713257,F,Ikke bestått,2010,v
+BIT,713257,,Trekk under eksamen (Avbrutt eksamen),2012,v
+BIT,713257,,Trekk under eksamen (Avbrutt eksamen),2013,v
+BIT,713257,,Trekk under eksamen (Avbrutt eksamen),2013,s
+BIT,713257,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,713257,,Ikke møtt,2014,s
+BIT,713261,C,Bestått,2010,v
+BIT,713261,C,Bestått,2011,v
+BIT,713262,B,Bestått,2010,v
+BIT,713263,B,Bestått,2010,v
+BIT,713263,B,Bestått,2012,v
+BIT,713264,,Manglende øvinger,2010,v
+BIT,713264,B,Bestått,2011,v
+BIT,713265,,Manglende øvinger,2010,v
+BIT,713268,F,Ikke bestått,2010,v
+BIT,713268,D,Bestått,2011,v
+BIT,713275,F,Ikke bestått,2010,v
+BIT,713275,E,Bestått,2012,v
+BIT,713397,D,Bestått,2011,v
+BIT,713397,B,Bestått,2013,v
+BIT,713504,E,Bestått,2015,v
+BIT,713504,E,Bestått,2017,v
+BIT,713679,C,Bestått,2010,v
+BIT,713679,B,Bestått,2013,v
+BIT,713680,D,Bestått,2010,v
+BIT,713683,C,Bestått,2010,v
+BIT,713683,B,Bestått,2011,v
+BIT,713684,D,Bestått,2010,v
+BIT,713684,C,Bestått,2011,v
+BIT,713685,B,Bestått,2010,v
+BIT,713687,D,Bestått,2010,v
+BIT,713687,C,Bestått,2013,v
+BIT,713688,C,Bestått,2010,v
+BIT,713689,F,Ikke bestått,2010,v
+BIT,713689,F,Ikke bestått,2012,v
+BIT,713689,F,Ikke bestått,2012,s
+BIT,713689,C,Bestått,2013,v
+BIT,713690,B,Bestått,2010,v
+BIT,713690,C,Bestått,2011,v
+BIT,713692,E,Bestått,2010,v
+BIT,713692,D,Bestått,2013,v
+BIT,713693,,Manglende øvinger,2010,v
+BIT,713694,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,713695,F,Ikke bestått,2010,v
+BIT,713695,F,Ikke bestått,2012,v
+BIT,713695,E,Bestått,2012,s
+BIT,713696,D,Bestått,2010,v
+BIT,713697,E,Bestått,2010,v
+BIT,713697,C,Bestått,2013,v
+BIT,713698,,Ikke møtt,2010,v
+BIT,713698,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,713698,,Trekk under eksamen (Avbrutt eksamen),2012,v
+BIT,713698,D,Bestått,2012,s
+BIT,713698,,Ikke møtt,2015,v
+BIT,713700,A,Bestått,2010,v
+BIT,713702,C,Bestått,2010,v
+BIT,713703,D,Bestått,2010,v
+BIT,713704,E,Bestått,2010,v
+BIT,713704,E,Bestått,2011,v
+BIT,713705,C,Bestått,2010,v
+BIT,713708,B,Bestått,2010,v
+BIT,713709,B,Bestått,2010,v
+BIT,713710,,Manglende øvinger,2013,v
+BIT,713713,,Manglende øvinger,2010,v
+BIT,713713,E,Bestått,2012,v
+BIT,713714,F,Ikke bestått,2010,v
+BIT,713715,E,Bestått,2010,v
+BIT,713715,D,Bestått,2012,v
+BIT,713716,D,Bestått,2010,v
+BIT,713716,B,Bestått,2011,v
+BIT,713717,,Ikke møtt,2010,v
+BIT,713718,F,Ikke bestått,2010,v
+BIT,713718,F,Ikke bestått,2010,s
+BIT,713718,E,Bestått,2011,v
+BIT,713718,E,Bestått,2012,v
+BIT,713719,C,Bestått,2010,v
+BIT,713719,B,Bestått,2013,v
+BIT,713720,B,Bestått,2010,v
+BIT,713721,E,Bestått,2010,v
+BIT,713723,B,Bestått,2010,v
+BIT,713724,C,Bestått,2010,v
+BIT,713726,E,Bestått,2010,v
+BIT,713726,D,Bestått,2011,v
+BIT,713727,E,Bestått,2010,v
+BIT,713727,C,Bestått,2011,v
+BIT,713728,D,Bestått,2010,v
+BIT,713729,D,Bestått,2010,v
+BIT,713730,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,713730,F,Ikke bestått,2010,s
+BIT,713731,D,Bestått,2010,v
+BIT,713732,A,Bestått,2010,v
+BIT,713734,,Manglende øvinger,2010,v
+BIT,713735,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,713735,D,Bestått,2011,v
+BIT,713735,C,Bestått,2013,v
+BIT,713736,C,Bestått,2010,v
+BIT,713736,,Ikke møtt,2012,v
+BIT,713737,,Manglende øvinger,2010,v
+BIT,713737,,Ikke møtt,2011,v
+BIT,713737,C,Bestått,2012,v
+BIT,713739,,Manglende øvinger,2010,v
+BIT,713741,B,Bestått,2010,v
+BIT,713743,B,Bestått,2010,v
+BIT,713745,,Manglende øvinger,2010,v
+BIT,713745,F,Ikke bestått,2011,v
+BIT,713745,F,Ikke bestått,2012,v
+BIT,713745,E,Bestått,2013,v
+BIT,713746,D,Bestått,2010,v
+BIT,713746,C,Bestått,2011,v
+BIT,713748,E,Bestått,2010,v
+BIT,713749,C,Bestått,2010,v
+BIT,713750,E,Bestått,2012,v
+BIT,713750,E,Bestått,2014,v
+BIT,713751,C,Bestått,2010,v
+BIT,713752,B,Bestått,2010,v
+BIT,713753,,Manglende øvinger,2010,v
+BIT,713753,,Trekk under eksamen (Avbrutt eksamen),2013,v
+BIT,713753,F,Ikke bestått,2013,s
+BIT,713753,B,Bestått,2014,v
+BIT,713754,,Ikke møtt,2010,v
+BIT,713755,,Manglende øvinger,2010,v
+BIT,713755,C,Bestått,2011,v
+BIT,713756,C,Bestått,2010,v
+BIT,713757,C,Bestått,2010,v
+BIT,713757,C,Bestått,2011,v
+BIT,713758,D,Bestått,2010,v
+BIT,713758,B,Bestått,2013,v
+BIT,713787,F,Ikke bestått,2011,v
+BIT,713787,,Ikke møtt,2011,s
+BIT,713787,E,Bestått,2013,v
+BIT,713941,C,Bestått,2011,v
+BIT,713995,B,Bestått,2013,v
+BIT,714241,C,Bestått,2014,v
+BIT,714289,B,Bestått,2012,v
+BIT,714844,C,Bestått,2010,v
+BIT,714972,E,Bestått,2010,v
+BIT,714972,C,Bestått,2015,v
+BIT,715070,,Manglende øvinger,2013,v
+BIT,715582,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,715582,F,Ikke bestått,2011,v
+BIT,715582,F,Ikke bestått,2011,s
+BIT,715582,,Gyldig fravær,2012,v
+BIT,715582,,Ikke møtt,2012,s
+BIT,715582,D,Bestått,2013,v
+BIT,715592,,Trekk under eksamen (Avbrutt eksamen),2010,v
+BIT,715592,E,Bestått,2011,v
+BIT,715604,B,Bestått,2010,v
+BIT,715620,,Manglende øvinger,2010,v
+BIT,715620,C,Bestått,2011,v
+BIT,715651,,Trekk under eksamen (Avbrutt eksamen),2012,v
+BIT,715651,F,Ikke bestått,2013,v
+BIT,715651,F,Ikke bestått,2013,s
+BIT,715651,F,Ikke bestått,2014,v
+BIT,716379,,Manglende øvinger,2016,v
+BIT,716379,,Manglende øvinger,2017,v
+BIT,716455,F,Ikke bestått,2018,v
+BIT,717975,B,Bestått,2011,v
+BIT,718721,,Manglende øvinger,2013,v
+BIT,718721,F,Ikke bestått,2015,v
+BIT,718721,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,718721,,Trekk under eksamen (Avbrutt eksamen),2016,s
+BIT,718721,F,Ikke bestått,2017,v
+BIT,718721,F,Ikke bestått,2017,s
+BIT,721118,F,Ikke bestått,2011,v
+BIT,721118,,Trekk under eksamen (Avbrutt eksamen),2011,s
+BIT,721478,F,Ikke bestått,2016,v
+BIT,721478,,Trekk under eksamen (Avbrutt eksamen),2016,s
+BIT,721478,C,Bestått,2017,v
+BIT,721519,D,Bestått,2012,v
+BIT,721519,D,Bestått,2016,v
+BIT,721559,F,Ikke bestått,2014,v
+BIT,721559,E,Bestått,2015,v
+BIT,721704,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,721704,F,Ikke bestått,2016,s
+BIT,721704,,Trekk under eksamen (Avbrutt eksamen),2018,v
+BIT,721704,F,Ikke bestått,2018,s
+BIT,721881,D,Bestått,2011,v
+BIT,721883,F,Ikke bestått,2011,v
+BIT,721883,C,Bestått,2011,s
+BIT,721887,D,Bestått,2011,v
+BIT,721887,B,Bestått,2013,v
+BIT,721897,D,Bestått,2011,v
+BIT,721897,D,Bestått,2014,v
+BIT,721898,C,Bestått,2011,v
+BIT,721908,F,Ikke bestått,2011,v
+BIT,721908,E,Bestått,2012,v
+BIT,721908,E,Bestått,2014,v
+BIT,721913,B,Bestått,2013,v
+BIT,721914,D,Bestått,2011,v
+BIT,721915,E,Bestått,2011,v
+BIT,721915,B,Bestått,2013,v
+BIT,721917,C,Bestått,2011,v
+BIT,721918,B,Bestått,2011,v
+BIT,721919,C,Bestått,2011,v
+BIT,721919,,Gyldig fravær,2012,v
+BIT,721919,A,Bestått,2012,s
+BIT,721921,C,Bestått,2011,v
+BIT,721923,C,Bestått,2011,v
+BIT,721923,A,Bestått,2013,v
+BIT,721926,C,Bestått,2011,v
+BIT,721927,E,Bestått,2011,v
+BIT,721930,,Manglende øvinger,2011,v
+BIT,721930,,Manglende øvinger,2012,v
+BIT,721930,,Manglende øvinger,2013,v
+BIT,721931,F,Ikke bestått,2011,v
+BIT,721931,,Ikke møtt,2012,v
+BIT,721933,E,Bestått,2011,v
+BIT,721934,E,Bestått,2011,v
+BIT,721934,F,Ikke bestått,2014,v
+BIT,721935,,Manglende øvinger,2011,v
+BIT,721935,C,Bestått,2012,v
+BIT,721937,C,Bestått,2011,v
+BIT,721938,D,Bestått,2011,v
+BIT,721939,D,Bestått,2011,v
+BIT,721942,B,Bestått,2011,v
+BIT,721944,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,721944,F,Ikke bestått,2012,v
+BIT,721944,C,Bestått,2013,v
+BIT,721945,,Manglende øvinger,2011,v
+BIT,721945,C,Bestått,2012,v
+BIT,721946,C,Bestått,2011,v
+BIT,721946,C,Bestått,2012,v
+BIT,721947,C,Bestått,2011,v
+BIT,721948,,Manglende øvinger,2011,v
+BIT,721948,D,Bestått,2012,v
+BIT,721949,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,721950,,Manglende øvinger,2011,v
+BIT,721951,A,Bestått,2011,v
+BIT,721952,C,Bestått,2011,v
+BIT,721952,C,Bestått,2013,v
+BIT,721953,F,Ikke bestått,2011,v
+BIT,721954,D,Bestått,2011,v
+BIT,721955,E,Bestått,2011,v
+BIT,721955,C,Bestått,2012,v
+BIT,721956,E,Bestått,2011,v
+BIT,721956,C,Bestått,2012,v
+BIT,721958,E,Bestått,2011,v
+BIT,721958,D,Bestått,2013,v
+BIT,721960,C,Bestått,2011,v
+BIT,721960,C,Bestått,2014,v
+BIT,721961,B,Bestått,2011,v
+BIT,721961,B,Bestått,2013,v
+BIT,721962,,Manglende øvinger,2011,v
+BIT,721965,C,Bestått,2011,v
+BIT,721966,E,Bestått,2012,v
+BIT,721966,C,Bestått,2014,v
+BIT,721968,C,Bestått,2011,v
+BIT,721969,D,Bestått,2011,v
+BIT,721971,,Manglende øvinger,2011,v
+BIT,721971,D,Bestått,2013,v
+BIT,721972,B,Bestått,2011,v
+BIT,721973,B,Bestått,2012,v
+BIT,721974,B,Bestått,2011,v
+BIT,721974,B,Bestått,2013,v
+BIT,721976,B,Bestått,2011,v
+BIT,721977,B,Bestått,2011,v
+BIT,721978,,Trekk under eksamen (Avbrutt eksamen),2011,v
+BIT,721978,F,Ikke bestått,2011,s
+BIT,721978,F,Ikke bestått,2012,v
+BIT,721978,C,Bestått,2013,v
+BIT,721979,,Gyldig fravær,2011,v
+BIT,721979,,Ikke møtt,2011,s
+BIT,721979,D,Bestått,2012,v
+BIT,721979,B,Bestått,2013,v
+BIT,721980,F,Ikke bestått,2011,v
+BIT,721981,D,Bestått,2011,v
+BIT,721981,C,Bestått,2015,v
+BIT,721982,F,Ikke bestått,2011,v
+BIT,721982,,Trekk under eksamen (Avbrutt eksamen),2012,v
+BIT,721982,E,Bestått,2012,s
+BIT,721982,B,Bestått,2013,v
+BIT,721983,F,Ikke bestått,2011,v
+BIT,721983,,Ikke møtt,2015,v
+BIT,721987,E,Bestått,2011,v
+BIT,721987,C,Bestått,2013,v
+BIT,721988,C,Bestått,2011,v
+BIT,721991,D,Bestått,2011,v
+BIT,721991,C,Bestått,2013,v
+BIT,721993,F,Ikke bestått,2011,v
+BIT,721993,F,Ikke bestått,2011,s
+BIT,721993,D,Bestått,2013,v
+BIT,721995,C,Bestått,2011,v
+BIT,721996,C,Bestått,2011,v
+BIT,721996,B,Bestått,2013,v
+BIT,722046,,Manglende øvinger,2011,v
+BIT,722046,,Manglende øvinger,2012,v
+BIT,722046,,Manglende øvinger,2013,v
+BIT,722046,,Manglende øvinger,2016,v
+BIT,722331,F,Ikke bestått,2018,v
+BIT,722357,,Manglende øvinger,2012,v
+BIT,722357,,Manglende øvinger,2013,v
+BIT,722357,,Manglende øvinger,2014,v
+BIT,722687,E,Bestått,2015,v
+BIT,722838,D,Bestått,2015,v
+BIT,722838,D,Bestått,2016,v
+BIT,722847,,Manglende øvinger,2017,v
+BIT,723150,D,Bestått,2017,v
+BIT,723388,F,Ikke bestått,2015,v
+BIT,723388,F,Ikke bestått,2016,v
+BIT,723388,,Ikke møtt,2016,s
+BIT,723668,C,Bestått,2011,v
+BIT,723683,D,Bestått,2011,v
+BIT,723732,E,Bestått,2011,v
+BIT,723735,,Manglende øvinger,2011,v
+BIT,723735,,Manglende øvinger,2012,v
+BIT,723735,,Manglende øvinger,2015,v
+BIT,723735,,Manglende øvinger,2016,v
+BIT,723748,E,Bestått,2011,v
+BIT,723748,C,Bestått,2012,v
+BIT,723765,F,Ikke bestått,2012,v
+BIT,723765,F,Ikke bestått,2012,s
+BIT,723765,F,Ikke bestått,2013,v
+BIT,723765,,Ikke møtt,2013,s
+BIT,723765,,Ikke møtt,2015,v
+BIT,723765,,Ikke møtt,2016,v
+BIT,723836,D,Bestått,2016,v
+BIT,724056,,Ikke møtt,2016,v
+BIT,724289,B,Bestått,2017,v
+BIT,724683,C,Bestått,2011,v
+BIT,724843,C,Bestått,2013,v
+BIT,724923,,Manglende øvinger,2012,v
+BIT,725155,C,Bestått,2015,v
+BIT,725155,,Ikke møtt,2018,v
+BIT,728898,D,Bestått,2012,v
+BIT,728898,,Ikke møtt,2014,v
+BIT,728959,E,Bestått,2012,v
+BIT,728959,E,Bestått,2014,v
+BIT,728959,,Ikke møtt,2017,v
+BIT,729021,,Manglende øvinger,2012,v
+BIT,729069,E,Bestått,2012,v
+BIT,729069,E,Bestått,2014,v
+BIT,729093,F,Ikke bestått,2012,v
+BIT,729093,E,Bestått,2013,v
+BIT,729104,,Manglende øvinger,2018,v
+BIT,729168,C,Bestått,2015,v
+BIT,729168,,Ikke møtt,2017,v
+BIT,729187,C,Bestått,2013,v
+BIT,729524,,Manglende øvinger,2012,v
+BIT,729524,D,Bestått,2013,v
+BIT,729543,,Gyldig fravær,2012,v
+BIT,729543,,Manglende øvinger,2013,v
+BIT,729543,,Manglende øvinger,2015,v
+BIT,729543,,Manglende øvinger,2016,v
+BIT,729550,E,Bestått,2012,v
+BIT,729550,,Gyldig fravær,2015,v
+BIT,729550,E,Bestått,2015,s
+BIT,729551,C,Bestått,2012,v
+BIT,729568,D,Bestått,2012,v
+BIT,729570,E,Bestått,2012,v
+BIT,729570,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,729570,C,Bestått,2014,s
+BIT,729599,A,Bestått,2013,v
+BIT,729660,D,Bestått,2012,v
+BIT,729665,C,Bestått,2012,v
+BIT,729791,,Manglende øvinger,2012,v
+BIT,729791,F,Ikke bestått,2013,v
+BIT,729791,F,Ikke bestått,2013,s
+BIT,729791,E,Bestått,2014,v
+BIT,729793,D,Bestått,2012,v
+BIT,729798,F,Ikke bestått,2012,v
+BIT,729798,E,Bestått,2013,v
+BIT,729803,C,Bestått,2012,v
+BIT,729804,C,Bestått,2012,v
+BIT,729805,D,Bestått,2012,v
+BIT,729812,C,Bestått,2012,v
+BIT,730486,F,Ikke bestått,2012,v
+BIT,730486,,Ikke møtt,2012,s
+BIT,730486,D,Bestått,2013,v
+BIT,730487,,Manglende øvinger,2012,v
+BIT,730489,D,Bestått,2012,v
+BIT,730489,D,Bestått,2015,v
+BIT,730491,C,Bestått,2012,v
+BIT,730493,F,Ikke bestått,2012,v
+BIT,730493,F,Ikke bestått,2013,s
+BIT,730493,F,Ikke bestått,2016,v
+BIT,730494,B,Bestått,2013,v
+BIT,730495,C,Bestått,2012,v
+BIT,730496,D,Bestått,2012,v
+BIT,730497,C,Bestått,2012,v
+BIT,730499,F,Ikke bestått,2012,v
+BIT,730499,D,Bestått,2012,s
+BIT,730499,D,Bestått,2013,v
+BIT,730501,C,Bestått,2012,v
+BIT,730502,D,Bestått,2012,v
+BIT,730503,,Manglende øvinger,2012,v
+BIT,730504,C,Bestått,2012,v
+BIT,730505,F,Ikke bestått,2012,v
+BIT,730505,,Ikke møtt,2012,s
+BIT,730506,C,Bestått,2012,v
+BIT,730507,B,Bestått,2012,v
+BIT,730509,,Manglende øvinger,2012,v
+BIT,730511,C,Bestått,2012,v
+BIT,730512,F,Ikke bestått,2012,v
+BIT,730513,C,Bestått,2012,v
+BIT,730514,C,Bestått,2012,v
+BIT,730515,E,Bestått,2012,v
+BIT,730516,D,Bestått,2012,v
+BIT,730516,C,Bestått,2013,v
+BIT,730517,,Manglende øvinger,2012,v
+BIT,730517,E,Bestått,2013,v
+BIT,730518,C,Bestått,2012,v
+BIT,730518,A,Bestått,2014,v
+BIT,730520,C,Bestått,2012,v
+BIT,730521,F,Ikke bestått,2012,v
+BIT,730521,,Ikke møtt,2012,s
+BIT,730521,,Ikke møtt,2015,v
+BIT,730522,A,Bestått,2013,v
+BIT,730523,,Manglende øvinger,2012,v
+BIT,730524,E,Bestått,2012,v
+BIT,730524,D,Bestått,2014,v
+BIT,730525,E,Bestått,2012,v
+BIT,730525,E,Bestått,2014,v
+BIT,730526,F,Ikke bestått,2012,v
+BIT,730527,E,Bestått,2012,v
+BIT,730528,,Trekk under eksamen (Avbrutt eksamen),2012,v
+BIT,730528,,Ikke møtt,2013,v
+BIT,730528,,Ikke møtt,2014,v
+BIT,730529,C,Bestått,2012,v
+BIT,730531,B,Bestått,2012,v
+BIT,730534,,Manglende øvinger,2012,v
+BIT,730535,C,Bestått,2012,v
+BIT,730537,,Manglende øvinger,2012,v
+BIT,730540,,Manglende øvinger,2012,v
+BIT,730541,,Manglende øvinger,2012,v
+BIT,730542,F,Ikke bestått,2012,v
+BIT,730542,D,Bestått,2013,v
+BIT,730543,C,Bestått,2012,v
+BIT,730544,C,Bestått,2012,v
+BIT,730545,F,Ikke bestått,2013,v
+BIT,730545,,Trekk under eksamen (Avbrutt eksamen),2013,s
+BIT,730546,B,Bestått,2012,v
+BIT,730547,C,Bestått,2012,v
+BIT,730548,B,Bestått,2012,v
+BIT,730549,F,Ikke bestått,2012,v
+BIT,730549,F,Ikke bestått,2013,v
+BIT,730549,F,Ikke bestått,2014,s
+BIT,730549,F,Ikke bestått,2015,v
+BIT,730549,F,Ikke bestått,2016,v
+BIT,730549,F,Ikke bestått,2017,v
+BIT,730549,F,Ikke bestått,2018,v
+BIT,730549,F,Ikke bestått,2018,s
+BIT,730550,B,Bestått,2012,v
+BIT,730550,C,Bestått,2015,v
+BIT,730551,C,Bestått,2012,v
+BIT,730552,F,Ikke bestått,2012,v
+BIT,730552,F,Ikke bestått,2012,s
+BIT,730552,F,Ikke bestått,2013,v
+BIT,730552,E,Bestått,2014,v
+BIT,730554,D,Bestått,2012,v
+BIT,730554,D,Bestått,2016,v
+BIT,730555,D,Bestått,2012,v
+BIT,730556,A,Bestått,2012,v
+BIT,730557,B,Bestått,2012,v
+BIT,730558,,Manglende øvinger,2012,v
+BIT,730558,D,Bestått,2013,v
+BIT,730786,,Manglende øvinger,2013,v
+BIT,730786,D,Bestått,2015,v
+BIT,730786,,Legeattest,2016,v
+BIT,730786,,Legeattest,2016,s
+BIT,730786,C,Bestått,2017,v
+BIT,730791,D,Bestått,2018,v
+BIT,730799,C,Bestått,2013,v
+BIT,731367,,Manglende øvinger,2014,v
+BIT,731752,,Ikke møtt,2012,v
+BIT,731771,A,Bestått,2012,v
+BIT,731802,C,Bestått,2012,v
+BIT,731817,C,Bestått,2013,v
+BIT,731817,B,Bestått,2015,v
+BIT,732271,,Manglende øvinger,2017,v
+BIT,732370,C,Bestått,2012,v
+BIT,732371,,Manglende øvinger,2012,v
+BIT,732371,,Manglende øvinger,2013,v
+BIT,732791,B,Bestått,2013,v
+BIT,733793,D,Bestått,2013,v
+BIT,733795,B,Bestått,2013,v
+BIT,733803,F,Ikke bestått,2013,v
+BIT,733803,,Ikke møtt,2013,s
+BIT,734164,D,Bestått,2013,v
+BIT,734164,C,Bestått,2014,v
+BIT,734250,D,Bestått,2015,v
+BIT,736379,C,Bestått,2013,v
+BIT,736379,B,Bestått,2015,v
+BIT,736700,E,Bestått,2014,v
+BIT,737867,C,Bestått,2013,v
+BIT,737994,B,Bestått,2013,v
+BIT,738115,E,Bestått,2013,v
+BIT,738705,B,Bestått,2013,v
+BIT,738861,C,Bestått,2013,v
+BIT,738861,A,Bestått,2016,v
+BIT,739129,,Manglende øvinger,2014,v
+BIT,739129,,Manglende øvinger,2015,v
+BIT,739129,,Manglende øvinger,2017,v
+BIT,739382,F,Ikke bestått,2013,v
+BIT,739383,C,Bestått,2013,v
+BIT,739384,C,Bestått,2013,v
+BIT,739385,E,Bestått,2014,v
+BIT,739388,B,Bestått,2013,v
+BIT,739389,E,Bestått,2013,v
+BIT,739390,B,Bestått,2013,v
+BIT,739391,B,Bestått,2013,v
+BIT,739392,C,Bestått,2013,v
+BIT,739393,D,Bestått,2013,v
+BIT,739394,C,Bestått,2013,v
+BIT,739395,C,Bestått,2013,v
+BIT,739397,D,Bestått,2013,v
+BIT,739398,C,Bestått,2013,v
+BIT,739399,D,Bestått,2013,v
+BIT,739399,D,Bestått,2014,v
+BIT,739400,B,Bestått,2013,v
+BIT,739401,B,Bestått,2013,v
+BIT,739402,C,Bestått,2013,v
+BIT,739402,D,Bestått,2016,v
+BIT,739403,C,Bestått,2013,v
+BIT,739405,C,Bestått,2013,v
+BIT,739407,D,Bestått,2013,v
+BIT,739407,C,Bestått,2016,v
+BIT,739408,E,Bestått,2013,v
+BIT,739408,E,Bestått,2015,v
+BIT,739409,E,Bestått,2013,v
+BIT,739409,C,Bestått,2016,v
+BIT,739410,C,Bestått,2013,v
+BIT,739411,B,Bestått,2013,v
+BIT,739413,C,Bestått,2013,v
+BIT,739414,,Manglende øvinger,2013,v
+BIT,739414,,Ikke møtt,2014,v
+BIT,739414,,Ikke møtt,2015,v
+BIT,739418,F,Ikke bestått,2013,v
+BIT,739419,D,Bestått,2013,v
+BIT,739419,,Ikke møtt,2017,v
+BIT,739420,D,Bestått,2013,v
+BIT,739420,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,739422,E,Bestått,2013,v
+BIT,739423,D,Bestått,2013,v
+BIT,739423,,Legeattest,2018,v
+BIT,739424,C,Bestått,2013,v
+BIT,739425,B,Bestått,2013,v
+BIT,739426,F,Ikke bestått,2014,v
+BIT,739426,C,Bestått,2014,s
+BIT,739427,,Manglende øvinger,2014,v
+BIT,739428,F,Ikke bestått,2015,v
+BIT,739428,D,Bestått,2016,v
+BIT,739430,D,Bestått,2013,v
+BIT,739430,B,Bestått,2016,v
+BIT,739431,C,Bestått,2013,v
+BIT,739432,F,Ikke bestått,2013,v
+BIT,739432,F,Ikke bestått,2013,s
+BIT,739433,C,Bestått,2013,v
+BIT,739434,D,Bestått,2013,v
+BIT,739435,C,Bestått,2013,v
+BIT,739436,F,Ikke bestått,2014,v
+BIT,739436,,Ikke møtt,2014,s
+BIT,739436,F,Ikke bestått,2015,v
+BIT,739436,F,Ikke bestått,2016,v
+BIT,739436,,Ikke møtt,2016,s
+BIT,739436,D,Bestått,2017,v
+BIT,739437,F,Ikke bestått,2013,v
+BIT,739438,C,Bestått,2013,v
+BIT,739439,,Manglende øvinger,2013,v
+BIT,739439,,Manglende øvinger,2015,v
+BIT,739440,C,Bestått,2013,v
+BIT,739440,B,Bestått,2016,v
+BIT,739442,A,Bestått,2013,v
+BIT,739443,,Manglende øvinger,2013,v
+BIT,739444,B,Bestått,2013,v
+BIT,739446,C,Bestått,2013,v
+BIT,739446,C,Bestått,2015,v
+BIT,739447,A,Bestått,2013,v
+BIT,739448,F,Ikke bestått,2013,v
+BIT,739448,,Ikke møtt,2013,s
+BIT,739448,,Ikke møtt,2014,v
+BIT,739448,,Ikke møtt,2015,v
+BIT,739448,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,739448,,Ikke møtt,2016,s
+BIT,739448,F,Ikke bestått,2017,v
+BIT,739448,E,Bestått,2017,s
+BIT,739449,E,Bestått,2013,v
+BIT,739449,C,Bestått,2017,v
+BIT,739450,C,Bestått,2013,v
+BIT,739452,C,Bestått,2013,v
+BIT,739453,,Manglende øvinger,2013,v
+BIT,739454,B,Bestått,2013,v
+BIT,739455,A,Bestått,2013,v
+BIT,739456,C,Bestått,2013,v
+BIT,739457,,Manglende øvinger,2013,v
+BIT,739458,E,Bestått,2013,v
+BIT,739459,,Manglende øvinger,2013,v
+BIT,739460,C,Bestått,2013,v
+BIT,739461,C,Bestått,2013,v
+BIT,739463,D,Bestått,2013,v
+BIT,739463,D,Bestått,2014,v
+BIT,739464,,Manglende øvinger,2013,v
+BIT,739465,B,Bestått,2013,v
+BIT,739466,E,Bestått,2013,v
+BIT,739467,E,Bestått,2013,v
+BIT,739467,C,Bestått,2015,v
+BIT,739468,B,Bestått,2013,v
+BIT,739469,,Ikke møtt,2013,v
+BIT,739469,B,Bestått,2014,v
+BIT,739471,D,Bestått,2013,v
+BIT,739471,D,Bestått,2015,v
+BIT,739472,F,Ikke bestått,2013,v
+BIT,739472,F,Ikke bestått,2014,v
+BIT,739472,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,739472,,Ikke møtt,2015,s
+BIT,739472,F,Ikke bestått,2016,v
+BIT,739472,D,Bestått,2017,v
+BIT,739473,B,Bestått,2013,v
+BIT,739474,C,Bestått,2013,v
+BIT,739476,F,Ikke bestått,2013,v
+BIT,739476,E,Bestått,2013,s
+BIT,739476,E,Bestått,2014,v
+BIT,739477,D,Bestått,2013,v
+BIT,739478,D,Bestått,2013,v
+BIT,739479,,Manglende øvinger,2013,v
+BIT,739480,,Manglende øvinger,2013,v
+BIT,739481,C,Bestått,2013,v
+BIT,739481,E,Bestått,2014,v
+BIT,739482,C,Bestått,2013,v
+BIT,739483,D,Bestått,2013,v
+BIT,739486,,Gyldig fravær,2013,v
+BIT,739486,,Trekk under eksamen (Avbrutt eksamen),2013,s
+BIT,739487,D,Bestått,2018,v
+BIT,739488,C,Bestått,2013,v
+BIT,739488,,Ikke møtt,2018,v
+BIT,739489,D,Bestått,2015,v
+BIT,739489,C,Bestått,2016,v
+BIT,739568,C,Bestått,2017,v
+BIT,739757,,Manglende øvinger,2017,v
+BIT,739757,D,Bestått,2018,v
+BIT,739803,C,Bestått,2014,v
+BIT,739888,C,Bestått,2015,v
+BIT,740481,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,740481,,Trekk under eksamen (Avbrutt eksamen),2014,s
+BIT,740873,F,Ikke bestått,2014,v
+BIT,740873,D,Bestått,2016,v
+BIT,740941,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,740941,E,Bestått,2016,v
+BIT,740945,B,Bestått,2014,v
+BIT,741089,C,Bestått,2014,v
+BIT,741322,C,Bestått,2014,v
+BIT,741322,F,Ikke bestått,2016,v
+BIT,741380,,Manglende øvinger,2013,v
+BIT,741380,C,Bestått,2017,v
+BIT,741384,E,Bestått,2013,v
+BIT,741401,F,Ikke bestått,2013,v
+BIT,741401,E,Bestått,2014,v
+BIT,741401,F,Ikke bestått,2017,v
+BIT,742233,C,Bestått,2018,v
+BIT,742239,D,Bestått,2018,v
+BIT,742481,F,Ikke bestått,2017,v
+BIT,742481,F,Ikke bestått,2017,s
+BIT,743010,,Manglende øvinger,2013,v
+BIT,745433,D,Bestått,2014,v
+BIT,745675,D,Bestått,2014,v
+BIT,745675,C,Bestått,2015,v
+BIT,745739,,Manglende øvinger,2014,v
+BIT,745766,,Manglende øvinger,2014,v
+BIT,745848,B,Bestått,2014,v
+BIT,746052,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,746052,E,Bestått,2014,s
+BIT,746052,,Gyldig fravær,2015,v
+BIT,746052,D,Bestått,2015,s
+BIT,746052,,Ikke møtt,2017,v
+BIT,746106,E,Bestått,2014,v
+BIT,746106,C,Bestått,2015,v
+BIT,746137,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,746137,E,Bestått,2014,s
+BIT,746137,D,Bestått,2017,v
+BIT,746194,,Manglende øvinger,2014,v
+BIT,746224,D,Bestått,2014,v
+BIT,746224,C,Bestått,2016,v
+BIT,747522,,Manglende øvinger,2014,v
+BIT,747522,,Manglende øvinger,2015,v
+BIT,747549,E,Bestått,2014,v
+BIT,747549,C,Bestått,2016,v
+BIT,747565,F,Ikke bestått,2014,v
+BIT,747565,D,Bestått,2014,s
+BIT,747565,C,Bestått,2015,v
+BIT,747573,B,Bestått,2014,v
+BIT,748055,,Manglende øvinger,2015,v
+BIT,748083,F,Ikke bestått,2015,v
+BIT,748083,F,Ikke bestått,2016,v
+BIT,748083,F,Ikke bestått,2017,v
+BIT,748083,,Ikke møtt,2017,s
+BIT,748256,F,Ikke bestått,2017,v
+BIT,748256,E,Bestått,2018,v
+BIT,748353,E,Bestått,2015,v
+BIT,748353,,Ikke møtt,2018,v
+BIT,748403,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,748403,,Ikke møtt,2016,s
+BIT,748403,,Trekk under eksamen (Avbrutt eksamen),2017,v
+BIT,748403,,Ikke møtt,2017,s
+BIT,748403,D,Bestått,2018,v
+BIT,748412,,Manglende øvinger,2018,v
+BIT,749023,C,Bestått,2015,v
+BIT,749148,F,Ikke bestått,2015,v
+BIT,749148,F,Ikke bestått,2015,s
+BIT,749148,E,Bestått,2016,v
+BIT,749148,,Ikke møtt,2017,v
+BIT,749289,C,Bestått,2015,v
+BIT,749310,C,Bestått,2018,v
+BIT,749335,C,Bestått,2016,v
+BIT,749374,F,Ikke bestått,2015,v
+BIT,749374,E,Bestått,2015,s
+BIT,749374,D,Bestått,2017,v
+BIT,749408,C,Bestått,2014,v
+BIT,749429,C,Bestått,2017,v
+BIT,749498,F,Ikke bestått,2018,v
+BIT,749513,C,Bestått,2015,v
+BIT,749525,E,Bestått,2018,v
+BIT,749747,F,Ikke bestått,2014,v
+BIT,749747,E,Bestått,2015,v
+BIT,749935,C,Bestått,2014,v
+BIT,750536,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,750536,C,Bestått,2014,s
+BIT,750571,B,Bestått,2014,v
+BIT,751032,D,Bestått,2015,v
+BIT,751261,B,Bestått,2017,v
+BIT,751326,E,Bestått,2014,v
+BIT,751326,B,Bestått,2016,v
+BIT,751327,B,Bestått,2014,v
+BIT,751328,,Ikke møtt,2014,v
+BIT,751328,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,751328,,Ikke møtt,2016,s
+BIT,751329,,Manglende øvinger,2014,v
+BIT,751330,C,Bestått,2014,v
+BIT,751331,,Manglende øvinger,2014,v
+BIT,751331,D,Bestått,2015,v
+BIT,751332,C,Bestått,2014,v
+BIT,751333,B,Bestått,2014,v
+BIT,751334,,Manglende øvinger,2014,v
+BIT,751334,,Manglende øvinger,2015,v
+BIT,751335,F,Ikke bestått,2014,v
+BIT,751335,E,Bestått,2016,v
+BIT,751336,D,Bestått,2014,v
+BIT,751337,F,Ikke bestått,2014,v
+BIT,751337,F,Ikke bestått,2016,v
+BIT,751337,E,Bestått,2016,s
+BIT,751339,E,Bestått,2014,v
+BIT,751340,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751340,F,Ikke bestått,2016,v
+BIT,751340,F,Ikke bestått,2016,s
+BIT,751340,F,Ikke bestått,2017,v
+BIT,751340,F,Ikke bestått,2018,v
+BIT,751341,C,Bestått,2014,v
+BIT,751342,B,Bestått,2014,v
+BIT,751343,F,Ikke bestått,2014,v
+BIT,751343,E,Bestått,2014,s
+BIT,751346,E,Bestått,2014,v
+BIT,751347,C,Bestått,2014,v
+BIT,751348,C,Bestått,2014,v
+BIT,751348,C,Bestått,2017,v
+BIT,751349,D,Bestått,2014,v
+BIT,751351,C,Bestått,2015,v
+BIT,751352,B,Bestått,2014,v
+BIT,751354,B,Bestått,2014,v
+BIT,751355,E,Bestått,2014,v
+BIT,751355,,Ikke møtt,2014,s
+BIT,751355,D,Bestått,2016,v
+BIT,751357,D,Bestått,2014,v
+BIT,751358,F,Ikke bestått,2014,v
+BIT,751358,,Ikke møtt,2015,v
+BIT,751358,,Ikke møtt,2016,v
+BIT,751358,,Ikke møtt,2017,v
+BIT,751358,F,Ikke bestått,2018,v
+BIT,751358,,Ikke møtt,2018,s
+BIT,751359,F,Ikke bestått,2014,v
+BIT,751359,E,Bestått,2014,s
+BIT,751359,C,Bestått,2017,v
+BIT,751360,D,Bestått,2014,v
+BIT,751360,C,Bestått,2016,v
+BIT,751361,F,Ikke bestått,2014,v
+BIT,751363,C,Bestått,2014,v
+BIT,751364,A,Bestått,2014,v
+BIT,751365,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751365,,Trekk under eksamen (Avbrutt eksamen),2014,s
+BIT,751365,,Ikke møtt,2015,s
+BIT,751365,C,Bestått,2017,v
+BIT,751367,F,Ikke bestått,2014,v
+BIT,751367,D,Bestått,2016,v
+BIT,751368,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751368,F,Ikke bestått,2014,s
+BIT,751368,F,Ikke bestått,2015,v
+BIT,751368,D,Bestått,2017,v
+BIT,751369,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751369,,Ikke møtt,2014,s
+BIT,751369,A,Bestått,2016,v
+BIT,751371,F,Ikke bestått,2014,v
+BIT,751371,F,Ikke bestått,2014,s
+BIT,751371,F,Ikke bestått,2015,v
+BIT,751371,C,Bestått,2016,v
+BIT,751372,C,Bestått,2014,v
+BIT,751373,A,Bestått,2014,v
+BIT,751374,F,Ikke bestått,2014,v
+BIT,751374,F,Ikke bestått,2016,v
+BIT,751374,F,Ikke bestått,2016,s
+BIT,751374,F,Ikke bestått,2017,v
+BIT,751374,E,Bestått,2017,s
+BIT,751374,F,Ikke bestått,2018,v
+BIT,751375,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751375,D,Bestått,2014,s
+BIT,751376,,Manglende øvinger,2014,v
+BIT,751377,E,Bestått,2014,v
+BIT,751377,,Ikke møtt,2017,v
+BIT,751378,B,Bestått,2014,v
+BIT,751380,F,Ikke bestått,2014,v
+BIT,751380,F,Ikke bestått,2014,s
+BIT,751380,E,Bestått,2015,v
+BIT,751380,F,Ikke bestått,2016,v
+BIT,751381,C,Bestått,2014,v
+BIT,751382,E,Bestått,2014,v
+BIT,751383,D,Bestått,2014,v
+BIT,751385,,Ikke møtt,2015,v
+BIT,751386,,Manglende øvinger,2014,v
+BIT,751387,E,Bestått,2014,v
+BIT,751387,D,Bestått,2016,v
+BIT,751388,F,Ikke bestått,2014,v
+BIT,751388,D,Bestått,2014,s
+BIT,751388,C,Bestått,2016,v
+BIT,751389,D,Bestått,2014,v
+BIT,751389,B,Bestått,2015,v
+BIT,751390,E,Bestått,2014,v
+BIT,751391,D,Bestått,2014,v
+BIT,751391,D,Bestått,2016,v
+BIT,751392,F,Ikke bestått,2014,v
+BIT,751392,D,Bestått,2014,s
+BIT,751392,C,Bestått,2017,v
+BIT,751393,B,Bestått,2014,v
+BIT,751394,B,Bestått,2014,v
+BIT,751395,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751395,,Ikke møtt,2015,s
+BIT,751395,D,Bestått,2017,v
+BIT,751396,,Ikke møtt,2014,v
+BIT,751397,D,Bestått,2014,v
+BIT,751397,C,Bestått,2017,v
+BIT,751398,F,Ikke bestått,2014,v
+BIT,751398,,Ikke møtt,2014,s
+BIT,751398,C,Bestått,2015,v
+BIT,751399,A,Bestått,2014,v
+BIT,751400,B,Bestått,2014,v
+BIT,751401,,Manglende øvinger,2014,v
+BIT,751402,A,Bestått,2014,v
+BIT,751403,,Manglende øvinger,2014,v
+BIT,751404,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751406,C,Bestått,2014,v
+BIT,751406,C,Bestått,2015,v
+BIT,751407,D,Bestått,2014,v
+BIT,751408,E,Bestått,2014,v
+BIT,751408,,Ikke møtt,2016,v
+BIT,751409,D,Bestått,2014,v
+BIT,751410,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751410,C,Bestått,2014,s
+BIT,751410,,Ikke møtt,2016,v
+BIT,751410,,Ikke møtt,2017,v
+BIT,751411,F,Ikke bestått,2014,v
+BIT,751411,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,751411,D,Bestått,2016,s
+BIT,751411,C,Bestått,2017,v
+BIT,751413,F,Ikke bestått,2014,v
+BIT,751415,E,Bestått,2014,v
+BIT,751415,C,Bestått,2016,v
+BIT,751417,C,Bestått,2014,v
+BIT,751418,F,Ikke bestått,2014,v
+BIT,751420,F,Ikke bestått,2014,v
+BIT,751420,F,Ikke bestått,2016,v
+BIT,751420,E,Bestått,2016,s
+BIT,751421,,Fritatt,2014,v
+BIT,751422,,Manglende øvinger,2015,v
+BIT,751423,C,Bestått,2014,v
+BIT,751424,B,Bestått,2014,v
+BIT,751425,F,Ikke bestått,2014,v
+BIT,751425,E,Bestått,2015,v
+BIT,751425,E,Bestått,2016,v
+BIT,751426,E,Bestått,2014,v
+BIT,751427,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751427,C,Bestått,2014,s
+BIT,751429,D,Bestått,2014,v
+BIT,751429,D,Bestått,2015,v
+BIT,751430,D,Bestått,2014,v
+BIT,751431,F,Ikke bestått,2014,v
+BIT,751431,F,Ikke bestått,2016,v
+BIT,751431,F,Ikke bestått,2016,s
+BIT,751431,F,Ikke bestått,2017,v
+BIT,751431,F,Ikke bestått,2017,s
+BIT,751432,F,Ikke bestått,2014,v
+BIT,751432,D,Bestått,2014,s
+BIT,751433,C,Bestått,2014,v
+BIT,751434,C,Bestått,2014,v
+BIT,751435,F,Ikke bestått,2015,v
+BIT,751435,F,Ikke bestått,2015,s
+BIT,751435,E,Bestått,2018,v
+BIT,751436,F,Ikke bestått,2014,v
+BIT,751436,E,Bestått,2015,s
+BIT,751436,D,Bestått,2016,v
+BIT,751437,F,Ikke bestått,2015,v
+BIT,751437,D,Bestått,2015,s
+BIT,751438,D,Bestått,2014,v
+BIT,751438,F,Ikke bestått,2017,v
+BIT,751439,F,Ikke bestått,2014,v
+BIT,751439,F,Ikke bestått,2014,s
+BIT,751439,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,751439,F,Ikke bestått,2017,v
+BIT,751439,F,Ikke bestått,2017,s
+BIT,751440,,Manglende øvinger,2014,v
+BIT,751440,,Manglende øvinger,2016,v
+BIT,751441,,Manglende øvinger,2014,v
+BIT,751442,E,Bestått,2014,v
+BIT,751443,E,Bestått,2014,v
+BIT,751443,C,Bestått,2016,v
+BIT,751444,D,Bestått,2014,v
+BIT,751444,B,Bestått,2016,v
+BIT,751445,,Trekk under eksamen (Avbrutt eksamen),2014,v
+BIT,751484,E,Bestått,2018,v
+BIT,753717,,Gyldig fravær,2018,v
+BIT,753717,B,Bestått,2018,s
+BIT,753732,,Manglende øvinger,2016,v
+BIT,755167,F,Ikke bestått,2018,v
+BIT,755200,B,Bestått,2015,v
+BIT,755405,F,Ikke bestått,2015,v
+BIT,755405,,Ikke møtt,2015,s
+BIT,755405,E,Bestått,2017,v
+BIT,755405,E,Bestått,2018,v
+BIT,755536,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,755536,F,Ikke bestått,2015,s
+BIT,755536,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,755536,F,Ikke bestått,2016,s
+BIT,755546,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,755546,,Ikke møtt,2015,s
+BIT,755546,F,Ikke bestått,2017,v
+BIT,755546,,Ikke møtt,2017,s
+BIT,755546,,Ikke møtt,2018,v
+BIT,755550,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,755550,F,Ikke bestått,2016,s
+BIT,755550,C,Bestått,2018,v
+BIT,755598,E,Bestått,2015,v
+BIT,755598,D,Bestått,2016,v
+BIT,755598,,Ikke møtt,2017,v
+BIT,755655,,Manglende øvinger,2016,v
+BIT,756265,,Manglende øvinger,2016,v
+BIT,756265,,Manglende øvinger,2017,v
+BIT,756279,,Manglende øvinger,2016,v
+BIT,756427,F,Ikke bestått,2016,v
+BIT,756427,F,Ikke bestått,2017,v
+BIT,756427,E,Bestått,2018,v
+BIT,756451,D,Bestått,2017,v
+BIT,756451,F,Ikke bestått,2018,v
+BIT,756481,E,Bestått,2016,v
+BIT,756481,C,Bestått,2017,v
+BIT,756659,F,Ikke bestått,2016,v
+BIT,756659,E,Bestått,2018,v
+BIT,756845,F,Ikke bestått,2016,v
+BIT,756845,F,Ikke bestått,2017,v
+BIT,756845,E,Bestått,2018,v
+BIT,757108,F,Ikke bestått,2016,v
+BIT,757108,F,Ikke bestått,2017,v
+BIT,757108,E,Bestått,2017,s
+BIT,757488,F,Ikke bestått,2015,v
+BIT,757488,F,Ikke bestått,2016,v
+BIT,757488,E,Bestått,2016,s
+BIT,757493,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,757493,E,Bestått,2015,s
+BIT,757537,,Manglende øvinger,2016,v
+BIT,757542,C,Bestått,2015,v
+BIT,757551,E,Bestått,2015,v
+BIT,757580,C,Bestått,2016,v
+BIT,757626,,Manglende øvinger,2016,v
+BIT,757674,C,Bestått,2017,v
+BIT,757675,B,Bestått,2015,v
+BIT,757676,D,Bestått,2015,v
+BIT,757676,C,Bestått,2017,v
+BIT,757678,C,Bestått,2015,v
+BIT,757678,D,Bestått,2016,v
+BIT,757678,C,Bestått,2017,v
+BIT,757678,B,Bestått,2018,v
+BIT,757679,,Manglende øvinger,2015,v
+BIT,757679,A,Bestått,2016,v
+BIT,757680,D,Bestått,2015,v
+BIT,757682,D,Bestått,2015,v
+BIT,757682,C,Bestått,2018,v
+BIT,757683,,Manglende øvinger,2015,v
+BIT,757683,,Manglende øvinger,2016,v
+BIT,757683,F,Ikke bestått,2017,v
+BIT,757683,,Ikke møtt,2017,s
+BIT,757684,A,Bestått,2015,v
+BIT,757687,E,Bestått,2015,v
+BIT,757687,D,Bestått,2018,v
+BIT,757688,C,Bestått,2015,v
+BIT,757689,E,Bestått,2015,v
+BIT,757689,E,Bestått,2016,v
+BIT,757690,C,Bestått,2015,v
+BIT,757690,B,Bestått,2016,v
+BIT,757691,,Manglende øvinger,2015,v
+BIT,757693,C,Bestått,2015,v
+BIT,757694,E,Bestått,2015,v
+BIT,757695,C,Bestått,2015,v
+BIT,757697,A,Bestått,2015,v
+BIT,757698,D,Bestått,2015,v
+BIT,757699,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,757699,F,Ikke bestått,2015,s
+BIT,757699,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,757699,F,Ikke bestått,2016,s
+BIT,757699,F,Ikke bestått,2017,v
+BIT,757699,F,Ikke bestått,2017,s
+BIT,757699,F,Ikke bestått,2018,v
+BIT,757700,E,Bestått,2015,v
+BIT,757701,E,Bestått,2015,v
+BIT,757701,C,Bestått,2017,v
+BIT,757702,C,Bestått,2015,v
+BIT,757703,D,Bestått,2015,v
+BIT,757703,C,Bestått,2016,v
+BIT,757703,C,Bestått,2017,v
+BIT,757704,B,Bestått,2015,v
+BIT,757705,D,Bestått,2015,v
+BIT,757705,C,Bestått,2017,v
+BIT,757706,C,Bestått,2015,v
+BIT,757707,,Manglende øvinger,2015,v
+BIT,757707,,Manglende øvinger,2016,v
+BIT,757707,,Manglende øvinger,2017,v
+BIT,757708,,Manglende øvinger,2015,v
+BIT,757710,E,Bestått,2015,v
+BIT,757710,D,Bestått,2016,v
+BIT,757711,D,Bestått,2015,v
+BIT,757711,C,Bestått,2017,v
+BIT,757712,E,Bestått,2016,v
+BIT,757713,C,Bestått,2015,v
+BIT,757714,C,Bestått,2015,v
+BIT,757715,F,Ikke bestått,2015,v
+BIT,757715,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,757715,E,Bestått,2016,s
+BIT,757715,E,Bestått,2017,v
+BIT,757715,E,Bestått,2018,v
+BIT,757716,,Ikke møtt,2015,v
+BIT,757716,D,Bestått,2016,v
+BIT,757717,,Manglende øvinger,2015,v
+BIT,757718,C,Bestått,2015,v
+BIT,757718,D,Bestått,2016,v
+BIT,757719,D,Bestått,2015,v
+BIT,757719,C,Bestått,2017,v
+BIT,757720,E,Bestått,2015,v
+BIT,757720,C,Bestått,2017,v
+BIT,757722,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,757722,,Trekk under eksamen (Avbrutt eksamen),2015,s
+BIT,757724,,Ikke møtt,2015,v
+BIT,757725,E,Bestått,2015,v
+BIT,757726,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,757726,C,Bestått,2016,s
+BIT,757727,,Manglende øvinger,2015,v
+BIT,757727,,Manglende øvinger,2016,v
+BIT,757727,,Manglende øvinger,2017,v
+BIT,757728,C,Bestått,2015,v
+BIT,757729,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,757729,,Ikke møtt,2015,s
+BIT,757729,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,757729,,Ikke møtt,2016,s
+BIT,757729,F,Ikke bestått,2017,v
+BIT,757730,C,Bestått,2015,v
+BIT,757731,C,Bestått,2015,v
+BIT,757732,A,Bestått,2015,v
+BIT,757734,F,Ikke bestått,2015,v
+BIT,757734,F,Ikke bestått,2015,s
+BIT,757734,F,Ikke bestått,2016,v
+BIT,757734,F,Ikke bestått,2016,s
+BIT,757734,F,Ikke bestått,2017,v
+BIT,757734,F,Ikke bestått,2017,s
+BIT,757735,C,Bestått,2015,v
+BIT,757736,D,Bestått,2015,v
+BIT,757736,E,Bestått,2016,v
+BIT,757736,D,Bestått,2017,v
+BIT,757736,C,Bestått,2018,v
+BIT,757737,F,Ikke bestått,2015,v
+BIT,757737,C,Bestått,2016,s
+BIT,757738,,Ikke møtt,2015,v
+BIT,757739,D,Bestått,2016,v
+BIT,757739,B,Bestått,2017,v
+BIT,757740,F,Ikke bestått,2016,v
+BIT,757740,F,Ikke bestått,2017,v
+BIT,757740,F,Ikke bestått,2018,v
+BIT,757741,,Manglende øvinger,2015,v
+BIT,757742,E,Bestått,2015,v
+BIT,757743,D,Bestått,2015,v
+BIT,757743,B,Bestått,2016,v
+BIT,757744,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,757744,C,Bestått,2015,s
+BIT,757744,C,Bestått,2016,v
+BIT,757745,E,Bestått,2015,v
+BIT,757746,F,Ikke bestått,2015,v
+BIT,757746,E,Bestått,2016,v
+BIT,757746,F,Ikke bestått,2018,v
+BIT,757747,E,Bestått,2015,v
+BIT,757747,,Ikke møtt,2018,v
+BIT,757748,E,Bestått,2015,v
+BIT,757749,F,Ikke bestått,2015,v
+BIT,757749,F,Ikke bestått,2015,s
+BIT,757749,F,Ikke bestått,2016,v
+BIT,757749,F,Ikke bestått,2016,s
+BIT,757749,D,Bestått,2017,v
+BIT,757750,D,Bestått,2015,v
+BIT,757750,C,Bestått,2016,v
+BIT,757750,C,Bestått,2018,v
+BIT,757751,C,Bestått,2015,v
+BIT,757752,C,Bestått,2015,v
+BIT,757752,,Trekk under eksamen (Avbrutt eksamen),2017,v
+BIT,757753,D,Bestått,2015,v
+BIT,757753,D,Bestått,2017,v
+BIT,757755,A,Bestått,2015,v
+BIT,757756,D,Bestått,2015,v
+BIT,757757,D,Bestått,2015,v
+BIT,757757,B,Bestått,2017,v
+BIT,757758,B,Bestått,2015,v
+BIT,757759,D,Bestått,2015,v
+BIT,757761,B,Bestått,2015,v
+BIT,757762,E,Bestått,2015,v
+BIT,757763,C,Bestått,2015,v
+BIT,757763,C,Bestått,2018,v
+BIT,757764,E,Bestått,2015,v
+BIT,757764,E,Bestått,2016,v
+BIT,757764,E,Bestått,2017,v
+BIT,757765,B,Bestått,2015,v
+BIT,757766,C,Bestått,2015,v
+BIT,757767,B,Bestått,2015,v
+BIT,757768,C,Bestått,2015,v
+BIT,757769,F,Ikke bestått,2015,v
+BIT,757769,F,Ikke bestått,2015,s
+BIT,757769,,Ikke møtt,2016,v
+BIT,757770,F,Ikke bestått,2015,v
+BIT,757770,F,Ikke bestått,2015,s
+BIT,757773,,Manglende øvinger,2015,v
+BIT,757773,,Manglende øvinger,2016,v
+BIT,757773,,Manglende øvinger,2017,v
+BIT,757773,D,Bestått,2018,v
+BIT,757774,,Manglende øvinger,2016,v
+BIT,757775,C,Bestått,2015,v
+BIT,757777,,Manglende øvinger,2015,v
+BIT,757778,D,Bestått,2015,v
+BIT,757778,D,Bestått,2017,v
+BIT,757778,F,Ikke bestått,2018,v
+BIT,757779,C,Bestått,2016,v
+BIT,757779,C,Bestått,2017,v
+BIT,757780,D,Bestått,2015,v
+BIT,757780,B,Bestått,2016,v
+BIT,757781,C,Bestått,2015,v
+BIT,757781,C,Bestått,2017,v
+BIT,757784,B,Bestått,2015,v
+BIT,757786,,Manglende øvinger,2015,v
+BIT,757787,E,Bestått,2015,v
+BIT,757789,D,Bestått,2015,v
+BIT,757790,A,Bestått,2015,v
+BIT,757791,F,Ikke bestått,2015,v
+BIT,757792,C,Bestått,2015,v
+BIT,757793,C,Bestått,2015,v
+BIT,757794,C,Bestått,2015,v
+BIT,757796,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BIT,757796,,Ikke møtt,2016,v
+BIT,757797,E,Bestått,2015,v
+BIT,757797,F,Ikke bestått,2017,v
+BIT,757797,F,Ikke bestått,2018,v
+BIT,757799,F,Ikke bestått,2015,v
+BIT,757799,F,Ikke bestått,2015,s
+BIT,757799,D,Bestått,2016,v
+BIT,757799,C,Bestått,2017,v
+BIT,757800,E,Bestått,2015,v
+BIT,757800,D,Bestått,2016,v
+BIT,757801,D,Bestått,2015,v
+BIT,757802,E,Bestått,2015,v
+BIT,757802,B,Bestått,2017,v
+BIT,758059,D,Bestått,2015,v
+BIT,758198,,Ikke møtt,2018,v
+BIT,758244,C,Bestått,2016,v
+BIT,758254,E,Bestått,2018,v
+BIT,758667,C,Bestått,2016,v
+BIT,759803,F,Ikke bestått,2017,v
+BIT,759803,F,Ikke bestått,2017,s
+BIT,759803,F,Ikke bestått,2018,v
+BIT,765109,C,Bestått,2016,v
+BIT,765109,B,Bestått,2018,v
+BIT,765137,C,Bestått,2016,v
+BIT,765176,,Manglende øvinger,2016,v
+BIT,765227,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,765227,D,Bestått,2016,s
+BIT,765248,E,Bestått,2016,v
+BIT,765316,F,Ikke bestått,2017,v
+BIT,765316,E,Bestått,2017,s
+BIT,765316,F,Ikke bestått,2018,v
+BIT,765320,D,Bestått,2017,v
+BIT,765325,F,Ikke bestått,2016,v
+BIT,765325,F,Ikke bestått,2017,v
+BIT,765325,,Ikke møtt,2017,s
+BIT,765325,E,Bestått,2018,v
+BIT,765872,A,Bestått,2016,v
+BIT,765892,D,Bestått,2016,v
+BIT,765892,C,Bestått,2017,v
+BIT,765901,C,Bestått,2016,v
+BIT,765917,C,Bestått,2016,v
+BIT,765917,B,Bestått,2017,v
+BIT,765956,C,Bestått,2018,v
+BIT,766048,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,766048,,Ikke møtt,2016,s
+BIT,766048,E,Bestått,2017,v
+BIT,766072,C,Bestått,2017,v
+BIT,766080,,Manglende øvinger,2016,v
+BIT,766080,,Manglende øvinger,2017,v
+BIT,766086,,Ikke møtt,2018,v
+BIT,766102,,Manglende øvinger,2017,v
+BIT,766102,,Manglende øvinger,2018,v
+BIT,766107,,Manglende øvinger,2017,v
+BIT,766107,,Manglende øvinger,2018,v
+BIT,766409,F,Ikke bestått,2018,v
+BIT,766693,,Ikke møtt,2016,v
+BIT,766693,,Ikke møtt,2017,v
+BIT,766795,C,Bestått,2016,v
+BIT,766797,F,Ikke bestått,2016,v
+BIT,766797,,Ikke møtt,2016,s
+BIT,766797,,Legeattest,2017,v
+BIT,766797,F,Ikke bestått,2017,s
+BIT,766797,,Legeattest,2018,v
+BIT,766797,,Ikke møtt,2018,s
+BIT,766798,,Ikke møtt,2016,v
+BIT,766799,,Manglende øvinger,2016,v
+BIT,766799,,Manglende øvinger,2017,v
+BIT,766800,,Manglende øvinger,2016,v
+BIT,766800,C,Bestått,2018,v
+BIT,766801,F,Ikke bestått,2016,v
+BIT,766801,F,Ikke bestått,2016,s
+BIT,766801,C,Bestått,2017,v
+BIT,766802,C,Bestått,2016,v
+BIT,766803,F,Ikke bestått,2016,v
+BIT,766804,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,766804,,Ikke møtt,2016,s
+BIT,766804,D,Bestått,2017,v
+BIT,766804,D,Bestått,2018,v
+BIT,766806,F,Ikke bestått,2016,v
+BIT,766806,E,Bestått,2016,s
+BIT,766806,C,Bestått,2017,v
+BIT,766807,E,Bestått,2016,v
+BIT,766808,E,Bestått,2016,v
+BIT,766810,B,Bestått,2017,v
+BIT,766811,C,Bestått,2016,v
+BIT,766812,C,Bestått,2016,v
+BIT,766813,C,Bestått,2016,v
+BIT,766814,C,Bestått,2016,v
+BIT,766814,,Ikke møtt,2017,v
+BIT,766815,E,Bestått,2016,v
+BIT,766817,D,Bestått,2016,v
+BIT,766817,C,Bestått,2017,v
+BIT,766818,C,Bestått,2016,v
+BIT,766820,C,Bestått,2016,v
+BIT,766820,,Ikke møtt,2018,v
+BIT,766821,C,Bestått,2016,v
+BIT,766822,C,Bestått,2016,v
+BIT,766823,E,Bestått,2016,v
+BIT,766824,E,Bestått,2016,v
+BIT,766824,C,Bestått,2017,v
+BIT,766825,B,Bestått,2016,v
+BIT,766827,D,Bestått,2016,v
+BIT,766827,F,Ikke bestått,2017,v
+BIT,766828,,Manglende øvinger,2016,v
+BIT,766828,,Manglende øvinger,2017,v
+BIT,766828,,Manglende øvinger,2018,v
+BIT,766829,C,Bestått,2016,v
+BIT,766829,B,Bestått,2017,v
+BIT,766831,F,Ikke bestått,2016,v
+BIT,766831,D,Bestått,2016,s
+BIT,766832,D,Bestått,2016,v
+BIT,766833,C,Bestått,2016,v
+BIT,766834,F,Ikke bestått,2016,v
+BIT,766834,F,Ikke bestått,2017,v
+BIT,766834,E,Bestått,2017,s
+BIT,766835,A,Bestått,2017,v
+BIT,766836,C,Bestått,2016,v
+BIT,766836,,Ikke møtt,2017,v
+BIT,766837,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,766837,F,Ikke bestått,2016,s
+BIT,766837,C,Bestått,2017,v
+BIT,766838,E,Bestått,2016,v
+BIT,766838,D,Bestått,2017,v
+BIT,766839,C,Bestått,2016,v
+BIT,766840,C,Bestått,2016,v
+BIT,766842,E,Bestått,2016,v
+BIT,766843,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,766843,,Ikke møtt,2017,v
+BIT,766843,,Ikke møtt,2018,v
+BIT,766844,F,Ikke bestått,2017,v
+BIT,766844,,Trekk under eksamen (Avbrutt eksamen),2017,s
+BIT,766845,,Manglende øvinger,2016,v
+BIT,766845,C,Bestått,2017,v
+BIT,766846,B,Bestått,2016,v
+BIT,766847,E,Bestått,2016,v
+BIT,766847,C,Bestått,2017,v
+BIT,766848,F,Ikke bestått,2016,v
+BIT,766848,F,Ikke bestått,2016,s
+BIT,766848,F,Ikke bestått,2017,v
+BIT,766848,D,Bestått,2017,s
+BIT,766849,D,Bestått,2016,v
+BIT,766849,C,Bestått,2017,v
+BIT,766850,C,Bestått,2016,v
+BIT,766851,B,Bestått,2016,v
+BIT,766852,D,Bestått,2016,v
+BIT,766853,,Manglende øvinger,2016,v
+BIT,766854,E,Bestått,2016,v
+BIT,766854,C,Bestått,2017,v
+BIT,766854,C,Bestått,2018,v
+BIT,766855,F,Ikke bestått,2016,v
+BIT,766855,F,Ikke bestått,2018,v
+BIT,766856,C,Bestått,2016,v
+BIT,766857,B,Bestått,2016,v
+BIT,766858,E,Bestått,2016,v
+BIT,766858,D,Bestått,2017,v
+BIT,766860,F,Ikke bestått,2016,v
+BIT,766860,F,Ikke bestått,2018,v
+BIT,766861,,Ikke møtt,2016,v
+BIT,766862,C,Bestått,2016,v
+BIT,766863,E,Bestått,2016,v
+BIT,766864,,Trekk under eksamen (Avbrutt eksamen),2016,v
+BIT,766864,F,Ikke bestått,2016,s
+BIT,766866,D,Bestått,2016,v
+BIT,766866,B,Bestått,2017,v
+BIT,766867,B,Bestått,2016,v
+BIT,766868,C,Bestått,2016,v
+BIT,766869,F,Ikke bestått,2016,v
+BIT,766869,D,Bestått,2017,v
+BIT,766869,C,Bestått,2018,v
+BIT,766871,F,Ikke bestått,2016,v
+BIT,766871,E,Bestått,2016,s
+BIT,766872,C,Bestått,2016,v
+BIT,766872,,Ikke møtt,2018,v
+BIT,766873,D,Bestått,2016,v
+BIT,766873,C,Bestått,2017,v
+BIT,766874,C,Bestått,2016,v
+BIT,766874,,Ikke møtt,2017,v
+BIT,766876,D,Bestått,2016,v
+BIT,766876,C,Bestått,2018,v
+BIT,766877,A,Bestått,2016,v
+BIT,766878,D,Bestått,2016,v
+BIT,766878,E,Bestått,2018,v
+BIT,766879,,Manglende øvinger,2016,v
+BIT,766879,F,Ikke bestått,2018,v
+BIT,766880,F,Ikke bestått,2016,v
+BIT,766880,F,Ikke bestått,2016,s
+BIT,766880,E,Bestått,2017,v
+BIT,766880,,Trekk under eksamen (Avbrutt eksamen),2018,v
+BIT,766880,,Ikke møtt,2018,s
+BIT,766882,F,Ikke bestått,2016,v
+BIT,766882,F,Ikke bestått,2016,s
+BIT,766882,D,Bestått,2017,v
+BIT,766885,C,Bestått,2016,v
+BIT,766886,,Manglende øvinger,2016,v
+BIT,766886,C,Bestått,2017,v
+BIT,766887,C,Bestått,2016,v
+BIT,766888,,Ikke møtt,2016,v
+BIT,766890,C,Bestått,2016,v
+BIT,766891,E,Bestått,2016,v
+BIT,766891,E,Bestått,2018,v
+BIT,766892,,Ikke møtt,2016,v
+BIT,766892,,Trekk under eksamen (Avbrutt eksamen),2017,v
+BIT,766893,A,Bestått,2016,v
+BIT,766894,,Manglende øvinger,2018,v
+BIT,766895,E,Bestått,2016,v
+BIT,766896,C,Bestått,2016,v
+BIT,766897,A,Bestått,2016,v
+BIT,766898,C,Bestått,2016,v
+BIT,766899,C,Bestått,2016,v
+BIT,766899,B,Bestått,2017,v
+BIT,766901,B,Bestått,2016,v
+BIT,766902,C,Bestått,2016,v
+BIT,766903,E,Bestått,2016,v
+BIT,766904,C,Bestått,2016,v
+BIT,766905,E,Bestått,2016,v
+BIT,766905,D,Bestått,2017,v
+BIT,766906,B,Bestått,2016,v
+BIT,766907,D,Bestått,2016,v
+BIT,766907,B,Bestått,2017,v
+BIT,766908,C,Bestått,2016,v
+BIT,766909,C,Bestått,2016,v
+BIT,766911,C,Bestått,2016,v
+BIT,766912,D,Bestått,2016,v
+BIT,766913,A,Bestått,2016,v
+BIT,766915,F,Ikke bestått,2016,v
+BIT,766915,F,Ikke bestått,2017,v
+BIT,766915,E,Bestått,2017,s
+BIT,766916,C,Bestått,2016,v
+BIT,767064,C,Bestått,2017,v
+BIT,767209,,Manglende øvinger,2017,v
+BIT,767779,B,Bestått,2016,v
+BIT,767843,C,Bestått,2016,v
+BIT,767908,C,Bestått,2016,v
+BIT,768949,D,Bestått,2016,v
+BIT,768949,F,Ikke bestått,2017,v
+BIT,769472,,Trekk under eksamen (Avbrutt eksamen),2018,v
+BIT,770009,,Manglende øvinger,2017,v
+BIT,770080,F,Ikke bestått,2017,v
+BIT,770662,E,Bestått,2017,v
+BIT,772526,E,Bestått,2017,v
+BIT,772802,,Manglende øvinger,2017,v
+BIT,999621,C,Bestått,2017,v
+BIT,999639,,Ikke møtt,2018,v
+BKULT,698488,B,Bestått,2010,v
+BMAT,70581,D,Bestått,2013,v
+BMAT,432505,A,Bestått,2011,v
+BMAT,478783,E,Bestått,2018,v
+BMAT,492404,F,Ikke bestått,2018,v
+BMAT,492404,B,Bestått,2018,s
+BMAT,492405,C,Bestått,2018,v
+BMAT,492414,C,Bestått,2018,v
+BMAT,691249,D,Bestått,2013,v
+BMAT,700368,C,Bestått,2010,v
+BMAT,704538,F,Ikke bestått,2011,v
+BMAT,704538,E,Bestått,2011,s
+BMAT,711138,E,Bestått,2010,v
+BMAT,712631,C,Bestått,2010,v
+BMAT,712631,B,Bestått,2011,v
+BMAT,722380,C,Bestått,2012,v
+BMAT,722386,B,Bestått,2012,v
+BMAT,722390,E,Bestått,2012,v
+BMAT,722397,D,Bestått,2012,v
+BMAT,722401,B,Bestått,2012,v
+BMAT,729549,A,Bestått,2012,v
+BMAT,730838,B,Bestått,2013,v
+BMAT,730846,,Manglende øvinger,2013,v
+BMAT,730857,,Manglende øvinger,2012,v
+BMAT,739897,E,Bestått,2014,v
+BMAT,739911,F,Ikke bestått,2014,v
+BMAT,739911,E,Bestått,2014,s
+BMAT,748338,C,Bestått,2017,v
+BMAT,749294,E,Bestått,2015,v
+BMAT,759423,,Trekk under eksamen (Avbrutt eksamen),2015,v
+BMAT,759423,D,Bestått,2015,s
+BMAT,759423,B,Bestått,2016,v
+BMAT,768689,A,Bestått,2018,v
+BMUST,696566,A,Bestått,2010,v
+BMUST,698423,D,Bestått,2011,v
+BMUST,701362,B,Bestått,2010,v
+BMUST,713260,C,Bestått,2010,v
+BMUST,725416,,Manglende øvinger,2012,v
+BPED,740241,C,Bestått,2016,v
+BPSY,722894,D,Bestått,2013,v
+BPSY,766461,E,Bestått,2018,v
+BRVI,715497,,Manglende øvinger,2014,v
+BSPRÅL,691485,C,Bestått,2013,v
+BSPRÅL,698409,,Manglende øvinger,2010,v
+BSPRÅL,698409,E,Bestått,2011,v
+BSPRÅL,723329,F,Ikke bestått,2012,v
+BSV,713014,B,Bestått,2010,v
+BSV,713499,B,Bestått,2012,v
+BSØK,731809,C,Bestått,2012,v
+BSØK,732333,E,Bestått,2012,v
+BSØK,747901,A,Bestått,2014,v
+BSØK,748077,C,Bestått,2016,v
+BSØK,758388,F,Ikke bestått,2017,v
+BSØK,758388,F,Ikke bestått,2018,v
+BSØK,769497,E,Bestått,2017,v
+BSØK,769497,,Ikke møtt,2018,v
+FTHINGEL,690099,E,Bestått,2010,v
+IMEDIV/MN,718458,A,Bestått,2010,v
+ITBAINFO,697135,F,Ikke bestått,2010,v
+ITBAINFO,697135,F,Ikke bestått,2011,v
+ITBAINFO,697135,E,Bestått,2011,s
+ITBAINFO,714967,F,Ikke bestått,2010,v
+ITBAINFO,714967,F,Ikke bestått,2011,v
+ITBAINFO,714967,D,Bestått,2011,s
+ITBAINFO,730602,D,Bestått,2014,v
+MBIOT5,705671,D,Bestått,2011,v
+MBIOT5,705723,A,Bestått,2012,v
+MBIOT5,722270,A,Bestått,2012,v
+MBIOT5,737863,,Manglende øvinger,2016,v
+MBIOT5,739739,F,Ikke bestått,2018,v
+MBIOT5,739787,A,Bestått,2014,v
+MBIOT5,739798,D,Bestått,2015,v
+MBIOT5,759643,A,Bestått,2017,v
+MBIOT5,759649,C,Bestått,2017,v
+MBIOT5,759659,B,Bestått,2017,v
+MBIOT5,768910,D,Bestått,2018,v
+MIENTRE,708549,B,Bestått,2012,v
+MLREAL,255127,D,Bestått,2018,v
+MLREAL,475518,D,Bestått,2017,v
+MLREAL,478513,D,Bestått,2017,v
+MLREAL,478519,F,Ikke bestått,2017,v
+MLREAL,478519,F,Ikke bestått,2017,s
+MLREAL,478523,C,Bestått,2017,v
+MLREAL,478526,D,Bestått,2017,v
+MLREAL,478531,E,Bestått,2017,v
+MLREAL,478531,C,Bestått,2018,v
+MLREAL,478941,E,Bestått,2018,v
+MLREAL,490038,E,Bestått,2018,v
+MLREAL,490057,B,Bestått,2018,v
+MLREAL,490058,C,Bestått,2018,v
+MLREAL,716482,,Manglende øvinger,2011,v
+MLREAL,723734,C,Bestått,2011,v
+MLREAL,730608,A,Bestått,2013,v
+MLREAL,730845,C,Bestått,2013,v
+MLREAL,732393,F,Ikke bestått,2012,v
+MLREAL,732393,,Ikke møtt,2013,v
+MLREAL,732393,,Ikke møtt,2014,v
+MLREAL,732393,E,Bestått,2016,v
+MLREAL,739545,B,Bestått,2013,v
+MLREAL,740927,C,Bestått,2016,v
+MLREAL,741295,C,Bestått,2014,v
+MLREAL,741988,E,Bestått,2013,v
+MLREAL,749769,B,Bestått,2015,v
+MLREAL,750848,,Manglende øvinger,2015,v
+MLREAL,757554,C,Bestått,2015,v
+MLREAL,758170,C,Bestått,2015,v
+MLREAL,758170,,Ikke møtt,2018,v
+MLREAL,758171,C,Bestått,2015,v
+MLREAL,758698,,Manglende øvinger,2015,v
+MLREAL,758698,D,Bestått,2016,v
+MLREAL,765153,F,Ikke bestått,2016,v
+MLREAL,765153,,Ikke møtt,2016,s
+MLREAL,767831,E,Bestått,2017,v
+MLREAL,767831,F,Ikke bestått,2018,v
+MLREAL,768744,A,Bestått,2016,v
+MLREAL,768750,F,Ikke bestått,2016,v
+MLREAL,768752,F,Ikke bestått,2016,v
+MLREAL,768752,,Ikke møtt,2016,s
+MLREAL,768752,B,Bestått,2017,v
+MLREAL,768763,E,Bestått,2016,v
+MLREAL,769510,C,Bestått,2016,v
+MMUST,713937,B,Bestått,2012,v
+MSDESIG,487315,F,Ikke bestått,2018,v
+MSDESIG,487316,F,Ikke bestått,2018,v
+MTBYGG,696936,A,Bestått,2010,v
+MTBYGG,700376,E,Bestått,2012,v
+MTBYGG,739051,C,Bestått,2017,v
+MTBYGG,741603,C,Bestått,2017,v
+MTBYGG,750666,C,Bestått,2017,v
+MTDESIG,641610,B,Bestått,2013,v
+MTDESIG,698625,,Manglende øvinger,2015,v
+MTDESIG,711356,F,Ikke bestått,2016,v
+MTDESIG,711356,F,Ikke bestått,2018,v
+MTDESIG,714381,,Manglende øvinger,2018,v
+MTDESIG,716160,,Legeattest,2017,v
+MTDESIG,722070,F,Ikke bestått,2015,v
+MTDESIG,723028,B,Bestått,2015,v
+MTDESIG,723260,F,Ikke bestått,2015,v
+MTDESIG,723260,F,Ikke bestått,2015,s
+MTDESIG,723260,,Trekk under eksamen (Avbrutt eksamen),2016,s
+MTDESIG,723260,,Trekk under eksamen (Avbrutt eksamen),2017,v
+MTDESIG,723260,E,Bestått,2017,s
+MTDESIG,724074,B,Bestått,2013,v
+MTDESIG,724537,C,Bestått,2015,v
+MTDESIG,729817,C,Bestått,2015,v
+MTDESIG,732114,B,Bestått,2015,v
+MTDESIG,732128,A,Bestått,2015,v
+MTDESIG,732210,C,Bestått,2016,v
+MTDESIG,738869,F,Ikke bestått,2017,v
+MTDESIG,738869,E,Bestått,2017,s
+MTDESIG,740871,F,Ikke bestått,2018,v
+MTDESIG,741397,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTDESIG,741397,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDESIG,741397,,Trekk under eksamen (Avbrutt eksamen),2017,v
+MTDESIG,741397,,Ikke møtt,2017,s
+MTDESIG,741459,E,Bestått,2018,v
+MTDESIG,741734,B,Bestått,2015,v
+MTDESIG,741735,C,Bestått,2015,v
+MTDESIG,741743,B,Bestått,2015,v
+MTDESIG,741744,C,Bestått,2015,v
+MTDESIG,741748,C,Bestått,2015,v
+MTDESIG,741749,C,Bestått,2015,v
+MTDESIG,748015,C,Bestått,2014,v
+MTDESIG,749752,C,Bestått,2017,v
+MTDESIG,749885,E,Bestått,2016,v
+MTDESIG,749886,C,Bestått,2016,v
+MTDESIG,749889,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTDESIG,749889,E,Bestått,2016,s
+MTDESIG,749890,D,Bestått,2016,v
+MTDESIG,749891,C,Bestått,2016,v
+MTDESIG,749894,D,Bestått,2016,v
+MTDESIG,749900,D,Bestått,2016,v
+MTDESIG,750862,E,Bestått,2016,v
+MTDESIG,757439,C,Bestått,2017,v
+MTDESIG,757923,B,Bestått,2017,v
+MTDESIG,757929,D,Bestått,2018,v
+MTDESIG,757930,E,Bestått,2017,v
+MTDESIG,757934,E,Bestått,2017,v
+MTDESIG,757935,B,Bestått,2017,v
+MTDESIG,757995,,Ikke møtt,2015,v
+MTDESIG,757995,,Ikke møtt,2016,v
+MTDESIG,758069,F,Ikke bestått,2015,v
+MTDESIG,758069,,Ikke møtt,2015,s
+MTDESIG,758069,E,Bestått,2017,v
+MTDESIG,758853,E,Bestått,2017,v
+MTDESIG,765922,E,Bestått,2018,v
+MTDESIG,768054,D,Bestått,2018,v
+MTDESIG,768185,E,Bestått,2018,v
+MTDESIG,768249,E,Bestått,2018,v
+MTDESIG,768287,A,Bestått,2017,v
+MTDESIG,768397,F,Ikke bestått,2018,v
+MTDESIG,768399,C,Bestått,2018,v
+MTDESIG,768400,D,Bestått,2018,v
+MTDESIG,768401,B,Bestått,2018,v
+MTDESIG,768402,F,Ikke bestått,2018,v
+MTDESIG,768402,F,Ikke bestått,2018,s
+MTDESIG,768411,F,Ikke bestått,2018,v
+MTDESIG,768412,A,Bestått,2018,v
+MTDESIG,768414,D,Bestått,2018,v
+MTDT,100647,C,Bestått,2012,v
+MTDT,253104,B,Bestått,2017,v
+MTDT,256785,A,Bestått,2017,v
+MTDT,257410,F,Ikke bestått,2018,v
+MTDT,257410,C,Bestått,2018,s
+MTDT,260359,C,Bestått,2018,v
+MTDT,471881,C,Bestått,2017,v
+MTDT,472767,C,Bestått,2018,v
+MTDT,472956,B,Bestått,2018,v
+MTDT,473749,B,Bestått,2018,v
+MTDT,473853,F,Ikke bestått,2018,v
+MTDT,473853,E,Bestått,2018,s
+MTDT,475277,B,Bestått,2017,v
+MTDT,477313,F,Ikke bestått,2017,v
+MTDT,477313,D,Bestått,2017,s
+MTDT,477313,C,Bestått,2018,v
+MTDT,477403,,Manglende øvinger,2018,v
+MTDT,477476,B,Bestått,2017,v
+MTDT,477485,D,Bestått,2017,v
+MTDT,477506,A,Bestått,2017,v
+MTDT,477547,C,Bestått,2017,v
+MTDT,477548,B,Bestått,2017,v
+MTDT,477549,B,Bestått,2017,v
+MTDT,477550,D,Bestått,2017,v
+MTDT,477550,A,Bestått,2018,v
+MTDT,477552,D,Bestått,2017,v
+MTDT,477552,F,Ikke bestått,2018,v
+MTDT,477552,,Ikke møtt,2018,s
+MTDT,477553,A,Bestått,2017,v
+MTDT,477554,B,Bestått,2017,v
+MTDT,477555,C,Bestått,2017,v
+MTDT,477556,C,Bestått,2017,v
+MTDT,477556,B,Bestått,2018,v
+MTDT,477557,A,Bestått,2017,v
+MTDT,477558,A,Bestått,2017,v
+MTDT,477559,C,Bestått,2017,v
+MTDT,477560,D,Bestått,2017,v
+MTDT,477561,A,Bestått,2017,v
+MTDT,477562,D,Bestått,2017,v
+MTDT,477563,B,Bestått,2017,v
+MTDT,477564,A,Bestått,2017,v
+MTDT,477565,A,Bestått,2017,v
+MTDT,477566,D,Bestått,2017,v
+MTDT,477567,C,Bestått,2017,v
+MTDT,477568,A,Bestått,2017,v
+MTDT,477570,B,Bestått,2017,v
+MTDT,477571,D,Bestått,2017,v
+MTDT,477572,A,Bestått,2017,v
+MTDT,477573,C,Bestått,2017,v
+MTDT,477574,C,Bestått,2017,v
+MTDT,477575,B,Bestått,2017,v
+MTDT,477576,B,Bestått,2017,v
+MTDT,477577,D,Bestått,2017,v
+MTDT,477578,C,Bestått,2017,v
+MTDT,477580,C,Bestått,2017,v
+MTDT,477581,C,Bestått,2017,v
+MTDT,477581,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTDT,477582,B,Bestått,2017,v
+MTDT,477583,C,Bestått,2017,v
+MTDT,477584,C,Bestått,2017,v
+MTDT,477584,C,Bestått,2018,v
+MTDT,477585,E,Bestått,2017,v
+MTDT,477585,F,Ikke bestått,2018,v
+MTDT,477586,E,Bestått,2017,v
+MTDT,477586,C,Bestått,2018,v
+MTDT,477587,A,Bestått,2017,v
+MTDT,477588,A,Bestått,2017,v
+MTDT,477589,D,Bestått,2018,v
+MTDT,477590,A,Bestått,2017,v
+MTDT,477591,B,Bestått,2017,v
+MTDT,477592,A,Bestått,2017,v
+MTDT,477594,B,Bestått,2017,v
+MTDT,477595,A,Bestått,2017,v
+MTDT,477596,C,Bestått,2017,v
+MTDT,477597,B,Bestått,2017,v
+MTDT,477598,B,Bestått,2017,v
+MTDT,477600,D,Bestått,2017,v
+MTDT,477601,C,Bestått,2017,v
+MTDT,477602,B,Bestått,2017,v
+MTDT,477603,F,Ikke bestått,2017,v
+MTDT,477603,F,Ikke bestått,2018,s
+MTDT,477604,B,Bestått,2017,v
+MTDT,477605,B,Bestått,2017,v
+MTDT,477606,A,Bestått,2017,v
+MTDT,477607,A,Bestått,2017,v
+MTDT,477608,C,Bestått,2017,v
+MTDT,477609,A,Bestått,2017,v
+MTDT,477610,E,Bestått,2017,v
+MTDT,477610,E,Bestått,2018,v
+MTDT,477611,C,Bestått,2017,v
+MTDT,477613,B,Bestått,2017,v
+MTDT,477614,C,Bestått,2018,v
+MTDT,477615,A,Bestått,2017,v
+MTDT,477616,A,Bestått,2017,v
+MTDT,477617,A,Bestått,2017,v
+MTDT,477618,B,Bestått,2017,v
+MTDT,477619,A,Bestått,2017,v
+MTDT,477620,C,Bestått,2017,v
+MTDT,477621,A,Bestått,2017,v
+MTDT,477623,B,Bestått,2017,v
+MTDT,477624,C,Bestått,2017,v
+MTDT,477625,A,Bestått,2017,v
+MTDT,477626,C,Bestått,2017,v
+MTDT,477627,A,Bestått,2017,v
+MTDT,477628,C,Bestått,2017,v
+MTDT,477630,A,Bestått,2017,v
+MTDT,477631,A,Bestått,2017,v
+MTDT,477632,B,Bestått,2017,v
+MTDT,477633,C,Bestått,2017,v
+MTDT,477633,C,Bestått,2018,v
+MTDT,477636,E,Bestått,2017,v
+MTDT,477637,A,Bestått,2018,v
+MTDT,477638,F,Ikke bestått,2017,v
+MTDT,477638,D,Bestått,2017,s
+MTDT,477639,B,Bestått,2017,v
+MTDT,477641,A,Bestått,2017,v
+MTDT,477642,C,Bestått,2017,v
+MTDT,477643,A,Bestått,2017,v
+MTDT,477644,C,Bestått,2017,v
+MTDT,477645,A,Bestått,2017,v
+MTDT,477646,D,Bestått,2017,v
+MTDT,477647,C,Bestått,2017,v
+MTDT,477647,C,Bestått,2018,v
+MTDT,477648,A,Bestått,2017,v
+MTDT,477649,,Manglende øvinger,2017,v
+MTDT,477651,D,Bestått,2018,v
+MTDT,477920,,Legeattest,2018,v
+MTDT,477920,F,Ikke bestått,2018,s
+MTDT,477979,E,Bestått,2018,v
+MTDT,477991,E,Bestått,2017,v
+MTDT,478038,C,Bestått,2017,v
+MTDT,478061,F,Ikke bestått,2018,v
+MTDT,478061,D,Bestått,2018,s
+MTDT,478068,C,Bestått,2017,v
+MTDT,478235,C,Bestått,2018,v
+MTDT,478259,D,Bestått,2018,v
+MTDT,478263,E,Bestått,2018,v
+MTDT,478312,C,Bestått,2018,v
+MTDT,478338,C,Bestått,2017,v
+MTDT,478342,B,Bestått,2017,v
+MTDT,478353,D,Bestått,2017,v
+MTDT,478353,,Ikke møtt,2018,v
+MTDT,478380,A,Bestått,2017,v
+MTDT,478408,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTDT,478408,B,Bestått,2018,s
+MTDT,478672,B,Bestått,2017,v
+MTDT,478674,C,Bestått,2018,v
+MTDT,478692,D,Bestått,2017,v
+MTDT,478692,C,Bestått,2018,v
+MTDT,479358,E,Bestått,2018,v
+MTDT,479369,A,Bestått,2017,v
+MTDT,479660,D,Bestått,2018,v
+MTDT,480652,F,Ikke bestått,2018,v
+MTDT,481584,E,Bestått,2018,v
+MTDT,481924,C,Bestått,2018,v
+MTDT,486872,D,Bestått,2018,v
+MTDT,487528,B,Bestått,2018,v
+MTDT,489412,E,Bestått,2018,v
+MTDT,489571,B,Bestått,2018,v
+MTDT,489614,B,Bestått,2018,v
+MTDT,489629,A,Bestått,2018,v
+MTDT,489937,C,Bestått,2018,v
+MTDT,489938,C,Bestått,2018,v
+MTDT,489939,,Manglende øvinger,2018,v
+MTDT,489940,C,Bestått,2018,v
+MTDT,489941,F,Ikke bestått,2018,v
+MTDT,489941,E,Bestått,2018,s
+MTDT,489942,F,Ikke bestått,2018,v
+MTDT,489943,F,Ikke bestått,2018,v
+MTDT,489943,B,Bestått,2018,s
+MTDT,489944,B,Bestått,2018,v
+MTDT,489945,D,Bestått,2018,v
+MTDT,489946,C,Bestått,2018,v
+MTDT,489947,C,Bestått,2018,v
+MTDT,489949,F,Ikke bestått,2018,v
+MTDT,489950,C,Bestått,2018,v
+MTDT,489951,A,Bestått,2018,v
+MTDT,489952,C,Bestått,2018,v
+MTDT,489953,A,Bestått,2018,v
+MTDT,489954,C,Bestått,2018,v
+MTDT,489955,B,Bestått,2018,v
+MTDT,489956,C,Bestått,2018,v
+MTDT,489957,C,Bestått,2018,v
+MTDT,489958,C,Bestått,2018,v
+MTDT,489960,A,Bestått,2018,v
+MTDT,489961,B,Bestått,2018,v
+MTDT,489962,C,Bestått,2018,v
+MTDT,489964,C,Bestått,2018,v
+MTDT,489965,C,Bestått,2018,v
+MTDT,489966,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTDT,489966,B,Bestått,2018,s
+MTDT,489967,C,Bestått,2018,v
+MTDT,489968,C,Bestått,2018,v
+MTDT,489969,F,Ikke bestått,2018,v
+MTDT,489969,F,Ikke bestått,2018,s
+MTDT,489970,B,Bestått,2018,v
+MTDT,489971,B,Bestått,2018,v
+MTDT,489974,B,Bestått,2018,v
+MTDT,489975,D,Bestått,2018,v
+MTDT,489976,A,Bestått,2018,v
+MTDT,489977,C,Bestått,2018,v
+MTDT,489979,,Manglende øvinger,2018,v
+MTDT,489980,D,Bestått,2018,v
+MTDT,489981,A,Bestått,2018,v
+MTDT,489982,B,Bestått,2018,v
+MTDT,489983,C,Bestått,2018,v
+MTDT,489984,,Manglende øvinger,2018,v
+MTDT,489985,A,Bestått,2018,v
+MTDT,489986,B,Bestått,2018,v
+MTDT,489987,C,Bestått,2018,v
+MTDT,489988,B,Bestått,2018,v
+MTDT,489989,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTDT,489989,A,Bestått,2018,s
+MTDT,489990,F,Ikke bestått,2018,v
+MTDT,489990,,Ikke møtt,2018,s
+MTDT,489991,C,Bestått,2018,v
+MTDT,489993,F,Ikke bestått,2018,v
+MTDT,489994,C,Bestått,2018,v
+MTDT,489995,D,Bestått,2018,v
+MTDT,489997,F,Ikke bestått,2018,v
+MTDT,489997,,Ikke møtt,2018,s
+MTDT,489998,D,Bestått,2018,v
+MTDT,489999,A,Bestått,2018,v
+MTDT,490001,C,Bestått,2018,v
+MTDT,490002,C,Bestått,2018,v
+MTDT,490003,,Manglende øvinger,2018,v
+MTDT,490004,C,Bestått,2018,v
+MTDT,490005,C,Bestått,2018,v
+MTDT,490006,C,Bestått,2018,v
+MTDT,490008,C,Bestått,2018,v
+MTDT,490009,C,Bestått,2018,v
+MTDT,490010,A,Bestått,2018,v
+MTDT,490011,C,Bestått,2018,v
+MTDT,490012,C,Bestått,2018,v
+MTDT,490013,A,Bestått,2018,v
+MTDT,490014,D,Bestått,2018,v
+MTDT,490015,A,Bestått,2018,v
+MTDT,490017,D,Bestått,2018,v
+MTDT,490018,D,Bestått,2018,v
+MTDT,490019,B,Bestått,2018,v
+MTDT,490021,C,Bestått,2018,v
+MTDT,490083,C,Bestått,2018,v
+MTDT,490707,F,Ikke bestått,2018,v
+MTDT,490707,,Ikke møtt,2018,s
+MTDT,490728,C,Bestått,2018,v
+MTDT,490737,B,Bestått,2018,v
+MTDT,490876,E,Bestått,2018,v
+MTDT,491398,C,Bestått,2018,v
+MTDT,491553,B,Bestått,2018,v
+MTDT,491636,C,Bestått,2018,v
+MTDT,491644,C,Bestått,2018,v
+MTDT,491667,B,Bestått,2018,v
+MTDT,669220,A,Bestått,2011,v
+MTDT,676085,A,Bestått,2012,v
+MTDT,676288,,Ikke møtt,2012,v
+MTDT,676325,,Manglende øvinger,2010,v
+MTDT,676325,E,Bestått,2011,v
+MTDT,682007,C,Bestått,2012,v
+MTDT,682007,B,Bestått,2013,v
+MTDT,682074,C,Bestått,2011,v
+MTDT,683808,E,Bestått,2010,v
+MTDT,683833,,Ikke møtt,2010,v
+MTDT,683893,,Ikke møtt,2010,v
+MTDT,683936,,Ikke møtt,2013,v
+MTDT,687650,D,Bestått,2010,v
+MTDT,689131,,Ikke møtt,2010,v
+MTDT,689777,D,Bestått,2011,v
+MTDT,689786,B,Bestått,2010,v
+MTDT,689809,F,Ikke bestått,2010,v
+MTDT,689809,E,Bestått,2010,s
+MTDT,689846,A,Bestått,2011,v
+MTDT,689868,B,Bestått,2010,v
+MTDT,691632,,Manglende øvinger,2013,v
+MTDT,692380,C,Bestått,2011,v
+MTDT,693876,C,Bestått,2010,v
+MTDT,697067,E,Bestått,2012,v
+MTDT,697071,E,Bestått,2010,v
+MTDT,697071,D,Bestått,2011,v
+MTDT,697073,B,Bestått,2010,v
+MTDT,697076,,Trekk under eksamen (Avbrutt eksamen),2011,v
+MTDT,697076,C,Bestått,2011,s
+MTDT,697084,E,Bestått,2010,v
+MTDT,697088,D,Bestått,2010,v
+MTDT,697089,B,Bestått,2010,v
+MTDT,697091,C,Bestått,2010,v
+MTDT,697098,A,Bestått,2011,v
+MTDT,697109,A,Bestått,2012,v
+MTDT,697113,F,Ikke bestått,2010,v
+MTDT,697118,B,Bestått,2011,v
+MTDT,697120,E,Bestått,2010,v
+MTDT,697120,B,Bestått,2012,v
+MTDT,697126,C,Bestått,2013,v
+MTDT,697128,,Gyldig fravær,2011,v
+MTDT,697128,A,Bestått,2011,s
+MTDT,697130,C,Bestått,2010,v
+MTDT,697131,,Ikke møtt,2014,v
+MTDT,697136,C,Bestått,2010,v
+MTDT,697145,E,Bestått,2010,v
+MTDT,697145,,Ikke møtt,2016,v
+MTDT,697151,B,Bestått,2010,v
+MTDT,697165,,Manglende øvinger,2013,v
+MTDT,697325,D,Bestått,2010,v
+MTDT,697404,,Manglende øvinger,2010,v
+MTDT,697404,,Manglende øvinger,2015,v
+MTDT,697473,,Manglende øvinger,2010,v
+MTDT,697688,B,Bestått,2010,v
+MTDT,697908,,Manglende øvinger,2013,v
+MTDT,697918,C,Bestått,2013,v
+MTDT,699011,D,Bestått,2010,v
+MTDT,699011,A,Bestått,2013,v
+MTDT,699063,C,Bestått,2011,v
+MTDT,704540,C,Bestått,2010,v
+MTDT,704563,B,Bestått,2010,v
+MTDT,704612,B,Bestått,2013,v
+MTDT,705352,,Fritatt,2011,v
+MTDT,705728,C,Bestått,2012,v
+MTDT,707571,E,Bestått,2016,v
+MTDT,707663,C,Bestått,2012,v
+MTDT,707665,C,Bestått,2010,v
+MTDT,707666,C,Bestått,2010,v
+MTDT,707668,D,Bestått,2010,v
+MTDT,707669,D,Bestått,2010,v
+MTDT,707669,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTDT,707670,B,Bestått,2010,v
+MTDT,707672,,Ikke møtt,2014,v
+MTDT,707674,,Manglende øvinger,2010,v
+MTDT,707684,C,Bestått,2011,v
+MTDT,707686,B,Bestått,2011,v
+MTDT,707689,,Ikke møtt,2010,v
+MTDT,707690,D,Bestått,2010,v
+MTDT,707690,D,Bestått,2013,v
+MTDT,707693,,Ikke møtt,2010,v
+MTDT,707694,B,Bestått,2010,v
+MTDT,707697,E,Bestått,2010,v
+MTDT,707697,D,Bestått,2014,v
+MTDT,707700,A,Bestått,2010,v
+MTDT,707706,D,Bestått,2010,v
+MTDT,707712,C,Bestått,2011,v
+MTDT,707717,F,Ikke bestått,2010,v
+MTDT,707717,F,Ikke bestått,2010,s
+MTDT,707719,E,Bestått,2010,v
+MTDT,707722,B,Bestått,2011,v
+MTDT,707723,D,Bestått,2010,v
+MTDT,707723,C,Bestått,2011,v
+MTDT,707725,C,Bestått,2011,v
+MTDT,707726,E,Bestått,2011,v
+MTDT,707731,,Manglende øvinger,2011,v
+MTDT,707731,D,Bestått,2012,v
+MTDT,707736,E,Bestått,2010,v
+MTDT,707736,C,Bestått,2012,v
+MTDT,707737,D,Bestått,2010,v
+MTDT,707739,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTDT,707739,C,Bestått,2010,s
+MTDT,707740,C,Bestått,2010,v
+MTDT,707741,C,Bestått,2012,v
+MTDT,707742,D,Bestått,2011,v
+MTDT,707744,C,Bestått,2010,v
+MTDT,707747,,Ikke møtt,2013,v
+MTDT,707748,A,Bestått,2011,v
+MTDT,707752,D,Bestått,2010,v
+MTDT,707752,C,Bestått,2011,v
+MTDT,707755,F,Ikke bestått,2010,v
+MTDT,707755,F,Ikke bestått,2010,s
+MTDT,707755,E,Bestått,2011,v
+MTDT,707755,,Ikke møtt,2013,v
+MTDT,707756,B,Bestått,2010,v
+MTDT,707757,B,Bestått,2010,v
+MTDT,707758,D,Bestått,2010,v
+MTDT,707760,C,Bestått,2012,v
+MTDT,707762,C,Bestått,2010,v
+MTDT,707769,B,Bestått,2010,v
+MTDT,707776,A,Bestått,2010,v
+MTDT,707778,D,Bestått,2010,v
+MTDT,707778,,Ikke møtt,2012,v
+MTDT,707781,A,Bestått,2010,v
+MTDT,707785,F,Ikke bestått,2010,v
+MTDT,707787,B,Bestått,2010,v
+MTDT,707873,D,Bestått,2010,v
+MTDT,707873,C,Bestått,2011,v
+MTDT,707980,B,Bestått,2013,v
+MTDT,708370,B,Bestått,2011,v
+MTDT,708452,D,Bestått,2010,v
+MTDT,708452,B,Bestått,2012,v
+MTDT,708607,C,Bestått,2010,v
+MTDT,708724,C,Bestått,2013,v
+MTDT,708724,,Ikke møtt,2016,v
+MTDT,708812,A,Bestått,2010,v
+MTDT,709482,D,Bestått,2011,v
+MTDT,712676,D,Bestått,2010,v
+MTDT,712676,,Ikke møtt,2012,v
+MTDT,712727,B,Bestått,2010,v
+MTDT,712793,A,Bestått,2012,v
+MTDT,713107,A,Bestått,2010,v
+MTDT,713170,F,Ikke bestått,2012,v
+MTDT,713170,C,Bestått,2012,s
+MTDT,713271,C,Bestått,2010,v
+MTDT,713271,C,Bestått,2011,v
+MTDT,713766,B,Bestått,2014,v
+MTDT,714301,C,Bestått,2012,v
+MTDT,714392,B,Bestått,2011,v
+MTDT,714428,C,Bestått,2015,v
+MTDT,714941,A,Bestått,2011,v
+MTDT,714947,D,Bestått,2010,v
+MTDT,715543,B,Bestått,2010,v
+MTDT,715544,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTDT,715544,,Ikke møtt,2010,s
+MTDT,715544,E,Bestått,2011,v
+MTDT,715544,F,Ikke bestått,2013,v
+MTDT,715545,E,Bestått,2010,v
+MTDT,715546,D,Bestått,2010,v
+MTDT,715547,D,Bestått,2010,v
+MTDT,715547,C,Bestått,2014,v
+MTDT,715548,D,Bestått,2010,v
+MTDT,715548,B,Bestått,2013,v
+MTDT,715549,B,Bestått,2010,v
+MTDT,715551,F,Ikke bestått,2010,v
+MTDT,715551,D,Bestått,2012,v
+MTDT,715553,D,Bestått,2010,v
+MTDT,715554,,Manglende øvinger,2010,v
+MTDT,715555,B,Bestått,2011,v
+MTDT,715556,C,Bestått,2010,v
+MTDT,715556,,Ikke møtt,2011,v
+MTDT,715558,B,Bestått,2010,v
+MTDT,715559,A,Bestått,2010,v
+MTDT,715561,,Trekk under eksamen (Avbrutt eksamen),2011,v
+MTDT,715561,B,Bestått,2011,s
+MTDT,715562,,Manglende øvinger,2010,v
+MTDT,715562,D,Bestått,2011,v
+MTDT,715564,C,Bestått,2010,v
+MTDT,715565,E,Bestått,2010,v
+MTDT,715565,C,Bestått,2013,v
+MTDT,715566,,Manglende øvinger,2010,v
+MTDT,715568,A,Bestått,2010,v
+MTDT,715570,,Manglende øvinger,2010,v
+MTDT,715570,F,Ikke bestått,2011,v
+MTDT,715570,F,Ikke bestått,2011,s
+MTDT,715571,E,Bestått,2010,v
+MTDT,715572,D,Bestått,2010,v
+MTDT,715572,D,Bestått,2011,v
+MTDT,715574,C,Bestått,2010,v
+MTDT,715575,B,Bestått,2010,v
+MTDT,715576,D,Bestått,2010,v
+MTDT,715577,A,Bestått,2010,v
+MTDT,715578,B,Bestått,2010,v
+MTDT,715579,,Manglende øvinger,2010,v
+MTDT,715581,D,Bestått,2010,v
+MTDT,715583,C,Bestått,2010,v
+MTDT,715584,B,Bestått,2010,v
+MTDT,715584,A,Bestått,2011,v
+MTDT,715585,B,Bestått,2010,v
+MTDT,715586,,Manglende øvinger,2010,v
+MTDT,715587,C,Bestått,2010,v
+MTDT,715588,C,Bestått,2010,v
+MTDT,715588,D,Bestått,2011,v
+MTDT,715589,D,Bestått,2011,v
+MTDT,715589,C,Bestått,2012,v
+MTDT,715590,B,Bestått,2010,v
+MTDT,715591,A,Bestått,2010,v
+MTDT,715593,C,Bestått,2010,v
+MTDT,715594,C,Bestått,2010,v
+MTDT,715595,E,Bestått,2010,v
+MTDT,715596,,Ikke møtt,2010,v
+MTDT,715596,B,Bestått,2011,v
+MTDT,715597,C,Bestått,2010,v
+MTDT,715598,D,Bestått,2010,v
+MTDT,715599,A,Bestått,2010,v
+MTDT,715600,B,Bestått,2010,v
+MTDT,715601,F,Ikke bestått,2010,v
+MTDT,715601,E,Bestått,2010,s
+MTDT,715601,D,Bestått,2013,v
+MTDT,715602,B,Bestått,2010,v
+MTDT,715602,B,Bestått,2011,v
+MTDT,715603,E,Bestått,2010,v
+MTDT,715605,C,Bestått,2010,v
+MTDT,715606,F,Ikke bestått,2010,v
+MTDT,715606,F,Ikke bestått,2011,v
+MTDT,715606,E,Bestått,2011,s
+MTDT,715608,E,Bestått,2010,v
+MTDT,715608,C,Bestått,2013,v
+MTDT,715609,B,Bestått,2010,v
+MTDT,715610,B,Bestått,2010,v
+MTDT,715611,A,Bestått,2010,v
+MTDT,715612,C,Bestått,2010,v
+MTDT,715613,B,Bestått,2011,v
+MTDT,715614,D,Bestått,2010,v
+MTDT,715615,C,Bestått,2010,v
+MTDT,715615,B,Bestått,2011,v
+MTDT,715617,D,Bestått,2010,v
+MTDT,715617,C,Bestått,2011,v
+MTDT,715618,C,Bestått,2010,v
+MTDT,715619,C,Bestått,2010,v
+MTDT,715621,C,Bestått,2010,v
+MTDT,715622,D,Bestått,2010,v
+MTDT,715623,B,Bestått,2010,v
+MTDT,715624,B,Bestått,2010,v
+MTDT,715625,C,Bestått,2010,v
+MTDT,715626,A,Bestått,2010,v
+MTDT,715627,B,Bestått,2010,v
+MTDT,715628,D,Bestått,2010,v
+MTDT,715629,,Manglende øvinger,2010,v
+MTDT,715630,C,Bestått,2010,v
+MTDT,715631,C,Bestått,2010,v
+MTDT,715633,B,Bestått,2010,v
+MTDT,715635,C,Bestått,2010,v
+MTDT,715636,C,Bestått,2010,v
+MTDT,715637,B,Bestått,2011,v
+MTDT,715638,B,Bestått,2010,v
+MTDT,715639,D,Bestått,2010,v
+MTDT,715640,D,Bestått,2010,v
+MTDT,715640,B,Bestått,2012,v
+MTDT,715641,C,Bestått,2010,v
+MTDT,715642,A,Bestått,2010,v
+MTDT,715643,A,Bestått,2010,v
+MTDT,715646,D,Bestått,2010,v
+MTDT,715646,C,Bestått,2011,v
+MTDT,715647,C,Bestått,2010,v
+MTDT,715662,C,Bestått,2011,v
+MTDT,715697,,Manglende øvinger,2012,v
+MTDT,715697,F,Ikke bestått,2013,v
+MTDT,715697,F,Ikke bestått,2013,s
+MTDT,715697,E,Bestått,2014,v
+MTDT,715697,D,Bestått,2016,v
+MTDT,715728,,Manglende øvinger,2011,v
+MTDT,715782,C,Bestått,2012,v
+MTDT,715883,,Manglende øvinger,2012,v
+MTDT,715883,D,Bestått,2013,v
+MTDT,715938,A,Bestått,2010,v
+MTDT,716105,C,Bestått,2010,v
+MTDT,716154,F,Ikke bestått,2011,v
+MTDT,716154,C,Bestått,2012,v
+MTDT,716276,D,Bestått,2010,v
+MTDT,716282,C,Bestått,2010,v
+MTDT,716282,B,Bestått,2011,v
+MTDT,716313,B,Bestått,2010,v
+MTDT,716361,,Gyldig fravær,2013,v
+MTDT,716361,,Ikke møtt,2013,s
+MTDT,716361,F,Ikke bestått,2014,v
+MTDT,716361,C,Bestått,2015,v
+MTDT,719307,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTDT,719307,,Ikke møtt,2012,s
+MTDT,721128,E,Bestått,2016,v
+MTDT,721343,B,Bestått,2011,v
+MTDT,721344,,Manglende øvinger,2011,v
+MTDT,721344,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTDT,721344,B,Bestått,2013,s
+MTDT,721447,A,Bestått,2012,v
+MTDT,721505,C,Bestått,2011,v
+MTDT,721511,F,Ikke bestått,2011,v
+MTDT,721511,,Ikke møtt,2011,s
+MTDT,721511,E,Bestått,2012,v
+MTDT,721579,,Manglende øvinger,2013,v
+MTDT,721900,B,Bestått,2012,v
+MTDT,721912,C,Bestått,2011,v
+MTDT,721912,,Ikke møtt,2013,v
+MTDT,722395,C,Bestått,2012,v
+MTDT,722760,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTDT,722760,F,Ikke bestått,2018,s
+MTDT,723658,C,Bestått,2011,v
+MTDT,723660,E,Bestått,2011,v
+MTDT,723661,D,Bestått,2011,v
+MTDT,723661,C,Bestått,2013,v
+MTDT,723662,C,Bestått,2011,v
+MTDT,723663,C,Bestått,2011,v
+MTDT,723664,D,Bestått,2011,v
+MTDT,723666,A,Bestått,2011,v
+MTDT,723667,A,Bestått,2011,v
+MTDT,723669,C,Bestått,2011,v
+MTDT,723669,B,Bestått,2012,v
+MTDT,723671,C,Bestått,2011,v
+MTDT,723672,A,Bestått,2011,v
+MTDT,723673,C,Bestått,2011,v
+MTDT,723675,C,Bestått,2011,v
+MTDT,723676,C,Bestått,2011,v
+MTDT,723677,D,Bestått,2011,v
+MTDT,723677,A,Bestått,2012,v
+MTDT,723678,C,Bestått,2011,v
+MTDT,723678,A,Bestått,2012,v
+MTDT,723679,A,Bestått,2011,v
+MTDT,723680,A,Bestått,2011,v
+MTDT,723681,D,Bestått,2011,v
+MTDT,723682,C,Bestått,2011,v
+MTDT,723685,D,Bestått,2011,v
+MTDT,723686,C,Bestått,2011,v
+MTDT,723687,B,Bestått,2011,v
+MTDT,723688,B,Bestått,2012,v
+MTDT,723689,D,Bestått,2011,v
+MTDT,723690,E,Bestått,2011,v
+MTDT,723691,D,Bestått,2011,v
+MTDT,723691,C,Bestått,2013,v
+MTDT,723693,F,Ikke bestått,2011,v
+MTDT,723693,F,Ikke bestått,2011,s
+MTDT,723693,E,Bestått,2012,v
+MTDT,723694,C,Bestått,2011,v
+MTDT,723695,D,Bestått,2011,v
+MTDT,723696,C,Bestått,2011,v
+MTDT,723697,D,Bestått,2011,v
+MTDT,723698,D,Bestått,2011,v
+MTDT,723698,C,Bestått,2012,v
+MTDT,723699,C,Bestått,2012,v
+MTDT,723700,B,Bestått,2011,v
+MTDT,723701,D,Bestått,2011,v
+MTDT,723702,D,Bestått,2011,v
+MTDT,723702,C,Bestått,2012,v
+MTDT,723703,F,Ikke bestått,2011,v
+MTDT,723703,F,Ikke bestått,2012,v
+MTDT,723703,,Ikke møtt,2012,s
+MTDT,723703,D,Bestått,2013,v
+MTDT,723704,C,Bestått,2011,v
+MTDT,723706,C,Bestått,2011,v
+MTDT,723707,C,Bestått,2011,v
+MTDT,723709,D,Bestått,2011,v
+MTDT,723711,,Manglende øvinger,2011,v
+MTDT,723711,,Manglende øvinger,2012,v
+MTDT,723711,,Manglende øvinger,2013,v
+MTDT,723712,C,Bestått,2011,v
+MTDT,723713,D,Bestått,2011,v
+MTDT,723713,D,Bestått,2012,v
+MTDT,723714,E,Bestått,2011,v
+MTDT,723716,,Trekk under eksamen (Avbrutt eksamen),2011,v
+MTDT,723716,B,Bestått,2011,s
+MTDT,723717,A,Bestått,2012,v
+MTDT,723718,,Manglende øvinger,2011,v
+MTDT,723718,C,Bestått,2012,v
+MTDT,723719,E,Bestått,2011,v
+MTDT,723720,C,Bestått,2011,v
+MTDT,723722,B,Bestått,2011,v
+MTDT,723723,B,Bestått,2011,v
+MTDT,723724,,Manglende øvinger,2011,v
+MTDT,723725,D,Bestått,2011,v
+MTDT,723726,C,Bestått,2011,v
+MTDT,723727,F,Ikke bestått,2011,v
+MTDT,723727,F,Ikke bestått,2012,v
+MTDT,723727,,Ikke møtt,2012,s
+MTDT,723728,C,Bestått,2011,v
+MTDT,723729,B,Bestått,2011,v
+MTDT,723730,,Ikke møtt,2011,v
+MTDT,723731,,Manglende øvinger,2011,v
+MTDT,723733,C,Bestått,2011,v
+MTDT,723736,C,Bestått,2011,v
+MTDT,723737,B,Bestått,2011,v
+MTDT,723738,F,Ikke bestått,2011,v
+MTDT,723738,C,Bestått,2012,v
+MTDT,723739,C,Bestått,2011,v
+MTDT,723740,E,Bestått,2011,v
+MTDT,723741,E,Bestått,2011,v
+MTDT,723741,,Ikke møtt,2011,s
+MTDT,723742,D,Bestått,2011,v
+MTDT,723744,,Ikke møtt,2011,v
+MTDT,723745,E,Bestått,2011,v
+MTDT,723745,B,Bestått,2014,v
+MTDT,723746,B,Bestått,2011,v
+MTDT,723747,A,Bestått,2011,v
+MTDT,723749,,Manglende øvinger,2011,v
+MTDT,723749,,Manglende øvinger,2012,v
+MTDT,723750,C,Bestått,2011,v
+MTDT,723751,C,Bestått,2011,v
+MTDT,723752,B,Bestått,2011,v
+MTDT,723753,C,Bestått,2011,v
+MTDT,723754,D,Bestått,2011,v
+MTDT,723754,B,Bestått,2013,v
+MTDT,723755,F,Ikke bestått,2011,v
+MTDT,723755,E,Bestått,2012,v
+MTDT,723755,F,Ikke bestått,2014,v
+MTDT,723756,C,Bestått,2014,v
+MTDT,723768,,Manglende øvinger,2012,v
+MTDT,723898,E,Bestått,2012,v
+MTDT,724012,,Manglende øvinger,2014,v
+MTDT,724024,F,Ikke bestått,2011,v
+MTDT,724024,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTDT,724044,B,Bestått,2012,v
+MTDT,724141,C,Bestått,2012,v
+MTDT,724146,F,Ikke bestått,2011,v
+MTDT,724232,B,Bestått,2011,v
+MTDT,724293,B,Bestått,2011,v
+MTDT,724299,E,Bestått,2011,v
+MTDT,724301,B,Bestått,2011,v
+MTDT,724303,D,Bestått,2011,v
+MTDT,724314,D,Bestått,2011,v
+MTDT,724329,F,Ikke bestått,2011,v
+MTDT,724329,F,Ikke bestått,2012,v
+MTDT,724329,F,Ikke bestått,2012,s
+MTDT,724329,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTDT,724329,F,Ikke bestått,2013,s
+MTDT,724329,F,Ikke bestått,2014,v
+MTDT,724329,F,Ikke bestått,2014,s
+MTDT,724329,D,Bestått,2015,v
+MTDT,724669,B,Bestått,2014,v
+MTDT,724675,C,Bestått,2011,v
+MTDT,725246,A,Bestått,2012,v
+MTDT,728897,F,Ikke bestått,2012,v
+MTDT,729089,B,Bestått,2012,v
+MTDT,729091,B,Bestått,2012,v
+MTDT,729121,B,Bestått,2012,v
+MTDT,729540,E,Bestått,2012,v
+MTDT,729556,C,Bestått,2013,v
+MTDT,729573,B,Bestått,2012,v
+MTDT,729575,,Manglende øvinger,2016,v
+MTDT,729593,,Manglende øvinger,2012,v
+MTDT,729593,,Manglende øvinger,2013,v
+MTDT,729600,D,Bestått,2012,v
+MTDT,729600,D,Bestått,2015,v
+MTDT,729645,B,Bestått,2012,v
+MTDT,729856,C,Bestått,2013,v
+MTDT,730629,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,730629,F,Ikke bestått,2014,s
+MTDT,730629,E,Bestått,2015,s
+MTDT,730629,C,Bestått,2016,v
+MTDT,730788,B,Bestått,2013,v
+MTDT,730828,C,Bestått,2013,v
+MTDT,731438,E,Bestått,2012,v
+MTDT,731451,C,Bestått,2012,v
+MTDT,731610,C,Bestått,2013,v
+MTDT,731750,,Manglende øvinger,2012,v
+MTDT,731750,,Manglende øvinger,2013,v
+MTDT,731750,,Manglende øvinger,2015,v
+MTDT,731751,B,Bestått,2012,v
+MTDT,731754,F,Ikke bestått,2012,v
+MTDT,731756,E,Bestått,2012,v
+MTDT,731757,C,Bestått,2012,v
+MTDT,731758,B,Bestått,2012,v
+MTDT,731759,C,Bestått,2012,v
+MTDT,731759,B,Bestått,2013,v
+MTDT,731760,F,Ikke bestått,2012,v
+MTDT,731760,F,Ikke bestått,2014,v
+MTDT,731760,,Ikke møtt,2015,s
+MTDT,731760,F,Ikke bestått,2016,v
+MTDT,731760,F,Ikke bestått,2016,s
+MTDT,731761,D,Bestått,2012,v
+MTDT,731762,D,Bestått,2012,v
+MTDT,731763,A,Bestått,2013,v
+MTDT,731764,E,Bestått,2012,v
+MTDT,731764,,Ikke møtt,2016,v
+MTDT,731765,C,Bestått,2012,v
+MTDT,731765,C,Bestått,2013,v
+MTDT,731766,A,Bestått,2012,v
+MTDT,731767,D,Bestått,2012,v
+MTDT,731767,D,Bestått,2013,v
+MTDT,731768,C,Bestått,2012,v
+MTDT,731769,D,Bestått,2012,v
+MTDT,731769,B,Bestått,2013,v
+MTDT,731770,B,Bestått,2012,v
+MTDT,731772,C,Bestått,2013,v
+MTDT,731773,C,Bestått,2012,v
+MTDT,731774,E,Bestått,2012,v
+MTDT,731774,D,Bestått,2013,v
+MTDT,731775,D,Bestått,2012,v
+MTDT,731776,B,Bestått,2012,v
+MTDT,731777,B,Bestått,2012,v
+MTDT,731778,B,Bestått,2012,v
+MTDT,731781,A,Bestått,2012,v
+MTDT,731782,C,Bestått,2012,v
+MTDT,731783,D,Bestått,2012,v
+MTDT,731783,C,Bestått,2013,v
+MTDT,731784,B,Bestått,2012,v
+MTDT,731785,D,Bestått,2013,v
+MTDT,731786,C,Bestått,2012,v
+MTDT,731787,C,Bestått,2012,v
+MTDT,731788,E,Bestått,2012,v
+MTDT,731788,F,Ikke bestått,2014,v
+MTDT,731789,C,Bestått,2012,v
+MTDT,731790,C,Bestått,2012,v
+MTDT,731790,C,Bestått,2013,v
+MTDT,731791,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTDT,731791,F,Ikke bestått,2012,s
+MTDT,731791,F,Ikke bestått,2013,v
+MTDT,731791,,Ikke møtt,2014,s
+MTDT,731791,F,Ikke bestått,2016,v
+MTDT,731791,F,Ikke bestått,2016,s
+MTDT,731791,,Ikke møtt,2017,v
+MTDT,731791,F,Ikke bestått,2018,v
+MTDT,731791,F,Ikke bestått,2018,s
+MTDT,731792,D,Bestått,2012,v
+MTDT,731792,D,Bestått,2014,v
+MTDT,731793,C,Bestått,2012,v
+MTDT,731794,B,Bestått,2012,v
+MTDT,731795,C,Bestått,2012,v
+MTDT,731796,C,Bestått,2012,v
+MTDT,731796,D,Bestått,2013,v
+MTDT,731797,E,Bestått,2012,v
+MTDT,731798,,Manglende øvinger,2012,v
+MTDT,731798,D,Bestått,2013,v
+MTDT,731799,E,Bestått,2012,v
+MTDT,731800,C,Bestått,2012,v
+MTDT,731801,A,Bestått,2012,v
+MTDT,731804,B,Bestått,2012,v
+MTDT,731805,,Manglende øvinger,2012,v
+MTDT,731806,B,Bestått,2012,v
+MTDT,731807,C,Bestått,2012,v
+MTDT,731807,B,Bestått,2015,v
+MTDT,731808,B,Bestått,2012,v
+MTDT,731810,B,Bestått,2012,v
+MTDT,731811,C,Bestått,2012,v
+MTDT,731812,A,Bestått,2012,v
+MTDT,731813,B,Bestått,2012,v
+MTDT,731814,,Manglende øvinger,2012,v
+MTDT,731814,C,Bestått,2013,v
+MTDT,731815,E,Bestått,2012,v
+MTDT,731816,D,Bestått,2012,v
+MTDT,731818,,Manglende øvinger,2012,v
+MTDT,731819,C,Bestått,2012,v
+MTDT,731820,B,Bestått,2012,v
+MTDT,731821,D,Bestått,2012,v
+MTDT,731821,C,Bestått,2016,v
+MTDT,731823,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTDT,731823,,Ikke møtt,2012,s
+MTDT,731824,B,Bestått,2012,v
+MTDT,731826,A,Bestått,2012,v
+MTDT,731827,D,Bestått,2014,v
+MTDT,731827,A,Bestått,2015,v
+MTDT,731828,C,Bestått,2012,v
+MTDT,731829,C,Bestått,2012,v
+MTDT,731829,B,Bestått,2013,v
+MTDT,731830,,Manglende øvinger,2012,v
+MTDT,731832,D,Bestått,2012,v
+MTDT,731833,B,Bestått,2012,v
+MTDT,731834,B,Bestått,2012,v
+MTDT,731835,A,Bestått,2012,v
+MTDT,731836,B,Bestått,2012,v
+MTDT,731838,D,Bestått,2012,v
+MTDT,731839,C,Bestått,2012,v
+MTDT,731840,C,Bestått,2013,v
+MTDT,731840,B,Bestått,2014,v
+MTDT,731841,,Manglende øvinger,2012,v
+MTDT,731842,E,Bestått,2012,v
+MTDT,731843,B,Bestått,2012,v
+MTDT,731844,B,Bestått,2012,v
+MTDT,731845,A,Bestått,2012,v
+MTDT,731846,E,Bestått,2012,v
+MTDT,731850,,Manglende øvinger,2012,v
+MTDT,731850,E,Bestått,2013,v
+MTDT,731989,C,Bestått,2013,v
+MTDT,732043,C,Bestått,2014,v
+MTDT,732057,C,Bestått,2013,v
+MTDT,732112,A,Bestått,2012,v
+MTDT,732132,D,Bestått,2013,v
+MTDT,732132,,Ikke møtt,2015,v
+MTDT,732132,,Ikke møtt,2016,v
+MTDT,732132,E,Bestått,2017,v
+MTDT,732132,,Ikke møtt,2018,v
+MTDT,732256,C,Bestått,2012,v
+MTDT,732312,C,Bestått,2012,v
+MTDT,732346,C,Bestått,2014,v
+MTDT,732346,B,Bestått,2015,v
+MTDT,732359,B,Bestått,2013,v
+MTDT,732365,B,Bestått,2014,v
+MTDT,732377,D,Bestått,2012,v
+MTDT,732434,C,Bestått,2015,v
+MTDT,732499,A,Bestått,2012,v
+MTDT,732595,A,Bestått,2013,v
+MTDT,732657,C,Bestått,2013,v
+MTDT,732672,C,Bestått,2014,v
+MTDT,732681,C,Bestått,2017,v
+MTDT,733515,F,Ikke bestått,2012,v
+MTDT,733515,,Ikke møtt,2012,s
+MTDT,733515,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTDT,733515,,Ikke møtt,2013,s
+MTDT,733515,F,Ikke bestått,2014,v
+MTDT,733515,D,Bestått,2014,s
+MTDT,736039,C,Bestått,2013,v
+MTDT,737739,A,Bestått,2013,v
+MTDT,737825,D,Bestått,2013,v
+MTDT,737833,C,Bestått,2013,v
+MTDT,737833,B,Bestått,2014,v
+MTDT,737872,F,Ikke bestått,2015,v
+MTDT,737872,,Ikke møtt,2016,v
+MTDT,737872,,Ikke møtt,2017,v
+MTDT,737876,B,Bestått,2013,v
+MTDT,737932,B,Bestått,2013,v
+MTDT,737932,,Ikke møtt,2015,v
+MTDT,738131,,Manglende øvinger,2013,v
+MTDT,738131,E,Bestått,2014,v
+MTDT,738131,B,Bestått,2016,v
+MTDT,738321,B,Bestått,2013,v
+MTDT,738972,C,Bestått,2015,v
+MTDT,739883,B,Bestått,2013,v
+MTDT,739918,,Manglende øvinger,2016,v
+MTDT,740957,E,Bestått,2016,v
+MTDT,741116,C,Bestått,2018,v
+MTDT,741307,F,Ikke bestått,2013,v
+MTDT,741307,F,Ikke bestått,2013,s
+MTDT,741307,E,Bestått,2014,v
+MTDT,741340,B,Bestått,2013,v
+MTDT,741341,C,Bestått,2013,v
+MTDT,741342,D,Bestått,2013,v
+MTDT,741342,C,Bestått,2015,v
+MTDT,741343,D,Bestått,2013,v
+MTDT,741344,B,Bestått,2013,v
+MTDT,741346,C,Bestått,2013,v
+MTDT,741347,A,Bestått,2013,v
+MTDT,741348,A,Bestått,2013,v
+MTDT,741349,A,Bestått,2013,v
+MTDT,741351,C,Bestått,2013,v
+MTDT,741352,,Manglende øvinger,2013,v
+MTDT,741352,C,Bestått,2014,v
+MTDT,741353,C,Bestått,2013,v
+MTDT,741354,E,Bestått,2013,v
+MTDT,741355,D,Bestått,2013,v
+MTDT,741355,C,Bestått,2014,v
+MTDT,741355,B,Bestått,2016,v
+MTDT,741356,B,Bestått,2013,v
+MTDT,741356,A,Bestått,2017,v
+MTDT,741357,C,Bestått,2013,v
+MTDT,741358,,Ikke møtt,2013,v
+MTDT,741358,F,Ikke bestått,2014,v
+MTDT,741358,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTDT,741358,C,Bestått,2016,v
+MTDT,741359,C,Bestått,2013,v
+MTDT,741360,,Manglende øvinger,2013,v
+MTDT,741360,C,Bestått,2014,v
+MTDT,741361,C,Bestått,2013,v
+MTDT,741362,B,Bestått,2013,v
+MTDT,741363,F,Ikke bestått,2013,v
+MTDT,741363,E,Bestått,2014,v
+MTDT,741364,C,Bestått,2013,v
+MTDT,741365,C,Bestått,2013,v
+MTDT,741366,C,Bestått,2013,v
+MTDT,741367,A,Bestått,2013,v
+MTDT,741368,A,Bestått,2013,v
+MTDT,741369,C,Bestått,2013,v
+MTDT,741369,C,Bestått,2014,v
+MTDT,741370,C,Bestått,2013,v
+MTDT,741371,C,Bestått,2013,v
+MTDT,741372,B,Bestått,2013,v
+MTDT,741372,,Ikke møtt,2018,v
+MTDT,741374,D,Bestått,2013,v
+MTDT,741374,D,Bestått,2016,v
+MTDT,741375,,Manglende øvinger,2013,v
+MTDT,741376,A,Bestått,2013,v
+MTDT,741377,A,Bestått,2013,v
+MTDT,741378,C,Bestått,2013,v
+MTDT,741378,D,Bestått,2014,v
+MTDT,741379,A,Bestått,2013,v
+MTDT,741381,A,Bestått,2013,v
+MTDT,741382,,Manglende øvinger,2013,v
+MTDT,741385,B,Bestått,2013,v
+MTDT,741386,B,Bestått,2013,v
+MTDT,741387,C,Bestått,2016,v
+MTDT,741388,D,Bestått,2013,v
+MTDT,741388,C,Bestått,2014,v
+MTDT,741389,,Manglende øvinger,2013,v
+MTDT,741390,C,Bestått,2013,v
+MTDT,741391,B,Bestått,2013,v
+MTDT,741392,F,Ikke bestått,2018,v
+MTDT,741392,F,Ikke bestått,2018,s
+MTDT,741393,D,Bestått,2013,v
+MTDT,741394,A,Bestått,2013,v
+MTDT,741395,B,Bestått,2013,v
+MTDT,741396,B,Bestått,2013,v
+MTDT,741398,D,Bestått,2013,v
+MTDT,741399,B,Bestått,2013,v
+MTDT,741400,D,Bestått,2013,v
+MTDT,741402,D,Bestått,2013,v
+MTDT,741403,B,Bestått,2013,v
+MTDT,741406,D,Bestått,2013,v
+MTDT,741407,A,Bestått,2014,v
+MTDT,741408,B,Bestått,2013,v
+MTDT,741409,C,Bestått,2013,v
+MTDT,741410,C,Bestått,2013,v
+MTDT,741411,B,Bestått,2013,v
+MTDT,741412,,Manglende øvinger,2014,v
+MTDT,741413,C,Bestått,2013,v
+MTDT,741414,B,Bestått,2013,v
+MTDT,741415,D,Bestått,2013,v
+MTDT,741415,F,Ikke bestått,2014,v
+MTDT,741416,B,Bestått,2013,v
+MTDT,741417,,Manglende øvinger,2013,v
+MTDT,741418,,Manglende øvinger,2013,v
+MTDT,741419,B,Bestått,2013,v
+MTDT,741421,C,Bestått,2013,v
+MTDT,741421,B,Bestått,2014,v
+MTDT,741423,B,Bestått,2013,v
+MTDT,741426,D,Bestått,2013,v
+MTDT,741427,B,Bestått,2013,v
+MTDT,741428,B,Bestått,2013,v
+MTDT,741429,A,Bestått,2013,v
+MTDT,741431,B,Bestått,2013,v
+MTDT,741432,C,Bestått,2013,v
+MTDT,741433,C,Bestått,2013,v
+MTDT,741434,C,Bestått,2013,v
+MTDT,741435,,Manglende øvinger,2014,v
+MTDT,741435,C,Bestått,2015,v
+MTDT,741436,C,Bestått,2013,v
+MTDT,741437,F,Ikke bestått,2013,v
+MTDT,741437,,Ikke møtt,2013,s
+MTDT,741439,B,Bestått,2013,v
+MTDT,741441,B,Bestått,2013,v
+MTDT,741442,C,Bestått,2013,v
+MTDT,741443,D,Bestått,2013,v
+MTDT,741444,D,Bestått,2013,v
+MTDT,741446,,Manglende øvinger,2013,v
+MTDT,741483,D,Bestått,2015,v
+MTDT,741581,E,Bestått,2016,v
+MTDT,741581,B,Bestått,2017,v
+MTDT,741601,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,741601,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTDT,741601,B,Bestått,2016,v
+MTDT,741613,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,741613,C,Bestått,2014,s
+MTDT,741613,,Ikke møtt,2018,v
+MTDT,741662,B,Bestått,2014,v
+MTDT,741680,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTDT,741680,D,Bestått,2016,s
+MTDT,741683,A,Bestått,2013,v
+MTDT,741691,B,Bestått,2013,v
+MTDT,741710,C,Bestått,2014,v
+MTDT,741815,C,Bestått,2014,v
+MTDT,741895,A,Bestått,2013,v
+MTDT,741990,D,Bestått,2013,v
+MTDT,742004,C,Bestått,2013,v
+MTDT,742004,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,742145,E,Bestått,2014,v
+MTDT,742156,D,Bestått,2013,v
+MTDT,742156,,Ikke møtt,2016,v
+MTDT,742180,E,Bestått,2018,v
+MTDT,742258,D,Bestått,2014,v
+MTDT,742306,B,Bestått,2014,v
+MTDT,742359,B,Bestått,2014,v
+MTDT,742569,A,Bestått,2016,v
+MTDT,744338,A,Bestått,2014,v
+MTDT,745658,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,745658,B,Bestått,2014,s
+MTDT,745664,B,Bestått,2016,v
+MTDT,745692,C,Bestått,2014,v
+MTDT,745787,A,Bestått,2015,v
+MTDT,746070,A,Bestått,2014,v
+MTDT,747541,C,Bestått,2014,v
+MTDT,747983,B,Bestått,2014,v
+MTDT,748004,C,Bestått,2014,v
+MTDT,748335,B,Bestått,2017,v
+MTDT,748393,B,Bestått,2017,v
+MTDT,748394,A,Bestått,2015,v
+MTDT,748651,C,Bestått,2015,v
+MTDT,749147,C,Bestått,2016,v
+MTDT,749308,C,Bestått,2015,v
+MTDT,749312,C,Bestått,2015,v
+MTDT,749552,A,Bestått,2017,v
+MTDT,749714,F,Ikke bestått,2014,v
+MTDT,749714,E,Bestått,2014,s
+MTDT,749714,,Ikke møtt,2017,v
+MTDT,749718,C,Bestått,2014,v
+MTDT,749724,,Manglende øvinger,2014,v
+MTDT,749724,,Manglende øvinger,2015,v
+MTDT,749745,D,Bestått,2014,v
+MTDT,749746,A,Bestått,2014,v
+MTDT,749824,C,Bestått,2015,v
+MTDT,749847,C,Bestått,2014,v
+MTDT,749847,B,Bestått,2018,v
+MTDT,749875,A,Bestått,2015,v
+MTDT,749881,F,Ikke bestått,2014,v
+MTDT,749881,D,Bestått,2015,v
+MTDT,749957,A,Bestått,2014,v
+MTDT,750008,C,Bestått,2015,v
+MTDT,750048,,Manglende øvinger,2015,v
+MTDT,750048,E,Bestått,2016,v
+MTDT,750298,C,Bestått,2017,v
+MTDT,750317,D,Bestått,2014,v
+MTDT,750409,,Gyldig fravær,2015,v
+MTDT,750409,D,Bestått,2015,s
+MTDT,750418,A,Bestått,2015,v
+MTDT,750475,B,Bestått,2014,v
+MTDT,750476,B,Bestått,2014,v
+MTDT,750477,D,Bestått,2014,v
+MTDT,750478,B,Bestått,2014,v
+MTDT,750479,A,Bestått,2014,v
+MTDT,750480,A,Bestått,2014,v
+MTDT,750481,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,750481,D,Bestått,2014,s
+MTDT,750482,C,Bestått,2014,v
+MTDT,750483,E,Bestått,2014,v
+MTDT,750483,C,Bestått,2016,v
+MTDT,750484,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,750484,,Ikke møtt,2014,s
+MTDT,750484,B,Bestått,2015,v
+MTDT,750487,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,750487,,Ikke møtt,2014,s
+MTDT,750487,D,Bestått,2015,v
+MTDT,750488,A,Bestått,2014,v
+MTDT,750489,C,Bestått,2014,v
+MTDT,750491,D,Bestått,2014,v
+MTDT,750492,B,Bestått,2014,v
+MTDT,750493,F,Ikke bestått,2015,v
+MTDT,750493,F,Ikke bestått,2015,s
+MTDT,750494,D,Bestått,2014,v
+MTDT,750495,A,Bestått,2014,v
+MTDT,750497,A,Bestått,2014,v
+MTDT,750498,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,750498,B,Bestått,2014,s
+MTDT,750499,D,Bestått,2014,v
+MTDT,750499,D,Bestått,2017,v
+MTDT,750500,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,750500,C,Bestått,2014,s
+MTDT,750501,B,Bestått,2014,v
+MTDT,750502,C,Bestått,2014,v
+MTDT,750503,,Manglende øvinger,2014,v
+MTDT,750504,B,Bestått,2014,v
+MTDT,750505,D,Bestått,2014,v
+MTDT,750505,C,Bestått,2016,v
+MTDT,750506,C,Bestått,2014,v
+MTDT,750507,A,Bestått,2014,v
+MTDT,750508,B,Bestått,2014,v
+MTDT,750509,B,Bestått,2014,v
+MTDT,750510,C,Bestått,2014,v
+MTDT,750513,B,Bestått,2014,v
+MTDT,750514,E,Bestått,2014,v
+MTDT,750514,,Ikke møtt,2018,v
+MTDT,750515,E,Bestått,2014,v
+MTDT,750515,C,Bestått,2015,v
+MTDT,750517,C,Bestått,2014,v
+MTDT,750518,D,Bestått,2014,v
+MTDT,750520,D,Bestått,2014,v
+MTDT,750521,D,Bestått,2014,v
+MTDT,750523,C,Bestått,2014,v
+MTDT,750524,C,Bestått,2014,v
+MTDT,750526,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,750526,C,Bestått,2014,s
+MTDT,750527,A,Bestått,2014,v
+MTDT,750528,A,Bestått,2014,v
+MTDT,750529,A,Bestått,2014,v
+MTDT,750530,B,Bestått,2014,v
+MTDT,750531,F,Ikke bestått,2014,v
+MTDT,750533,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,750534,A,Bestått,2014,v
+MTDT,750535,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTDT,750535,A,Bestått,2015,s
+MTDT,750537,B,Bestått,2014,v
+MTDT,750538,C,Bestått,2014,v
+MTDT,750539,C,Bestått,2014,v
+MTDT,750541,C,Bestått,2014,v
+MTDT,750542,E,Bestått,2014,v
+MTDT,750543,F,Ikke bestått,2014,v
+MTDT,750543,C,Bestått,2015,v
+MTDT,750544,B,Bestått,2014,v
+MTDT,750545,C,Bestått,2014,v
+MTDT,750546,B,Bestått,2014,v
+MTDT,750547,C,Bestått,2014,v
+MTDT,750548,D,Bestått,2014,v
+MTDT,750548,D,Bestått,2015,v
+MTDT,750550,D,Bestått,2014,v
+MTDT,750552,F,Ikke bestått,2014,v
+MTDT,750552,F,Ikke bestått,2014,s
+MTDT,750552,F,Ikke bestått,2015,v
+MTDT,750552,E,Bestått,2015,s
+MTDT,750552,,Ikke møtt,2016,v
+MTDT,750552,C,Bestått,2017,v
+MTDT,750553,D,Bestått,2014,v
+MTDT,750554,,Manglende øvinger,2015,v
+MTDT,750554,A,Bestått,2016,v
+MTDT,750556,,Manglende øvinger,2014,v
+MTDT,750556,D,Bestått,2015,v
+MTDT,750557,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTDT,750557,E,Bestått,2015,v
+MTDT,750558,A,Bestått,2014,v
+MTDT,750559,C,Bestått,2014,v
+MTDT,750559,C,Bestått,2015,v
+MTDT,750560,D,Bestått,2014,v
+MTDT,750560,B,Bestått,2016,v
+MTDT,750561,E,Bestått,2014,v
+MTDT,750561,C,Bestått,2017,v
+MTDT,750562,D,Bestått,2014,v
+MTDT,750563,B,Bestått,2015,v
+MTDT,750564,,Manglende øvinger,2014,v
+MTDT,750565,B,Bestått,2014,v
+MTDT,750566,D,Bestått,2014,v
+MTDT,750566,D,Bestått,2017,v
+MTDT,750567,C,Bestått,2014,v
+MTDT,750568,C,Bestått,2014,v
+MTDT,750569,C,Bestått,2014,v
+MTDT,750572,B,Bestått,2014,v
+MTDT,750573,B,Bestått,2014,v
+MTDT,750574,A,Bestått,2014,v
+MTDT,750576,C,Bestått,2014,v
+MTDT,750578,D,Bestått,2014,v
+MTDT,750791,F,Ikke bestått,2017,v
+MTDT,750791,,Legeattest,2017,s
+MTDT,750791,F,Ikke bestått,2018,v
+MTDT,750791,F,Ikke bestått,2018,s
+MTDT,750860,B,Bestått,2014,v
+MTDT,751204,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTDT,751204,E,Bestått,2017,v
+MTDT,751416,B,Bestått,2015,v
+MTDT,755021,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTDT,755021,,Ikke møtt,2015,s
+MTDT,755021,C,Bestått,2016,v
+MTDT,755196,D,Bestått,2015,v
+MTDT,755356,A,Bestått,2015,v
+MTDT,755381,B,Bestått,2015,v
+MTDT,755475,D,Bestått,2015,v
+MTDT,755589,C,Bestått,2015,v
+MTDT,755605,C,Bestått,2015,v
+MTDT,755652,E,Bestått,2016,v
+MTDT,756257,B,Bestått,2016,v
+MTDT,756609,D,Bestått,2017,v
+MTDT,756705,C,Bestått,2018,v
+MTDT,757308,,Manglende øvinger,2017,v
+MTDT,757352,A,Bestått,2015,v
+MTDT,757455,A,Bestått,2015,v
+MTDT,757479,C,Bestått,2015,v
+MTDT,757481,F,Ikke bestått,2015,v
+MTDT,757481,,Ikke møtt,2015,s
+MTDT,757481,F,Ikke bestått,2016,v
+MTDT,757481,F,Ikke bestått,2016,s
+MTDT,757481,E,Bestått,2017,v
+MTDT,757482,C,Bestått,2015,v
+MTDT,757483,C,Bestått,2015,v
+MTDT,757484,B,Bestått,2015,v
+MTDT,757486,C,Bestått,2015,v
+MTDT,757487,C,Bestått,2015,v
+MTDT,757489,A,Bestått,2015,v
+MTDT,757490,C,Bestått,2015,v
+MTDT,757491,C,Bestått,2015,v
+MTDT,757494,B,Bestått,2015,v
+MTDT,757495,D,Bestått,2015,v
+MTDT,757497,A,Bestått,2015,v
+MTDT,757498,B,Bestått,2016,v
+MTDT,757499,D,Bestått,2015,v
+MTDT,757500,,Manglende øvinger,2015,v
+MTDT,757500,,Manglende øvinger,2016,v
+MTDT,757501,D,Bestått,2015,v
+MTDT,757501,,Legeattest,2017,v
+MTDT,757501,B,Bestått,2017,s
+MTDT,757502,B,Bestått,2015,v
+MTDT,757503,,Manglende øvinger,2015,v
+MTDT,757503,C,Bestått,2016,v
+MTDT,757504,E,Bestått,2015,v
+MTDT,757505,B,Bestått,2015,v
+MTDT,757506,C,Bestått,2015,v
+MTDT,757508,F,Ikke bestått,2015,v
+MTDT,757508,E,Bestått,2016,v
+MTDT,757509,C,Bestått,2015,v
+MTDT,757510,B,Bestått,2015,v
+MTDT,757511,C,Bestått,2015,v
+MTDT,757512,F,Ikke bestått,2015,v
+MTDT,757512,C,Bestått,2015,s
+MTDT,757514,,Manglende øvinger,2015,v
+MTDT,757515,C,Bestått,2015,v
+MTDT,757516,C,Bestått,2016,v
+MTDT,757517,E,Bestått,2015,v
+MTDT,757517,,Ikke møtt,2016,v
+MTDT,757518,D,Bestått,2015,v
+MTDT,757519,C,Bestått,2015,v
+MTDT,757520,B,Bestått,2015,v
+MTDT,757521,C,Bestått,2015,v
+MTDT,757521,B,Bestått,2016,v
+MTDT,757522,B,Bestått,2015,v
+MTDT,757523,F,Ikke bestått,2015,v
+MTDT,757523,,Ikke møtt,2015,s
+MTDT,757524,A,Bestått,2015,v
+MTDT,757525,A,Bestått,2015,v
+MTDT,757526,C,Bestått,2015,v
+MTDT,757527,C,Bestått,2015,v
+MTDT,757527,E,Bestått,2016,v
+MTDT,757528,C,Bestått,2015,v
+MTDT,757529,E,Bestått,2015,v
+MTDT,757530,B,Bestått,2015,v
+MTDT,757532,C,Bestått,2015,v
+MTDT,757532,B,Bestått,2018,v
+MTDT,757533,A,Bestått,2015,v
+MTDT,757534,A,Bestått,2015,v
+MTDT,757535,A,Bestått,2015,v
+MTDT,757536,F,Ikke bestått,2015,v
+MTDT,757536,D,Bestått,2015,s
+MTDT,757538,C,Bestått,2015,v
+MTDT,757539,C,Bestått,2015,v
+MTDT,757540,A,Bestått,2015,v
+MTDT,757541,E,Bestått,2015,v
+MTDT,757543,D,Bestått,2015,v
+MTDT,757543,C,Bestått,2017,v
+MTDT,757544,D,Bestått,2015,v
+MTDT,757546,C,Bestått,2015,v
+MTDT,757547,F,Ikke bestått,2015,v
+MTDT,757547,F,Ikke bestått,2015,s
+MTDT,757547,D,Bestått,2016,v
+MTDT,757548,B,Bestått,2015,v
+MTDT,757549,E,Bestått,2015,v
+MTDT,757549,B,Bestått,2016,v
+MTDT,757550,D,Bestått,2015,v
+MTDT,757552,A,Bestått,2015,v
+MTDT,757553,B,Bestått,2016,v
+MTDT,757555,C,Bestått,2015,v
+MTDT,757555,B,Bestått,2016,v
+MTDT,757556,C,Bestått,2016,v
+MTDT,757557,C,Bestått,2015,v
+MTDT,757558,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTDT,757558,C,Bestått,2015,s
+MTDT,757558,A,Bestått,2018,v
+MTDT,757559,A,Bestått,2015,v
+MTDT,757560,F,Ikke bestått,2015,v
+MTDT,757560,E,Bestått,2015,s
+MTDT,757560,,Ikke møtt,2018,v
+MTDT,757561,B,Bestått,2015,v
+MTDT,757562,B,Bestått,2015,v
+MTDT,757563,C,Bestått,2015,v
+MTDT,757567,C,Bestått,2015,v
+MTDT,757568,C,Bestått,2015,v
+MTDT,757569,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTDT,757570,F,Ikke bestått,2015,v
+MTDT,757570,B,Bestått,2015,s
+MTDT,757571,D,Bestått,2015,v
+MTDT,757572,D,Bestått,2015,v
+MTDT,757573,C,Bestått,2015,v
+MTDT,757574,C,Bestått,2015,v
+MTDT,757575,C,Bestått,2015,v
+MTDT,757576,C,Bestått,2015,v
+MTDT,757577,B,Bestått,2015,v
+MTDT,757646,C,Bestått,2016,v
+MTDT,757649,C,Bestått,2017,v
+MTDT,757659,E,Bestått,2015,v
+MTDT,757659,C,Bestått,2018,v
+MTDT,757974,F,Ikke bestått,2016,v
+MTDT,757974,E,Bestått,2016,s
+MTDT,757974,D,Bestått,2017,v
+MTDT,758063,F,Ikke bestått,2015,v
+MTDT,758063,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTDT,758063,F,Ikke bestått,2016,s
+MTDT,758063,F,Ikke bestått,2017,v
+MTDT,758063,F,Ikke bestått,2017,s
+MTDT,758063,F,Ikke bestått,2018,v
+MTDT,758079,E,Bestått,2015,v
+MTDT,758154,,Manglende øvinger,2018,v
+MTDT,758248,C,Bestått,2016,v
+MTDT,758281,B,Bestått,2016,v
+MTDT,758694,B,Bestått,2015,v
+MTDT,758964,F,Ikke bestått,2018,v
+MTDT,759003,C,Bestått,2015,v
+MTDT,759007,D,Bestått,2015,v
+MTDT,759014,C,Bestått,2015,v
+MTDT,759043,D,Bestått,2016,v
+MTDT,759043,C,Bestått,2018,v
+MTDT,759047,C,Bestått,2016,v
+MTDT,759048,D,Bestått,2015,v
+MTDT,759073,B,Bestått,2016,v
+MTDT,759329,,Ikke møtt,2016,v
+MTDT,759329,D,Bestått,2017,v
+MTDT,759549,E,Bestått,2015,v
+MTDT,759549,,Ikke møtt,2016,v
+MTDT,759864,A,Bestått,2015,v
+MTDT,760780,E,Bestått,2015,v
+MTDT,764981,C,Bestått,2017,v
+MTDT,765242,C,Bestått,2016,v
+MTDT,765276,B,Bestått,2017,v
+MTDT,765331,C,Bestått,2016,v
+MTDT,765362,B,Bestått,2017,v
+MTDT,765881,C,Bestått,2016,v
+MTDT,765916,C,Bestått,2016,v
+MTDT,765927,C,Bestått,2016,v
+MTDT,766073,C,Bestått,2017,v
+MTDT,766083,E,Bestått,2017,v
+MTDT,766083,F,Ikke bestått,2018,v
+MTDT,766084,A,Bestått,2017,v
+MTDT,766091,C,Bestått,2017,v
+MTDT,766425,C,Bestått,2017,v
+MTDT,767417,,Legeattest,2018,v
+MTDT,767498,E,Bestått,2018,v
+MTDT,767571,B,Bestått,2016,v
+MTDT,767591,F,Ikke bestått,2018,v
+MTDT,767701,B,Bestått,2016,v
+MTDT,767702,C,Bestått,2016,v
+MTDT,767705,C,Bestått,2016,v
+MTDT,767706,C,Bestått,2016,v
+MTDT,767707,C,Bestått,2017,v
+MTDT,767708,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTDT,767708,D,Bestått,2016,s
+MTDT,767708,,Ikke møtt,2017,v
+MTDT,767709,C,Bestått,2016,v
+MTDT,767709,B,Bestått,2017,v
+MTDT,767710,B,Bestått,2016,v
+MTDT,767711,E,Bestått,2016,v
+MTDT,767711,C,Bestått,2017,v
+MTDT,767712,E,Bestått,2016,v
+MTDT,767714,A,Bestått,2016,v
+MTDT,767715,B,Bestått,2016,v
+MTDT,767716,A,Bestått,2016,v
+MTDT,767717,F,Ikke bestått,2016,v
+MTDT,767717,,Ikke møtt,2016,s
+MTDT,767717,E,Bestått,2017,v
+MTDT,767718,F,Ikke bestått,2016,v
+MTDT,767719,A,Bestått,2016,v
+MTDT,767720,A,Bestått,2016,v
+MTDT,767721,,Manglende øvinger,2016,v
+MTDT,767721,,Ikke møtt,2017,v
+MTDT,767722,C,Bestått,2016,v
+MTDT,767722,,Ikke møtt,2018,v
+MTDT,767723,D,Bestått,2016,v
+MTDT,767724,A,Bestått,2016,v
+MTDT,767725,F,Ikke bestått,2016,v
+MTDT,767727,B,Bestått,2016,v
+MTDT,767728,D,Bestått,2016,v
+MTDT,767729,B,Bestått,2016,v
+MTDT,767730,A,Bestått,2016,v
+MTDT,767731,A,Bestått,2016,v
+MTDT,767732,C,Bestått,2016,v
+MTDT,767733,A,Bestått,2016,v
+MTDT,767734,A,Bestått,2016,v
+MTDT,767735,B,Bestått,2016,v
+MTDT,767736,A,Bestått,2016,v
+MTDT,767738,C,Bestått,2016,v
+MTDT,767739,A,Bestått,2016,v
+MTDT,767740,B,Bestått,2016,v
+MTDT,767742,B,Bestått,2016,v
+MTDT,767743,E,Bestått,2016,v
+MTDT,767744,F,Ikke bestått,2016,v
+MTDT,767744,F,Ikke bestått,2016,s
+MTDT,767745,C,Bestått,2016,v
+MTDT,767746,C,Bestått,2016,v
+MTDT,767747,D,Bestått,2018,v
+MTDT,767748,B,Bestått,2016,v
+MTDT,767749,B,Bestått,2016,v
+MTDT,767750,D,Bestått,2016,v
+MTDT,767751,E,Bestått,2016,v
+MTDT,767752,B,Bestått,2016,v
+MTDT,767753,B,Bestått,2016,v
+MTDT,767754,A,Bestått,2016,v
+MTDT,767755,C,Bestått,2016,v
+MTDT,767756,B,Bestått,2016,v
+MTDT,767757,C,Bestått,2016,v
+MTDT,767758,A,Bestått,2016,v
+MTDT,767759,A,Bestått,2016,v
+MTDT,767761,D,Bestått,2016,v
+MTDT,767761,C,Bestått,2017,v
+MTDT,767762,,Trekk under eksamen (Avbrutt eksamen),2017,v
+MTDT,767763,B,Bestått,2016,v
+MTDT,767764,B,Bestått,2016,v
+MTDT,767765,,Manglende øvinger,2016,v
+MTDT,767765,D,Bestått,2017,v
+MTDT,767766,D,Bestått,2016,v
+MTDT,767767,B,Bestått,2016,v
+MTDT,767768,E,Bestått,2016,v
+MTDT,767768,C,Bestått,2017,v
+MTDT,767769,B,Bestått,2016,v
+MTDT,767770,A,Bestått,2016,v
+MTDT,767771,C,Bestått,2016,v
+MTDT,767771,A,Bestått,2017,v
+MTDT,767772,A,Bestått,2016,v
+MTDT,767773,,Manglende øvinger,2016,v
+MTDT,767773,F,Ikke bestått,2017,v
+MTDT,767773,,Ikke møtt,2017,s
+MTDT,767773,F,Ikke bestått,2018,v
+MTDT,767774,C,Bestått,2016,v
+MTDT,767775,B,Bestått,2016,v
+MTDT,767776,A,Bestått,2016,v
+MTDT,767777,B,Bestått,2016,v
+MTDT,767780,B,Bestått,2016,v
+MTDT,767781,B,Bestått,2016,v
+MTDT,767781,B,Bestått,2017,v
+MTDT,767782,C,Bestått,2016,v
+MTDT,767783,E,Bestått,2016,v
+MTDT,767784,A,Bestått,2016,v
+MTDT,767785,C,Bestått,2016,v
+MTDT,767786,D,Bestått,2016,v
+MTDT,767788,D,Bestått,2016,v
+MTDT,767789,C,Bestått,2016,v
+MTDT,767789,B,Bestått,2017,v
+MTDT,767790,B,Bestått,2016,v
+MTDT,767791,C,Bestått,2016,v
+MTDT,767792,A,Bestått,2016,v
+MTDT,767793,D,Bestått,2016,v
+MTDT,767794,A,Bestått,2016,v
+MTDT,767795,B,Bestått,2016,v
+MTDT,767796,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTDT,767796,F,Ikke bestått,2017,v
+MTDT,767796,F,Ikke bestått,2017,s
+MTDT,767796,D,Bestått,2018,v
+MTDT,767797,B,Bestått,2016,v
+MTDT,767798,B,Bestått,2016,v
+MTDT,767799,C,Bestått,2016,v
+MTDT,767800,,Ikke møtt,2016,v
+MTDT,767801,C,Bestått,2016,v
+MTDT,767802,A,Bestått,2016,v
+MTDT,767803,C,Bestått,2016,v
+MTDT,767804,C,Bestått,2016,v
+MTDT,767805,F,Ikke bestått,2016,v
+MTDT,767805,D,Bestått,2017,v
+MTDT,767806,C,Bestått,2016,v
+MTDT,767808,E,Bestått,2016,v
+MTDT,767809,F,Ikke bestått,2016,v
+MTDT,767809,F,Ikke bestått,2016,s
+MTDT,767810,C,Bestått,2016,v
+MTDT,767811,C,Bestått,2016,v
+MTDT,767812,B,Bestått,2016,v
+MTDT,767988,D,Bestått,2018,v
+MTDT,768031,C,Bestått,2018,v
+MTDT,768043,D,Bestått,2016,v
+MTDT,768436,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTDT,768528,C,Bestått,2018,v
+MTDT,768556,A,Bestått,2016,v
+MTDT,768560,E,Bestått,2017,v
+MTDT,768560,E,Bestått,2018,v
+MTDT,768573,A,Bestått,2016,v
+MTDT,768623,F,Ikke bestått,2016,v
+MTDT,768623,C,Bestått,2017,v
+MTDT,768623,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTDT,768647,D,Bestått,2017,v
+MTDT,768695,E,Bestått,2016,v
+MTDT,768695,C,Bestått,2017,v
+MTDT,768712,D,Bestått,2017,v
+MTDT,768929,B,Bestått,2017,v
+MTDT,768943,E,Bestått,2018,v
+MTDT,769020,B,Bestått,2018,v
+MTDT,769514,B,Bestått,2017,v
+MTDT,769523,C,Bestått,2016,v
+MTDT,769527,D,Bestått,2016,v
+MTDT,997904,B,Bestått,2017,v
+MTDT,999711,C,Bestått,2017,v
+MTDT,999724,B,Bestått,2017,v
+MTDT,999727,A,Bestått,2017,v
+MTDT,999731,B,Bestått,2017,v
+MTDT,999868,E,Bestått,2017,v
+MTEL,669327,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTEL,669327,,Ikke møtt,2010,s
+MTEL,669327,,Ikke møtt,2012,v
+MTEL,669327,,Ikke møtt,2015,v
+MTEL,683923,B,Bestått,2010,v
+MTEL,683940,B,Bestått,2010,v
+MTEL,689910,B,Bestått,2011,v
+MTELSYS,768353,A,Bestått,2016,v
+MTENERG,490683,E,Bestått,2018,v
+MTENERG,768508,B,Bestått,2017,v
+MTFYMA,646932,A,Bestått,2010,v
+MTFYMA,673426,,Ikke møtt,2010,v
+MTFYMA,715757,B,Bestått,2010,v
+MTFYMA,716298,C,Bestått,2010,v
+MTFYMA,724275,F,Ikke bestått,2011,v
+MTFYMA,724275,C,Bestått,2011,s
+MTFYMA,741948,B,Bestått,2013,v
+MTFYMA,741978,B,Bestått,2013,v
+MTFYMA,766100,B,Bestått,2017,v
+MTGEOP,669506,,Gyldig fravær,2010,v
+MTGEOP,669506,,Ikke møtt,2010,s
+MTING,100539,,Manglende øvinger,2014,v
+MTING,100539,,Manglende øvinger,2015,v
+MTING,100539,,Manglende øvinger,2017,v
+MTING,252859,C,Bestått,2018,v
+MTING,257441,D,Bestått,2017,v
+MTING,258359,D,Bestått,2017,v
+MTING,473420,B,Bestått,2018,v
+MTING,474278,C,Bestått,2018,v
+MTING,474478,D,Bestått,2017,v
+MTING,474502,D,Bestått,2018,v
+MTING,476063,D,Bestått,2018,v
+MTING,477292,D,Bestått,2018,v
+MTING,477373,F,Ikke bestått,2017,v
+MTING,477373,F,Ikke bestått,2017,s
+MTING,477599,B,Bestått,2018,v
+MTING,477799,B,Bestått,2018,v
+MTING,477837,F,Ikke bestått,2018,v
+MTING,477837,B,Bestått,2018,s
+MTING,477864,C,Bestått,2018,v
+MTING,477882,D,Bestått,2017,v
+MTING,477903,F,Ikke bestått,2018,v
+MTING,478014,D,Bestått,2018,v
+MTING,478019,B,Bestått,2017,v
+MTING,478033,B,Bestått,2017,v
+MTING,478042,C,Bestått,2017,v
+MTING,478048,C,Bestått,2017,v
+MTING,478059,C,Bestått,2018,v
+MTING,478085,B,Bestått,2018,v
+MTING,478233,D,Bestått,2018,v
+MTING,478486,F,Ikke bestått,2018,v
+MTING,478508,A,Bestått,2018,v
+MTING,479332,D,Bestått,2017,v
+MTING,479334,D,Bestått,2017,v
+MTING,479335,E,Bestått,2017,v
+MTING,479336,D,Bestått,2017,v
+MTING,479337,B,Bestått,2017,v
+MTING,479338,C,Bestått,2017,v
+MTING,479339,B,Bestått,2017,v
+MTING,479340,B,Bestått,2017,v
+MTING,479341,C,Bestått,2017,v
+MTING,479343,C,Bestått,2017,v
+MTING,479344,C,Bestått,2017,v
+MTING,479345,,Manglende øvinger,2017,v
+MTING,479346,D,Bestått,2017,v
+MTING,479347,D,Bestått,2017,v
+MTING,479348,B,Bestått,2017,v
+MTING,479349,C,Bestått,2017,v
+MTING,479350,F,Ikke bestått,2017,v
+MTING,479350,E,Bestått,2017,s
+MTING,479351,C,Bestått,2017,v
+MTING,479352,B,Bestått,2017,v
+MTING,479353,C,Bestått,2017,v
+MTING,479354,D,Bestått,2017,v
+MTING,479354,E,Bestått,2018,v
+MTING,479355,E,Bestått,2017,v
+MTING,479357,C,Bestått,2017,v
+MTING,479359,C,Bestått,2017,v
+MTING,479360,,Manglende øvinger,2017,v
+MTING,479361,E,Bestått,2017,v
+MTING,479363,B,Bestått,2017,v
+MTING,479364,F,Ikke bestått,2017,v
+MTING,479364,C,Bestått,2017,s
+MTING,479365,D,Bestått,2017,v
+MTING,479366,C,Bestått,2017,v
+MTING,479367,C,Bestått,2017,v
+MTING,479368,C,Bestått,2017,v
+MTING,479370,E,Bestått,2017,v
+MTING,485575,B,Bestått,2018,v
+MTING,486691,C,Bestått,2018,v
+MTING,487797,D,Bestått,2018,v
+MTING,488658,C,Bestått,2018,v
+MTING,489675,F,Ikke bestått,2018,v
+MTING,489675,C,Bestått,2018,s
+MTING,489705,C,Bestått,2018,v
+MTING,489711,C,Bestått,2018,v
+MTING,489716,C,Bestått,2018,v
+MTING,489722,E,Bestått,2018,v
+MTING,489723,E,Bestått,2018,v
+MTING,489725,D,Bestått,2018,v
+MTING,489726,F,Ikke bestått,2018,v
+MTING,489727,C,Bestått,2018,v
+MTING,489729,F,Ikke bestått,2018,v
+MTING,489732,D,Bestått,2018,v
+MTING,489734,F,Ikke bestått,2018,v
+MTING,489735,B,Bestått,2018,v
+MTING,489737,E,Bestått,2018,v
+MTING,489738,C,Bestått,2018,v
+MTING,489739,D,Bestått,2018,v
+MTING,489740,F,Ikke bestått,2018,v
+MTING,489741,F,Ikke bestått,2018,v
+MTING,489742,F,Ikke bestått,2018,v
+MTING,489744,C,Bestått,2018,v
+MTING,489745,B,Bestått,2018,v
+MTING,489746,D,Bestått,2018,v
+MTING,489747,C,Bestått,2018,v
+MTING,489748,C,Bestått,2018,v
+MTING,489749,D,Bestått,2018,v
+MTING,489750,F,Ikke bestått,2018,v
+MTING,489750,F,Ikke bestått,2018,s
+MTING,489751,F,Ikke bestått,2018,v
+MTING,489753,F,Ikke bestått,2018,v
+MTING,489753,E,Bestått,2018,s
+MTING,489754,D,Bestått,2018,v
+MTING,489755,F,Ikke bestått,2018,v
+MTING,489755,F,Ikke bestått,2018,s
+MTING,489756,E,Bestått,2018,v
+MTING,489757,F,Ikke bestått,2018,v
+MTING,489757,C,Bestått,2018,s
+MTING,489758,C,Bestått,2018,v
+MTING,489759,C,Bestått,2018,v
+MTING,489760,D,Bestått,2018,v
+MTING,489761,C,Bestått,2018,v
+MTING,489762,D,Bestått,2018,v
+MTING,489763,D,Bestått,2018,v
+MTING,490634,D,Bestått,2018,v
+MTING,490635,F,Ikke bestått,2018,v
+MTING,490864,C,Bestått,2018,v
+MTING,490874,D,Bestått,2018,v
+MTING,490882,D,Bestått,2018,v
+MTING,490898,C,Bestått,2018,v
+MTING,490911,D,Bestått,2018,v
+MTING,490928,F,Ikke bestått,2018,v
+MTING,490928,F,Ikke bestått,2018,s
+MTING,491316,E,Bestått,2018,v
+MTING,491630,F,Ikke bestått,2018,v
+MTING,685291,F,Ikke bestått,2010,v
+MTING,685291,,Ikke møtt,2010,s
+MTING,685291,F,Ikke bestått,2011,v
+MTING,685291,F,Ikke bestått,2011,s
+MTING,685291,E,Bestått,2012,v
+MTING,685296,E,Bestått,2010,v
+MTING,692182,B,Bestått,2011,v
+MTING,697204,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTING,697204,B,Bestått,2012,s
+MTING,697667,C,Bestått,2010,v
+MTING,697673,E,Bestått,2010,v
+MTING,697674,D,Bestått,2012,v
+MTING,697691,E,Bestått,2011,v
+MTING,697786,E,Bestått,2010,v
+MTING,697848,A,Bestått,2011,v
+MTING,699052,F,Ikke bestått,2010,v
+MTING,699052,F,Ikke bestått,2010,s
+MTING,699052,E,Bestått,2011,v
+MTING,705717,A,Bestått,2010,v
+MTING,707210,,Manglende øvinger,2010,v
+MTING,708300,F,Ikke bestått,2010,v
+MTING,708300,E,Bestått,2010,s
+MTING,708300,C,Bestått,2011,v
+MTING,708302,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTING,708302,F,Ikke bestått,2010,s
+MTING,708302,F,Ikke bestått,2011,v
+MTING,708302,F,Ikke bestått,2011,s
+MTING,708302,E,Bestått,2012,v
+MTING,708305,B,Bestått,2010,v
+MTING,708316,C,Bestått,2011,v
+MTING,708318,B,Bestått,2010,v
+MTING,708323,,Ikke møtt,2010,v
+MTING,708323,B,Bestått,2011,v
+MTING,708325,E,Bestått,2010,v
+MTING,708331,B,Bestått,2010,v
+MTING,708333,,Ikke møtt,2010,v
+MTING,708334,B,Bestått,2010,v
+MTING,713108,A,Bestått,2010,v
+MTING,713259,C,Bestått,2010,v
+MTING,714456,,Manglende øvinger,2010,v
+MTING,714456,E,Bestått,2011,v
+MTING,714694,C,Bestått,2012,v
+MTING,714696,D,Bestått,2010,v
+MTING,714936,C,Bestått,2010,v
+MTING,714937,E,Bestått,2010,v
+MTING,714937,C,Bestått,2011,v
+MTING,714938,C,Bestått,2010,v
+MTING,714938,C,Bestått,2011,v
+MTING,714939,D,Bestått,2010,v
+MTING,714942,F,Ikke bestått,2011,v
+MTING,714942,,Ikke møtt,2011,s
+MTING,714942,F,Ikke bestått,2012,v
+MTING,714942,,Ikke møtt,2012,s
+MTING,714942,,Ikke møtt,2013,v
+MTING,714944,F,Ikke bestått,2010,v
+MTING,714944,,Ikke møtt,2010,s
+MTING,714945,B,Bestått,2010,v
+MTING,714948,B,Bestått,2010,v
+MTING,714949,C,Bestått,2010,v
+MTING,714949,B,Bestått,2012,v
+MTING,714951,C,Bestått,2010,v
+MTING,714952,D,Bestått,2010,v
+MTING,714953,D,Bestått,2010,v
+MTING,714954,F,Ikke bestått,2010,v
+MTING,714954,F,Ikke bestått,2010,s
+MTING,714954,F,Ikke bestått,2011,v
+MTING,714954,F,Ikke bestått,2011,s
+MTING,714954,D,Bestått,2012,v
+MTING,714955,,Manglende øvinger,2010,v
+MTING,714956,C,Bestått,2010,v
+MTING,714957,B,Bestått,2010,v
+MTING,714958,D,Bestått,2010,v
+MTING,714958,C,Bestått,2013,v
+MTING,714959,C,Bestått,2010,v
+MTING,714960,C,Bestått,2010,v
+MTING,714961,D,Bestått,2010,v
+MTING,714962,E,Bestått,2010,v
+MTING,714963,D,Bestått,2010,v
+MTING,714965,D,Bestått,2010,v
+MTING,714966,C,Bestått,2010,v
+MTING,714968,B,Bestått,2010,v
+MTING,714969,C,Bestått,2010,v
+MTING,714970,A,Bestått,2010,v
+MTING,714971,B,Bestått,2010,v
+MTING,714973,D,Bestått,2010,v
+MTING,715853,B,Bestått,2012,v
+MTING,716174,D,Bestått,2011,v
+MTING,716174,C,Bestått,2012,v
+MTING,716309,D,Bestått,2010,v
+MTING,721890,B,Bestått,2017,v
+MTING,722329,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTING,722329,F,Ikke bestått,2012,s
+MTING,722329,D,Bestått,2013,v
+MTING,724264,C,Bestått,2011,v
+MTING,724265,E,Bestått,2011,v
+MTING,724267,C,Bestått,2011,v
+MTING,724268,F,Ikke bestått,2011,v
+MTING,724268,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTING,724268,D,Bestått,2013,v
+MTING,724269,F,Ikke bestått,2011,v
+MTING,724269,D,Bestått,2011,s
+MTING,724273,E,Bestått,2011,v
+MTING,724274,C,Bestått,2011,v
+MTING,724277,C,Bestått,2011,v
+MTING,724278,A,Bestått,2011,v
+MTING,724279,D,Bestått,2011,v
+MTING,724279,D,Bestått,2013,v
+MTING,724280,C,Bestått,2011,v
+MTING,724283,B,Bestått,2011,v
+MTING,724284,A,Bestått,2011,v
+MTING,724285,C,Bestått,2011,v
+MTING,724286,D,Bestått,2011,v
+MTING,724287,E,Bestått,2011,v
+MTING,724288,C,Bestått,2011,v
+MTING,724290,D,Bestått,2011,v
+MTING,724291,C,Bestått,2011,v
+MTING,724295,F,Ikke bestått,2011,v
+MTING,724295,F,Ikke bestått,2011,s
+MTING,724295,E,Bestått,2012,v
+MTING,724297,E,Bestått,2011,v
+MTING,724313,E,Bestått,2011,v
+MTING,725093,D,Bestått,2013,v
+MTING,728896,D,Bestått,2012,v
+MTING,729020,E,Bestått,2012,v
+MTING,729101,E,Bestått,2012,v
+MTING,729101,,Ikke møtt,2015,v
+MTING,729183,B,Bestått,2012,v
+MTING,729521,B,Bestått,2012,v
+MTING,729563,C,Bestått,2012,v
+MTING,729611,C,Bestått,2012,v
+MTING,729710,,Manglende øvinger,2013,v
+MTING,729844,C,Bestått,2013,v
+MTING,730633,A,Bestått,2013,v
+MTING,731849,C,Bestått,2012,v
+MTING,731867,A,Bestått,2013,v
+MTING,731889,C,Bestått,2014,v
+MTING,731915,C,Bestått,2013,v
+MTING,732308,D,Bestått,2012,v
+MTING,732309,D,Bestått,2012,v
+MTING,732309,,Ikke møtt,2016,v
+MTING,732310,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTING,732310,E,Bestått,2012,s
+MTING,732311,B,Bestått,2012,v
+MTING,732314,C,Bestått,2013,v
+MTING,732316,,Manglende øvinger,2012,v
+MTING,732317,D,Bestått,2012,v
+MTING,732318,B,Bestått,2012,v
+MTING,732319,C,Bestått,2012,v
+MTING,732320,C,Bestått,2012,v
+MTING,732320,C,Bestått,2014,v
+MTING,732321,B,Bestått,2012,v
+MTING,732323,C,Bestått,2012,v
+MTING,732324,E,Bestått,2012,v
+MTING,732325,F,Ikke bestått,2012,v
+MTING,732326,D,Bestått,2012,v
+MTING,732327,B,Bestått,2012,v
+MTING,732331,C,Bestått,2012,v
+MTING,732332,D,Bestått,2012,v
+MTING,732332,,Ikke møtt,2014,v
+MTING,732334,E,Bestått,2012,v
+MTING,732336,,Ikke møtt,2012,v
+MTING,732337,F,Ikke bestått,2012,v
+MTING,732337,D,Bestått,2012,s
+MTING,732338,B,Bestått,2012,v
+MTING,732339,C,Bestått,2012,v
+MTING,732340,B,Bestått,2012,v
+MTING,732341,D,Bestått,2012,v
+MTING,732343,C,Bestått,2013,v
+MTING,732344,C,Bestått,2012,v
+MTING,732348,E,Bestått,2012,v
+MTING,732349,A,Bestått,2012,v
+MTING,732350,A,Bestått,2012,v
+MTING,732352,,Manglende øvinger,2012,v
+MTING,732353,D,Bestått,2012,v
+MTING,732354,,Manglende øvinger,2012,v
+MTING,732394,B,Bestått,2012,v
+MTING,732400,C,Bestått,2012,v
+MTING,732404,B,Bestått,2016,v
+MTING,737975,C,Bestått,2013,v
+MTING,738010,D,Bestått,2013,v
+MTING,739886,E,Bestått,2014,v
+MTING,740939,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTING,740939,B,Bestått,2014,s
+MTING,741943,E,Bestått,2013,v
+MTING,741944,E,Bestått,2014,v
+MTING,741944,B,Bestått,2015,v
+MTING,741945,B,Bestått,2013,v
+MTING,741946,D,Bestått,2013,v
+MTING,741947,C,Bestått,2013,v
+MTING,741949,C,Bestått,2013,v
+MTING,741950,E,Bestått,2013,v
+MTING,741951,A,Bestått,2013,v
+MTING,741952,D,Bestått,2013,v
+MTING,741953,C,Bestått,2013,v
+MTING,741954,,Manglende øvinger,2013,v
+MTING,741956,A,Bestått,2013,v
+MTING,741957,C,Bestått,2013,v
+MTING,741958,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTING,741958,,Ikke møtt,2013,s
+MTING,741958,,Ikke møtt,2014,v
+MTING,741959,C,Bestått,2013,v
+MTING,741960,,Manglende øvinger,2013,v
+MTING,741961,C,Bestått,2013,v
+MTING,741962,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTING,741962,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTING,741962,,Ikke møtt,2014,s
+MTING,741964,,Manglende øvinger,2013,v
+MTING,741965,B,Bestått,2013,v
+MTING,741966,C,Bestått,2013,v
+MTING,741967,B,Bestått,2013,v
+MTING,741968,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTING,741968,,Ikke møtt,2013,s
+MTING,741968,,Ikke møtt,2014,v
+MTING,741968,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTING,741969,C,Bestått,2013,v
+MTING,741970,C,Bestått,2013,v
+MTING,741971,E,Bestått,2013,v
+MTING,741972,C,Bestått,2013,v
+MTING,741973,C,Bestått,2013,v
+MTING,741974,C,Bestått,2013,v
+MTING,741975,C,Bestått,2013,v
+MTING,741979,C,Bestått,2013,v
+MTING,741980,D,Bestått,2013,v
+MTING,742030,,Manglende øvinger,2014,v
+MTING,745951,D,Bestått,2014,v
+MTING,745951,C,Bestått,2015,v
+MTING,746077,C,Bestått,2014,v
+MTING,746158,C,Bestått,2015,v
+MTING,746174,B,Bestått,2014,v
+MTING,747974,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTING,747974,C,Bestått,2014,s
+MTING,747975,D,Bestått,2014,v
+MTING,747977,C,Bestått,2014,v
+MTING,747978,A,Bestått,2014,v
+MTING,747980,B,Bestått,2014,v
+MTING,747981,D,Bestått,2014,v
+MTING,747982,B,Bestått,2014,v
+MTING,747984,D,Bestått,2014,v
+MTING,747984,C,Bestått,2015,v
+MTING,747985,E,Bestått,2014,v
+MTING,747987,C,Bestått,2014,v
+MTING,747988,A,Bestått,2014,v
+MTING,747990,B,Bestått,2014,v
+MTING,747991,A,Bestått,2014,v
+MTING,747992,D,Bestått,2014,v
+MTING,747993,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTING,747993,D,Bestått,2014,s
+MTING,747993,B,Bestått,2015,v
+MTING,747994,F,Ikke bestått,2014,v
+MTING,747994,F,Ikke bestått,2014,s
+MTING,747994,E,Bestått,2015,v
+MTING,747996,E,Bestått,2014,v
+MTING,747997,A,Bestått,2014,v
+MTING,747998,D,Bestått,2014,v
+MTING,747999,D,Bestått,2014,v
+MTING,748001,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTING,748001,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTING,748001,,Ikke møtt,2016,v
+MTING,748002,F,Ikke bestått,2014,v
+MTING,748002,D,Bestått,2015,v
+MTING,748003,C,Bestått,2014,v
+MTING,748005,E,Bestått,2014,v
+MTING,748005,A,Bestått,2017,v
+MTING,748006,F,Ikke bestått,2014,v
+MTING,748007,C,Bestått,2014,v
+MTING,748008,F,Ikke bestått,2014,v
+MTING,748008,E,Bestått,2014,s
+MTING,748009,E,Bestått,2014,v
+MTING,748011,B,Bestått,2014,v
+MTING,748012,B,Bestått,2014,v
+MTING,748013,D,Bestått,2014,v
+MTING,748013,C,Bestått,2016,v
+MTING,748014,E,Bestått,2014,v
+MTING,748016,E,Bestått,2014,v
+MTING,749701,C,Bestått,2017,v
+MTING,749965,C,Bestått,2014,v
+MTING,750087,C,Bestått,2018,v
+MTING,750246,,Manglende øvinger,2015,v
+MTING,750246,,Manglende øvinger,2016,v
+MTING,750246,,Manglende øvinger,2017,v
+MTING,750391,C,Bestått,2015,v
+MTING,750415,D,Bestått,2014,v
+MTING,750439,D,Bestått,2014,v
+MTING,751039,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTING,751039,,Ikke møtt,2017,v
+MTING,755131,D,Bestått,2015,v
+MTING,755510,B,Bestått,2016,v
+MTING,755575,C,Bestått,2015,v
+MTING,755602,F,Ikke bestått,2015,v
+MTING,755602,E,Bestått,2016,v
+MTING,756592,F,Ikke bestått,2016,v
+MTING,756592,F,Ikke bestått,2017,v
+MTING,756592,F,Ikke bestått,2018,v
+MTING,757283,C,Bestått,2017,v
+MTING,757380,C,Bestått,2017,v
+MTING,757608,C,Bestått,2017,v
+MTING,757654,C,Bestått,2015,v
+MTING,758118,F,Ikke bestått,2018,v
+MTING,758146,F,Ikke bestått,2015,v
+MTING,758146,E,Bestått,2015,s
+MTING,758328,E,Bestått,2016,v
+MTING,758328,C,Bestått,2018,v
+MTING,758683,C,Bestått,2015,v
+MTING,758684,A,Bestått,2015,v
+MTING,758685,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTING,758685,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTING,758685,E,Bestått,2016,s
+MTING,758685,,Ikke møtt,2018,v
+MTING,758686,C,Bestått,2015,v
+MTING,758687,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTING,758687,C,Bestått,2016,v
+MTING,758688,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTING,758688,F,Ikke bestått,2015,s
+MTING,758690,D,Bestått,2015,v
+MTING,758691,C,Bestått,2015,v
+MTING,758692,D,Bestått,2015,v
+MTING,758693,F,Ikke bestått,2015,v
+MTING,758693,F,Ikke bestått,2015,s
+MTING,758693,E,Bestått,2016,v
+MTING,758695,A,Bestått,2015,v
+MTING,758696,B,Bestått,2015,v
+MTING,758697,E,Bestått,2015,v
+MTING,758697,E,Bestått,2017,v
+MTING,758700,B,Bestått,2015,v
+MTING,758701,C,Bestått,2015,v
+MTING,758703,F,Ikke bestått,2015,v
+MTING,758703,F,Ikke bestått,2015,s
+MTING,758703,C,Bestått,2016,v
+MTING,758704,D,Bestått,2015,v
+MTING,758705,C,Bestått,2015,v
+MTING,758707,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTING,758707,,Ikke møtt,2015,s
+MTING,758707,F,Ikke bestått,2016,v
+MTING,758707,,Ikke møtt,2016,s
+MTING,758708,,Manglende øvinger,2016,v
+MTING,758708,,Manglende øvinger,2018,v
+MTING,758709,B,Bestått,2015,v
+MTING,758710,C,Bestått,2015,v
+MTING,758711,F,Ikke bestått,2015,v
+MTING,758711,C,Bestått,2015,s
+MTING,758712,C,Bestått,2015,v
+MTING,758713,B,Bestått,2015,v
+MTING,758715,B,Bestått,2015,v
+MTING,758717,E,Bestått,2015,v
+MTING,758719,B,Bestått,2015,v
+MTING,758720,B,Bestått,2015,v
+MTING,758721,B,Bestått,2015,v
+MTING,759069,E,Bestått,2017,v
+MTING,759170,B,Bestått,2017,v
+MTING,759229,A,Bestått,2017,v
+MTING,759241,,Manglende øvinger,2017,v
+MTING,759241,D,Bestått,2018,v
+MTING,759280,C,Bestått,2018,v
+MTING,759306,A,Bestått,2017,v
+MTING,759314,D,Bestått,2018,v
+MTING,759327,C,Bestått,2017,v
+MTING,759335,C,Bestått,2018,v
+MTING,759750,F,Ikke bestått,2017,v
+MTING,759750,E,Bestått,2017,s
+MTING,760785,C,Bestått,2016,v
+MTING,762625,D,Bestått,2017,v
+MTING,763814,B,Bestått,2016,v
+MTING,765154,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTING,765154,C,Bestått,2016,s
+MTING,765154,B,Bestått,2018,v
+MTING,765347,B,Bestått,2016,v
+MTING,765914,C,Bestått,2016,v
+MTING,767042,D,Bestått,2018,v
+MTING,767436,,Manglende øvinger,2017,v
+MTING,767543,C,Bestått,2017,v
+MTING,767595,B,Bestått,2017,v
+MTING,767863,C,Bestått,2017,v
+MTING,767999,B,Bestått,2017,v
+MTING,768053,B,Bestått,2016,v
+MTING,768059,C,Bestått,2017,v
+MTING,768086,D,Bestått,2016,v
+MTING,768126,E,Bestått,2018,v
+MTING,768182,E,Bestått,2018,v
+MTING,768196,A,Bestått,2017,v
+MTING,768199,C,Bestått,2017,v
+MTING,768204,C,Bestått,2017,v
+MTING,768209,E,Bestått,2016,v
+MTING,768209,B,Bestått,2017,v
+MTING,768572,A,Bestått,2016,v
+MTING,769506,A,Bestått,2016,v
+MTING,769507,B,Bestått,2016,v
+MTING,769508,D,Bestått,2016,v
+MTING,769509,B,Bestått,2016,v
+MTING,769511,A,Bestått,2016,v
+MTING,769513,F,Ikke bestått,2016,v
+MTING,769513,,Trekk under eksamen (Avbrutt eksamen),2017,v
+MTING,769513,D,Bestått,2017,s
+MTING,769515,D,Bestått,2016,v
+MTING,769516,E,Bestått,2016,v
+MTING,769517,C,Bestått,2016,v
+MTING,769517,C,Bestått,2017,v
+MTING,769518,,Ikke møtt,2016,v
+MTING,769520,F,Ikke bestått,2017,v
+MTING,769520,F,Ikke bestått,2018,v
+MTING,769521,B,Bestått,2016,v
+MTING,769522,C,Bestått,2016,v
+MTING,769524,D,Bestått,2016,v
+MTING,769525,D,Bestått,2016,v
+MTING,769526,A,Bestått,2016,v
+MTING,769528,D,Bestått,2016,v
+MTING,769529,B,Bestått,2016,v
+MTING,769530,B,Bestått,2016,v
+MTING,769532,F,Ikke bestått,2016,v
+MTING,769532,,Ikke møtt,2016,s
+MTING,769532,,Ikke møtt,2017,v
+MTING,769533,C,Bestått,2016,v
+MTING,769534,D,Bestått,2016,v
+MTING,769534,,Ikke møtt,2018,v
+MTING,769535,C,Bestått,2016,v
+MTING,769536,F,Ikke bestått,2016,v
+MTING,769536,,Ikke møtt,2016,s
+MTING,769536,,Ikke møtt,2018,v
+MTING,769537,C,Bestått,2016,v
+MTING,769538,C,Bestått,2016,v
+MTING,769543,C,Bestått,2016,v
+MTING,769545,C,Bestått,2016,v
+MTING,769546,D,Bestått,2016,v
+MTING,769547,E,Bestått,2016,v
+MTING,769548,E,Bestått,2016,v
+MTING,769549,F,Ikke bestått,2016,v
+MTING,769549,F,Ikke bestått,2017,v
+MTING,769695,C,Bestått,2018,v
+MTING,769863,,Trekk under eksamen (Avbrutt eksamen),2017,v
+MTING,769863,E,Bestått,2018,v
+MTING,770478,B,Bestått,2017,v
+MTING,999394,,Ikke møtt,2018,v
+MTING,999820,E,Bestått,2018,v
+MTIØT,100081,,Manglende øvinger,2014,v
+MTIØT,477878,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTIØT,477878,C,Bestått,2018,s
+MTIØT,477974,F,Ikke bestått,2017,v
+MTIØT,477974,E,Bestått,2018,v
+MTIØT,478013,C,Bestått,2017,v
+MTIØT,478100,D,Bestått,2018,v
+MTIØT,478101,B,Bestått,2017,v
+MTIØT,478102,B,Bestått,2017,v
+MTIØT,478103,A,Bestått,2017,v
+MTIØT,478109,B,Bestått,2017,v
+MTIØT,478110,B,Bestått,2017,v
+MTIØT,478112,F,Ikke bestått,2017,v
+MTIØT,478112,F,Ikke bestått,2018,v
+MTIØT,478113,A,Bestått,2017,v
+MTIØT,478115,C,Bestått,2017,v
+MTIØT,478117,D,Bestått,2017,v
+MTIØT,478120,A,Bestått,2017,v
+MTIØT,478121,B,Bestått,2017,v
+MTIØT,478122,C,Bestått,2017,v
+MTIØT,478122,C,Bestått,2018,v
+MTIØT,478123,B,Bestått,2017,v
+MTIØT,478126,B,Bestått,2017,v
+MTIØT,478127,A,Bestått,2017,v
+MTIØT,478128,A,Bestått,2017,v
+MTIØT,478131,A,Bestått,2017,v
+MTIØT,478132,C,Bestått,2018,v
+MTIØT,478134,A,Bestått,2017,v
+MTIØT,478137,F,Ikke bestått,2017,v
+MTIØT,478137,,Ikke møtt,2017,s
+MTIØT,478137,D,Bestått,2018,v
+MTIØT,478140,B,Bestått,2017,v
+MTIØT,478141,C,Bestått,2017,v
+MTIØT,478143,A,Bestått,2017,v
+MTIØT,478146,B,Bestått,2017,v
+MTIØT,478147,A,Bestått,2017,v
+MTIØT,478148,B,Bestått,2017,v
+MTIØT,478149,B,Bestått,2017,v
+MTIØT,478153,D,Bestått,2017,v
+MTIØT,478154,B,Bestått,2017,v
+MTIØT,478155,B,Bestått,2017,v
+MTIØT,478156,A,Bestått,2017,v
+MTIØT,478157,C,Bestått,2017,v
+MTIØT,478158,C,Bestått,2017,v
+MTIØT,478158,,Ikke møtt,2018,v
+MTIØT,478160,A,Bestått,2017,v
+MTIØT,478161,B,Bestått,2018,v
+MTIØT,478163,,Trekk under eksamen (Avbrutt eksamen),2017,v
+MTIØT,478165,A,Bestått,2017,v
+MTIØT,478166,C,Bestått,2017,v
+MTIØT,478168,D,Bestått,2017,v
+MTIØT,478169,A,Bestått,2017,v
+MTIØT,478170,B,Bestått,2017,v
+MTIØT,478171,A,Bestått,2017,v
+MTIØT,478172,A,Bestått,2017,v
+MTIØT,478179,A,Bestått,2017,v
+MTIØT,478180,A,Bestått,2017,v
+MTIØT,478181,A,Bestått,2017,v
+MTIØT,478222,F,Ikke bestått,2017,v
+MTIØT,478222,,Legeattest,2017,s
+MTIØT,478222,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTIØT,478222,E,Bestått,2018,s
+MTIØT,478300,E,Bestått,2018,v
+MTIØT,478383,A,Bestått,2018,v
+MTIØT,482887,D,Bestått,2018,v
+MTIØT,485478,F,Ikke bestått,2018,v
+MTIØT,485478,,Ikke møtt,2018,s
+MTIØT,486624,B,Bestått,2018,v
+MTIØT,486816,C,Bestått,2018,v
+MTIØT,487145,B,Bestått,2018,v
+MTIØT,487500,D,Bestått,2018,v
+MTIØT,487539,D,Bestått,2018,v
+MTIØT,487621,C,Bestått,2018,v
+MTIØT,487623,C,Bestått,2018,v
+MTIØT,487646,A,Bestått,2018,v
+MTIØT,487774,F,Ikke bestått,2018,v
+MTIØT,487774,A,Bestått,2018,s
+MTIØT,487816,C,Bestått,2018,v
+MTIØT,490747,F,Ikke bestått,2018,v
+MTIØT,490750,C,Bestått,2018,v
+MTIØT,490753,C,Bestått,2018,v
+MTIØT,490755,C,Bestått,2018,v
+MTIØT,490756,C,Bestått,2018,v
+MTIØT,490759,C,Bestått,2018,v
+MTIØT,490762,C,Bestått,2018,v
+MTIØT,490765,C,Bestått,2018,v
+MTIØT,490766,B,Bestått,2018,v
+MTIØT,490767,C,Bestått,2018,v
+MTIØT,490769,C,Bestått,2018,v
+MTIØT,490770,C,Bestått,2018,v
+MTIØT,490771,C,Bestått,2018,v
+MTIØT,490772,E,Bestått,2018,v
+MTIØT,490773,C,Bestått,2018,v
+MTIØT,490774,B,Bestått,2018,v
+MTIØT,490777,C,Bestått,2018,v
+MTIØT,490778,B,Bestått,2018,v
+MTIØT,490779,D,Bestått,2018,v
+MTIØT,490780,F,Ikke bestått,2018,v
+MTIØT,490781,C,Bestått,2018,v
+MTIØT,490783,A,Bestått,2018,v
+MTIØT,490784,E,Bestått,2018,v
+MTIØT,490785,C,Bestått,2018,v
+MTIØT,490787,D,Bestått,2018,v
+MTIØT,490788,C,Bestått,2018,v
+MTIØT,490793,E,Bestått,2018,v
+MTIØT,490794,B,Bestått,2018,v
+MTIØT,490796,D,Bestått,2018,v
+MTIØT,490797,B,Bestått,2018,v
+MTIØT,490798,B,Bestått,2018,v
+MTIØT,490800,D,Bestått,2018,v
+MTIØT,490801,A,Bestått,2018,v
+MTIØT,490804,B,Bestått,2018,v
+MTIØT,490805,E,Bestått,2018,v
+MTIØT,490806,C,Bestått,2018,v
+MTIØT,490809,C,Bestått,2018,v
+MTIØT,490810,C,Bestått,2018,v
+MTIØT,490811,B,Bestått,2018,v
+MTIØT,490812,A,Bestått,2018,v
+MTIØT,490814,F,Ikke bestått,2018,v
+MTIØT,490814,F,Ikke bestått,2018,s
+MTIØT,490816,C,Bestått,2018,v
+MTIØT,490818,B,Bestått,2018,v
+MTIØT,490819,C,Bestått,2018,v
+MTIØT,490820,B,Bestått,2018,v
+MTIØT,490821,B,Bestått,2018,v
+MTIØT,490825,C,Bestått,2018,v
+MTIØT,490826,B,Bestått,2018,v
+MTIØT,490827,D,Bestått,2018,v
+MTIØT,490828,C,Bestått,2018,v
+MTIØT,490829,D,Bestått,2018,v
+MTIØT,490830,B,Bestått,2018,v
+MTIØT,490831,A,Bestått,2018,v
+MTIØT,490832,D,Bestått,2018,v
+MTIØT,490833,C,Bestått,2018,v
+MTIØT,490834,A,Bestått,2018,v
+MTIØT,490835,F,Ikke bestått,2018,v
+MTIØT,490838,C,Bestått,2018,v
+MTIØT,490839,A,Bestått,2018,v
+MTIØT,490840,C,Bestått,2018,v
+MTIØT,490841,C,Bestått,2018,v
+MTIØT,691818,F,Ikke bestått,2013,v
+MTIØT,691818,F,Ikke bestått,2014,v
+MTIØT,691818,,Ikke møtt,2014,s
+MTIØT,691818,,Ikke møtt,2015,v
+MTIØT,691818,,Ikke møtt,2016,v
+MTIØT,691818,,Ikke møtt,2017,v
+MTIØT,691818,,Ikke møtt,2018,v
+MTIØT,692566,D,Bestått,2010,v
+MTIØT,693186,,Manglende øvinger,2012,v
+MTIØT,693186,,Manglende øvinger,2013,v
+MTIØT,693186,,Manglende øvinger,2014,v
+MTIØT,696478,B,Bestått,2011,v
+MTIØT,696478,C,Bestått,2012,v
+MTIØT,696924,E,Bestått,2013,v
+MTIØT,697480,,Trekk under eksamen (Avbrutt eksamen),2017,v
+MTIØT,697480,F,Ikke bestått,2017,s
+MTIØT,697480,D,Bestått,2018,v
+MTIØT,697608,,Manglende øvinger,2011,v
+MTIØT,697884,D,Bestått,2010,v
+MTIØT,705696,C,Bestått,2010,v
+MTIØT,707385,D,Bestått,2014,v
+MTIØT,707385,B,Bestått,2015,v
+MTIØT,707608,B,Bestått,2010,v
+MTIØT,707870,C,Bestått,2013,v
+MTIØT,708041,C,Bestått,2010,v
+MTIØT,708041,,Ikke møtt,2013,v
+MTIØT,708128,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTIØT,708128,B,Bestått,2010,s
+MTIØT,708439,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTIØT,708439,,Trekk under eksamen (Avbrutt eksamen),2010,s
+MTIØT,708439,C,Bestått,2011,v
+MTIØT,708439,,Ikke møtt,2014,v
+MTIØT,708629,B,Bestått,2011,v
+MTIØT,708630,B,Bestått,2011,v
+MTIØT,708780,C,Bestått,2010,v
+MTIØT,708799,A,Bestått,2010,v
+MTIØT,708803,B,Bestått,2010,v
+MTIØT,708818,C,Bestått,2010,v
+MTIØT,708818,B,Bestått,2011,v
+MTIØT,708826,,Manglende øvinger,2010,v
+MTIØT,708837,B,Bestått,2010,v
+MTIØT,709999,,Manglende øvinger,2018,v
+MTIØT,712704,B,Bestått,2010,v
+MTIØT,713629,E,Bestått,2013,v
+MTIØT,713629,D,Bestått,2015,v
+MTIØT,714239,F,Ikke bestått,2012,v
+MTIØT,714239,C,Bestått,2012,s
+MTIØT,714239,A,Bestått,2013,v
+MTIØT,714964,B,Bestått,2012,v
+MTIØT,714964,A,Bestått,2013,v
+MTIØT,715982,C,Bestått,2011,v
+MTIØT,715982,,Gyldig fravær,2013,v
+MTIØT,715982,C,Bestått,2013,s
+MTIØT,716029,E,Bestått,2013,v
+MTIØT,716059,A,Bestått,2010,v
+MTIØT,716062,A,Bestått,2010,v
+MTIØT,716064,C,Bestått,2010,v
+MTIØT,716068,A,Bestått,2010,v
+MTIØT,716070,F,Ikke bestått,2010,v
+MTIØT,716070,F,Ikke bestått,2010,s
+MTIØT,716070,B,Bestått,2011,v
+MTIØT,716074,B,Bestått,2010,v
+MTIØT,716076,F,Ikke bestått,2010,v
+MTIØT,716076,E,Bestått,2010,s
+MTIØT,716076,D,Bestått,2011,v
+MTIØT,716080,A,Bestått,2010,v
+MTIØT,716082,B,Bestått,2011,v
+MTIØT,716082,A,Bestått,2012,v
+MTIØT,716087,C,Bestått,2010,v
+MTIØT,716087,B,Bestått,2011,v
+MTIØT,716092,C,Bestått,2010,v
+MTIØT,716093,B,Bestått,2010,v
+MTIØT,716094,,Manglende øvinger,2011,v
+MTIØT,716119,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTIØT,716119,D,Bestått,2010,s
+MTIØT,716119,C,Bestått,2011,v
+MTIØT,716127,D,Bestått,2010,v
+MTIØT,716127,,Ikke møtt,2011,v
+MTIØT,716135,A,Bestått,2010,v
+MTIØT,719994,B,Bestått,2011,v
+MTIØT,720044,C,Bestått,2011,v
+MTIØT,720044,,Ikke møtt,2014,v
+MTIØT,720956,B,Bestått,2011,v
+MTIØT,722298,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTIØT,722298,B,Bestått,2012,s
+MTIØT,722367,C,Bestått,2013,v
+MTIØT,722832,B,Bestått,2012,v
+MTIØT,722973,C,Bestått,2017,v
+MTIØT,723545,,Manglende øvinger,2016,v
+MTIØT,724153,A,Bestått,2011,v
+MTIØT,724154,F,Ikke bestått,2011,v
+MTIØT,724154,A,Bestått,2011,s
+MTIØT,724157,B,Bestått,2011,v
+MTIØT,724162,A,Bestått,2012,v
+MTIØT,724163,C,Bestått,2011,v
+MTIØT,724167,E,Bestått,2011,v
+MTIØT,724167,E,Bestått,2014,v
+MTIØT,724176,A,Bestått,2011,v
+MTIØT,724181,B,Bestått,2013,v
+MTIØT,724182,A,Bestått,2011,v
+MTIØT,724188,A,Bestått,2011,v
+MTIØT,724194,C,Bestått,2011,v
+MTIØT,724201,C,Bestått,2011,v
+MTIØT,724206,C,Bestått,2011,v
+MTIØT,724218,F,Ikke bestått,2011,v
+MTIØT,724218,,Ikke møtt,2012,v
+MTIØT,724222,D,Bestått,2011,v
+MTIØT,724226,D,Bestått,2011,v
+MTIØT,724228,C,Bestått,2011,v
+MTIØT,724230,C,Bestått,2011,v
+MTIØT,724234,C,Bestått,2011,v
+MTIØT,724235,B,Bestått,2011,v
+MTIØT,724235,A,Bestått,2012,v
+MTIØT,724237,F,Ikke bestått,2011,v
+MTIØT,724237,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTIØT,724237,B,Bestått,2014,v
+MTIØT,724240,C,Bestått,2011,v
+MTIØT,724246,C,Bestått,2011,v
+MTIØT,724249,C,Bestått,2011,v
+MTIØT,724252,B,Bestått,2012,v
+MTIØT,724253,B,Bestått,2011,v
+MTIØT,724253,A,Bestått,2012,v
+MTIØT,724257,F,Ikke bestått,2011,v
+MTIØT,724257,,Ikke møtt,2011,s
+MTIØT,724258,F,Ikke bestått,2011,v
+MTIØT,724258,E,Bestått,2012,v
+MTIØT,724258,,Gyldig fravær,2014,v
+MTIØT,724258,D,Bestått,2014,s
+MTIØT,724319,D,Bestått,2011,v
+MTIØT,724494,C,Bestått,2012,v
+MTIØT,724494,,Ikke møtt,2016,v
+MTIØT,725209,,Manglende øvinger,2012,v
+MTIØT,725209,C,Bestått,2015,v
+MTIØT,727492,A,Bestått,2012,v
+MTIØT,728930,A,Bestått,2012,v
+MTIØT,729092,A,Bestått,2012,v
+MTIØT,729136,A,Bestått,2012,v
+MTIØT,729554,C,Bestått,2012,v
+MTIØT,729656,C,Bestått,2012,v
+MTIØT,729841,F,Ikke bestått,2013,v
+MTIØT,729841,,Ikke møtt,2013,s
+MTIØT,729841,F,Ikke bestått,2016,v
+MTIØT,729841,,Ikke møtt,2016,s
+MTIØT,729841,F,Ikke bestått,2017,v
+MTIØT,729841,F,Ikke bestått,2018,v
+MTIØT,729841,,Ikke møtt,2018,s
+MTIØT,729926,B,Bestått,2013,v
+MTIØT,731628,C,Bestått,2015,v
+MTIØT,731948,E,Bestått,2015,v
+MTIØT,732017,C,Bestått,2013,v
+MTIØT,732049,F,Ikke bestått,2013,v
+MTIØT,732049,F,Ikke bestått,2013,s
+MTIØT,732049,F,Ikke bestått,2014,v
+MTIØT,732049,F,Ikke bestått,2015,v
+MTIØT,732049,D,Bestått,2015,s
+MTIØT,732215,C,Bestått,2012,v
+MTIØT,732215,B,Bestått,2013,v
+MTIØT,732218,B,Bestått,2012,v
+MTIØT,732220,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTIØT,732220,B,Bestått,2014,s
+MTIØT,732221,A,Bestått,2013,v
+MTIØT,732222,B,Bestått,2012,v
+MTIØT,732222,A,Bestått,2013,v
+MTIØT,732225,,Manglende øvinger,2012,v
+MTIØT,732226,B,Bestått,2012,v
+MTIØT,732227,A,Bestått,2012,v
+MTIØT,732228,B,Bestått,2012,v
+MTIØT,732229,C,Bestått,2012,v
+MTIØT,732231,A,Bestått,2012,v
+MTIØT,732232,B,Bestått,2012,v
+MTIØT,732236,B,Bestått,2012,v
+MTIØT,732237,A,Bestått,2012,v
+MTIØT,732243,A,Bestått,2012,v
+MTIØT,732244,B,Bestått,2012,v
+MTIØT,732246,C,Bestått,2012,v
+MTIØT,732246,,Ikke møtt,2015,v
+MTIØT,732249,B,Bestått,2012,v
+MTIØT,732249,B,Bestått,2015,v
+MTIØT,732250,A,Bestått,2012,v
+MTIØT,732252,D,Bestått,2012,v
+MTIØT,732255,C,Bestått,2012,v
+MTIØT,732257,B,Bestått,2012,v
+MTIØT,732261,B,Bestått,2015,v
+MTIØT,732264,B,Bestått,2012,v
+MTIØT,732266,A,Bestått,2012,v
+MTIØT,732270,C,Bestått,2012,v
+MTIØT,732275,B,Bestått,2012,v
+MTIØT,732276,A,Bestått,2012,v
+MTIØT,732277,A,Bestått,2014,v
+MTIØT,732279,A,Bestått,2012,v
+MTIØT,732280,B,Bestått,2012,v
+MTIØT,732280,C,Bestått,2015,v
+MTIØT,732281,A,Bestått,2012,v
+MTIØT,732283,B,Bestått,2012,v
+MTIØT,732285,A,Bestått,2013,v
+MTIØT,732293,C,Bestått,2012,v
+MTIØT,732294,D,Bestått,2012,v
+MTIØT,732294,A,Bestått,2013,v
+MTIØT,732297,A,Bestått,2012,v
+MTIØT,732300,B,Bestått,2012,v
+MTIØT,732302,B,Bestått,2012,v
+MTIØT,733748,E,Bestått,2013,v
+MTIØT,733748,F,Ikke bestått,2014,v
+MTIØT,733748,C,Bestått,2016,v
+MTIØT,737931,C,Bestått,2013,v
+MTIØT,738062,B,Bestått,2013,v
+MTIØT,738314,A,Bestått,2013,v
+MTIØT,738857,B,Bestått,2013,v
+MTIØT,739776,E,Bestått,2016,v
+MTIØT,741111,F,Ikke bestått,2014,v
+MTIØT,741308,C,Bestått,2013,v
+MTIØT,741640,C,Bestått,2017,v
+MTIØT,741640,D,Bestått,2018,v
+MTIØT,741651,D,Bestått,2014,v
+MTIØT,741656,D,Bestått,2014,v
+MTIØT,741745,C,Bestått,2014,v
+MTIØT,741746,C,Bestått,2016,v
+MTIØT,741852,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTIØT,741852,E,Bestått,2014,v
+MTIØT,741853,,Manglende øvinger,2013,v
+MTIØT,741858,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTIØT,741858,E,Bestått,2013,s
+MTIØT,741858,C,Bestått,2016,v
+MTIØT,741860,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTIØT,741860,D,Bestått,2014,v
+MTIØT,741864,B,Bestått,2013,v
+MTIØT,741866,,Trekk under eksamen (Avbrutt eksamen),2017,v
+MTIØT,741866,C,Bestått,2017,s
+MTIØT,741867,B,Bestått,2013,v
+MTIØT,741868,B,Bestått,2013,v
+MTIØT,741870,C,Bestått,2013,v
+MTIØT,741872,A,Bestått,2013,v
+MTIØT,741875,B,Bestått,2013,v
+MTIØT,741876,B,Bestått,2013,v
+MTIØT,741878,B,Bestått,2013,v
+MTIØT,741878,B,Bestått,2014,v
+MTIØT,741879,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTIØT,741879,F,Ikke bestått,2014,s
+MTIØT,741879,D,Bestått,2015,v
+MTIØT,741880,B,Bestått,2013,v
+MTIØT,741882,,Manglende øvinger,2013,v
+MTIØT,741884,B,Bestått,2013,v
+MTIØT,741885,B,Bestått,2014,v
+MTIØT,741894,B,Bestått,2013,v
+MTIØT,741899,C,Bestått,2013,v
+MTIØT,741903,B,Bestått,2013,v
+MTIØT,741904,B,Bestått,2013,v
+MTIØT,741905,C,Bestått,2013,v
+MTIØT,741910,C,Bestått,2013,v
+MTIØT,741917,,Manglende øvinger,2013,v
+MTIØT,741919,D,Bestått,2013,v
+MTIØT,741928,B,Bestått,2013,v
+MTIØT,741929,B,Bestått,2013,v
+MTIØT,741933,B,Bestått,2013,v
+MTIØT,741937,A,Bestått,2013,v
+MTIØT,741938,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTIØT,741938,,Ikke møtt,2013,s
+MTIØT,741938,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTIØT,741938,C,Bestått,2014,s
+MTIØT,741942,C,Bestått,2013,v
+MTIØT,741942,A,Bestått,2014,v
+MTIØT,742238,A,Bestått,2014,v
+MTIØT,742421,A,Bestått,2015,v
+MTIØT,742545,C,Bestått,2014,v
+MTIØT,745701,,Ikke møtt,2014,v
+MTIØT,746015,B,Bestått,2014,v
+MTIØT,747560,C,Bestått,2014,v
+MTIØT,747946,,Manglende øvinger,2016,v
+MTIØT,747946,E,Bestått,2017,v
+MTIØT,749907,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTIØT,749907,C,Bestått,2014,s
+MTIØT,749909,B,Bestått,2014,v
+MTIØT,749909,A,Bestått,2016,v
+MTIØT,749911,F,Ikke bestått,2014,v
+MTIØT,749911,D,Bestått,2014,s
+MTIØT,749912,F,Ikke bestått,2014,v
+MTIØT,749912,F,Ikke bestått,2014,s
+MTIØT,749912,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTIØT,749912,D,Bestått,2016,v
+MTIØT,749916,B,Bestått,2014,v
+MTIØT,749918,E,Bestått,2014,v
+MTIØT,749921,C,Bestått,2014,v
+MTIØT,749921,A,Bestått,2018,v
+MTIØT,749924,D,Bestått,2014,v
+MTIØT,749925,B,Bestått,2014,v
+MTIØT,749928,D,Bestått,2014,v
+MTIØT,749929,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTIØT,749929,,Ikke møtt,2018,s
+MTIØT,749930,C,Bestått,2014,v
+MTIØT,749932,A,Bestått,2014,v
+MTIØT,749938,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTIØT,749938,B,Bestått,2014,s
+MTIØT,749938,,Ikke møtt,2018,v
+MTIØT,749942,D,Bestått,2014,v
+MTIØT,749944,B,Bestått,2014,v
+MTIØT,749951,D,Bestått,2014,v
+MTIØT,749956,E,Bestått,2014,v
+MTIØT,749968,A,Bestått,2014,v
+MTIØT,749970,,Ikke møtt,2014,v
+MTIØT,749970,,Ikke møtt,2018,v
+MTIØT,749971,D,Bestått,2014,v
+MTIØT,749973,A,Bestått,2014,v
+MTIØT,749974,C,Bestått,2014,v
+MTIØT,749974,A,Bestått,2015,v
+MTIØT,749977,E,Bestått,2014,v
+MTIØT,749977,,Gyldig fravær,2016,v
+MTIØT,749977,C,Bestått,2016,s
+MTIØT,749981,B,Bestått,2014,v
+MTIØT,749982,A,Bestått,2014,v
+MTIØT,749984,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTIØT,749984,A,Bestått,2015,v
+MTIØT,749985,D,Bestått,2014,v
+MTIØT,749986,E,Bestått,2014,v
+MTIØT,749986,C,Bestått,2015,v
+MTIØT,749989,C,Bestått,2014,v
+MTIØT,749990,A,Bestått,2014,v
+MTIØT,749994,B,Bestått,2015,v
+MTIØT,749997,A,Bestått,2014,v
+MTIØT,750365,,Manglende øvinger,2018,v
+MTIØT,750795,D,Bestått,2016,v
+MTIØT,750795,C,Bestått,2017,v
+MTIØT,751164,A,Bestått,2015,v
+MTIØT,751910,D,Bestått,2016,v
+MTIØT,754555,B,Bestått,2017,v
+MTIØT,755352,B,Bestått,2015,v
+MTIØT,755401,A,Bestått,2015,v
+MTIØT,755646,A,Bestått,2015,v
+MTIØT,756629,F,Ikke bestått,2017,v
+MTIØT,756629,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTIØT,758021,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTIØT,758021,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTIØT,758021,C,Bestått,2018,s
+MTIØT,758081,E,Bestått,2015,v
+MTIØT,758858,B,Bestått,2015,v
+MTIØT,758860,D,Bestått,2015,v
+MTIØT,758860,A,Bestått,2017,v
+MTIØT,758861,A,Bestått,2015,v
+MTIØT,759181,B,Bestått,2015,v
+MTIØT,759181,,Ikke møtt,2016,v
+MTIØT,759260,D,Bestått,2018,v
+MTIØT,759355,C,Bestått,2018,v
+MTIØT,759374,B,Bestått,2015,v
+MTIØT,759379,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTIØT,759379,C,Bestått,2016,v
+MTIØT,759382,B,Bestått,2015,v
+MTIØT,759383,C,Bestått,2015,v
+MTIØT,759384,C,Bestått,2015,v
+MTIØT,759386,B,Bestått,2015,v
+MTIØT,759391,A,Bestått,2017,v
+MTIØT,759397,B,Bestått,2015,v
+MTIØT,759400,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTIØT,759406,D,Bestått,2015,v
+MTIØT,759406,C,Bestått,2016,v
+MTIØT,759407,C,Bestått,2015,v
+MTIØT,759411,A,Bestått,2016,v
+MTIØT,759413,D,Bestått,2015,v
+MTIØT,759414,D,Bestått,2015,v
+MTIØT,759414,D,Bestått,2016,v
+MTIØT,759418,A,Bestått,2015,v
+MTIØT,759421,C,Bestått,2015,v
+MTIØT,759422,A,Bestått,2015,v
+MTIØT,759429,D,Bestått,2015,v
+MTIØT,759429,C,Bestått,2016,v
+MTIØT,759430,A,Bestått,2015,v
+MTIØT,759431,C,Bestått,2015,v
+MTIØT,759432,B,Bestått,2015,v
+MTIØT,759440,B,Bestått,2015,v
+MTIØT,759443,E,Bestått,2015,v
+MTIØT,759445,A,Bestått,2015,v
+MTIØT,759447,B,Bestått,2015,v
+MTIØT,759452,B,Bestått,2015,v
+MTIØT,759454,D,Bestått,2015,v
+MTIØT,759460,A,Bestått,2016,v
+MTIØT,759466,B,Bestått,2015,v
+MTIØT,759524,D,Bestått,2017,v
+MTIØT,759785,D,Bestått,2018,v
+MTIØT,759865,B,Bestått,2018,v
+MTIØT,763038,,Manglende øvinger,2016,v
+MTIØT,763038,,Legeattest,2017,v
+MTIØT,763038,F,Ikke bestått,2017,s
+MTIØT,763038,E,Bestått,2018,v
+MTIØT,763058,C,Bestått,2018,v
+MTIØT,765217,F,Ikke bestått,2016,v
+MTIØT,765217,F,Ikke bestått,2016,s
+MTIØT,765217,D,Bestått,2017,v
+MTIØT,765308,,Manglende øvinger,2016,v
+MTIØT,765308,B,Bestått,2017,v
+MTIØT,765332,B,Bestått,2016,v
+MTIØT,765352,A,Bestått,2016,v
+MTIØT,765363,B,Bestått,2016,v
+MTIØT,766076,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTIØT,766076,C,Bestått,2016,s
+MTIØT,766076,C,Bestått,2018,v
+MTIØT,767953,E,Bestått,2018,v
+MTIØT,767970,C,Bestått,2016,v
+MTIØT,767970,A,Bestått,2017,v
+MTIØT,768057,C,Bestått,2017,v
+MTIØT,768268,C,Bestått,2016,v
+MTIØT,768300,E,Bestått,2016,v
+MTIØT,768304,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTIØT,768304,D,Bestått,2016,s
+MTIØT,768304,C,Bestått,2018,v
+MTIØT,768306,C,Bestått,2016,v
+MTIØT,768308,B,Bestått,2016,v
+MTIØT,768314,,Manglende øvinger,2016,v
+MTIØT,768314,,Manglende øvinger,2017,v
+MTIØT,768314,B,Bestått,2018,v
+MTIØT,768317,B,Bestått,2016,v
+MTIØT,768321,C,Bestått,2016,v
+MTIØT,768322,D,Bestått,2016,v
+MTIØT,768322,C,Bestått,2018,v
+MTIØT,768324,D,Bestått,2016,v
+MTIØT,768324,C,Bestått,2017,v
+MTIØT,768325,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTIØT,768325,C,Bestått,2017,v
+MTIØT,768327,B,Bestått,2016,v
+MTIØT,768331,,Manglende øvinger,2016,v
+MTIØT,768333,B,Bestått,2016,v
+MTIØT,768338,B,Bestått,2016,v
+MTIØT,768340,B,Bestått,2016,v
+MTIØT,768341,C,Bestått,2016,v
+MTIØT,768344,A,Bestått,2016,v
+MTIØT,768351,D,Bestått,2016,v
+MTIØT,768352,B,Bestått,2016,v
+MTIØT,768354,A,Bestått,2016,v
+MTIØT,768355,C,Bestått,2016,v
+MTIØT,768358,C,Bestått,2016,v
+MTIØT,768360,A,Bestått,2016,v
+MTIØT,768361,E,Bestått,2016,v
+MTIØT,768363,C,Bestått,2016,v
+MTIØT,768363,A,Bestått,2017,v
+MTIØT,768364,A,Bestått,2016,v
+MTIØT,768366,A,Bestått,2016,v
+MTIØT,768370,C,Bestått,2016,v
+MTIØT,768373,B,Bestått,2016,v
+MTIØT,768374,A,Bestått,2016,v
+MTIØT,768377,A,Bestått,2016,v
+MTIØT,768380,A,Bestått,2016,v
+MTIØT,768383,B,Bestått,2016,v
+MTIØT,768384,B,Bestått,2016,v
+MTIØT,768385,C,Bestått,2016,v
+MTIØT,768385,B,Bestått,2017,v
+MTIØT,768386,A,Bestått,2016,v
+MTIØT,768387,C,Bestått,2016,v
+MTIØT,768387,B,Bestått,2018,v
+MTIØT,768391,B,Bestått,2016,v
+MTIØT,768393,D,Bestått,2016,v
+MTIØT,768395,B,Bestått,2016,v
+MTIØT,768514,E,Bestått,2017,v
+MTIØT,769602,A,Bestått,2017,v
+MTIØT,769747,D,Bestått,2017,v
+MTIØT,769747,,Ikke møtt,2018,v
+MTIØT,999622,C,Bestått,2017,v
+MTIØT,999698,D,Bestått,2017,v
+MTKOM,131327,,Manglende øvinger,2011,v
+MTKOM,249471,D,Bestått,2018,v
+MTKOM,279328,C,Bestått,2018,v
+MTKOM,471781,E,Bestått,2017,v
+MTKOM,474018,B,Bestått,2018,v
+MTKOM,474987,F,Ikke bestått,2018,v
+MTKOM,474987,,Ikke møtt,2018,s
+MTKOM,475359,C,Bestått,2018,v
+MTKOM,475363,E,Bestått,2018,v
+MTKOM,475365,B,Bestått,2018,v
+MTKOM,477371,A,Bestått,2017,v
+MTKOM,477658,E,Bestått,2017,v
+MTKOM,477658,C,Bestått,2018,v
+MTKOM,477707,B,Bestått,2017,v
+MTKOM,478329,A,Bestått,2017,v
+MTKOM,478330,C,Bestått,2017,v
+MTKOM,478331,D,Bestått,2017,v
+MTKOM,478332,B,Bestått,2017,v
+MTKOM,478334,B,Bestått,2017,v
+MTKOM,478335,C,Bestått,2017,v
+MTKOM,478336,A,Bestått,2017,v
+MTKOM,478337,E,Bestått,2017,v
+MTKOM,478337,F,Ikke bestått,2018,v
+MTKOM,478339,C,Bestått,2017,v
+MTKOM,478340,C,Bestått,2017,v
+MTKOM,478341,E,Bestått,2017,v
+MTKOM,478343,F,Ikke bestått,2017,v
+MTKOM,478343,F,Ikke bestått,2018,v
+MTKOM,478343,F,Ikke bestått,2018,s
+MTKOM,478344,C,Bestått,2017,v
+MTKOM,478345,F,Ikke bestått,2017,v
+MTKOM,478345,F,Ikke bestått,2018,v
+MTKOM,478346,A,Bestått,2017,v
+MTKOM,478347,B,Bestått,2017,v
+MTKOM,478348,C,Bestått,2017,v
+MTKOM,478349,B,Bestått,2017,v
+MTKOM,478350,D,Bestått,2017,v
+MTKOM,478351,D,Bestått,2017,v
+MTKOM,478352,B,Bestått,2017,v
+MTKOM,478354,C,Bestått,2017,v
+MTKOM,478356,E,Bestått,2017,v
+MTKOM,478357,A,Bestått,2017,v
+MTKOM,478755,E,Bestått,2018,v
+MTKOM,480785,C,Bestått,2018,v
+MTKOM,485514,C,Bestått,2018,v
+MTKOM,486638,C,Bestått,2018,v
+MTKOM,486881,C,Bestått,2018,v
+MTKOM,488079,F,Ikke bestått,2018,v
+MTKOM,488079,F,Ikke bestått,2018,s
+MTKOM,488306,,Ikke møtt,2018,v
+MTKOM,489501,E,Bestått,2018,v
+MTKOM,489719,,Manglende øvinger,2018,v
+MTKOM,490594,C,Bestått,2018,v
+MTKOM,490596,E,Bestått,2018,v
+MTKOM,490597,D,Bestått,2018,v
+MTKOM,490599,A,Bestått,2018,v
+MTKOM,490600,E,Bestått,2018,v
+MTKOM,490601,E,Bestått,2018,v
+MTKOM,490602,,Legeattest,2018,v
+MTKOM,490604,F,Ikke bestått,2018,v
+MTKOM,490604,F,Ikke bestått,2018,s
+MTKOM,490605,C,Bestått,2018,v
+MTKOM,490607,C,Bestått,2018,v
+MTKOM,490608,D,Bestått,2018,v
+MTKOM,490609,B,Bestått,2018,v
+MTKOM,490610,C,Bestått,2018,v
+MTKOM,490611,D,Bestått,2018,v
+MTKOM,490612,D,Bestått,2018,v
+MTKOM,490613,A,Bestått,2018,v
+MTKOM,490614,C,Bestått,2018,v
+MTKOM,490615,C,Bestått,2018,v
+MTKOM,490616,B,Bestått,2018,v
+MTKOM,490617,C,Bestått,2018,v
+MTKOM,490618,F,Ikke bestått,2018,v
+MTKOM,490618,F,Ikke bestått,2018,s
+MTKOM,490619,E,Bestått,2018,v
+MTKOM,490619,E,Bestått,2018,s
+MTKOM,490621,D,Bestått,2018,v
+MTKOM,490622,E,Bestått,2018,v
+MTKOM,491294,F,Ikke bestått,2018,v
+MTKOM,491609,F,Ikke bestått,2018,v
+MTKOM,491657,A,Bestått,2018,v
+MTKOM,634686,,Manglende øvinger,2014,v
+MTKOM,676665,,Ikke møtt,2010,v
+MTKOM,684489,,Ikke møtt,2010,v
+MTKOM,684501,D,Bestått,2010,v
+MTKOM,684527,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTKOM,684527,,Ikke møtt,2011,v
+MTKOM,684527,F,Ikke bestått,2012,v
+MTKOM,684527,F,Ikke bestått,2012,s
+MTKOM,684527,F,Ikke bestått,2013,v
+MTKOM,684527,F,Ikke bestått,2013,s
+MTKOM,684527,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTKOM,684527,F,Ikke bestått,2014,s
+MTKOM,684527,F,Ikke bestått,2015,v
+MTKOM,684527,E,Bestått,2015,s
+MTKOM,689758,E,Bestått,2010,v
+MTKOM,690048,C,Bestått,2010,v
+MTKOM,690069,F,Ikke bestått,2010,v
+MTKOM,690069,D,Bestått,2010,s
+MTKOM,690075,C,Bestått,2011,v
+MTKOM,690079,A,Bestått,2011,v
+MTKOM,690085,E,Bestått,2011,v
+MTKOM,690087,C,Bestått,2011,v
+MTKOM,693718,F,Ikke bestått,2010,v
+MTKOM,697774,,Ikke møtt,2010,v
+MTKOM,697780,B,Bestått,2010,v
+MTKOM,697783,D,Bestått,2011,v
+MTKOM,697787,D,Bestått,2010,v
+MTKOM,697801,C,Bestått,2010,v
+MTKOM,697804,C,Bestått,2012,v
+MTKOM,697809,,Ikke møtt,2010,v
+MTKOM,697810,D,Bestått,2010,v
+MTKOM,698072,B,Bestått,2011,v
+MTKOM,698370,D,Bestått,2014,v
+MTKOM,705707,F,Ikke bestått,2010,v
+MTKOM,706002,D,Bestått,2011,v
+MTKOM,707227,F,Ikke bestått,2010,v
+MTKOM,707227,,Trekk under eksamen (Avbrutt eksamen),2011,v
+MTKOM,707227,,Ikke møtt,2011,s
+MTKOM,707227,,Trekk under eksamen (Avbrutt eksamen),2012,v
+MTKOM,707227,,Ikke møtt,2012,s
+MTKOM,707227,,Gyldig fravær,2013,v
+MTKOM,707227,,Ikke møtt,2013,s
+MTKOM,707227,F,Ikke bestått,2014,v
+MTKOM,707227,E,Bestått,2014,s
+MTKOM,707851,C,Bestått,2010,v
+MTKOM,708227,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTKOM,708227,,Ikke møtt,2010,s
+MTKOM,708227,,Trekk under eksamen (Avbrutt eksamen),2011,v
+MTKOM,708227,,Ikke møtt,2011,s
+MTKOM,708227,D,Bestått,2012,v
+MTKOM,708337,B,Bestått,2010,v
+MTKOM,708356,F,Ikke bestått,2010,v
+MTKOM,708356,F,Ikke bestått,2010,s
+MTKOM,708356,,Trekk under eksamen (Avbrutt eksamen),2011,v
+MTKOM,708356,E,Bestått,2011,s
+MTKOM,708356,,Ikke møtt,2013,v
+MTKOM,708359,F,Ikke bestått,2010,v
+MTKOM,708359,F,Ikke bestått,2010,s
+MTKOM,708359,E,Bestått,2011,v
+MTKOM,708359,,Ikke møtt,2013,v
+MTKOM,708360,F,Ikke bestått,2010,v
+MTKOM,708360,D,Bestått,2011,v
+MTKOM,708362,D,Bestått,2010,v
+MTKOM,708364,F,Ikke bestått,2010,v
+MTKOM,708364,D,Bestått,2010,s
+MTKOM,708368,D,Bestått,2010,v
+MTKOM,708369,B,Bestått,2010,v
+MTKOM,708377,,Gyldig fravær,2010,v
+MTKOM,708377,F,Ikke bestått,2010,s
+MTKOM,708377,D,Bestått,2011,v
+MTKOM,708378,F,Ikke bestått,2010,v
+MTKOM,708378,F,Ikke bestått,2010,s
+MTKOM,708378,E,Bestått,2011,v
+MTKOM,708380,D,Bestått,2010,v
+MTKOM,708380,C,Bestått,2011,v
+MTKOM,714033,,Manglende øvinger,2011,v
+MTKOM,714033,E,Bestått,2012,v
+MTKOM,716274,C,Bestått,2011,v
+MTKOM,716277,,Manglende øvinger,2010,v
+MTKOM,716281,F,Ikke bestått,2010,v
+MTKOM,716281,,Ikke møtt,2010,s
+MTKOM,716281,F,Ikke bestått,2011,v
+MTKOM,716285,F,Ikke bestått,2011,v
+MTKOM,716285,C,Bestått,2011,s
+MTKOM,716286,E,Bestått,2010,v
+MTKOM,716287,E,Bestått,2011,v
+MTKOM,716288,E,Bestått,2010,v
+MTKOM,716289,C,Bestått,2010,v
+MTKOM,716290,,Trekk under eksamen (Avbrutt eksamen),2010,v
+MTKOM,716290,C,Bestått,2010,s
+MTKOM,716291,D,Bestått,2010,v
+MTKOM,716292,,Manglende øvinger,2010,v
+MTKOM,716292,C,Bestått,2011,v
+MTKOM,716292,B,Bestått,2014,v
+MTKOM,716296,C,Bestått,2010,v
+MTKOM,716297,E,Bestått,2010,v
+MTKOM,716297,D,Bestått,2011,v
+MTKOM,716300,F,Ikke bestått,2010,v
+MTKOM,716300,F,Ikke bestått,2010,s
+MTKOM,716301,F,Ikke bestått,2010,v
+MTKOM,716301,F,Ikke bestått,2010,s
+MTKOM,716301,B,Bestått,2011,v
+MTKOM,716302,C,Bestått,2010,v
+MTKOM,716303,F,Ikke bestått,2010,v
+MTKOM,716304,C,Bestått,2010,v
+MTKOM,716305,F,Ikke bestått,2010,v
+MTKOM,716305,E,Bestått,2010,s
+MTKOM,716306,B,Bestått,2010,v
+MTKOM,716307,B,Bestått,2010,v
+MTKOM,716308,F,Ikke bestått,2010,v
+MTKOM,716308,E,Bestått,2011,v
+MTKOM,716310,F,Ikke bestått,2010,v
+MTKOM,716310,,Ikke møtt,2010,s
+MTKOM,716311,E,Bestått,2010,v
+MTKOM,716311,B,Bestått,2011,v
+MTKOM,716314,,Ikke møtt,2010,v
+MTKOM,716315,C,Bestått,2011,v
+MTKOM,716317,D,Bestått,2010,v
+MTKOM,716318,C,Bestått,2010,v
+MTKOM,716319,D,Bestått,2010,v
+MTKOM,716320,F,Ikke bestått,2010,v
+MTKOM,716320,F,Ikke bestått,2010,s
+MTKOM,716320,F,Ikke bestått,2012,v
+MTKOM,716320,F,Ikke bestått,2012,s
+MTKOM,716320,C,Bestått,2013,v
+MTKOM,721530,C,Bestått,2012,v
+MTKOM,722910,,Trekk under eksamen (Avbrutt eksamen),2011,v
+MTKOM,722910,,Ikke møtt,2012,v
+MTKOM,722910,F,Ikke bestått,2014,v
+MTKOM,722910,F,Ikke bestått,2014,s
+MTKOM,722910,F,Ikke bestått,2015,v
+MTKOM,722910,F,Ikke bestått,2015,s
+MTKOM,722910,F,Ikke bestått,2016,v
+MTKOM,722910,F,Ikke bestått,2016,s
+MTKOM,723771,E,Bestått,2017,v
+MTKOM,724298,C,Bestått,2011,v
+MTKOM,724300,A,Bestått,2011,v
+MTKOM,724302,C,Bestått,2011,v
+MTKOM,724304,D,Bestått,2011,v
+MTKOM,724306,A,Bestått,2011,v
+MTKOM,724307,E,Bestått,2011,v
+MTKOM,724307,C,Bestått,2012,v
+MTKOM,724309,D,Bestått,2011,v
+MTKOM,724310,C,Bestått,2011,v
+MTKOM,724311,B,Bestått,2011,v
+MTKOM,724315,D,Bestått,2012,v
+MTKOM,724316,B,Bestått,2011,v
+MTKOM,724317,F,Ikke bestått,2011,v
+MTKOM,724317,E,Bestått,2012,v
+MTKOM,724318,C,Bestått,2011,v
+MTKOM,724318,A,Bestått,2012,v
+MTKOM,724321,D,Bestått,2011,v
+MTKOM,724323,F,Ikke bestått,2011,v
+MTKOM,724323,F,Ikke bestått,2012,v
+MTKOM,724323,E,Bestått,2014,v
+MTKOM,724324,C,Bestått,2011,v
+MTKOM,724325,C,Bestått,2011,v
+MTKOM,724330,C,Bestått,2012,v
+MTKOM,724331,D,Bestått,2011,v
+MTKOM,724332,B,Bestått,2011,v
+MTKOM,724333,F,Ikke bestått,2011,v
+MTKOM,724333,E,Bestått,2011,s
+MTKOM,724334,C,Bestått,2012,v
+MTKOM,724335,A,Bestått,2011,v
+MTKOM,728826,C,Bestått,2012,v
+MTKOM,728829,C,Bestått,2012,v
+MTKOM,728975,,Manglende øvinger,2015,v
+MTKOM,728975,,Manglende øvinger,2016,v
+MTKOM,729565,F,Ikke bestått,2012,v
+MTKOM,729565,E,Bestått,2012,s
+MTKOM,730492,F,Ikke bestått,2012,v
+MTKOM,730492,F,Ikke bestått,2012,s
+MTKOM,730492,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTKOM,730492,E,Bestått,2013,s
+MTKOM,730492,,Ikke møtt,2014,v
+MTKOM,731443,F,Ikke bestått,2012,v
+MTKOM,731443,,Ikke møtt,2012,s
+MTKOM,731443,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTKOM,731443,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTKOM,731443,,Ikke møtt,2015,s
+MTKOM,731443,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTKOM,731443,F,Ikke bestått,2016,s
+MTKOM,731443,,Ikke møtt,2018,v
+MTKOM,731448,C,Bestått,2016,v
+MTKOM,732106,A,Bestått,2012,v
+MTKOM,732357,D,Bestått,2013,v
+MTKOM,732360,C,Bestått,2012,v
+MTKOM,732361,D,Bestått,2012,v
+MTKOM,732362,B,Bestått,2013,v
+MTKOM,732364,C,Bestått,2012,v
+MTKOM,732366,C,Bestått,2012,v
+MTKOM,732368,B,Bestått,2012,v
+MTKOM,732372,D,Bestått,2012,v
+MTKOM,732373,D,Bestått,2013,v
+MTKOM,732375,B,Bestått,2013,v
+MTKOM,732376,D,Bestått,2012,v
+MTKOM,732379,E,Bestått,2012,v
+MTKOM,732380,C,Bestått,2012,v
+MTKOM,732382,D,Bestått,2012,v
+MTKOM,732382,,Gyldig fravær,2015,v
+MTKOM,732382,F,Ikke bestått,2016,v
+MTKOM,732383,D,Bestått,2012,v
+MTKOM,732385,,Manglende øvinger,2012,v
+MTKOM,732385,,Manglende øvinger,2013,v
+MTKOM,732386,B,Bestått,2012,v
+MTKOM,732388,B,Bestått,2012,v
+MTKOM,732389,D,Bestått,2012,v
+MTKOM,732390,B,Bestått,2012,v
+MTKOM,732391,B,Bestått,2012,v
+MTKOM,732392,D,Bestått,2012,v
+MTKOM,732395,D,Bestått,2012,v
+MTKOM,732396,B,Bestått,2012,v
+MTKOM,732397,B,Bestått,2012,v
+MTKOM,732399,C,Bestått,2012,v
+MTKOM,732536,C,Bestått,2013,v
+MTKOM,732660,A,Bestått,2014,v
+MTKOM,732807,F,Ikke bestått,2014,v
+MTKOM,732807,,Ikke møtt,2014,s
+MTKOM,732807,F,Ikke bestått,2015,v
+MTKOM,732807,,Ikke møtt,2015,s
+MTKOM,732807,F,Ikke bestått,2016,v
+MTKOM,732807,F,Ikke bestått,2016,s
+MTKOM,732807,E,Bestått,2017,v
+MTKOM,733544,D,Bestått,2014,v
+MTKOM,733544,C,Bestått,2016,v
+MTKOM,740462,,Ikke møtt,2014,v
+MTKOM,740462,C,Bestått,2015,v
+MTKOM,740462,,Ikke møtt,2018,v
+MTKOM,741981,C,Bestått,2013,v
+MTKOM,741983,C,Bestått,2013,v
+MTKOM,741984,D,Bestått,2013,v
+MTKOM,741985,C,Bestått,2013,v
+MTKOM,741986,C,Bestått,2013,v
+MTKOM,741987,C,Bestått,2013,v
+MTKOM,741989,E,Bestått,2013,v
+MTKOM,741992,,Manglende øvinger,2013,v
+MTKOM,741993,,Manglende øvinger,2014,v
+MTKOM,741994,E,Bestått,2013,v
+MTKOM,741995,C,Bestått,2013,v
+MTKOM,741996,D,Bestått,2013,v
+MTKOM,741997,,Trekk under eksamen (Avbrutt eksamen),2013,v
+MTKOM,741997,,Ikke møtt,2014,v
+MTKOM,741997,,Ikke møtt,2014,s
+MTKOM,741997,,Ikke møtt,2015,v
+MTKOM,741997,,Ikke møtt,2016,v
+MTKOM,741997,F,Ikke bestått,2017,v
+MTKOM,741997,,Ikke møtt,2017,s
+MTKOM,741998,C,Bestått,2013,v
+MTKOM,741999,B,Bestått,2013,v
+MTKOM,742000,C,Bestått,2013,v
+MTKOM,742001,B,Bestått,2013,v
+MTKOM,742003,B,Bestått,2013,v
+MTKOM,742005,B,Bestått,2013,v
+MTKOM,742006,,Manglende øvinger,2013,v
+MTKOM,742007,F,Ikke bestått,2013,v
+MTKOM,742007,F,Ikke bestått,2013,s
+MTKOM,742008,,Manglende øvinger,2013,v
+MTKOM,742009,E,Bestått,2014,v
+MTKOM,742010,C,Bestått,2013,v
+MTKOM,742011,C,Bestått,2013,v
+MTKOM,742013,B,Bestått,2013,v
+MTKOM,742402,C,Bestått,2013,v
+MTKOM,746105,E,Bestått,2014,v
+MTKOM,746157,C,Bestått,2015,v
+MTKOM,747529,,Ikke møtt,2014,v
+MTKOM,749700,F,Ikke bestått,2014,v
+MTKOM,749700,F,Ikke bestått,2014,s
+MTKOM,749700,D,Bestått,2015,v
+MTKOM,749702,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTKOM,749703,D,Bestått,2014,v
+MTKOM,749705,B,Bestått,2014,v
+MTKOM,749706,C,Bestått,2014,v
+MTKOM,749706,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTKOM,749708,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTKOM,749708,D,Bestått,2015,v
+MTKOM,749709,F,Ikke bestått,2014,v
+MTKOM,749709,F,Ikke bestått,2014,s
+MTKOM,749709,E,Bestått,2015,v
+MTKOM,749710,C,Bestått,2014,v
+MTKOM,749711,E,Bestått,2014,v
+MTKOM,749713,F,Ikke bestått,2014,v
+MTKOM,749713,,Ikke møtt,2014,s
+MTKOM,749713,E,Bestått,2015,v
+MTKOM,749713,F,Ikke bestått,2016,v
+MTKOM,749715,D,Bestått,2014,v
+MTKOM,749715,E,Bestått,2016,v
+MTKOM,749716,F,Ikke bestått,2014,v
+MTKOM,749716,,Ikke møtt,2014,s
+MTKOM,749716,C,Bestått,2015,v
+MTKOM,749717,C,Bestått,2014,v
+MTKOM,749717,C,Bestått,2016,v
+MTKOM,749719,E,Bestått,2014,v
+MTKOM,749721,D,Bestått,2014,v
+MTKOM,749722,F,Ikke bestått,2014,v
+MTKOM,749722,F,Ikke bestått,2014,s
+MTKOM,749722,D,Bestått,2015,v
+MTKOM,749725,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTKOM,749726,,Manglende øvinger,2014,v
+MTKOM,749727,E,Bestått,2014,v
+MTKOM,749730,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTKOM,749730,B,Bestått,2014,s
+MTKOM,749731,E,Bestått,2014,v
+MTKOM,749732,C,Bestått,2014,v
+MTKOM,749735,D,Bestått,2014,v
+MTKOM,749735,C,Bestått,2015,v
+MTKOM,749737,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTKOM,749737,C,Bestått,2014,s
+MTKOM,749738,F,Ikke bestått,2014,v
+MTKOM,749738,F,Ikke bestått,2014,s
+MTKOM,749738,C,Bestått,2015,v
+MTKOM,749739,C,Bestått,2014,v
+MTKOM,749740,C,Bestått,2014,v
+MTKOM,749741,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTKOM,749741,,Ikke møtt,2014,s
+MTKOM,749741,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTKOM,749741,,Ikke møtt,2015,s
+MTKOM,749741,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTKOM,749741,D,Bestått,2016,s
+MTKOM,749742,E,Bestått,2014,v
+MTKOM,749743,B,Bestått,2015,v
+MTKOM,749744,D,Bestått,2014,v
+MTKOM,749744,C,Bestått,2015,v
+MTKOM,749748,E,Bestått,2014,v
+MTKOM,749749,E,Bestått,2014,v
+MTKOM,749750,D,Bestått,2014,v
+MTKOM,750426,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTKOM,750779,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTKOM,750779,,Ikke møtt,2016,s
+MTKOM,750779,C,Bestått,2017,v
+MTKOM,751248,B,Bestått,2015,v
+MTKOM,752094,D,Bestått,2014,v
+MTKOM,752095,,Trekk under eksamen (Avbrutt eksamen),2014,v
+MTKOM,752095,F,Ikke bestått,2015,v
+MTKOM,752095,F,Ikke bestått,2016,v
+MTKOM,752095,F,Ikke bestått,2016,s
+MTKOM,752095,F,Ikke bestått,2017,v
+MTKOM,752095,F,Ikke bestått,2017,s
+MTKOM,752095,E,Bestått,2018,v
+MTKOM,752117,E,Bestått,2015,v
+MTKOM,752117,D,Bestått,2018,v
+MTKOM,755561,D,Bestått,2015,v
+MTKOM,755580,E,Bestått,2015,v
+MTKOM,755590,B,Bestått,2015,v
+MTKOM,756404,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTKOM,756404,F,Ikke bestått,2017,v
+MTKOM,756404,E,Bestått,2018,v
+MTKOM,756538,E,Bestått,2016,v
+MTKOM,756547,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTKOM,757281,F,Ikke bestått,2017,v
+MTKOM,757281,E,Bestått,2018,v
+MTKOM,757366,C,Bestått,2016,v
+MTKOM,757641,C,Bestått,2016,v
+MTKOM,758052,C,Bestått,2017,v
+MTKOM,758058,B,Bestått,2015,v
+MTKOM,758060,F,Ikke bestått,2015,v
+MTKOM,758060,E,Bestått,2016,v
+MTKOM,758061,D,Bestått,2015,v
+MTKOM,758062,C,Bestått,2015,v
+MTKOM,758064,D,Bestått,2015,v
+MTKOM,758065,B,Bestått,2015,v
+MTKOM,758066,C,Bestått,2015,v
+MTKOM,758067,,Manglende øvinger,2015,v
+MTKOM,758068,B,Bestått,2015,v
+MTKOM,758070,F,Ikke bestått,2016,v
+MTKOM,758070,C,Bestått,2017,v
+MTKOM,758070,F,Ikke bestått,2017,s
+MTKOM,758071,D,Bestått,2015,v
+MTKOM,758071,,Ikke møtt,2016,v
+MTKOM,758072,F,Ikke bestått,2015,v
+MTKOM,758072,F,Ikke bestått,2015,s
+MTKOM,758072,D,Bestått,2016,v
+MTKOM,758073,F,Ikke bestått,2015,v
+MTKOM,758073,F,Ikke bestått,2015,s
+MTKOM,758073,F,Ikke bestått,2016,v
+MTKOM,758074,D,Bestått,2015,v
+MTKOM,758076,E,Bestått,2015,v
+MTKOM,758077,A,Bestått,2015,v
+MTKOM,758078,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTKOM,758078,E,Bestått,2016,v
+MTKOM,758080,B,Bestått,2015,v
+MTKOM,758082,C,Bestått,2015,v
+MTKOM,758083,C,Bestått,2015,v
+MTKOM,758085,F,Ikke bestått,2015,v
+MTKOM,758085,D,Bestått,2017,v
+MTKOM,758086,B,Bestått,2015,v
+MTKOM,758087,B,Bestått,2015,v
+MTKOM,758089,E,Bestått,2015,v
+MTKOM,758090,B,Bestått,2015,v
+MTKOM,758091,D,Bestått,2015,v
+MTKOM,758092,B,Bestått,2015,v
+MTKOM,759543,C,Bestått,2017,v
+MTKOM,766255,F,Ikke bestått,2017,v
+MTKOM,766255,F,Ikke bestått,2018,v
+MTKOM,766816,A,Bestått,2016,v
+MTKOM,768012,D,Bestått,2016,v
+MTKOM,768552,C,Bestått,2016,v
+MTKOM,768553,C,Bestått,2016,v
+MTKOM,768557,F,Ikke bestått,2016,v
+MTKOM,768557,C,Bestått,2017,v
+MTKOM,768558,C,Bestått,2016,v
+MTKOM,768559,D,Bestått,2016,v
+MTKOM,768561,B,Bestått,2016,v
+MTKOM,768562,C,Bestått,2018,v
+MTKOM,768563,C,Bestått,2016,v
+MTKOM,768564,F,Ikke bestått,2016,v
+MTKOM,768564,,Ikke møtt,2016,s
+MTKOM,768565,D,Bestått,2016,v
+MTKOM,768565,C,Bestått,2017,v
+MTKOM,768566,D,Bestått,2016,v
+MTKOM,768567,C,Bestått,2016,v
+MTKOM,768568,C,Bestått,2016,v
+MTKOM,768569,E,Bestått,2016,v
+MTKOM,768570,A,Bestått,2016,v
+MTKOM,768574,F,Ikke bestått,2016,v
+MTKOM,768574,E,Bestått,2017,v
+MTKOM,768575,D,Bestått,2016,v
+MTKOM,768575,,Ikke møtt,2017,v
+MTKOM,768576,,Ikke møtt,2016,v
+MTKOM,768576,C,Bestått,2017,v
+MTKOM,768577,D,Bestått,2016,v
+MTKOM,768578,D,Bestått,2016,v
+MTKOM,768578,,Ikke møtt,2017,v
+MTKOM,768579,C,Bestått,2016,v
+MTKOM,768581,E,Bestått,2016,v
+MTKOM,768582,B,Bestått,2016,v
+MTKOM,768583,A,Bestått,2016,v
+MTKOM,768584,C,Bestått,2016,v
+MTKOM,768966,C,Bestått,2017,v
+MTKOM,769099,B,Bestått,2018,v
+MTKOM,770293,,Legeattest,2016,v
+MTKOM,770293,,Ikke møtt,2016,s
+MTKOM,770483,A,Bestått,2018,v
+MTMART,742059,B,Bestått,2015,v
+MTMT,732472,C,Bestått,2013,v
+MTNANO,697917,C,Bestått,2010,v
+MTNANO,724465,A,Bestått,2013,v
+MTNANO,741915,C,Bestått,2016,v
+MTPETR,750005,,Trekk under eksamen (Avbrutt eksamen),2016,v
+MTPETR,750005,,Ikke møtt,2018,v
+MTPROD,692387,C,Bestått,2013,v
+MTPROD,697982,B,Bestått,2011,v
+MTPROD,705730,,Trekk under eksamen (Avbrutt eksamen),2015,v
+MTPROD,705730,D,Bestått,2015,s
+MTPROD,708528,B,Bestått,2012,v
+MTPROD,723705,E,Bestått,2016,v
+MTPROD,732631,E,Bestått,2016,v
+MTTK,673425,,Ikke møtt,2010,v
+MTTK,684725,C,Bestått,2010,v
+MTTK,730839,A,Bestått,2012,v
+MTTK,742017,,Trekk under eksamen (Avbrutt eksamen),2018,v
+MTTK,742017,E,Bestått,2018,s
+MTTK,742105,B,Bestått,2015,v
+MTTK,748727,B,Bestått,2015,v
+MTTK,765120,A,Bestått,2017,v
+ÅIT,110188,C,Bestått,2011,v
+ÅIT,645192,,Manglende øvinger,2011,v
+ÅIT,708190,,Manglende øvinger,2012,v
+ÅIT,713267,,Manglende øvinger,2010,v
+ÅIT,713269,D,Bestått,2010,v
+ÅIT,713270,,Manglende øvinger,2010,v
+ÅIT,713273,E,Bestått,2010,v
+ÅIT,713399,,Manglende øvinger,2012,v
+ÅIT,713536,,Manglende øvinger,2011,v
+ÅIT,721877,,Manglende øvinger,2011,v
+ÅIT,721878,E,Bestått,2011,v
+ÅIT,721879,,Manglende øvinger,2011,v
+ÅIT,721886,E,Bestått,2011,v
+ÅIT,721894,,Manglende øvinger,2011,v
+ÅIT,721901,,Trekk under eksamen (Avbrutt eksamen),2011,v
+ÅIT,721904,D,Bestått,2011,v
+ÅIT,721906,,Manglende øvinger,2011,v
+ÅIT,729789,,Manglende øvinger,2012,v
+ÅIT,729792,,Manglende øvinger,2012,v
+ÅIT,729794,F,Ikke bestått,2012,v
+ÅIT,729796,,Manglende øvinger,2012,v
+ÅIT,729797,B,Bestått,2012,v
+ÅIT,729801,,Manglende øvinger,2012,v
+ÅIT,729807,F,Ikke bestått,2012,v
+ÅIT,729814,,Manglende øvinger,2012,v
+ÅMATSTAT,756619,E,Bestått,2018,v

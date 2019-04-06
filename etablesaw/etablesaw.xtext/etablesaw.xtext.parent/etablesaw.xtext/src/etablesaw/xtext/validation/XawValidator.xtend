@@ -3,17 +3,17 @@
  */
 package etablesaw.xtext.validation
 
-import java.time.Month
-import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.xtext.validation.Check
-import org.eclipse.xtext.xbase.XExpression
-import etablesaw.xtext.jvmmodel.XawInterpreter
+import etablesaw.xtext.jvmmodel.XawCompiler
 import etablesaw.xtext.xaw.InlineTableRow
 import etablesaw.xtext.xaw.TableLiteral
 import etablesaw.xtext.xaw.XLocalDateLiteral
 import etablesaw.xtext.xaw.XLocalTimeLiteral
-import etablesaw.xtext.xaw.XawPackage
 import etablesaw.xtext.xaw.XURLLiteral
+import etablesaw.xtext.xaw.XawPackage
+import java.time.Month
+import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.xtext.validation.Check
+import org.eclipse.xtext.xbase.XExpression
 
 /**
  * This class contains custom validation rules. 
@@ -64,7 +64,7 @@ class XawValidator extends AbstractXawValidator {
 		checkInt(time.min, 0, 59, 'Min', XawPackage.Literals.XLOCAL_TIME_LITERAL__MIN)
 		checkInt(time.second, 0, 59, 'Second', XawPackage.Literals.XLOCAL_TIME_LITERAL__SECOND)
 		try {
-			XawInterpreter.createLocalTime(time)
+			XawCompiler.createLocalTime(time)
 		}
 		catch (RuntimeException e) {
 			error(e.message, null)
@@ -76,7 +76,7 @@ class XawValidator extends AbstractXawValidator {
 		checkMonth(date.month)
 		checkInt(date.day, 1, 31, 'Day', XawPackage.Literals.XLOCAL_DATE_LITERAL__DAY)
 		try {
-			XawInterpreter.createLocalDate(date)
+			XawCompiler.createLocalDate(date)
 		}
 		catch (RuntimeException e) {
 			error(e.message, null)
@@ -86,9 +86,10 @@ class XawValidator extends AbstractXawValidator {
 	@Check
 	def checkURL(XURLLiteral url) {
 		try {
-			XawInterpreter.createURI(url)
+			XawCompiler.createURI(url)
 		} catch (RuntimeException e) {
 			error(e.message, null)
 		}
 	}
+	
 }

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="xaw" nsURI="etablesaw/xtext/Xaw" nsPrefix="xaw">
+  <eClassifiers xsi:type="ecore:EClass" name="TableDef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tableColumDefs" upperBound="-1"
+        eType="#//TableColumnDef" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TableColumnDef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XMethod">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeParameters" upperBound="-1"
+        eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeParameter"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -15,6 +28,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="importSection" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore#//XImportSection"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="qName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tableDefs" upperBound="-1"
+        eType="#//TableDef" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
         eType="#//XMethod" containment="true"/>
   </eClassifiers>
@@ -22,9 +37,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TableColumn" eSuperTypes="platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columnDef" eType="#//TableColumnDef"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
