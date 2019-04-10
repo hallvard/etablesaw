@@ -12,6 +12,7 @@ import java.util.function.Supplier;
 import etablesaw.io.FileFormatSupport;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.csv.CsvReadOptions;
+import tech.tablesaw.io.csv.CsvWriteOptions;
 
 public class CsvFileFormatSupport implements FileFormatSupport {
 
@@ -21,7 +22,7 @@ public class CsvFileFormatSupport implements FileFormatSupport {
     @Override
     public Boolean supportsFormat(final String format) {
         if ("csv".equals(format)) {
-            return null;
+            return true;
         }
         return false;
     }
@@ -80,6 +81,13 @@ public class CsvFileFormatSupport implements FileFormatSupport {
 
     @Override
     public void write(final Table[] tables, final String name, final OutputStream output) throws IOException {
-        throw new UnsupportedOperationException("Write of " + name + " not supported");
+        if (tables.length != 1) {
+            throw new UnsupportedOperationException("Write of " + tables.length + " tables not supported");
+        }
+        char separator = ',';
+        CsvWriteOptions options = CsvWriteOptions.builder(output)
+                .separator(separator)
+                .build();
+        tables[0].write().csv(options);
     }
 }

@@ -31,7 +31,6 @@ import org.eclipse.nebula.widgets.nattable.grid.layer.RowHeaderLayer;
 import org.eclipse.nebula.widgets.nattable.hideshow.ColumnHideShowLayer;
 import org.eclipse.nebula.widgets.nattable.layer.DataLayer;
 import org.eclipse.nebula.widgets.nattable.layer.ILayer;
-import org.eclipse.nebula.widgets.nattable.layer.LabelStack;
 import org.eclipse.nebula.widgets.nattable.layer.cell.ILayerCell;
 import org.eclipse.nebula.widgets.nattable.reorder.ColumnReorderLayer;
 import org.eclipse.nebula.widgets.nattable.selection.SelectionLayer;
@@ -40,7 +39,6 @@ import org.eclipse.nebula.widgets.nattable.ui.binding.UiBindingRegistry;
 import org.eclipse.nebula.widgets.nattable.ui.matcher.MouseEventMatcher;
 import org.eclipse.nebula.widgets.nattable.viewport.ViewportLayer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
@@ -72,6 +70,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
             applyFilter();
         }
         refresh();
+        getTableProviderHelper().fireTableChanged(NatTablesawViewer.this);
     }
 
     private NatTable natTable;
@@ -83,6 +82,10 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
     private CornerLayer cornerLayer;
     private GridLayer gridLayer;
 
+    public SelectionLayer getSelectionLayer() {
+        return selectionLayer;
+    }
+    
     private final int defaultColumnWidth = 60, defaultRowHeight = 20;
 
     private boolean editable = false;
@@ -123,7 +126,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
                 @Override
                 public void rowsChanged(final int startRange, final int endRange) {
                     natTable.refresh();
-                    getTableProviderHelper().fireTableDataChanged();
+                    getTableProviderHelper().fireTableDataChanged(NatTablesawViewer.this);
                 }
                 @Override
                 public void cellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
@@ -206,12 +209,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         gridLayer.addConfiguration(new AbstractUiBindingConfiguration() {
             @Override
             public void configureUiBindings(UiBindingRegistry uiBindingRegistry) {
-                uiBindingRegistry.registerFirstMouseDownBinding(new MouseEventMatcher(SWT.NONE, GridRegion.CORNER, 1) {
-                    @Override
-                    public boolean matches(NatTable natTable, MouseEvent event, LabelStack regionLabels) {
-                        return super.matches(natTable, event, regionLabels);
-                    }
-                }, (natTable, event) -> {
+                uiBindingRegistry.registerFirstMouseDownBinding(new MouseEventMatcher(SWT.NONE, GridRegion.CORNER, 1), (natTable, event) -> {
                     List<String> columnNames = input.columnNames();
                     columnSelector.setItems(columnNames.toArray(new String[columnNames.size()]));
                     for (int i = 0; i < columnNames.size(); i++) {

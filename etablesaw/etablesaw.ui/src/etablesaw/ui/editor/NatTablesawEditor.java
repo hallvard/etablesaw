@@ -2,29 +2,38 @@ package etablesaw.ui.editor;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.window.Window;
+import org.eclipse.nebula.widgets.nattable.selection.SelectionLayer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.part.EditorPart;
+import org.eclipse.ui.part.FileEditorInput;
 
 import etablesaw.io.FileFormatSupport;
 import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
+import etablesaw.ui.editor.commands.DeleteColumnsCommandHandler;
+import etablesaw.ui.editor.commands.DeleteRowsCommandHandler;
 import tech.tablesaw.api.Table;
 
 public class NatTablesawEditor extends EditorPart implements TableProvider, ISelectionProvider {
@@ -65,6 +74,16 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
         }
     }
 
+    public Table getModelTable() {
+        return modelTable;
+    }
+
+    public void setModelTable(Table table) {
+        this.modelTable = table;
+        setDirty();
+        natTablesawViewer.setInput(modelTable);
+    }
+
 	@Override
 	public void doSave(final IProgressMonitor monitor) {
 		if (modelTable != null) {
@@ -74,22 +93,60 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 
 	@Override
 	public void doSaveAs() {
+	    IStatusLineManager statusLineManager = getEditorSite().getActionBars().getStatusLineManager();
+	    IProgressMonitor progressMonitor = statusLineManager != null ? statusLineManager.getProgressMonitor() : new NullProgressMonitor();
+	    final IEditorInput input = getEditorInput();
+        SaveAsDialog dialog = new SaveAsDialog(PlatformUI.getWorkbench().getModalDialogShellProvider().getShell());
+        IFile original = (input instanceof IFileEditorInput) ? ((IFileEditorInput) input).getFile() : null;
+        if (original != null) {
+            dialog.setOriginalFile(original);
+        } else {
+            dialog.setOriginalName(input.getName());
+        }
+        dialog.create();
+        if (dialog.open() == Window.CANCEL || dialog.getResult() == null) {
+            if (progressMonitor != null) {
+                progressMonitor.setCanceled(true);
+            }
+            return;
+        }
+        IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(dialog.getResult());
+        try {
+            save(file, progressMonitor);
+            setInput(new FileEditorInput(file));
+            setPartName(file.getName());
+            firePropertyChange(IEditorPart.PROP_INPUT);
+        } catch (Exception e) {
+            if (progressMonitor != null) {
+                progressMonitor.setCanceled(true);
+            }
+        }
 	}
 
+	public static void save(final Table table, final IFile file, final IProgressMonitor monitor) throws Exception {
+        String fileFormat = file.getFileExtension();
+        FileFormatSupport ffs = Activator.getInstance().getFileFormatSupport(fileFormat);
+        if (ffs == null) {
+            throw new RuntimeException("Unsupported file format: " + file.getName());
+        } else if (! Boolean.TRUE.equals(ffs.supportsFormat(fileFormat))) {
+            throw new RuntimeException("Write of file format not supported: " + file.getName());
+        }
+        final ByteArrayOutputStream output = new ByteArrayOutputStream();
+        ffs.write(new Table[]{ table }, file.getName(), output);
+        ByteArrayInputStream source = new ByteArrayInputStream(output.toByteArray());
+        if (file.exists()) {
+            file.setContents(source, 0, monitor);
+        } else {
+            file.create(source, 0, monitor);
+        }
+	}
+	
 	protected void save(final IFile file, final IProgressMonitor monitor) {
         try {
-            String fileFormat = file.getFileExtension();
-            FileFormatSupport ffs = Activator.getInstance().getFileFormatSupport(fileFormat);
-            if (ffs == null) {
-                throw new RuntimeException("Unsupported file format: " + file.getName());
-            } else if (! Boolean.TRUE.equals(ffs.supportsFormat(fileFormat))) {
-                throw new RuntimeException("Write of file format not supported: " + file.getName());
-            }
-			final ByteArrayOutputStream output = new ByteArrayOutputStream();
-			ffs.write(new Table[]{ modelTable }, file.getName(), output);
-			file.setContents(new ByteArrayInputStream(output.toByteArray()), 0, monitor);
+            save(modelTable, file, monitor);
 			setDirty(false);
-		} catch (final CoreException | IOException e) {
+		} catch (final Exception e) {
+		    System.err.println(e);
 		}
 	}
 
@@ -103,6 +160,10 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 		}
 	}
 
+	public void setDirty() {
+	    setDirty(true);
+	}
+	
 	@Override
 	public boolean isDirty() {
 		return dirty;
@@ -110,7 +171,7 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 
 	@Override
 	public boolean isSaveAsAllowed() {
-		return false;
+		return getEditorInput() instanceof IFileEditorInput;
 	}
 
 	private NatTablesawViewer natTablesawViewer;
@@ -128,7 +189,7 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 			}
 			@Override
 			public void cellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
-				setDirty(true);
+				setDirty();
 			}
 		});
 		if (getEditorInput() instanceof IFileEditorInput) {
@@ -136,12 +197,19 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 			Activator.getInstance().getTableProviderRegistry().registerTableProvider(file.getName(), this);
 		}
 		//		tablesawViewer.addSelectionChangedListener(selectionChangeListener);
+		final SelectionLayer selectionLayer = natTablesawViewer.getSelectionLayer();
+        selectionLayer.registerCommandHandler(new DeleteRowsCommandHandler(this));
+        selectionLayer.registerCommandHandler(new DeleteColumnsCommandHandler(this));
 	}
 
 	@Override
 	public void setFocus() {
 	}
 
+	public NatTablesawViewer getNatTablesawViewer() {
+        return natTablesawViewer;
+    }
+	
 	// TableProvider
 
 	@Override

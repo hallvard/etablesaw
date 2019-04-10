@@ -108,7 +108,7 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
     public Object getDataValue(final int columnIndex, final int rowIndex) {
         if (table != null) {
             final Column<?> column = getColumn(columnIndex);
-            return (mode == null ? column.get(rowIndex) : (mode ? column.name() : rowIndex));
+            return (mode == null ? column.get(rowIndex) : (mode ? column.name() : rowIndex + 1));
         }
         return null;
     }

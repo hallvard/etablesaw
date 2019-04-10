@@ -122,5 +122,22 @@
        </page>
    </extension>
 
+    <extension
+          point="org.eclipse.ui.handlers">
+       <handler
+             class="etablesaw.ui.editor.commands.EditDeleteCommandHandler"
+             commandId="org.eclipse.ui.edit.delete">
+         <activeWhen>
+            <with variable="activeEditorId">
+                <equals value="etablesaw.ui.editor.table"/>
+             </with>
+         </activeWhen>
+         <!--
+         <enabledWhen>
+            <count value="2"/>
+         </enabledWhen>
+         -->
+       </handler>
+    </extension>
 
 </plugin>

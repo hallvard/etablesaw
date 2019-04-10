@@ -1,5 +1,6 @@
 package etablesaw.ui.views;
 
+import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.swt.widgets.Composite;
 
 import etablesaw.ui.TableProvider;
@@ -23,6 +24,11 @@ public abstract class DerivedTableView extends SimpleTablesawView implements Tab
 	protected void createConfigControls(final Composite configParent) {
 		createTableRegistrySelector("Source: ", configParent, this);
 	}
+
+    protected void addActions() {
+        IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
+        toolBarManager.add(createExportAction(this));
+    }
 
 	//
 

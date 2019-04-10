@@ -54,7 +54,6 @@ public class ExprSupportFilterStrategy<T> implements IFilterStrategy<T> {
 				for (int colNum = 0; colNum < preparedExprs.size(); colNum++) {
 					final PreparedExpr expr = preparedExprs.get(colNum);
 					if (expr != null) {
-						varValues.put("$", table.column(colNum).get(rowNum));
 						final Object result = exprSupport.evalExpr(expr, varValues);
 						if (! Boolean.TRUE.equals(result)) {
 							selection.removeRange(rowNum, rowNum + 1);

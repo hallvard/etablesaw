@@ -110,7 +110,7 @@ public class PreparedXawExpr implements PreparedExpr {
 	}
 
     protected String fixName(String varName) {
-        return varName.replaceAll("\\W]", "_");
+        return varName.replaceAll("[\\W]", "_");
     }
 
     protected String simplifyTypeName(String elementTypeName) {

@@ -35,9 +35,6 @@ import org.eclipse.xtext.xbase.interpreter.impl.XbaseInterpreter;
 
 import com.google.inject.Injector;
 
-import etablesaw.ui.Activator;
-import etablesaw.ui.TableProviderHelper;
-import etablesaw.ui.TableProviderRegistry;
 import etablesaw.xtext.jvmmodel.JavaProjectClassLoader;
 import etablesaw.xtext.lib.XawBase;
 import etablesaw.xtext.ui.internal.XtextActivator;
@@ -155,7 +152,7 @@ public class XawEditorInterpreter {
     private final boolean useConsole = true;
 
     protected ClassLoader getParentClassLoader() {
-        return getXawInterpreter().getClass().getClassLoader();
+        return XawBase.class.getClassLoader();
     }
     
     private Map<String, JavaProjectClassLoader> javaProjectClassLoaders = new HashMap<String, JavaProjectClassLoader>();
@@ -202,16 +199,7 @@ public class XawEditorInterpreter {
                 // must be done on correct thread
                 setUpStreams();
                 try {
-                    final Map<String, Table> tables = interpretActiveXaw(xtextEditor.getDocument(), interpreterClassLoader);
-                    if (tables != null) {
-                        xtextEditor.getShell().getDisplay().asyncExec(new Runnable() {
-                            @Override
-                            public void run() {
-                                // must be done on UI thread
-                                registerTables(tables);
-                            }
-                        });
-                    }
+                    interpretActiveXaw(xtextEditor.getDocument(), interpreterClassLoader);
                     return Status.OK_STATUS;
                 } catch (final Exception e) {
                     return Status.CANCEL_STATUS;
@@ -223,14 +211,14 @@ public class XawEditorInterpreter {
         xawRun.schedule();
     }
 
-    public Map<String, Table> interpretActiveXaw(final IXtextDocument xtextDocument, ClassLoader interpreterClassLoader) {
-        return xtextDocument.readOnly(new IUnitOfWork<Map<String, Table>, XtextResource>() {
+    public void interpretActiveXaw(final IXtextDocument xtextDocument, ClassLoader interpreterClassLoader) {
+        xtextDocument.readOnly(new IUnitOfWork<Void, XtextResource>() {
             @Override
-            public Map<String, Table> exec(final XtextResource state) throws Exception {
+            public java.lang.Void exec(XtextResource state) throws Exception {
                 if (state != null) {
                     for (final EObject eObject : state.getContents()) {
                         if (eObject instanceof Xaw) {
-                            return interpretXaw((Xaw) eObject, interpreterClassLoader, true);
+                            interpretXaw((Xaw) eObject, interpreterClassLoader);
                         }
                     }
                 }
@@ -243,14 +231,14 @@ public class XawEditorInterpreter {
         return NodeModelUtils.getTokenText(NodeModelUtils.getNode(eObject));
     }
 
-    protected Map<String, Table> interpretXaw(final Xaw xaw, ClassLoader interpreterClassLoader, final boolean registerTables) {
+    protected Map<String, Table> interpretXaw(final Xaw xaw, ClassLoader interpreterClassLoader) {
         XawBase thisXaw;
         try {
             thisXaw = (XawBase) interpreterClassLoader.loadClass(xaw.getQName()).newInstance();
+            TableProviderRegistryPorter porter = new TableProviderRegistryPorter();
+            thisXaw.setImporter(porter);
+            thisXaw.setExporter(porter);
             thisXaw.run();
-            if (registerTables) {
-                return thisXaw.getExportedTables();
-            }
         } catch (Exception ex) {
           System.err.println("!!! " + ex);
           ex.printStackTrace(System.err);
@@ -281,11 +269,4 @@ public class XawEditorInterpreter {
 //        }
         return null;
     }
-
-    protected void registerTables(final Map<String, Table> tables) {
-        final TableProviderRegistry tableProviderRegistry = Activator.getInstance().getTableProviderRegistry();
-        for (final String varName : tables.keySet()) {
-            tableProviderRegistry.registerTableProvider(varName, new TableProviderHelper(tables.get(varName)));
-        }
-    }
-}
+ }

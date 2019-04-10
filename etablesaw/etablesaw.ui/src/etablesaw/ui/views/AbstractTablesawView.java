@@ -10,11 +10,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -25,6 +30,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -53,11 +59,15 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.dialogs.SaveAsDialog;
+import org.eclipse.ui.internal.UIPlugin;
 import org.eclipse.ui.part.ViewPart;
 
 import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
 import etablesaw.ui.TableProviderRegistry;
+import etablesaw.ui.editor.NatTablesawEditor;
 import etablesaw.ui.util.MultiCheckSelectionCombo;
 import tech.tablesaw.aggregate.AggregateFunction;
 import tech.tablesaw.aggregate.AggregateFunctions;
@@ -129,8 +139,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	@Override
 	public void tableChanged(final TableProvider tableProvider) {
 		this.viewTable = null;
-		updateConfigControls();
-		updateTableControls();
+		updateView();
 	}
 
 	protected void setTableDataProvider(final IWorkbenchPart part) {
@@ -206,9 +215,13 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		//				parent.layout();
 		//			}
 		//		});
+		addActions();
 	}
 
-	private void setDistinctPartName() {
+	protected void addActions() {
+    }
+
+    private void setDistinctPartName() {
 		final String partName = getPartName();
 		if (partName.indexOf('#') < 0) {
 			int pos = 1;
@@ -355,16 +368,23 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(final SelectionChangedEvent event) {
-				final Object firstElement = viewer.getStructuredSelection().getFirstElement();
-				tableProviderChanged(Activator.getInstance().getTableProviderRegistry().getTableProvider(String.valueOf(firstElement)));
-				updateTableControls();
+				tableProviderChanged(String.valueOf(viewer.getStructuredSelection().getFirstElement()));
 			}
 		});
 		final TableProviderRegistry.Listener registryListener = new TableProviderRegistry.Listener() {
 			@Override
 			public void tableProviderRegistryChanged(final String key, final TableProvider tableProvider) {
 				if (! viewer.getControl().isDisposed()) {
-					viewer.refresh();
+				    viewer.getControl().getDisplay().asyncExec(new Runnable() {
+                        @Override
+                        public void run() {
+                            Object selection = viewer.getStructuredSelection().getFirstElement();
+                            viewer.refresh();
+                            if (key.equals(selection)) {
+                                tableProviderChanged(String.valueOf(selection));
+                            }
+                        }
+                    });
 				}
 			}
 		};
@@ -427,6 +447,10 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	protected Action updateViewAction;
 	protected Action spawnViewAction;
 
+	protected void tableProviderChanged(final String key) {
+        tableProviderChanged(Activator.getInstance().getTableProviderRegistry().getTableProvider(key));
+	}
+
 	protected void tableProviderChanged(final TableProvider tableDataProvider) {
 		setTableProvider(tableDataProvider);
 	}
@@ -464,9 +488,15 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 
 	protected void updateView() {
 		viewTable = (tableProvider != null ? tableProvider.getTable() : null);
-		if (getTableViewerParent() != null && (! getTableViewerParent().isDisposed())) {
-		    updateConfigControls();
-		    updateTableControls();
+		Composite viewerParent = getTableViewerParent();
+        if (viewerParent != null && (! viewerParent.isDisposed())) {
+		    viewerParent.getDisplay().asyncExec(new Runnable() {
+                @Override
+                public void run() {
+                    updateConfigControls();
+                    updateTableControls();
+                }
+            });
 		}
 	}
 
@@ -706,6 +736,36 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
         }
 	}
 	
+    protected Action createExportAction(final TableProvider tableProvider) {
+        return new Action("Export", ImageDescriptor.createFromFile(UIPlugin.class, "/icons/full/etool16/export_wiz.png")) {
+            @Override
+            public void run() {
+                exportTable(tableProvider);
+            }
+        };
+    }
+    
+    protected void exportTable(final TableProvider tableProvider) {
+        IStatusLineManager statusLineManager = getViewSite().getActionBars().getStatusLineManager();
+        IProgressMonitor progressMonitor = statusLineManager != null ? statusLineManager.getProgressMonitor() : new NullProgressMonitor();
+        SaveAsDialog dialog = new SaveAsDialog(PlatformUI.getWorkbench().getModalDialogShellProvider().getShell());
+        dialog.create();
+        if (dialog.open() == Window.CANCEL || dialog.getResult() == null) {
+            if (progressMonitor != null) {
+                progressMonitor.setCanceled(true);
+            }
+            return;
+        }
+        IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(dialog.getResult());
+        try {
+            NatTablesawEditor.save(tableProvider.getTable(), file, progressMonitor);
+        } catch (Exception e) {
+            if (progressMonitor != null) {
+                progressMonitor.setCanceled(true);
+            }
+        }
+    }
+
 	protected abstract void updateTableControls();
 
 	protected void updateConfigControls() {

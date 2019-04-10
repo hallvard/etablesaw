@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import tech.tablesaw.api.Table;
+
 public class TableProviderRegistry extends TableProviderHelper {
 
 	void clear() {
@@ -34,18 +36,26 @@ public class TableProviderRegistry extends TableProviderHelper {
 		registerTableProvider(tableProvider.getClass().getName(), tableProvider);
 	}
 
+	public void registerTable(final Table table) {
+	    registerTable(table.name(), table);
+	}
+
+	public void registerTable(final String key, final Table table) {
+	    registerTableProvider(key, new SimpleTableProvider(table));
+	}
+
 	public void registerTableProvider(final String key, final TableProvider tableProvider) {
-		if (tableProviderMap.containsKey(key)) {
-			tableProviderMap.get(key).removeTableDataProviderListener(tableProviderListener);
+	    TableProvider oldTableProvider = tableProviderMap.get(key);
+		if (oldTableProvider != null) {
+            oldTableProvider.removeTableDataProviderListener(tableProviderListener);
 		}
 		if (tableProvider == null) {
 			tableProviderMap.remove(key);
-			fireTableProviderRegistryChanged(key, null);
 		} else {
 			tableProviderMap.put(key, tableProvider);
 			tableProvider.addTableDataProviderListener(tableProviderListener);
-			fireTableProviderRegistryChanged(key, tableProvider);
 		}
+	    fireTableProviderRegistryChanged(key, tableProvider);
 	}
 
 	public Collection<String> getTableProviderKeys() {

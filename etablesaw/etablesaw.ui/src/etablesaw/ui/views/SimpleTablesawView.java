@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.TabItem;
 import etablesaw.ui.editor.NatTablesawViewer;
 import tech.tablesaw.api.Table;
 
-public class SimpleTablesawView extends AbstractTablesawView {
+public abstract class SimpleTablesawView extends AbstractTablesawView {
 
     private final String[] tableNames;
     

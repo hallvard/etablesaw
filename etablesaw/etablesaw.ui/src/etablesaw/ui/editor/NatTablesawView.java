@@ -1,5 +1,6 @@
 package etablesaw.ui.editor;
 
+import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.swt.widgets.Composite;
 
 import etablesaw.ui.TableProvider;
@@ -8,46 +9,52 @@ import tech.tablesaw.api.Table;
 
 public class NatTablesawView extends AbstractTablesawView implements TableProvider {
 
-	public NatTablesawView() {
-		super(false);
-	}
+    public NatTablesawView() {
+        super(false);
+    }
 
-	@Override
-	protected void createConfigControls(final Composite configParent) {
-		createTableRegistrySelector("Source: ", configParent, this);
-	}
+    @Override
+    protected void createConfigControls(final Composite configParent) {
+        createTableRegistrySelector("Source: ", configParent, this);
+    }
 
-	private NatTablesawViewer natTablesawViewer;
+    private NatTablesawViewer natTablesawViewer;
 
-	@Override
-	protected void createTableDataControls(final Composite parent) {
-		natTablesawViewer = new NatTablesawViewer();
-		natTablesawViewer.createPartControl(parent);
-	}
+    @Override
+    protected void createTableDataControls(final Composite parent) {
+        super.createTableDataControls(parent);
+        natTablesawViewer = new NatTablesawViewer();
+        natTablesawViewer.createPartControl(parent);
+    }
 
-	protected Table getTableViewerInput() {
-		return getViewTable();
-	}
+    protected void addActions() {
+        IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
+        toolBarManager.add(createExportAction(this));
+    }
 
-	@Override
-	protected void updateTableControls() {
-		natTablesawViewer.setInput(getTableViewerInput());
-	}
+    protected Table getTableViewerInput() {
+        return getViewTable();
+    }
 
-	// TableProvider
+    @Override
+    protected void updateTableControls() {
+        natTablesawViewer.setInput(getTableViewerInput());
+    }
 
-	@Override
-	public Table getTable() {
-		return natTablesawViewer.getTable();
-	}
+    // TableProvider
 
-	@Override
-	public void addTableDataProviderListener(final TableProvider.Listener listener) {
-		natTablesawViewer.addTableDataProviderListener(listener);
-	}
+    @Override
+    public Table getTable() {
+        return natTablesawViewer.getTable();
+    }
 
-	@Override
-	public void removeTableDataProviderListener(final TableProvider.Listener listener) {
-		natTablesawViewer.removeTableDataProviderListener(listener);
-	}
+    @Override
+    public void addTableDataProviderListener(final TableProvider.Listener listener) {
+        natTablesawViewer.addTableDataProviderListener(listener);
+    }
+
+    @Override
+    public void removeTableDataProviderListener(final TableProvider.Listener listener) {
+        natTablesawViewer.removeTableDataProviderListener(listener);
+    }
 }
