@@ -4,3 +4,4 @@ target/
 *.xtendbin
 *.*~
 *.iml
+src-gen/
