@@ -1,0 +1,14 @@
+import tech.tablesaw.io.csv.CsvReadOptions
+import tech.tablesaw.io.csv.CsvWriteOptions
+
+xaw etablesaw.ui.examples.joinAssignmentsStudents
+
+val assignments = importTable("assignments-april-2019.csv")
+val students = importTable("ProTuS-students-2019.csv")
+
+val protusSelection = assignments.stringColumn("brukernavn") ?
+	[username | students.stringColumn("username").anyMatch[ it | username == substring(0, indexOf("@"))]]
+val assignments2 = assignments & protusSelection
+
+exportTable(assignments2, "protus-assignments2")
+System.out.println(protusSelection.size)

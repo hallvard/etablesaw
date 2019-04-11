@@ -2,12 +2,14 @@ package etablesaw.ui.editor;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.nebula.widgets.nattable.NatTable;
@@ -31,9 +33,12 @@ import org.eclipse.nebula.widgets.nattable.grid.layer.RowHeaderLayer;
 import org.eclipse.nebula.widgets.nattable.hideshow.ColumnHideShowLayer;
 import org.eclipse.nebula.widgets.nattable.layer.DataLayer;
 import org.eclipse.nebula.widgets.nattable.layer.ILayer;
+import org.eclipse.nebula.widgets.nattable.layer.ILayerListener;
 import org.eclipse.nebula.widgets.nattable.layer.cell.ILayerCell;
+import org.eclipse.nebula.widgets.nattable.layer.event.ILayerEvent;
 import org.eclipse.nebula.widgets.nattable.reorder.ColumnReorderLayer;
 import org.eclipse.nebula.widgets.nattable.selection.SelectionLayer;
+import org.eclipse.nebula.widgets.nattable.selection.event.ISelectionEvent;
 import org.eclipse.nebula.widgets.nattable.style.DisplayMode;
 import org.eclipse.nebula.widgets.nattable.ui.binding.UiBindingRegistry;
 import org.eclipse.nebula.widgets.nattable.ui.matcher.MouseEventMatcher;
@@ -41,6 +46,7 @@ import org.eclipse.nebula.widgets.nattable.viewport.ViewportLayer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
@@ -146,6 +152,15 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         natTable.addConfiguration(new DefaultNatTableStyleConfiguration());
         configure(natTable);
         natTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        
+        selectionLayer.addLayerListener(new ILayerListener() {
+            @Override
+            public void handleLayerEvent(ILayerEvent event) {
+                if (event instanceof ISelectionEvent) {
+                    fireSelectionChangedEvent();
+                }
+            }
+        });
     }
 
     public NatTable getControl() {
@@ -292,25 +307,35 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
 
     @Override
     public void setSelection(final ISelection selection) {
-        // not sure this makes much sense
+        Collection<Rectangle> rectangles = new ArrayList<>();
+        if (selection instanceof IStructuredSelection) {
+            Iterator<Object> it = ((IStructuredSelection) selection).iterator();
+            while (it.hasNext()) {
+                Object next = it.next();
+                if (next instanceof Rectangle) {
+                    rectangles.add((Rectangle) next);
+                }
+            }
+        }        
+        selectionLayer.getSelectionModel().clearSelection();
+        for (Rectangle rectangle : rectangles) {
+            selectionLayer.getSelectionModel().addSelection(rectangle);
+        }
     }
 
     @Override
     public ISelection getSelection() {
-        return new StructuredSelection(selectionLayer.getSelectedCells());
+        return new StructuredSelection(selectionLayer.getSelectionModel().getSelections());
     }
 
-    // forward selection changes
-    private final ISelectionChangedListener selectionChangeListener = new ISelectionChangedListener() {
-        @Override
-        public void selectionChanged(final SelectionChangedEvent event) {
-            if (selectionListeners != null) {
-                for (final ISelectionChangedListener selectionChangedListener : selectionListeners) {
-                    selectionChangedListener.selectionChanged(event);
-                }
+    protected void fireSelectionChangedEvent() {
+        if (selectionListeners != null && (! selectionListeners.isEmpty())) {
+            SelectionChangedEvent event = new SelectionChangedEvent(this, getSelection());
+            for (final ISelectionChangedListener selectionChangedListener : selectionListeners) {
+                selectionChangedListener.selectionChanged(event);
             }
         }
-    };
+    }
 
     private Collection<ISelectionChangedListener> selectionListeners;
 

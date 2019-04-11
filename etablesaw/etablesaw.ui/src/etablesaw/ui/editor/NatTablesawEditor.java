@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -17,7 +18,6 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
-import org.eclipse.nebula.widgets.nattable.selection.SelectionLayer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -26,14 +26,13 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.SaveAsDialog;
+import org.eclipse.ui.operations.UndoRedoActionGroup;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.part.FileEditorInput;
 
 import etablesaw.io.FileFormatSupport;
 import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
-import etablesaw.ui.editor.commands.DeleteColumnsCommandHandler;
-import etablesaw.ui.editor.commands.DeleteRowsCommandHandler;
 import tech.tablesaw.api.Table;
 
 public class NatTablesawEditor extends EditorPart implements TableProvider, ISelectionProvider {
@@ -93,8 +92,7 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 
 	@Override
 	public void doSaveAs() {
-	    IStatusLineManager statusLineManager = getEditorSite().getActionBars().getStatusLineManager();
-	    IProgressMonitor progressMonitor = statusLineManager != null ? statusLineManager.getProgressMonitor() : new NullProgressMonitor();
+	    IProgressMonitor progressMonitor = getProgressMonitor();
 	    final IEditorInput input = getEditorInput();
         SaveAsDialog dialog = new SaveAsDialog(PlatformUI.getWorkbench().getModalDialogShellProvider().getShell());
         IFile original = (input instanceof IFileEditorInput) ? ((IFileEditorInput) input).getFile() : null;
@@ -123,6 +121,12 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
         }
 	}
 
+    public IProgressMonitor getProgressMonitor() {
+        IStatusLineManager statusLineManager = getEditorSite().getActionBars().getStatusLineManager();
+	    IProgressMonitor progressMonitor = statusLineManager != null ? statusLineManager.getProgressMonitor() : new NullProgressMonitor();
+        return progressMonitor;
+    }
+
 	public static void save(final Table table, final IFile file, final IProgressMonitor monitor) throws Exception {
         String fileFormat = file.getFileExtension();
         FileFormatSupport ffs = Activator.getInstance().getFileFormatSupport(fileFormat);
@@ -150,6 +154,12 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 		}
 	}
 
+	private NatTablesawEditorUndoContext undoContext = new NatTablesawEditorUndoContext();
+	
+	public IUndoContext getUndoContext() {
+        return undoContext;
+	}
+	
 	private boolean dirty = false;
 
 	protected void setDirty(final boolean dirty) {
@@ -196,10 +206,9 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 			final IFile file = ((IFileEditorInput) getEditorInput()).getFile();
 			Activator.getInstance().getTableProviderRegistry().registerTableProvider(file.getName(), this);
 		}
-		//		tablesawViewer.addSelectionChangedListener(selectionChangeListener);
-		final SelectionLayer selectionLayer = natTablesawViewer.getSelectionLayer();
-        selectionLayer.registerCommandHandler(new DeleteRowsCommandHandler(this));
-        selectionLayer.registerCommandHandler(new DeleteColumnsCommandHandler(this));
+		natTablesawViewer.addSelectionChangedListener(selectionChangeListener);
+		// support undo and redo
+		new UndoRedoActionGroup(getEditorSite(), getUndoContext(), true).fillActionBars(getEditorSite().getActionBars());
 	}
 
 	@Override
