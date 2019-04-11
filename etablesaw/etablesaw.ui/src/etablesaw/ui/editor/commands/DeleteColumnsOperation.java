@@ -18,7 +18,7 @@ public class DeleteColumnsOperation extends AbstractNatTablesawEditorOperation {
     private final int[] columnNums;
     
     public DeleteColumnsOperation(NatTablesawEditor natTablesawEditor, int... columnNums) {
-        super("Delete columns", natTablesawEditor);
+        super("Delete Columns", natTablesawEditor);
         this.columnNums = columnNums;
     }
 
