@@ -5,6 +5,8 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -24,6 +26,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.SaveAsDialog;
@@ -34,6 +37,8 @@ import org.eclipse.ui.part.FileEditorInput;
 import etablesaw.io.FileFormatSupport;
 import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
+import etablesaw.ui.editor.commands.TableCellChangeRecorder;
+import etablesaw.ui.editor.commands.TableCellsChangesOperation;
 import tech.tablesaw.api.Table;
 
 public class NatTablesawEditor extends EditorPart implements TableProvider, ISelectionProvider {
@@ -222,16 +227,17 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
     public void createPartControl(final Composite parent) {
         natTablesawViewer = new NatTablesawViewer();
         natTablesawViewer.setEditable(true);
+        natTablesawViewer.setOnTableCellChanges(tableCellChanges -> executeTableCellChangesOperation(tableCellChanges, true));
         natTablesawViewer.createPartControl(parent);
         natTablesawViewer.setInput(modelTable);
         natTablesawViewer.addTableChangeListener(new TablesawDataProvider.Listener() {
             @Override
-            public void rowsChanged(final int startRange, final int endRange) {
+            public void providerRowsChanged(final int startRange, final int endRange) {
                 // used for filters
             }
 
             @Override
-            public void cellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
+            public void tableCellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
                 setDirty();
             }
         });
@@ -251,6 +257,18 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 
     public NatTablesawViewer getNatTablesawViewer() {
         return natTablesawViewer;
+    }
+    
+    protected void executeTableCellChangesOperation(TableCellChangeRecorder tableCellChanges, boolean done) {
+        IWorkbench workbench = getSite().getWorkbenchWindow().getWorkbench();
+        IOperationHistory operationHistory = workbench.getOperationSupport().getOperationHistory();
+        TableCellsChangesOperation operation = new TableCellsChangesOperation(this, tableCellChanges);
+        operation.setDone(done);
+        operation.addContext(getUndoContext());
+        try {
+            operationHistory.execute(operation, null, null);
+        } catch (ExecutionException e) {
+        }
     }
 
     // TableProvider

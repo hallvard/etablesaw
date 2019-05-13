@@ -66,7 +66,7 @@ public class PreparedXawExpr implements PreparedExpr {
 	    for (Map.Entry<String, ColumnType> varType : varTypes.entrySet()) {
 	        String elementTypeName = simplifyTypeName(DefaultColumnTypeProvider.getElementType(varType.getValue()).getName());
             String varName = varType.getKey();
-            if (varName.equals(colVar)) {
+            if (colVar != null && varName.equals(colVar)) {
                 varNameMap.put(colVar, "it");
                 varName = "it";
             } else {

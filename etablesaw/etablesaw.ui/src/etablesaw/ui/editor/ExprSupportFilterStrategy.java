@@ -1,69 +1,47 @@
 package etablesaw.ui.editor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.nebula.widgets.nattable.filterrow.IFilterStrategy;
 
 import etablesaw.ui.expr.ExprSupport;
-import etablesaw.ui.expr.PreparedExpr;
-import tech.tablesaw.api.ColumnType;
-import tech.tablesaw.api.Table;
-import tech.tablesaw.columns.Column;
 import tech.tablesaw.selection.BitmapBackedSelection;
 import tech.tablesaw.selection.Selection;
 
-public class ExprSupportFilterStrategy<T> implements IFilterStrategy<T> {
-
-	private final TablesawDataProvider dataProvider;
-	private final ExprSupport exprSupport;
+public class ExprSupportFilterStrategy<T> extends ExprSupportHelper implements IFilterStrategy<T> {
 
 	public ExprSupportFilterStrategy(final TablesawDataProvider dataProvider, final ExprSupport exprSupport) {
-		super();
-		this.dataProvider = dataProvider;
-		this.exprSupport = exprSupport;
+		super(dataProvider, exprSupport);
 	}
 
+	private Selection selection = null;
+	private Map<Integer, Object> filterIndexToObjectMap;
+	
 	@Override
 	public void applyFilter(final Map<Integer, Object> filterIndexToObjectMap) {
-		final Table table = dataProvider.getTable();
-		final Map<String,  ColumnType> varTypes = exprSupport.getVarTypes(table);
-		final List<PreparedExpr> preparedExprs = new ArrayList<PreparedExpr>();
-		for (final int columnIndex : filterIndexToObjectMap.keySet()) {
-			final Object filter = filterIndexToObjectMap.get(columnIndex);
-			if (filter != null) {
-				Column<?> column = table.column(columnIndex);
-				final PreparedExpr expr = exprSupport.prepareExpr(String.valueOf(filter), varTypes, column.name());
-				if (expr.getDiagnostics().isEmpty()) {
-					while (preparedExprs.size() <= columnIndex) {
-						preparedExprs.add(null);
-					}
-					preparedExprs.set(columnIndex, expr);
-				}
-			}
-		}
-		Selection selection = null;
-		if (! preparedExprs.isEmpty()) {
-			final int rowCount = table.rowCount();
-			selection = new BitmapBackedSelection(rowCount);
-			final Map<String, Object> varValues = new HashMap<String, Object>();
-			outer: for (int rowNum = 0; rowNum < rowCount; rowNum++) {
-				exprSupport.getVarValues(table, rowNum, varValues);
-				for (int colNum = 0; colNum < preparedExprs.size(); colNum++) {
-					final PreparedExpr expr = preparedExprs.get(colNum);
-					if (expr != null) {
-						final Object result = exprSupport.evalExpr(expr, varValues);
-						if (! Boolean.TRUE.equals(result)) {
-							selection.removeRange(rowNum, rowNum + 1);
-							continue outer;
-						}
-					}
-				}
-				//				selection.add(rowNum);
-			}
-		}
+	    selection = null;
+	    this.filterIndexToObjectMap = filterIndexToObjectMap;
+	    applyExprs(filterIndexToObjectMap.keySet());
 		dataProvider.applyFilter(selection);
+		selection = null;
+		this.filterIndexToObjectMap = null;
 	}
+
+    @Override
+    protected String getExpr(int columnIndex) {
+        Object object = filterIndexToObjectMap.get(columnIndex);
+        return (object != null ? String.valueOf(object) : null);
+    }
+
+    @Override
+    protected boolean handleResult(int rowIndex, int columnIndex, Object result) {
+        if (selection == null) {
+            selection = new BitmapBackedSelection(dataProvider.getTable().rowCount());
+        }
+        if (! Boolean.TRUE.equals(result)) {
+            selection.removeRange(rowIndex, rowIndex + 1);
+            return false;
+        }
+        return true;
+    }
 }

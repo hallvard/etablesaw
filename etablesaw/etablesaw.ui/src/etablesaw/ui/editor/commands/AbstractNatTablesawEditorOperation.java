@@ -11,6 +11,7 @@ import org.eclipse.swt.graphics.Rectangle;
 
 import etablesaw.ui.editor.NatTablesawEditor;
 import etablesaw.ui.editor.NatTablesawViewer;
+import etablesaw.ui.editor.TablesawDataProvider;
 import tech.tablesaw.api.Table;
 
 public abstract class AbstractNatTablesawEditorOperation extends AbstractOperation {
@@ -28,6 +29,10 @@ public abstract class AbstractNatTablesawEditorOperation extends AbstractOperati
     
     protected NatTablesawViewer getNatTablesawViewer() {
         return getNatTablesawEditor().getNatTablesawViewer();
+    }
+    
+    protected TablesawDataProvider getTablesawDataProvider() {
+        return getNatTablesawViewer().getTablesawDataProvider();
     }
 
     private Table oldTable;
@@ -57,7 +62,7 @@ public abstract class AbstractNatTablesawEditorOperation extends AbstractOperati
         replaceEditorTable();
         return Status.OK_STATUS;
     }
-    
+
     //
 
     protected void selectRows(int... rowNums) {

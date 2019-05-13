@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -13,6 +14,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.nebula.widgets.nattable.NatTable;
+import org.eclipse.nebula.widgets.nattable.command.ILayerCommand;
+import org.eclipse.nebula.widgets.nattable.config.AbstractRegistryConfiguration;
 import org.eclipse.nebula.widgets.nattable.config.AbstractUiBindingConfiguration;
 import org.eclipse.nebula.widgets.nattable.config.CellConfigAttributes;
 import org.eclipse.nebula.widgets.nattable.config.DefaultNatTableStyleConfiguration;
@@ -53,6 +56,8 @@ import org.eclipse.swt.widgets.Composite;
 import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
 import etablesaw.ui.TableProviderHelper;
+import etablesaw.ui.editor.commands.TableCellChangeRecorder;
+import etablesaw.ui.expr.ExprSupport;
 import etablesaw.ui.util.MultiCheckSelectionShell;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
@@ -75,8 +80,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         if (input != null) {
             applyFilter();
         }
-        refresh();
-        getTableProviderHelper().fireTableChanged(NatTablesawViewer.this);
+        refresh(true);
     }
 
     private NatTable natTable;
@@ -86,7 +90,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
     private SelectionLayer selectionLayer;
     private AbstractTablesawDisplayConverter displayConverter;
     private CornerLayer cornerLayer;
-    private GridLayer gridLayer;
+    GridLayer gridLayer;
 
     public SelectionLayer getSelectionLayer() {
         return selectionLayer;
@@ -109,6 +113,8 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
     private FilterRowHeaderComposite<Object> filterRowHeaderComposite;
     private IFilterStrategy<Object> filterStrategy;
 
+    private ExprSupport exprSupport = Activator.getInstance().getExprSupport("xaw");
+
     public void createPartControl(final Composite parent) {
         bodyDataProvider = new TablesawDataProvider(input);
         bodyDataLayer = new DataLayer(bodyDataProvider, defaultColumnWidth, defaultRowHeight);
@@ -124,18 +130,17 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
 
         if (includeFilterRow) {
             final FilterRowHeaderComposite<Object> filterRowHeaderLayer = filterRowHeaderComposite = new FilterRowHeaderComposite<Object>(
-                    filterStrategy = new ExprSupportFilterStrategy<Object>(bodyDataProvider, Activator.getInstance().getExprSupports("xaw")),
+                    filterStrategy = new ExprSupportFilterStrategy<Object>(bodyDataProvider, exprSupport),
                     columnHeaderLayer, columnHeaderDataProvider, null);
             filterRowHeaderLayer.addConfiguration(new DefaultEditConfiguration());
             columnHeaderLayer = filterRowHeaderLayer;
             addTableChangeListener(new TablesawDataProvider.Listener() {
                 @Override
-                public void rowsChanged(final int startRange, final int endRange) {
-                    natTable.refresh();
-                    getTableProviderHelper().fireTableDataChanged(NatTablesawViewer.this);
+                public void providerRowsChanged(final int startRange, final int endRange) {
+                    refresh(false);
                 }
                 @Override
-                public void cellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
+                public void tableCellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
                 }
             });
         }
@@ -147,7 +152,29 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
                 rowHeaderDataProvider);
         final DataLayer cornerDataLayer = new DataLayer(cornerDataProvider);
         cornerLayer = new CornerLayer(cornerDataLayer, rowHeaderLayer, columnHeaderLayer);
-        gridLayer = new GridLayer(viewportLayer, columnHeaderLayer, rowHeaderLayer, cornerLayer);
+        gridLayer = new GridLayer(viewportLayer, columnHeaderLayer, rowHeaderLayer, cornerLayer) {
+            private TableCellChangeRecorder recorder = null;
+            public boolean doCommand(ILayerCommand command) {
+                boolean record = (recorder == null);
+                if (record) {
+                    recorder = new TableCellChangeRecorder(bodyDataProvider);
+                }
+                try {
+                    return super.doCommand(command);
+                } finally {
+                    if (record) {
+                        recorder.stopRecording();
+                        if (recorder.hasRecorded()) {
+                            if (onTableCellChanges != null) {
+                                onTableCellChanges.accept(recorder);
+                                refresh(false);
+                            }
+                        }
+                        recorder = null;
+                    }
+                }
+            }
+        };
         natTable = new NatTable(parent, NatTable.DEFAULT_STYLE_OPTIONS | SWT.BORDER, gridLayer, false);
         natTable.addConfiguration(new DefaultNatTableStyleConfiguration());
         configure(natTable);
@@ -162,11 +189,21 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
             }
         });
     }
+    
+    private Consumer<TableCellChangeRecorder> onTableCellChanges;
+    
+    public void setOnTableCellChanges(Consumer<TableCellChangeRecorder> onTableCellChanges) {
+        this.onTableCellChanges = onTableCellChanges;
+    }
 
     public NatTable getControl() {
         return natTable;
     }
 
+    public TablesawDataProvider getTablesawDataProvider() {
+        return bodyDataProvider;
+    }
+    
     public void applyFilter() {
         if (filterRowHeaderComposite != null) {
             final Map<Integer, Object> filterIndexToObjectMap = filterRowHeaderComposite.getFilterRowDataLayer()
@@ -175,6 +212,17 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         }
     }
 
+    protected IEditableRule editableRule = new IEditableRule() {
+        @Override
+        public boolean isEditable(final int columnIndex, final int rowIndex) {
+            return editable;
+        }
+        @Override
+        public boolean isEditable(final ILayerCell cell, final IConfigRegistry configRegistry) {
+            return editable;
+        }
+    };
+
     protected void configure(final NatTable natTable) {
         final IConfigRegistry configRegistry = natTable.getConfigRegistry();
         configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
@@ -182,16 +230,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         displayConverter = new DefaultTablesawDisplayConverter(bodyDataProvider);
         configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
                 displayConverter, DisplayMode.NORMAL, GridRegion.BODY);
-        configRegistry.registerConfigAttribute(EditConfigAttributes.CELL_EDITABLE_RULE, new IEditableRule() {
-            @Override
-            public boolean isEditable(final int columnIndex, final int rowIndex) {
-                return editable;
-            }
-            @Override
-            public boolean isEditable(final ILayerCell cell, final IConfigRegistry configRegistry) {
-                return editable;
-            }
-        });
+//        configRegistry.registerConfigAttribute(EditConfigAttributes.CELL_EDITABLE_RULE, editableRule);
         if (includeFilterRow) {
             configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
                     new DefaultDisplayConverter(), DisplayMode.NORMAL, "FILTER_ROW");
@@ -205,7 +244,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
             public void widgetSelected(SelectionEvent e) {
                 bodyDataProvider.setColumnNames(columnSelector.getSelections());
                 columnHeaderDataProvider.setColumnNames(columnSelector.getSelections());
-                refresh();
+                refresh(true);
 //                Collection<Integer> columnPositions = new ArrayList<>();
 //                int[] indices = columnSelector.getSelectionIndices();
 //                int pos = 0, itemCount = columnSelector.getItemCount();
@@ -236,11 +275,35 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
                 });
             }
         });
+        gridLayer.addConfiguration(new AbstractRegistryConfiguration() {            
+            @Override
+            public void configureRegistry(IConfigRegistry configRegistry) {
+              configRegistry.registerConfigAttribute(EditConfigAttributes.CELL_EDITABLE_RULE, editableRule);
+            }
+        });
+
+        if (editable && includeFilterRow) {
+            UpdateDataExprCommandHandler commandHandler = new UpdateDataExprCommandHandler(exprSupport, bodyDataProvider) {
+                @Override
+                protected int getColumnNum(ILayer targetLayer, int columnPos) {
+                    return gridLayer.getColumnIndexByPosition(columnPos);
+                }
+            };
+            filterRowHeaderComposite.registerCommandHandler(commandHandler);
+        }
         natTable.configure();
     }
 
-    public void refresh() {
-        natTable.refresh();
+    public void refresh(Boolean fireTableChanged) {
+        if (natTable != null) {
+            natTable.refresh();
+            if (fireTableChanged == null);
+            else if (fireTableChanged) {
+                getTableProviderHelper().fireTableChanged(NatTablesawViewer.this);
+            } else {
+                getTableProviderHelper().fireTableDataChanged(NatTablesawViewer.this);
+            }
+        }
     }
 
     //

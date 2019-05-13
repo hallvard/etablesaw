@@ -9,8 +9,11 @@ import org.eclipse.nebula.widgets.nattable.data.IDataProvider;
 
 import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
+import tech.tablesaw.columns.AbstractColumnParser;
 import tech.tablesaw.columns.Column;
 import tech.tablesaw.columns.numbers.IntColumnType;
+import tech.tablesaw.io.ReadOptions;
+import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.selection.Selection;
 
 public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
@@ -45,7 +48,7 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
 
     public void applyFilter(final Selection selection) {
         filtered = (selection != null ? table.where(selection) : null);
-        fireRowsChanged(-1, -1);
+        fireProviderRowsChanged(-1, -1);
     }
 
     protected Table getDataTable() {
@@ -66,17 +69,17 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
 
     public void clearColumnNames() {
         columnNames = null;
-        fireRowsChanged(-1, -1);
+        fireProviderRowsChanged(-1, -1);
     }
     
     public void setColumnNames(Collection<String> columnNames) {
         this.columnNames = new ArrayList<>(columnNames);
-        fireRowsChanged(-1, -1);
+        fireProviderRowsChanged(-1, -1);
     }
 
-    public void setColumnNames(String[] columnNames) {
+    public void setColumnNames(String... columnNames) {
         this.columnNames = Arrays.asList(columnNames);
-        fireRowsChanged(-1, -1);
+        fireProviderRowsChanged(-1, -1);
     }
     
     public Column<?> getColumn(int columnIndex) {
@@ -112,15 +115,26 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
         }
         return null;
     }
+    
+    private ReadOptions options = CsvReadOptions.builderFromString("").build();
 
     @Override
-    public void setDataValue(final int columnIndex, final int rowIndex, final Object newValue) {
+    public void setDataValue(final int columnIndex, final int rowIndex, Object newValue) {
         if (table != null) {
             final Column<Object> column = (Column<Object>) getColumn(columnIndex);
             if (mode == null) {
-                final Object oldValue = column.get(rowIndex);
-                column.set(rowIndex, newValue);
-                if (oldValue != newValue && (oldValue == null || (!oldValue.equals(newValue)))) {
+                final Object oldValue = (column.isMissing(rowIndex) ? null : column.get(rowIndex));
+                try {
+                    if (isMissingValue(column, newValue)) {
+                        column.setMissing(rowIndex);
+                        newValue = null;
+                    } else {
+                        column.set(rowIndex, newValue);
+                    }
+                } catch (Exception e) {
+                    newValue = setDataValueUsingParser(column, rowIndex, String.valueOf(newValue));
+                }
+                if (oldValue != newValue && (oldValue == null || (! oldValue.equals(newValue)))) {
                     fireCellChanged(rowIndex, columnIndex, oldValue, newValue);
                 }
             } else if (mode) {
@@ -129,11 +143,32 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
         }
     }
 
+    public boolean isMissingValue(Object newValue, Object newValue2) {
+        return newValue == null || newValue instanceof String && ((String) newValue).trim().length() == 0;
+    }
+
+    protected Object setDataValueUsingParser(final Column<Object> column, final int rowIndex, String s) {
+        AbstractColumnParser<?> parser = column.type().customParser(options);
+        if (parser.canParse(s)) {
+            Object altValue = parser.parse(s);
+            try {
+                column.set(rowIndex, altValue);
+                return altValue;
+            } catch (Exception e1) {
+                column.setMissing(rowIndex);
+                return null;
+            }
+        } else {
+            column.setMissing(rowIndex);
+            return null;
+        }
+    }
+
     //
 
     public static interface Listener {
-        public void rowsChanged(int startRow, int endRow);
-        public void cellChanged(int row, int column, Object oldValue, Object newValue);
+        public void providerRowsChanged(int startRow, int endRow);
+        public void tableCellChanged(int row, int column, Object oldValue, Object newValue);
     }
 
     private Collection<Listener> listeners = null;
@@ -151,17 +186,19 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
         }
     }
 
-    protected void fireRowsChanged(final int startRow, final int endRow) {
+    protected void fireProviderRowsChanged(final int startRow, final int endRow) {
         if (listeners != null) {
             for (final Listener listener : listeners) {
-                listener.rowsChanged(startRow, endRow);
+                listener.providerRowsChanged(startRow, endRow);
             }
         }
     }
 
     protected void fireCellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
-        for (final Listener listener : listeners) {
-            listener.cellChanged(row, column, oldValue, newValue);
+        if (listeners != null) {
+            for (final Listener listener : listeners) {
+                listener.tableCellChanged(row, column, oldValue, newValue);
+            }
         }
     }
 }
