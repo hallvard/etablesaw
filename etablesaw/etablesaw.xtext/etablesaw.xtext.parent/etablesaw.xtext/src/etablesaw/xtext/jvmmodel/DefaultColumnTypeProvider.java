@@ -65,6 +65,8 @@ public class DefaultColumnTypeProvider implements IColumnTypeProvider {
             return double.class;
         } else if (columnType.equals(ColumnType.BOOLEAN)) {
             return boolean.class;
+        } else if (columnType.equals(ColumnType.LONG)) {
+            return long.class;
         } else if (columnType.equals(ColumnType.SHORT)) {
             return short.class;
         } else

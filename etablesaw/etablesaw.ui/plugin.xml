@@ -132,11 +132,27 @@
                 <equals value="etablesaw.ui.editor.table"/>
              </with>
          </activeWhen>
-         <!--
-         <enabledWhen>
-            <count value="2"/>
-         </enabledWhen>
-         -->
+         <!-- <enabledWhen></enabledWhen> -->
+       </handler>
+       <!--
+       -->
+       <handler
+             class="etablesaw.ui.editor.commands.EditCopyCommandHandler"
+             commandId="org.eclipse.ui.edit.copy">
+         <activeWhen>
+            <with variable="activeEditorId">
+                <equals value="etablesaw.ui.editor.table"/>
+             </with>
+         </activeWhen>
+       </handler>
+       <handler
+             class="etablesaw.ui.editor.commands.EditPasteCommandHandler"
+             commandId="org.eclipse.ui.edit.paste">
+         <activeWhen>
+            <with variable="activeEditorId">
+                <equals value="etablesaw.ui.editor.table"/>
+             </with>
+         </activeWhen>
        </handler>
     </extension>
 

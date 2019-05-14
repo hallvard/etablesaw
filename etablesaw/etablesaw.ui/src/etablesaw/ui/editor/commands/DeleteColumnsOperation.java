@@ -13,7 +13,7 @@ import etablesaw.ui.editor.NatTablesawEditor;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
 
-public class DeleteColumnsOperation extends AbstractNatTablesawEditorOperation {
+public class DeleteColumnsOperation extends AbstractNatTablesawEditorTableOperation {
 
     private final int[] columnNums;
     

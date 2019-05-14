@@ -47,7 +47,7 @@ public class TableCellChangeRecorder implements TablesawDataProvider.Listener {
     
     public void doTableCellChanges(boolean undo) throws ExecutionException {
         for (TableCellChangeRecorder.CellChange tableCellChange : allRecordings) {
-            Object value = (undo ? tableCellChange.oldValue : tableCellChange.newValue);
+            Object value = (undo ? tableCellChange.oldValue : tableCellChange.value);
             dataProvider.setDataValue(tableCellChange.column, tableCellChange.row, value);
         }
     }
@@ -63,17 +63,14 @@ public class TableCellChangeRecorder implements TablesawDataProvider.Listener {
             recordings.add(new CellChange(row, column, oldValue, newValue));
         }
     }
-    
-    public static class CellChange {
-        public final int row, column;
-        public final Object oldValue, newValue;
+
+    public static class CellChange extends TableCell {
+
+        public final Object oldValue;
 
         public CellChange(int row, int column, Object oldValue, Object newValue) {
-            super();
-            this.row = row;
-            this.column = column;
+            super(row, column, newValue);
             this.oldValue = oldValue;
-            this.newValue = newValue;
         }
     }
 }

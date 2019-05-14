@@ -9,7 +9,7 @@ import org.eclipse.core.runtime.Status;
 import etablesaw.ui.editor.NatTablesawEditor;
 import tech.tablesaw.api.Table;
 
-public class DeleteRowsOperation extends AbstractNatTablesawEditorOperation {
+public class DeleteRowsOperation extends AbstractNatTablesawEditorTableOperation {
 
     private final int[] rowNums;
     

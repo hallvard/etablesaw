@@ -138,7 +138,13 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
                     fireCellChanged(rowIndex, columnIndex, oldValue, newValue);
                 }
             } else if (mode) {
-                column.setName(String.valueOf(newValue));
+                String colName = String.valueOf(newValue);
+                for (Column<?> other : table.columns()) {
+                    if (other.name().equals(colName)) {
+                        return;
+                    }
+                }
+                column.setName(colName);
             }
         }
     }
@@ -188,7 +194,8 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
 
     protected void fireProviderRowsChanged(final int startRow, final int endRow) {
         if (listeners != null) {
-            for (final Listener listener : listeners) {
+            // avoid ConcurrentModificationException
+            for (final Listener listener : new ArrayList<>(listeners)) {
                 listener.providerRowsChanged(startRow, endRow);
             }
         }

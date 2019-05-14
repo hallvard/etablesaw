@@ -24,6 +24,9 @@ import org.eclipse.nebula.widgets.nattable.config.IEditableRule;
 import org.eclipse.nebula.widgets.nattable.data.IDataProvider;
 import org.eclipse.nebula.widgets.nattable.data.convert.DefaultDisplayConverter;
 import org.eclipse.nebula.widgets.nattable.edit.EditConfigAttributes;
+import org.eclipse.nebula.widgets.nattable.edit.action.MouseEditAction;
+import org.eclipse.nebula.widgets.nattable.edit.command.UpdateDataCommand;
+import org.eclipse.nebula.widgets.nattable.edit.config.DefaultEditBindings;
 import org.eclipse.nebula.widgets.nattable.edit.config.DefaultEditConfiguration;
 import org.eclipse.nebula.widgets.nattable.filterrow.FilterRowHeaderComposite;
 import org.eclipse.nebula.widgets.nattable.filterrow.IFilterStrategy;
@@ -34,6 +37,7 @@ import org.eclipse.nebula.widgets.nattable.grid.layer.CornerLayer;
 import org.eclipse.nebula.widgets.nattable.grid.layer.GridLayer;
 import org.eclipse.nebula.widgets.nattable.grid.layer.RowHeaderLayer;
 import org.eclipse.nebula.widgets.nattable.hideshow.ColumnHideShowLayer;
+import org.eclipse.nebula.widgets.nattable.layer.AbstractLayer;
 import org.eclipse.nebula.widgets.nattable.layer.DataLayer;
 import org.eclipse.nebula.widgets.nattable.layer.ILayer;
 import org.eclipse.nebula.widgets.nattable.layer.ILayerListener;
@@ -41,9 +45,13 @@ import org.eclipse.nebula.widgets.nattable.layer.cell.ILayerCell;
 import org.eclipse.nebula.widgets.nattable.layer.event.ILayerEvent;
 import org.eclipse.nebula.widgets.nattable.reorder.ColumnReorderLayer;
 import org.eclipse.nebula.widgets.nattable.selection.SelectionLayer;
+import org.eclipse.nebula.widgets.nattable.selection.config.DefaultSelectionBindings;
+import org.eclipse.nebula.widgets.nattable.selection.config.DefaultSelectionLayerConfiguration;
 import org.eclipse.nebula.widgets.nattable.selection.event.ISelectionEvent;
 import org.eclipse.nebula.widgets.nattable.style.DisplayMode;
 import org.eclipse.nebula.widgets.nattable.ui.binding.UiBindingRegistry;
+import org.eclipse.nebula.widgets.nattable.ui.matcher.CellEditorMouseEventMatcher;
+import org.eclipse.nebula.widgets.nattable.ui.matcher.KeyEventMatcher;
 import org.eclipse.nebula.widgets.nattable.ui.matcher.MouseEventMatcher;
 import org.eclipse.nebula.widgets.nattable.viewport.ViewportLayer;
 import org.eclipse.swt.SWT;
@@ -78,7 +86,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
             displayConverter.setColumnTypeProvider(bodyDataProvider);
         }
         if (input != null) {
-            applyFilter();
+            clearFilter();
         }
         refresh(true);
     }
@@ -121,12 +129,36 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         rowHeaderDataProvider = new TablesawDataProvider(input, false);
         final ColumnReorderLayer columnReorderLayer = new ColumnReorderLayer(bodyDataLayer);
         columnHideShowLayer = new ColumnHideShowLayer(columnReorderLayer);
-        selectionLayer = new SelectionLayer(columnHideShowLayer);
+
+        selectionLayer = new SelectionLayer(columnHideShowLayer, false);
+        // remove copy action key binding, since we implement it ourselves
+        selectionLayer.addConfiguration(new DefaultSelectionLayerConfiguration() {
+            @Override
+            protected void addSelectionUIBindings() {
+                addConfiguration(new DefaultSelectionBindings() {
+                    @Override
+                    public void configureUiBindings(UiBindingRegistry uiBindingRegistry) {
+                        super.configureUiBindings(uiBindingRegistry);
+                        // remove copy, since we implement it ourselves
+                        uiBindingRegistry.unregisterKeyBinding(new KeyEventMatcher(SWT.MOD1, 'c'));
+                    }
+                });
+            }
+        });
+        
         final ViewportLayer viewportLayer = new ViewportLayer(selectionLayer);
 
         columnHeaderDataProvider = new TablesawDataProvider(input, true);
         columnDataLayer = new DataLayer(columnHeaderDataProvider, defaultColumnWidth, defaultRowHeight);
-        ILayer columnHeaderLayer = new ColumnHeaderLayer(columnDataLayer, viewportLayer, selectionLayer);
+        AbstractLayer columnHeaderLayer = new ColumnHeaderLayer(columnDataLayer, viewportLayer, selectionLayer);
+        // allow editing column header with double-click
+        columnHeaderLayer.addConfiguration(new DefaultEditBindings() {
+            @Override
+            public void configureUiBindings(final UiBindingRegistry uiBindingRegistry) {
+                uiBindingRegistry.registerDoubleClickBinding(
+                    new CellEditorMouseEventMatcher(GridRegion.COLUMN_HEADER), new MouseEditAction());
+            }
+        });
 
         if (includeFilterRow) {
             final FilterRowHeaderComposite<Object> filterRowHeaderLayer = filterRowHeaderComposite = new FilterRowHeaderComposite<Object>(
@@ -155,7 +187,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         gridLayer = new GridLayer(viewportLayer, columnHeaderLayer, rowHeaderLayer, cornerLayer) {
             private TableCellChangeRecorder recorder = null;
             public boolean doCommand(ILayerCommand command) {
-                boolean record = (recorder == null);
+                boolean record = (recorder == null && command instanceof UpdateDataCommand);
                 if (record) {
                     recorder = new TableCellChangeRecorder(bodyDataProvider);
                 }
@@ -190,6 +222,10 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         });
     }
     
+    public boolean hasActiveCellEditor() {
+        return natTable != null && natTable.getActiveCellEditor() != null;
+    }
+    
     private Consumer<TableCellChangeRecorder> onTableCellChanges;
     
     public void setOnTableCellChanges(Consumer<TableCellChangeRecorder> onTableCellChanges) {
@@ -204,6 +240,12 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         return bodyDataProvider;
     }
     
+    public void clearFilter() {
+        if (filterRowHeaderComposite != null) {
+            filterRowHeaderComposite.getFilterRowDataLayer().getFilterRowDataProvider().clearAllFilters();
+        }
+    }
+
     public void applyFilter() {
         if (filterRowHeaderComposite != null) {
             final Map<Integer, Object> filterIndexToObjectMap = filterRowHeaderComposite.getFilterRowDataLayer()
