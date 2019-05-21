@@ -122,7 +122,7 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
     public void setDataValue(final int columnIndex, final int rowIndex, Object newValue) {
         if (table != null) {
             final Column<Object> column = (Column<Object>) getColumn(columnIndex);
-            if (mode == null) {
+            if (mode == null && rowIndex >= 0) {
                 final Object oldValue = (column.isMissing(rowIndex) ? null : column.get(rowIndex));
                 try {
                     if (isMissingValue(column, newValue)) {
@@ -137,19 +137,22 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
                 if (oldValue != newValue && (oldValue == null || (! oldValue.equals(newValue)))) {
                     fireCellChanged(rowIndex, columnIndex, oldValue, newValue);
                 }
-            } else if (mode) {
+            } else if (mode || rowIndex == -1) {
+                // pretend row -1 is column name
                 String colName = String.valueOf(newValue);
                 for (Column<?> other : table.columns()) {
-                    if (other.name().equals(colName)) {
+                    if (colName.equals(other.name())) {
                         return;
                     }
                 }
+                String oldName = column.name();
                 column.setName(colName);
+                fireCellChanged(-1, columnIndex, oldName, colName);
             }
         }
     }
 
-    public boolean isMissingValue(Object newValue, Object newValue2) {
+    public boolean isMissingValue(Column<Object> column, Object newValue) {
         return newValue == null || newValue instanceof String && ((String) newValue).trim().length() == 0;
     }
 

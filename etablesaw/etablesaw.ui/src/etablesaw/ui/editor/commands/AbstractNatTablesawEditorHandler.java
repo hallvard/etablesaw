@@ -11,6 +11,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.part.WorkbenchPart;
 
 import etablesaw.ui.editor.NatTablesawEditor;
 
@@ -26,11 +27,15 @@ public abstract class AbstractNatTablesawEditorHandler extends AbstractHandler {
     }
 
     protected IStatus execute(NatTablesawEditor editor, IUndoableOperation operation, IProgressMonitor monitor, IAdaptable adaptable) throws ExecutionException {
-        IWorkbench workbench = editor.getSite().getWorkbenchWindow().getWorkbench();
-        IOperationHistory operationHistory = workbench.getOperationSupport().getOperationHistory();
         operation.addContext(editor.getUndoContext());
-        return operationHistory.execute(operation, monitor, adaptable);
+        return AbstractNatTablesawEditorHandler.execute((WorkbenchPart) editor, operation, monitor, adaptable);
     }
 
+    public static IStatus execute(WorkbenchPart part, IUndoableOperation operation, IProgressMonitor monitor, IAdaptable adaptable) throws ExecutionException {
+        IWorkbench workbench = part.getSite().getWorkbenchWindow().getWorkbench();
+        IOperationHistory operationHistory = workbench.getOperationSupport().getOperationHistory();
+        return operationHistory.execute(operation, monitor, adaptable);
+    }
+    
     protected abstract IStatus execute(NatTablesawEditor activeEditor) throws ExecutionException;
 }

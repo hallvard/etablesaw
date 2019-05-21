@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
@@ -135,48 +137,32 @@ public class MultiCheckSelectionShell {
 		    shell.setText(title);
 		}
 
-		final Composite buttonsParent = shell;
+		shell.setLayout(new GridLayout(1, false));
+		final Composite buttonsParent = new Composite(shell, SWT.NONE);
 		int columnCount = (int) Math.pow(getItemCount(), 0.3);
-        buttonsParent.setLayout(new GridLayout(columnCount, false));
-		if (toggleButtonText != null) {
-		    final Button toggle = new Button(buttonsParent, SWT.BUTTON1);
-		    toggle.setText(toggleButtonText);
-		    toggle.addListener(SWT.MouseDown, e -> {
-		        toggleAll();
-		        for (final SelectionListener listener : selectionListeners) {
-		            listener.widgetSelected(new SelectionEvent(e));
-		        }
-		    });
-		}
-		Listener keyListener = event -> {
-            if (event.keyCode == SWT.CR) {
-                closeShell(buttonsParent, event);
+		buttonsParent.setLayout(new GridLayout(columnCount, false));
+		Listener closeListener = event -> {
+		    if (event.keyCode == SWT.CR) {
+		        closeShell(buttonsParent, event);
+		    }
+		};
+		buttons = createShowHideButtons(buttonsParent);
+		for (int i = 0; i < buttons.length; i++) {
+            buttons[i].addListener(SWT.KeyDown, closeListener);
+        }
+		final Composite extraControlsParent = new Composite(shell, SWT.NONE);
+		extraControlsParent.setLayout(new GridLayout(1, false));
+		createExtraControls(extraControlsParent);
+		extraControlsParent.addDisposeListener(new DisposeListener() {
+            @Override
+            public void widgetDisposed(DisposeEvent e) {
+                closeShell(shell, null);
             }
-        };
-		buttons = new Button[options.size()];
-		for (int i = 0; i < options.size(); i++) {
-			final Button button = new Button(buttonsParent, isMulti()? SWT.CHECK : SWT.RADIO);
-			final Option option = options.get(i);
-			button.setText(option.text);
-			button.setSelection(option.selection);
-			button.addListener(SWT.Selection, event -> {
-				option.selection = button.getSelection();
-				if (notifyOnSelection) {
-    				for (final SelectionListener listener : selectionListeners) {
-    				    listener.widgetSelected(new SelectionEvent(event));
-    				}
-				}
-                forwardEvent(event);
-			});
-			button.pack();
-			button.addListener(SWT.KeyDown, keyListener);
-			buttons[i] = button;
-		}
-
+        });
 		shell.pack();
 		shell.setLocation(shellRect.x, shellRect.y);
 
-		shell.addListener(SWT.KeyDown, keyListener);
+		shell.addListener(SWT.KeyDown, closeListener);
 		shell.addListener(SWT.Deactivate, event -> {
 			closeShell(buttonsParent, event);
 		});
@@ -191,20 +177,54 @@ public class MultiCheckSelectionShell {
         });
 	}
 
-    private void closeShell(final Composite buttonsParent, Event event) {
-        if (buttonsParent != null && (! buttonsParent.isDisposed())) {
-        	buttonsParent.setVisible(false);
-        	for (int i = 0; i < options.size(); i++) {
-        	    if (hasButton(i)) {
-        	        buttons[i].dispose();
-        	    }
-        	}
+    protected void createExtraControls(Composite parent) {
+        
+    }
+
+    protected Button[] createShowHideButtons(final Composite parent) {
+		if (toggleButtonText != null) {
+		    final Button toggle = new Button(parent, SWT.BUTTON1);
+		    toggle.setText(toggleButtonText);
+		    toggle.addListener(SWT.MouseDown, e -> {
+		        toggleAll();
+		        for (final SelectionListener listener : selectionListeners) {
+		            listener.widgetSelected(new SelectionEvent(e));
+		        }
+		    });
+		}
+		Button[] buttons = new Button[options.size()];
+		for (int i = 0; i < options.size(); i++) {
+			final Button button = new Button(parent, isMulti()? SWT.CHECK : SWT.RADIO);
+			final Option option = options.get(i);
+			button.setText(option.text);
+			button.setSelection(option.selection);
+			button.addListener(SWT.Selection, event -> {
+				option.selection = button.getSelection();
+				if (notifyOnSelection) {
+    				for (final SelectionListener listener : selectionListeners) {
+    				    listener.widgetSelected(new SelectionEvent(event));
+    				}
+				}
+                forwardEvent(event);
+			});
+			buttons[i] = button;
+		}
+        return buttons;
+    }
+
+    protected void closeShell(final Composite parent, Event event) {
+        if (parent != null && (! parent.isDisposed())) {
+            Shell shell = parent.getShell();
+            if (shell != null && (! shell.isDisposed())) {
+                shell.dispose();
+            }
         	buttons = null;
-        	buttonsParent.dispose();
-        	forwardEvent(event);
-        	if (notifyOnClose) {
-        	    for (final SelectionListener listener : selectionListeners) {
-        	        listener.widgetSelected(new SelectionEvent(event));
+        	if (event != null) {
+        	    forwardEvent(event);
+        	    if (notifyOnClose) {
+        	        for (final SelectionListener listener : selectionListeners) {
+        	            listener.widgetSelected(new SelectionEvent(event));
+        	        }
         	    }
         	}
         }

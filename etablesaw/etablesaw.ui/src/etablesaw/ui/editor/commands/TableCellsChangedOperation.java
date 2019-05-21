@@ -8,12 +8,12 @@ import org.eclipse.core.runtime.Status;
 
 import etablesaw.ui.editor.NatTablesawEditor;
 
-public class TableCellsChangesOperation extends AbstractNatTablesawEditorOperation {
+public class TableCellsChangedOperation extends AbstractNatTablesawEditorOperation {
 
     private boolean done = false;
     private final TableCellChangeRecorder tableCellChanges;
     
-    public TableCellsChangesOperation(NatTablesawEditor natTablesawEditor, TableCellChangeRecorder tableCellChanges) {
+    public TableCellsChangedOperation(NatTablesawEditor natTablesawEditor, TableCellChangeRecorder tableCellChanges) {
         super("Change Table Cells", natTablesawEditor);
         this.tableCellChanges = tableCellChanges;
     }

@@ -4,6 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.function.Consumer;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.IOperationHistory;
@@ -21,7 +23,12 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
@@ -37,8 +44,11 @@ import org.eclipse.ui.part.FileEditorInput;
 import etablesaw.io.FileFormatSupport;
 import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
+import etablesaw.ui.editor.commands.AbstractNatTablesawEditorHandler;
+import etablesaw.ui.editor.commands.AddColumnOperation;
 import etablesaw.ui.editor.commands.TableCellChangeRecorder;
-import etablesaw.ui.editor.commands.TableCellsChangesOperation;
+import etablesaw.ui.editor.commands.TableCellsChangedOperation;
+import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
 
 public class NatTablesawEditor extends EditorPart implements TableProvider, ISelectionProvider {
@@ -225,7 +235,39 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 
     @Override
     public void createPartControl(final Composite parent) {
-        natTablesawViewer = new NatTablesawViewer();
+        natTablesawViewer = new NatTablesawViewer() {
+            @Override
+            protected void createExtraControls(Composite parent) {
+                createColumnTypeSelector(parent, colType -> {
+                    org.eclipse.core.commands.operations.AbstractOperation operation = new AddColumnOperation(NatTablesawEditor.this, colType);
+                    operation.addContext(getUndoContext());
+                    try {
+                        AbstractNatTablesawEditorHandler.execute(NatTablesawEditor.this, operation, null, null);
+                    } catch (ExecutionException e) {
+                    }
+                });
+            }
+            private Control createColumnTypeSelector(Composite parent, Consumer<ColumnType> callback) {
+                List<String> comboItems = new ArrayList<>();
+                comboItems.add("Add column of type...");
+                comboItems.addAll(ColumnType.values.keySet());
+                final Combo colTypeSelector = new Combo(parent, SWT.READ_ONLY);
+                colTypeSelector.setItems(comboItems.toArray(new String[comboItems.size()]));
+                colTypeSelector.select(0);
+                colTypeSelector.addSelectionListener(new SelectionAdapter() {
+                    @Override
+                    public void widgetSelected(SelectionEvent e) {
+                        int selectionIndex = colTypeSelector.getSelectionIndex();
+                        parent.dispose();
+                        if (selectionIndex > 0) {
+                            ColumnType colType = ColumnType.values.get(comboItems.get(selectionIndex));
+                            callback.accept(colType);
+                        }
+                    }
+                });
+                return colTypeSelector;
+            }
+        };
         natTablesawViewer.setEditable(true);
         natTablesawViewer.setOnTableCellChanges(tableCellChanges -> executeTableCellChangesOperation(tableCellChanges, true));
         natTablesawViewer.createPartControl(parent);
@@ -262,7 +304,7 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
     protected void executeTableCellChangesOperation(TableCellChangeRecorder tableCellChanges, boolean done) {
         IWorkbench workbench = getSite().getWorkbenchWindow().getWorkbench();
         IOperationHistory operationHistory = workbench.getOperationSupport().getOperationHistory();
-        TableCellsChangesOperation operation = new TableCellsChangesOperation(this, tableCellChanges);
+        TableCellsChangedOperation operation = new TableCellsChangedOperation(this, tableCellChanges);
         operation.setDone(done);
         operation.addContext(getUndoContext());
         try {

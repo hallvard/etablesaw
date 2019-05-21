@@ -14,7 +14,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.nebula.widgets.nattable.NatTable;
-import org.eclipse.nebula.widgets.nattable.command.ILayerCommand;
+import org.eclipse.nebula.widgets.nattable.command.ILayerCommandHandler;
 import org.eclipse.nebula.widgets.nattable.config.AbstractRegistryConfiguration;
 import org.eclipse.nebula.widgets.nattable.config.AbstractUiBindingConfiguration;
 import org.eclipse.nebula.widgets.nattable.config.CellConfigAttributes;
@@ -26,6 +26,7 @@ import org.eclipse.nebula.widgets.nattable.data.convert.DefaultDisplayConverter;
 import org.eclipse.nebula.widgets.nattable.edit.EditConfigAttributes;
 import org.eclipse.nebula.widgets.nattable.edit.action.MouseEditAction;
 import org.eclipse.nebula.widgets.nattable.edit.command.UpdateDataCommand;
+import org.eclipse.nebula.widgets.nattable.edit.command.UpdateDataCommandHandler;
 import org.eclipse.nebula.widgets.nattable.edit.config.DefaultEditBindings;
 import org.eclipse.nebula.widgets.nattable.edit.config.DefaultEditConfiguration;
 import org.eclipse.nebula.widgets.nattable.filterrow.FilterRowHeaderComposite;
@@ -65,6 +66,7 @@ import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
 import etablesaw.ui.TableProviderHelper;
 import etablesaw.ui.editor.commands.TableCellChangeRecorder;
+import etablesaw.ui.editor.commands.TableCellChangeRecorderCommandHandler;
 import etablesaw.ui.expr.ExprSupport;
 import etablesaw.ui.util.MultiCheckSelectionShell;
 import tech.tablesaw.api.Table;
@@ -98,7 +100,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
     private SelectionLayer selectionLayer;
     private AbstractTablesawDisplayConverter displayConverter;
     private CornerLayer cornerLayer;
-    GridLayer gridLayer;
+    private GridLayer gridLayer;
 
     public SelectionLayer getSelectionLayer() {
         return selectionLayer;
@@ -125,8 +127,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
 
     public void createPartControl(final Composite parent) {
         bodyDataProvider = new TablesawDataProvider(input);
-        bodyDataLayer = new DataLayer(bodyDataProvider, defaultColumnWidth, defaultRowHeight);
-        rowHeaderDataProvider = new TablesawDataProvider(input, false);
+        bodyDataLayer = new TableCellChangeRecorderDataLayer(bodyDataProvider, defaultColumnWidth, defaultRowHeight);
         final ColumnReorderLayer columnReorderLayer = new ColumnReorderLayer(bodyDataLayer);
         columnHideShowLayer = new ColumnHideShowLayer(columnReorderLayer);
 
@@ -149,7 +150,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         final ViewportLayer viewportLayer = new ViewportLayer(selectionLayer);
 
         columnHeaderDataProvider = new TablesawDataProvider(input, true);
-        columnDataLayer = new DataLayer(columnHeaderDataProvider, defaultColumnWidth, defaultRowHeight);
+        columnDataLayer = new TableCellChangeRecorderDataLayer(columnHeaderDataProvider, defaultColumnWidth, defaultRowHeight);
         AbstractLayer columnHeaderLayer = new ColumnHeaderLayer(columnDataLayer, viewportLayer, selectionLayer);
         // allow editing column header with double-click
         columnHeaderLayer.addConfiguration(new DefaultEditBindings() {
@@ -161,6 +162,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         });
 
         if (includeFilterRow) {
+            // adds a UpdateDataCommandHandler (for the filter string)
             final FilterRowHeaderComposite<Object> filterRowHeaderLayer = filterRowHeaderComposite = new FilterRowHeaderComposite<Object>(
                     filterStrategy = new ExprSupportFilterStrategy<Object>(bodyDataProvider, exprSupport),
                     columnHeaderLayer, columnHeaderDataProvider, null);
@@ -176,37 +178,17 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
                 }
             });
         }
+        rowHeaderDataProvider = new TablesawDataProvider(input, false);
         final ILayer rowHeaderLayer = new RowHeaderLayer(
                 new DataLayer(rowHeaderDataProvider, defaultColumnWidth, defaultRowHeight), viewportLayer,
                 selectionLayer);
 
         final IDataProvider cornerDataProvider = new DefaultCornerDataProvider(columnHeaderDataProvider,
                 rowHeaderDataProvider);
-        final DataLayer cornerDataLayer = new DataLayer(cornerDataProvider);
+        // adds a UpdateDataCommandHandler (for the row header)
+        final DataLayer cornerDataLayer = new TableCellChangeRecorderDataLayer(cornerDataProvider);
         cornerLayer = new CornerLayer(cornerDataLayer, rowHeaderLayer, columnHeaderLayer);
-        gridLayer = new GridLayer(viewportLayer, columnHeaderLayer, rowHeaderLayer, cornerLayer) {
-            private TableCellChangeRecorder recorder = null;
-            public boolean doCommand(ILayerCommand command) {
-                boolean record = (recorder == null && command instanceof UpdateDataCommand);
-                if (record) {
-                    recorder = new TableCellChangeRecorder(bodyDataProvider);
-                }
-                try {
-                    return super.doCommand(command);
-                } finally {
-                    if (record) {
-                        recorder.stopRecording();
-                        if (recorder.hasRecorded()) {
-                            if (onTableCellChanges != null) {
-                                onTableCellChanges.accept(recorder);
-                                refresh(false);
-                            }
-                        }
-                        recorder = null;
-                    }
-                }
-            }
-        };
+        gridLayer = new GridLayer(viewportLayer, columnHeaderLayer, rowHeaderLayer, cornerLayer);
         natTable = new NatTable(parent, NatTable.DEFAULT_STYLE_OPTIONS | SWT.BORDER, gridLayer, false);
         natTable.addConfiguration(new DefaultNatTableStyleConfiguration());
         configure(natTable);
@@ -222,10 +204,28 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         });
     }
     
+    private class TableCellChangeRecorderDataLayer extends DataLayer {
+        public TableCellChangeRecorderDataLayer(IDataProvider dataProvider) {
+            super(dataProvider);
+        }
+        public TableCellChangeRecorderDataLayer(IDataProvider dataProvider, int defaultColumnWidth, int defaultRowHeight) {
+            super(dataProvider, defaultColumnWidth, defaultRowHeight);
+        }
+        public void registerCommandHandler(ILayerCommandHandler<?> commandHandler) {
+            if (commandHandler instanceof UpdateDataCommandHandler) {
+                TableCellChangeRecorderCommandHandler<UpdateDataCommand> recordingCommandHandler = new TableCellChangeRecorderCommandHandler<UpdateDataCommand>(UpdateDataCommand.class, (UpdateDataCommandHandler) commandHandler);
+                recordingCommandHandler.setDataProvider(() -> (TablesawDataProvider) getDataProvider());
+                recordingCommandHandler.setRecorderConsumer(onTableCellChanges);
+                commandHandler = recordingCommandHandler;
+            }
+            super.registerCommandHandler(commandHandler);
+        }
+    }
+    
     public boolean hasActiveCellEditor() {
         return natTable != null && natTable.getActiveCellEditor() != null;
     }
-    
+
     private Consumer<TableCellChangeRecorder> onTableCellChanges;
     
     public void setOnTableCellChanges(Consumer<TableCellChangeRecorder> onTableCellChanges) {
@@ -272,13 +272,16 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         displayConverter = new DefaultTablesawDisplayConverter(bodyDataProvider);
         configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
                 displayConverter, DisplayMode.NORMAL, GridRegion.BODY);
-//        configRegistry.registerConfigAttribute(EditConfigAttributes.CELL_EDITABLE_RULE, editableRule);
         if (includeFilterRow) {
             configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
                     new DefaultDisplayConverter(), DisplayMode.NORMAL, "FILTER_ROW");
         }
 
-        MultiCheckSelectionShell columnSelector = new MultiCheckSelectionShell(getControl());
+        MultiCheckSelectionShell columnSelector = new MultiCheckSelectionShell(getControl()) {
+            protected void createExtraControls(Composite parent) {
+                NatTablesawViewer.this.createExtraControls(parent);
+            }
+        };
         columnSelector.setTitle("Show/hide columns");
         columnSelector.setLocationFactors(0.0f,  0.0f);
         columnSelector.addSelectionListener(new SelectionAdapter() {
@@ -287,18 +290,6 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
                 bodyDataProvider.setColumnNames(columnSelector.getSelections());
                 columnHeaderDataProvider.setColumnNames(columnSelector.getSelections());
                 refresh(true);
-//                Collection<Integer> columnPositions = new ArrayList<>();
-//                int[] indices = columnSelector.getSelectionIndices();
-//                int pos = 0, itemCount = columnSelector.getItemCount();
-//                for (int i = 0; i < itemCount; i++) {
-//                    if (pos < indices.length && indices[pos] == i) {
-//                        pos++;
-//                    } else {
-//                        columnPositions.add(i);
-//                    }
-//                }
-//                columnHideShowLayer.showAllColumns();
-//                columnHideShowLayer.hideColumnPositions(columnPositions);
             }
         });
 
@@ -325,17 +316,21 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         });
 
         if (editable && includeFilterRow) {
-            UpdateDataExprCommandHandler commandHandler = new UpdateDataExprCommandHandler(exprSupport, bodyDataProvider) {
+            UpdateDataExprCommandHandler commandHandler = new UpdateDataExprCommandHandler(exprSupport, bodyDataProvider, tableCellChangeRecorder -> onTableCellChanges.accept(tableCellChangeRecorder)) {
                 @Override
                 protected int getColumnNum(ILayer targetLayer, int columnPos) {
                     return gridLayer.getColumnIndexByPosition(columnPos);
                 }
             };
+            // will override the one registered in the layer below
             filterRowHeaderComposite.registerCommandHandler(commandHandler);
         }
         natTable.configure();
     }
 
+    protected void createExtraControls(Composite parent) {
+    }
+    
     public void refresh(Boolean fireTableChanged) {
         if (natTable != null) {
             natTable.refresh();

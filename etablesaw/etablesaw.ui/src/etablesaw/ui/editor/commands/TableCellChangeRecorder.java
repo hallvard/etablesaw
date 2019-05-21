@@ -3,6 +3,8 @@ package etablesaw.ui.editor.commands;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.eclipse.core.commands.ExecutionException;
 
@@ -43,6 +45,17 @@ public class TableCellChangeRecorder implements TablesawDataProvider.Listener {
 
     public boolean isRecording() {
         return recordings != null;
+    }
+    
+    public <T> T doWithRecording(Supplier<T> body, Consumer<TableCellChangeRecorder> acceptor) {
+        try {
+            return body.get();
+        } finally {
+            stopRecording();
+            if (hasRecorded() && acceptor != null) {
+                acceptor.accept(this);
+            }
+        }
     }
     
     public void doTableCellChanges(boolean undo) throws ExecutionException {

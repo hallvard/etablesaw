@@ -1,30 +1,43 @@
 package etablesaw.ui.editor;
 
 import java.util.Collections;
+import java.util.function.Consumer;
 
 import org.eclipse.nebula.widgets.nattable.command.ILayerCommandHandler;
 import org.eclipse.nebula.widgets.nattable.edit.command.UpdateDataCommand;
 import org.eclipse.nebula.widgets.nattable.layer.ILayer;
 
+import etablesaw.ui.editor.commands.TableCellChangeRecorder;
+import etablesaw.ui.editor.commands.TableCellChangeRecorderHelper;
 import etablesaw.ui.expr.ExprSupport;
 
 public class UpdateDataExprCommandHandler extends ExprSupportHelper implements ILayerCommandHandler<UpdateDataCommand> {
 
-    public UpdateDataExprCommandHandler(final ExprSupport exprSupport, TablesawDataProvider dataProvider) {
-        super(dataProvider, exprSupport);
-    }
+    private final TableCellChangeRecorderHelper tableCellChangeRecorderHelper;
     
+    public UpdateDataExprCommandHandler(final ExprSupport exprSupport, TablesawDataProvider dataProvider, Consumer<TableCellChangeRecorder> recorderConsumer) {
+       super(dataProvider, exprSupport);
+       tableCellChangeRecorderHelper = new TableCellChangeRecorderHelper(); 
+       tableCellChangeRecorderHelper.setDataProvider(dataProvider);
+       tableCellChangeRecorderHelper.setRecorderConsumer(recorderConsumer);
+    }
+
     @Override
     public Class<UpdateDataCommand> getCommandClass() {
         return UpdateDataCommand.class;
     }
 
+    private String exprString;
+    
     @Override
     public boolean doCommand(ILayer targetLayer, UpdateDataCommand command) {
         String stringValue = (command.getNewValue() instanceof String ? (String) command.getNewValue() : null); 
         if (stringValue != null && stringValue.startsWith("=")) {
-            updateColumnData(getColumnNum(targetLayer, command.getColumnPosition()), stringValue.substring(1));
-            return true;
+            return tableCellChangeRecorderHelper.doWithRecording(() -> {
+                this.exprString = stringValue.substring(1);
+                applyExprs(Collections.singleton(getColumnNum(targetLayer, command.getColumnPosition())));
+                return true;
+            });
         } else {
             return false;
         }
@@ -32,13 +45,6 @@ public class UpdateDataExprCommandHandler extends ExprSupportHelper implements I
 
     protected int getColumnNum(ILayer targetLayer, int columnPos) {
         return targetLayer.getColumnIndexByPosition(columnPos);
-    }
-
-    private String exprString;
-
-    private void updateColumnData(int columnNum, String exprString) {
-        this.exprString = exprString;
-        applyExprs(Collections.singleton(columnNum));
     }
 
     @Override
