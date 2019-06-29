@@ -1,13 +1,11 @@
 package etablesaw.xtext.lib;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Iterator;
 import java.util.function.Supplier;
 
 import tech.tablesaw.columns.dates.DateFillers;
-import tech.tablesaw.columns.datetimes.DateTimeFillers;
 import tech.tablesaw.columns.times.TimeFillers;
 
 public class DateTimeFillersExtensions {
@@ -28,15 +26,15 @@ public class DateTimeFillersExtensions {
     // DateTimeFillers
     
     // =>
-    public static <T> T operator_doubleArrow(Iterator<LocalDateTime> dateTimes, DateTimeFillers<T> dateTimeColumn) {
-        return dateTimeColumn.fillWith(dateTimes);
-    }
-    public static <T> T operator_doubleArrow(Supplier<LocalDateTime> dateTimes, DateTimeFillers<T> dateTimeColumn) {
-        return dateTimeColumn.fillWith(dateTimes);
-    }
-    public static <T> T operator_doubleArrow(Iterable<LocalDateTime> dateTimes, DateTimeFillers<T> dateTimeColumn) {
-        return dateTimeColumn.fillWith(dateTimes);
-    }
+//    public static <T> T operator_doubleArrow(Iterator<LocalDateTime> dateTimes, DateTimeFillers<T> dateTimeColumn) {
+//        return dateTimeColumn.fillWith(dateTimes);
+//    }
+//    public static <T> T operator_doubleArrow(Supplier<LocalDateTime> dateTimes, DateTimeFillers<T> dateTimeColumn) {
+//        return dateTimeColumn.fillWith(dateTimes);
+//    }
+//    public static <T> T operator_doubleArrow(Iterable<LocalDateTime> dateTimes, DateTimeFillers<T> dateTimeColumn) {
+//        return dateTimeColumn.fillWith(dateTimes);
+//    }
     
     // TimeFillers
     

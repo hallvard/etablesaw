@@ -1,26 +1,31 @@
 package etablesaw.xtext.lib;
 
 import java.util.Iterator;
+import java.util.function.Predicate;
 
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
+import tech.tablesaw.selection.BitmapBackedSelection;
+import tech.tablesaw.selection.Selection;
 
 public abstract class TypedTable<R extends Row> extends Table {
 
     protected TypedTable(String name, Column<?>... columns) {
         super(name, columns);
     }
-    
+
     public Iterable<R> rows() {
         return new Iterable<R>() {
             public Iterator<R> iterator() {
                 return new Iterator<R>() {
                     R row = row();
+
                     @Override
                     public boolean hasNext() {
                         return row.hasNext();
                     }
+
                     @Override
                     public R next() {
                         row.next();
@@ -28,11 +33,13 @@ public abstract class TypedTable<R extends Row> extends Table {
                     }
                 };
             }
-        };        
+        };
     }
 
-    protected abstract R row();
-    
+    public abstract TypedTable<R> emptyCopy();
+    public abstract TypedTable<R> emptyCopy(int rowSize);
+    public abstract R row();
+
     public R appendEmptyRow() {
         R row = row();
         row.at(this.rowCount());
@@ -40,6 +47,17 @@ public abstract class TypedTable<R extends Row> extends Table {
             column.appendMissing();
         }
         return row;
-      }
+    }
 
+    public Selection eval(Predicate<R> predicate) {
+        Selection selection = new BitmapBackedSelection();
+        R row = row();
+        while (row.hasNext()) {
+            row.next();
+            if (predicate.test(row)) {
+                selection.add(row.getRowNumber());
+            }
+        }
+        return selection;
+    }
 }

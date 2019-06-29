@@ -5,7 +5,7 @@ Bundle-SymbolicName: etablesaw.core;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
- libs/tablesaw-core-0.32.4-SNAPSHOT-shaded.jar
+ libs/tablesaw-core-0.33.3-SNAPSHOT-shaded.jar
 Export-Package: com.google.common.cache,
  etablesaw.io,
  etablesaw.io.csv,
@@ -17,7 +17,6 @@ Export-Package: com.google.common.cache,
  tech.tablesaw.columns.booleans.fillers,
  tech.tablesaw.columns.dates,
  tech.tablesaw.columns.datetimes,
- tech.tablesaw.columns.datetimes.fillers,
  tech.tablesaw.columns.numbers,
  tech.tablesaw.columns.numbers.fillers,
  tech.tablesaw.columns.strings,

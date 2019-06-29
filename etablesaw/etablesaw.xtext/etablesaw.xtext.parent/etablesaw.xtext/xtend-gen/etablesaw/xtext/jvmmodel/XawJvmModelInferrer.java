@@ -122,14 +122,18 @@ public class XawJvmModelInferrer extends AbstractModelInferrer {
       }
     }
     final Procedure1<TableLiteral> _function_2 = (TableLiteral it) -> {
-      final Function1<TableColumn, TableColumnDef> _function_3 = (TableColumn it_1) -> {
-        return it_1.getColumnDef();
-      };
-      final Iterable<TableColumnDef> columnDefs = IterableExtensions.<TableColumn, TableColumnDef>map(Iterables.<TableColumn>filter(it.getExpressions(), TableColumn.class), _function_3);
-      boolean _hasNext = columnDefs.iterator().hasNext();
-      if (_hasNext) {
-        final JvmGenericType tableClass = this.inferTableClass(xaw, this._xawUtil.getTableTypeName(it), columnDefs, acceptor);
-        this.optionallyAddAsMember(clazz, tableClass);
+      boolean _isColumnTable = this._xawUtil.isColumnTable(it);
+      boolean _not = (!_isColumnTable);
+      if (_not) {
+        final Function1<TableColumn, TableColumnDef> _function_3 = (TableColumn it_1) -> {
+          return it_1.getColumnDef();
+        };
+        final Iterable<TableColumnDef> columnDefs = IterableExtensions.<TableColumn, TableColumnDef>map(Iterables.<TableColumn>filter(it.getExpressions(), TableColumn.class), _function_3);
+        boolean _hasNext = columnDefs.iterator().hasNext();
+        if (_hasNext) {
+          final JvmGenericType tableClass = this.inferTableClass(xaw, this._xawUtil.getTableTypeName(it), columnDefs, acceptor);
+          this.optionallyAddAsMember(clazz, tableClass);
+        }
       }
     };
     IteratorExtensions.<TableLiteral>forEach(Iterators.<TableLiteral>filter(xaw.eAllContents(), TableLiteral.class), _function_2);
@@ -353,28 +357,57 @@ public class XawJvmModelInferrer extends AbstractModelInferrer {
         JvmOperation _method_1 = this._jvmTypesBuilder.toMethod(owner, "emptyCopy", this._typeReferenceBuilder.typeRef(clazz), _function_8);
         this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, _method_1);
         EList<JvmMember> _members_5 = it.getMembers();
-        this._jvmTypesBuilder.<JvmGenericType>operator_add(_members_5, rowInterface);
-        EList<JvmMember> _members_6 = it.getMembers();
-        this._jvmTypesBuilder.<JvmGenericType>operator_add(_members_6, rowClass);
-        EList<JvmMember> _members_7 = it.getMembers();
         final Procedure1<JvmOperation> _function_9 = (JvmOperation it_1) -> {
-          it_1.setVisibility(JvmVisibility.PROTECTED);
+          EList<JvmFormalParameter> _parameters = it_1.getParameters();
+          JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(owner, "rowSize", this._typeReferenceBuilder.typeRef(int.class));
+          this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+          it_1.setVisibility(JvmVisibility.PUBLIC);
           final Procedure1<ITreeAppendable> _function_10 = (ITreeAppendable it_2) -> {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("return new ");
+            String _simpleName = clazz.getSimpleName();
+            _builder.append(_simpleName);
+            _builder.append("(name()");
+            it_2.append(_builder);
+            for (final TableColumnDef expr : tableColumns) {
+              StringConcatenation _builder_1 = new StringConcatenation();
+              _builder_1.append(", ");
+              String _columnGetterName = this.tableTypeNameProvider.getColumnGetterName(expr.getName());
+              _builder_1.append(_columnGetterName);
+              _builder_1.append("().emptyCopy(rowSize)");
+              it_2.append(_builder_1);
+            }
+            StringConcatenation _builder_2 = new StringConcatenation();
+            _builder_2.append(");");
+            it_2.append(_builder_2);
+          };
+          this._jvmTypesBuilder.setBody(it_1, _function_10);
+        };
+        JvmOperation _method_2 = this._jvmTypesBuilder.toMethod(owner, "emptyCopy", this._typeReferenceBuilder.typeRef(clazz), _function_9);
+        this._jvmTypesBuilder.<JvmOperation>operator_add(_members_5, _method_2);
+        EList<JvmMember> _members_6 = it.getMembers();
+        this._jvmTypesBuilder.<JvmGenericType>operator_add(_members_6, rowInterface);
+        EList<JvmMember> _members_7 = it.getMembers();
+        this._jvmTypesBuilder.<JvmGenericType>operator_add(_members_7, rowClass);
+        EList<JvmMember> _members_8 = it.getMembers();
+        final Procedure1<JvmOperation> _function_10 = (JvmOperation it_1) -> {
+          it_1.setVisibility(JvmVisibility.PUBLIC);
+          final Procedure1<ITreeAppendable> _function_11 = (ITreeAppendable it_2) -> {
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("return new Row(this);");
             it_2.append(_builder);
           };
-          this._jvmTypesBuilder.setBody(it_1, _function_10);
+          this._jvmTypesBuilder.setBody(it_1, _function_11);
         };
-        JvmOperation _method_2 = this._jvmTypesBuilder.toMethod(owner, "row", this._typeReferenceBuilder.typeRef(rowClass), _function_9);
-        this._jvmTypesBuilder.<JvmOperation>operator_add(_members_7, _method_2);
-        EList<JvmMember> _members_8 = it.getMembers();
-        final Procedure1<JvmOperation> _function_10 = (JvmOperation it_1) -> {
+        JvmOperation _method_3 = this._jvmTypesBuilder.toMethod(owner, "row", this._typeReferenceBuilder.typeRef(rowClass), _function_10);
+        this._jvmTypesBuilder.<JvmOperation>operator_add(_members_8, _method_3);
+        EList<JvmMember> _members_9 = it.getMembers();
+        final Procedure1<JvmOperation> _function_11 = (JvmOperation it_1) -> {
           EList<JvmFormalParameter> _parameters = it_1.getParameters();
           JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(owner, "row", this._typeReferenceBuilder.typeRef(rowInterface));
           this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
           it_1.setVisibility(JvmVisibility.PUBLIC);
-          final Procedure1<ITreeAppendable> _function_11 = (ITreeAppendable it_2) -> {
+          final Procedure1<ITreeAppendable> _function_12 = (ITreeAppendable it_2) -> {
             for (final TableColumnDef expr : tableColumns) {
               {
                 StringConcatenation _builder = new StringConcatenation();
@@ -392,10 +425,10 @@ public class XawJvmModelInferrer extends AbstractModelInferrer {
             _builder.append("return this;");
             it_2.append(_builder);
           };
-          this._jvmTypesBuilder.setBody(it_1, _function_11);
+          this._jvmTypesBuilder.setBody(it_1, _function_12);
         };
-        JvmOperation _method_3 = this._jvmTypesBuilder.toMethod(owner, "append", this._typeReferenceBuilder.typeRef(clazz), _function_10);
-        this._jvmTypesBuilder.<JvmOperation>operator_add(_members_8, _method_3);
+        JvmOperation _method_4 = this._jvmTypesBuilder.toMethod(owner, "append", this._typeReferenceBuilder.typeRef(clazz), _function_11);
+        this._jvmTypesBuilder.<JvmOperation>operator_add(_members_9, _method_4);
       };
       acceptor.<JvmGenericType>accept(clazz, _function_2);
       _xblockexpression = clazz;

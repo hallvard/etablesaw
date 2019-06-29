@@ -56,11 +56,11 @@ public class MultiCheckSelectionShell {
 		this.itemsProvider = itemsProvider;
 	}
 
-	public MultiCheckSelectionShell(Control owner, Listener listener, int eventType) {
+	public MultiCheckSelectionShell(Control owner, Listener listener, int triggerEventType) {
 	    this.owner = owner;
 	    this.listener = listener;
-	    if (eventType >= 0) {
-    		owner.addListener(eventType, event -> {
+	    if (triggerEventType >= 0) {
+    		owner.addListener(triggerEventType, event -> {
     			if (itemsProvider != null) {
     				final String[] newItems = itemsProvider.get();
     				if (newItems != null) {
@@ -142,7 +142,7 @@ public class MultiCheckSelectionShell {
 		int columnCount = (int) Math.pow(getItemCount(), 0.3);
 		buttonsParent.setLayout(new GridLayout(columnCount, false));
 		Listener closeListener = event -> {
-		    if (event.keyCode == SWT.CR) {
+		    if (event.type == SWT.Deactivate || event.keyCode == SWT.CR) {
 		        closeShell(buttonsParent, event);
 		    }
 		};
@@ -163,16 +163,11 @@ public class MultiCheckSelectionShell {
 		shell.setLocation(shellRect.x, shellRect.y);
 
 		shell.addListener(SWT.KeyDown, closeListener);
-		shell.addListener(SWT.Deactivate, event -> {
-			closeShell(buttonsParent, event);
-		});
+		shell.addListener(SWT.Deactivate, closeListener);
 		shell.open();
-		shell.getDisplay().asyncExec(new Runnable() {
-            @Override
-            public void run() {
-                if (buttons.length > 0 && (! buttons[0].isDisposed())) {
-                    buttons[0].setFocus();
-                }
+		shell.getDisplay().asyncExec(() -> {
+            if (buttons.length > 0 && (! buttons[0].isDisposed())) {
+                buttons[0].setFocus();
             }
         });
 	}

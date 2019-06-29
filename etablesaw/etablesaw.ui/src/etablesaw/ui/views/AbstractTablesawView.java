@@ -20,6 +20,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -133,13 +134,13 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	public void tableDataChanged(final TableProvider tableProvider) {
 		// clear cache
 		this.viewTable = null;
-		updateTableControls();
+		getTableViewerParent().getDisplay().asyncExec(this::updateTableControls);
 	}
 
 	@Override
 	public void tableChanged(final TableProvider tableProvider) {
 		this.viewTable = null;
-		updateView();
+		getTableViewerParent().getDisplay().asyncExec(this::updateView);
 	}
 
 	protected void setTableDataProvider(final IWorkbenchPart part) {
@@ -219,7 +220,36 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	}
 
 	protected void addActions() {
+        addTableRegistrySelectorMenuContribution();
+        if (this instanceof TableProvider) {
+            getViewSite().getActionBars().getToolBarManager().add(createExportAction((TableProvider) this));
+        }
     }
+	
+	protected void addTableRegistrySelectorMenuContribution() {
+        final MenuManager tablesMenu = new MenuManager("Tables");
+        tablesMenu.add(new Action() {}); // will be removed, needed for the submenu to actually show
+        tablesMenu.setRemoveAllWhenShown(true);
+        tablesMenu.addMenuListener(sourcesMenu -> {
+            TableProviderRegistry tableProviderRegistry = Activator.getInstance().getTableProviderRegistry();
+            for (String key : tableProviderRegistry.getTableProviderKeys()) {
+                TableProvider registryTableProvider = tableProviderRegistry.getTableProvider(key);
+                if (registryTableProvider != AbstractTablesawView.this) {
+                    ActionContributionItem contributionItem = new ActionContributionItem(new Action(key, IAction.AS_RADIO_BUTTON) {
+                        {
+                            setChecked(registryTableProvider == tableProvider);
+                        }
+                        @Override
+                        public void run() {
+                            tableProviderChanged(key);
+                        }
+                    });
+                    sourcesMenu.add(contributionItem);
+                }
+            }
+        });
+        getViewSite().getActionBars().getMenuManager().add(tablesMenu);
+	}
 
     private void setDistinctPartName() {
 		final String partName = getPartName();
@@ -236,7 +266,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	}
 
 	protected void createConfigControls(final Composite configParent) {
-		createTableRegistrySelector("Source: ", configParent, null);
+//		createTableRegistrySelector("Source: ", configParent, null);
 	}
 
 	private final IAction selectTableProviderAction = new Action("Source table", IAction.AS_DROP_DOWN_MENU) {
@@ -257,13 +287,10 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			createControlLabel(parent, label);
 		}
 		final ComboViewer viewer = new ComboViewer(parent);
-		viewer.getControl().getDisplay().asyncExec(new Runnable() {
-			@Override
-			public void run() {
-				final Object[] elements = ((IStructuredContentProvider) viewer.getContentProvider()).getElements(viewer.getInput());
-				if (elements.length > 0) {
-					viewer.setSelection(new StructuredSelection(elements[0]));
-				}
+		parent.getDisplay().asyncExec(() -> {
+			final Object[] elements = ((IStructuredContentProvider) viewer.getContentProvider()).getElements(viewer.getInput());
+			if (elements.length > 0) {
+				viewer.setSelection(new StructuredSelection(elements[0]));
 			}
 		});
 		return viewer;
@@ -375,14 +402,11 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			@Override
 			public void tableProviderRegistryChanged(final String key, final TableProvider tableProvider) {
 				if (! viewer.getControl().isDisposed()) {
-				    viewer.getControl().getDisplay().asyncExec(new Runnable() {
-                        @Override
-                        public void run() {
-                            Object selection = viewer.getStructuredSelection().getFirstElement();
-                            viewer.refresh();
-                            if (key.equals(selection)) {
-                                tableProviderChanged(String.valueOf(selection));
-                            }
+				    viewer.getControl().getDisplay().asyncExec(() -> {
+                        Object selection = viewer.getStructuredSelection().getFirstElement();
+                        viewer.refresh();
+                        if (key.equals(selection)) {
+                            tableProviderChanged(String.valueOf(selection));
                         }
                     });
 				}
@@ -490,12 +514,9 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		viewTable = (tableProvider != null ? tableProvider.getTable() : null);
 		Composite viewerParent = getTableViewerParent();
         if (viewerParent != null && (! viewerParent.isDisposed())) {
-		    viewerParent.getDisplay().asyncExec(new Runnable() {
-                @Override
-                public void run() {
-                    updateConfigControls();
-                    updateTableControls();
-                }
+		    viewerParent.getDisplay().asyncExec(() -> {
+                updateConfigControls();
+                updateTableControls();
             });
 		}
 	}
@@ -603,6 +624,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			((Combo) columnCombo).setItems(columnNames);
 		}
 	}
+
 	protected String[] getSelectedStrings(final Control selector) {
 		if (selector instanceof MultiCheckSelectionCombo) {
 			return ((MultiCheckSelectionCombo) selector).getSelections();

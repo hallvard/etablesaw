@@ -57,9 +57,15 @@ public class XawTypeComputer extends XbaseWithAnnotationsTypeComputer {
 					}
 				}
 			}
-			String typeName = xawUtil.getTableTypeName(literal);
-			final LightweightTypeReference result = (typeName != null ? getTypeForName(typeName, state) : getTypeForName(Table.class, state));
-			state.acceptActualType(result);
+			if (xawUtil.isColumnTable(literal)) {
+			    JvmTypeReference colType = columnTypeProvider.getColumnTypeReference(colTypes.iterator().next());
+                final LightweightTypeReference result = getTypeForName(colType.getQualifiedName(), state);
+			    state.acceptActualType(result);
+			} else {
+			    String typeName = xawUtil.getTableTypeName(literal);
+			    final LightweightTypeReference result = (typeName != null ? getTypeForName(typeName, state) : getTypeForName(Table.class, state));
+			    state.acceptActualType(result);
+			}
 		} else if (expression instanceof TableColumn) {
 			super.computeTypes(expression, state);
 		} else if (expression instanceof InlineTableRow) {

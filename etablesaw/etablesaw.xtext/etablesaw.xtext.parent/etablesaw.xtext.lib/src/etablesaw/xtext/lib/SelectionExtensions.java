@@ -1,6 +1,5 @@
 package etablesaw.xtext.lib;
 
-import java.util.Collection;
 import java.util.function.Predicate;
 
 import org.eclipse.xtext.xbase.lib.IntegerRange;
@@ -43,24 +42,29 @@ public class SelectionExtensions {
 		return sel1.add(row);
 	}
 
-	public static Selection operator_remove(final Selection sel1, final int row) {
-		return sel1.removeRange(row, row);
+	public static Selection operator_remove(final Selection sel, final int row) {
+		return sel.removeRange(row, row + 1);
 	}
 
-	public static Selection operator_add(final Selection sel1, final Collection<Integer> rows) {
-		final int[] rowArray = new int[rows.size()];
-		int pos = 0;
-		for (final int row : rows) {
-			rowArray[pos++] = row;
-		}
-		return sel1.add(rowArray);
+	public static Selection operator_add(final Selection sel, final Iterable<Integer> range) {
+	    for (Integer i : range) {
+	        sel.add(i);
+	    }
+	    return sel;
 	}
 
-	public static Selection operator_add(final Selection sel1, final IntegerRange range) {
-		return sel1.addRange(range.getStart(), range.getEnd());
+	public static Selection operator_remove(final Selection sel, final Iterable<Integer> range) {
+	    for (Integer i : range) {
+	        sel.removeRange(i, i + 1);
+	    }
+	    return sel;
+	}
+
+	public static Selection operator_add(final Selection sel, final IntegerRange range) {
+		return sel.addRange(range.getStart(), range.getEnd());
 	}
 
 	public static Selection operator_remove(final Selection sel1, final IntegerRange range) {
-		return sel1.removeRange(range.getStart(), range.getEnd());
+		return sel1.removeRange(range.getStart(), range.getEnd() + 1);
 	}
 }

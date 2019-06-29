@@ -237,12 +237,14 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
     public void createPartControl(final Composite parent) {
         natTablesawViewer = new NatTablesawViewer() {
             @Override
-            protected void createExtraControls(Composite parent) {
+            protected void createExtraPopupControls(Composite parent) {
                 createColumnTypeSelector(parent, colType -> {
-                    org.eclipse.core.commands.operations.AbstractOperation operation = new AddColumnOperation(NatTablesawEditor.this, colType);
-                    operation.addContext(getUndoContext());
+                    AddColumnOperation addColumnOperation = new AddColumnOperation(NatTablesawEditor.this, colType);
+                    addColumnOperation.addContext(getUndoContext());
                     try {
-                        AbstractNatTablesawEditorHandler.execute(NatTablesawEditor.this, operation, null, null);
+                        AbstractNatTablesawEditorHandler.execute(NatTablesawEditor.this, addColumnOperation, null, null);
+                        TablesawDataProvider tablesawDataProvider = NatTablesawEditor.this.natTablesawViewer.getTablesawDataProvider();
+                        tablesawDataProvider.addColumnNames(addColumnOperation.getColumnName());
                     } catch (ExecutionException e) {
                     }
                 });

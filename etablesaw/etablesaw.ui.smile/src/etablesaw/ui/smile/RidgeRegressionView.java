@@ -37,7 +37,7 @@ public class RidgeRegressionView extends DerivedTableView {
 	@Override
 	protected void configControlUpdated() {
 		super.configControlUpdated();
-		fireTableChanged(true);
+		fireTableChanged();
 	}
 
 	@Override
@@ -72,6 +72,6 @@ public class RidgeRegressionView extends DerivedTableView {
 			}
 		}
 		super.updateTableControls();
-		fireTableDataChanged(true);
+		fireTableDataChanged();
 	}
 }

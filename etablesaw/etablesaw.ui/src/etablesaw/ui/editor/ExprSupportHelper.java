@@ -3,6 +3,7 @@ package etablesaw.ui.editor;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -25,27 +26,40 @@ public abstract class ExprSupportHelper {
 
 	protected abstract String getExpr(int columnIndex);
 	protected abstract boolean handleResult(int rowIndex, int columnIndex, Object result);
+
+	private Collection<Integer> tableIndices(Collection<Integer> indices) {
+	    Collection<String> columnNames = dataProvider.getColumnNames(indices);
+        Collection<Integer> tableIndices = new ArrayList<Integer>();
+        final Table table = dataProvider.getTable();
+        for (String columnName : columnNames) {
+            tableIndices.add(table.columnIndex(columnName));
+        }
+        return tableIndices;
+	}
 	
 	protected void applyExprs(Collection<Integer> indices) {
-		final Table table = dataProvider.getTable();
+	    final Table table = dataProvider.getTable();
 		final Map<String,  ColumnType> varTypes = exprSupport.getVarTypes(table);
 		final List<PreparedExpr> preparedExprs = new ArrayList<PreparedExpr>();
-		for (final int columnIndex : indices) {
+		Iterator<Integer> tableIndices = tableIndices(indices).iterator();
+		for (int columnIndex : indices) {
 			final String exprString = getExpr(columnIndex);
 			if (exprString != null) {
-				Column<?> column = table.column(columnIndex);
+				int tableColumnIndex = tableIndices.next();
+                Column<?> column = table.column(tableColumnIndex);
 				final PreparedExpr expr = exprSupport.prepareExpr(exprString, varTypes, column.name());
 				if (expr.getDiagnostics().isEmpty()) {
-					while (preparedExprs.size() <= columnIndex) {
+					while (preparedExprs.size() <= tableColumnIndex) {
 						preparedExprs.add(null);
 					}
-					preparedExprs.set(columnIndex, expr);
+					preparedExprs.set(tableColumnIndex, expr);
 				}
 			}
 		}
 		if (! preparedExprs.isEmpty()) {
 			final int rowCount = table.rowCount();
 			final Map<String, Object> varValues = new HashMap<String, Object>();
+			long startTime = System.nanoTime();
 			outer: for (int rowNum = 0; rowNum < rowCount; rowNum++) {
 				exprSupport.getVarValues(table, rowNum, varValues);
 				for (int colNum = 0; colNum < preparedExprs.size(); colNum++) {
@@ -65,6 +79,9 @@ public abstract class ExprSupportHelper {
 					}
 				}
 			}
+            long endTime = System.nanoTime();
+            long ms = (endTime - startTime) / 1_000L;
+            System.out.println(String.format("Took %s microseconds for %s rows, %s microseconds pr. row", ms, rowCount, ms / rowCount));
 		}
 	}
 }

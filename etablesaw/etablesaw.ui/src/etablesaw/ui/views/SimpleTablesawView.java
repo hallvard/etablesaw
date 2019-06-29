@@ -21,15 +21,14 @@ public abstract class SimpleTablesawView extends AbstractTablesawView {
         this.tableNames = tableNames;
     }
 
-
 	public SimpleTablesawView(String... tableNames) {
 		this(false, tableNames);
 	}
 
-	@Override
-	protected void createConfigControls(final Composite configParent) {
-		createTableRegistrySelector("Source: ", configParent, null);
-	}
+//	@Override
+//	protected void createConfigControls(final Composite configParent) {
+//		createTableRegistrySelector("Source: ", configParent, null);
+//	}
 	
 	private TabFolder tabFolder = null; 
 	protected NatTablesawViewer[] natTablesawViewers;

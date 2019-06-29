@@ -1,10 +1,16 @@
 package etablesaw.xtext.lib;
 
+import java.util.function.Predicate;
+
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.Pure;
 
+import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
+import tech.tablesaw.columns.Column;
+import tech.tablesaw.selection.BitmapBackedSelection;
 import tech.tablesaw.selection.Selection;
+import tech.tablesaw.table.Rows;
 
 public class TableExtensions {
 
@@ -35,19 +41,39 @@ public class TableExtensions {
 
 	// selection/range
 
+	@Pure
+    public static <R extends Row> TypedTable<R> operator_singleAnd(final TypedTable<R> table, final Predicate<R> predicate) {
+        Selection selection = table.eval(predicate);
+        TypedTable<R> newTable = table.emptyCopy(selection.size());
+        Rows.copyRowsToTable(selection, table, newTable);
+        return newTable;
+    }
+
 	public static <T extends Table> T operator_add(final T table1, final Table table2) {
 		table1.append(table2);
 		return table1;
 	}
 
-	@Pure
-	public static Table operator_singleAnd(final Table table, final Selection selection) {
-		return table.where(selection);
+	public static <T extends Table> T operator_add(final T table, final Column<?> column) {
+	    table.addColumns(column);
+	    return table;
 	}
 
 	@Pure
-	public static Table operator_minus(final Table table, final Selection selection) {
-		return table.dropWhere(selection);
+	public static <T extends Table> T operator_singleAnd(final T table, final Selection selection) {
+        T newTable = (T) table.emptyCopy(selection.size());
+        Rows.copyRowsToTable(selection, table, newTable);
+		return newTable;
+	}
+
+	@Pure
+	public static  <T extends Table> T  operator_minus(final T table, final Selection selection) {
+        Selection opposite = new BitmapBackedSelection();
+        opposite.addRange(0, table.rowCount());
+        opposite.andNot(selection);
+        T newTable = (T) table.emptyCopy(opposite.size());
+        Rows.copyRowsToTable(opposite, table, newTable);
+        return newTable;
 	}
 
 	@Pure

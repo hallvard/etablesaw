@@ -30,9 +30,16 @@ public class SummaryTableView extends DerivedTableView {
 	}
 
 	@Override
+	protected void updateConfigControls() {
+	    super.updateConfigControls();
+	    setColumnNames(numericsSelector, getViewTable(), NumberColumn.class);
+	    setColumnNames(categorySelector, getViewTable(), CategoricalColumn.class);
+	}
+	
+	@Override
 	protected void configControlUpdated() {
 		super.configControlUpdated();
-		fireTableChanged(true);
+		fireTableChanged();
 	}
 
 	@Override
@@ -48,6 +55,6 @@ public class SummaryTableView extends DerivedTableView {
 			}
 		}
 		super.updateTableControls();
-		fireTableDataChanged(true);
+		fireTableDataChanged();
 	}
 }

@@ -14,6 +14,16 @@ public class ExampleTable extends TypedTable<ExampleTable.Row> {
         this.nameColumn = nameColumn;
         this.countColumn = countColumn;
     }
+    
+    @Override
+    public TypedTable<Row> emptyCopy() {
+        return new ExampleTable(name(), nameColumn.emptyCopy(), countColumn.emptyCopy());
+    }
+    
+    @Override
+    public TypedTable<Row> emptyCopy(int rowSize) {
+        return new ExampleTable(name(), nameColumn.emptyCopy(rowSize), countColumn.emptyCopy(rowSize));
+    }
 
     public static class Row extends tech.tablesaw.api.Row {
 
@@ -40,7 +50,7 @@ public class ExampleTable extends TypedTable<ExampleTable.Row> {
     }
     
     @Override
-    protected Row row() {
+    public Row row() {
         return new Row(this);
     }
 

@@ -35,7 +35,7 @@ public abstract class ClassificationView extends DerivedTableView {
 	@Override
 	protected void configControlUpdated() {
 		super.configControlUpdated();
-		fireTableChanged(true);
+		fireTableChanged();
 	}
 
     @Override
@@ -48,7 +48,7 @@ public abstract class ClassificationView extends DerivedTableView {
                 updateDerivedTables(table, dependentColumn[0], independentColumns);
             }
             super.updateTableControls();
-            fireTableDataChanged(true);
+            fireTableDataChanged();
         }
     }
 

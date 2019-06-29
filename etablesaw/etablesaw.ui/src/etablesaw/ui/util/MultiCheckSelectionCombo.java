@@ -81,13 +81,13 @@ public class MultiCheckSelectionCombo extends Composite {
 		display.setLayoutData(new GridData(GridData.FILL_BOTH));
 		display.setText(defaultText);
 		selector = new MultiCheckSelectionShell(display, event -> {
-		    if (event.type == SWT.Deactivate) {
+		    if (event.type == SWT.Deactivate || event.keyCode == SWT.CR) {
 		        for (final VerifyListener listener : verifyListeners) {
 		            final VerifyEvent verifyEvent = new VerifyEvent(event);
 		            verifyEvent.doit = false;
 		            listener.verifyText(verifyEvent);
 		        }
-		        displayText(display);
+		        updateText();
 		        for (final ModifyListener listener : modifyListeners) {
 		            listener.modifyText(new ModifyEvent(event));
 		        }
@@ -111,7 +111,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	    selector.setNotifyOnClose(notifyOnClose);
 	}
 
-	private void displayText(final Text display) {
+	private void updateText() {
 		final StringBuilder buffer = new StringBuilder();
 		boolean first = true;
 		for (final MultiCheckSelectionShell.Option option : selector.getOptions()) {
@@ -540,6 +540,7 @@ public class MultiCheckSelectionCombo extends Composite {
 
     public void setItems(final String[] newItems, boolean keepSelections) {
         selector.setItems(newItems, keepSelections);
+        updateText();
     }
 
 	/**
@@ -550,6 +551,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 */
 	public void toggleAll() {
 	    selector.toggleAll();
+	    updateText();
 	}
 
 }

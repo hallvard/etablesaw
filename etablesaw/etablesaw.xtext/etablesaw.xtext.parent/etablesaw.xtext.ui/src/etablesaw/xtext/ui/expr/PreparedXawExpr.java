@@ -21,6 +21,7 @@ import org.eclipse.xtext.xbase.interpreter.impl.XbaseInterpreter;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Provider;
 
 import etablesaw.ui.expr.PreparedExpr;
 import etablesaw.xtext.XawRuntimeModule;
@@ -145,9 +146,27 @@ public class PreparedXawExpr implements PreparedExpr {
 		return diagnostics;
 	}
 
+	private XbaseInterpreter xbaseInterpreter = null;
+	
+	private XbaseInterpreter getXbaseInterpreter() {
+	    if (xbaseInterpreter == null) {
+	        xbaseInterpreter = getInstance(XbaseInterpreter.class);
+	    }
+        return xbaseInterpreter;
+    }
+
+	private Provider<IEvaluationContext> evaluationContextProvider = null;
+	
+	private Provider<IEvaluationContext> getEvaluationContextProvider() {
+	    if (evaluationContextProvider == null) {
+	        evaluationContextProvider = getInjector().getProvider(IEvaluationContext.class);
+	    }
+        return evaluationContextProvider;
+    }
+
 	public Object eval(final Map<String, Object> varValues) {
-	    XbaseInterpreter xbaseInterpreter = getInstance(XbaseInterpreter.class);
-	    IEvaluationContext evaluationContext = getInjector().getProvider(IEvaluationContext.class).get();
+	    XbaseInterpreter xbaseInterpreter = getXbaseInterpreter();
+	    IEvaluationContext evaluationContext = getEvaluationContextProvider().get();
 		for (final Map.Entry<String, Object> variable : varValues.entrySet()) {
 			String varName = variable.getKey();
 			if (varNameMap.containsKey(varName)) {

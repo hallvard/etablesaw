@@ -41,7 +41,12 @@ public class TableProviderRegistry extends TableProviderHelper {
 	}
 
 	public void registerTable(final String key, final Table table) {
-	    registerTableProvider(key, new SimpleTableProvider(table));
+	    TableProvider oldTableProvider = tableProviderMap.get(key);
+	    if (oldTableProvider instanceof SimpleTableProvider) {
+	        ((SimpleTableProvider) oldTableProvider).setTable(table);
+	    } else {
+	        registerTableProvider(key, new SimpleTableProvider(table));
+	    }
 	}
 
 	public void registerTableProvider(final String key, final TableProvider tableProvider) {

@@ -42,7 +42,7 @@ public class LassoRegressionView extends DerivedTableView {
 	@Override
 	protected void configControlUpdated() {
 		super.configControlUpdated();
-		fireTableChanged(true);
+		fireTableChanged();
 	}
 
 	@Override
@@ -74,6 +74,6 @@ public class LassoRegressionView extends DerivedTableView {
 			}
 		}
 		super.updateTableControls();
-		fireTableDataChanged(true);
+		fireTableDataChanged();
 	}
 }

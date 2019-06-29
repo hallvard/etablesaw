@@ -19,7 +19,7 @@ public class ColumnExtensions {
 	}
 
 	public static <T> Column<T> operator_add(final Column<T> col1, final T item) {
-		return col1.append(item);
+		return item == null ? col1.appendMissing() : col1.append(item);
 	}
 
 	public static <T> Column<T> operator_add(final Column<T> col1, final Pair<Column<T>, Integer> colRow) {

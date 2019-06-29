@@ -4,9 +4,11 @@
 package etablesaw.xtext.jvmmodel
 
 import com.google.inject.Inject
+import etablesaw.xtext.lib.TableDef
 import etablesaw.xtext.lib.TypedTable
 import etablesaw.xtext.lib.XawBase
 import etablesaw.xtext.xaw.TableColumn
+import etablesaw.xtext.xaw.TableColumnDef
 import etablesaw.xtext.xaw.TableLiteral
 import etablesaw.xtext.xaw.XMethod
 import etablesaw.xtext.xaw.Xaw
@@ -20,8 +22,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmAnnotationReferenceBuilder
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import tech.tablesaw.api.Row
-import etablesaw.xtext.xaw.TableColumnDef
-import org.eclipse.xtext.xbase.XVariableDeclaration
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -67,10 +67,12 @@ class XawJvmModelInferrer extends AbstractModelInferrer {
             optionallyAddAsMember(clazz, tableClass)
         }
 		xaw.eAllContents.filter(TableLiteral).forEach[
-		    val columnDefs = expressions.filter(TableColumn).map[columnDef]
-		    if (columnDefs.iterator.hasNext) {
-                val tableClass = inferTableClass(xaw, tableTypeName, columnDefs, acceptor)
-                optionallyAddAsMember(clazz, tableClass)
+		    if (! isColumnTable(it)) {
+    		    val columnDefs = expressions.filter(TableColumn).map[columnDef]
+    		    if (columnDefs.iterator.hasNext) {
+                    val tableClass = inferTableClass(xaw, tableTypeName, columnDefs, acceptor)
+                    optionallyAddAsMember(clazz, tableClass)
+    		    }
 		    }
 		]
 	}
@@ -166,14 +168,25 @@ class XawJvmModelInferrer extends AbstractModelInferrer {
                     append('''return new «clazz.simpleName»(name()''')
                     for (expr : tableColumns) {
                         append(''', «expr.name.columnGetterName»().emptyCopy()''')
-                    }                    
+                    }
+                    append(''');''')
+                ]
+            ]
+            members += owner.toMethod("emptyCopy", typeRef(clazz)) [
+                parameters += owner.toParameter("rowSize", typeRef(int))
+                visibility = JvmVisibility.PUBLIC
+                body = [
+                    append('''return new «clazz.simpleName»(name()''')
+                    for (expr : tableColumns) {
+                        append(''', «expr.name.columnGetterName»().emptyCopy(rowSize)''')
+                    }
                     append(''');''')
                 ]
             ]
             members += rowInterface
             members += rowClass
             members += owner.toMethod("row", typeRef(rowClass)) [
-                visibility = JvmVisibility.PROTECTED
+                visibility = JvmVisibility.PUBLIC
                 body = [
                     append('''return new Row(this);''')
                 ]
@@ -254,7 +267,7 @@ class XawJvmModelInferrer extends AbstractModelInferrer {
     
     def inferTableClassAnnotations(Iterable<TableColumnDef> tableColumns, JvmGenericType clazz) {
         val JvmAnnotationReferenceBuilder builder = annotationReferenceBuilderFactory.create(clazz.eResource().getResourceSet())
-        val tableAnnotation = builder.annotationRef(etablesaw.xtext.lib.TableDef)
+        val tableAnnotation = builder.annotationRef(TableDef)
         tableAnnotation.explicitValues += createJvmStringAnnotationValue => [
             operation = tableAnnotation.annotation.declaredOperations.findFirst[simpleName == "columnNames"]
             values += tableColumns.map[name]

@@ -3,18 +3,18 @@ package etablesaw.ui.editor.commands;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import etablesaw.ui.editor.TablesawDataProvider;
+import etablesaw.ui.editor.AbstractTablesawDataProvider;
 
 public class TableCellChangeRecorderHelper {
 
-    private Supplier<TablesawDataProvider> dataProviderSupplier;
+    private Supplier<AbstractTablesawDataProvider> dataProviderSupplier;
     private Consumer<TableCellChangeRecorder> recorderConsumer;
     
-    public void setDataProvider(Supplier<TablesawDataProvider> dataProviderSupplier) {
+    public void setDataProvider(Supplier<AbstractTablesawDataProvider> dataProviderSupplier) {
         this.dataProviderSupplier = dataProviderSupplier;
     }
 
-    public void setDataProvider(final TablesawDataProvider dataProvider) {
+    public void setDataProvider(final AbstractTablesawDataProvider dataProvider) {
         setDataProvider(() -> dataProvider);
     }
     

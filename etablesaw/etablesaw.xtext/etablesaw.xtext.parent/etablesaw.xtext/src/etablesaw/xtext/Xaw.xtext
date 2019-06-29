@@ -62,7 +62,6 @@ TableRowLiteral returns xbase::XExpression:
 	{ TableRowLiteral } '#' '|' expressions += XExpression (',' expressions += XExpression)* '|' '#'
 ;
 
-
 XLocalTimeLiteral returns xbase::XExpression:
 	{XLocalTimeLiteral} '@' hour = INT ':' min = INT (':' second = INT)?
 ;

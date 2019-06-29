@@ -11,7 +11,6 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import com.google.inject.Inject;
 
@@ -84,32 +83,34 @@ public class XawCompiler extends XbaseCompiler {
 		return super.isVariableDeclarationRequired(expr, b, recursive);
 	}
 
-	static Iterable<TableColumn> getTableColumns(final TableLiteral literal) {
-		return IterableExtensions.filter(literal.getExpressions(), TableColumn.class);
-	}
-	static Iterable<InlineTableRow> getTableRows(final TableLiteral literal) {
-		return IterableExtensions.filter(literal.getExpressions(), InlineTableRow.class);
-	}
-
 	final static String defaultTableName = "A table";
 
 	@Inject
 	private XawUtil xawUtil;
 	
 	protected void _toJavaExpression(final TableLiteral literal, final ITreeAppendable b) {
-		final String name = literal.getName();
-		String tableTypeName = xawUtil.getTableTypeName(literal);
-		b.append(tableTypeName != null ? "new " + tableTypeName : "Table.create");
-		b.append("(" + "\"" + (name != null ? name : defaultTableName) + "\"");
-		for (final TableColumn column : getTableColumns(literal)) {
-			b.append(", ");
-			if (b.hasName(column)) {
-				b.append(getVarName(column, b));
-			} else {
-				internalToJavaExpression(column.getExpression(), b);
-			}
-		}
-		b.append(")");
+	    if (xawUtil.isColumnTable(literal)) {
+	        TableColumn column = xawUtil.getTableColumns(literal).iterator().next();
+            if (b.hasName(column)) {
+                b.append(getVarName(column, b));
+            } else {
+                internalToJavaExpression(column.getExpression(), b);
+            }
+	    } else {
+    		final String name = literal.getName();
+    		String tableTypeName = xawUtil.getTableTypeName(literal);
+    		b.append(tableTypeName != null ? "new " + tableTypeName : "Table.create");
+    		b.append("(" + "\"" + (name != null ? name : defaultTableName) + "\"");
+    		for (final TableColumn column : xawUtil.getTableColumns(literal)) {
+    	        b.append(", ");
+    			if (b.hasName(column)) {
+    				b.append(getVarName(column, b));
+    			} else {
+    				internalToJavaExpression(column.getExpression(), b);
+    			}
+    		}
+		    b.append(")");
+	    }
 	}
 
 	@Inject
@@ -117,7 +118,7 @@ public class XawCompiler extends XbaseCompiler {
 
 	protected void _toJavaStatement(final TableLiteral literal, final ITreeAppendable b, final boolean isReferenced) {
 		int colNum = 0;
-		final Iterable<TableColumn> tableColumns = getTableColumns(literal);
+		final Iterable<TableColumn> tableColumns = xawUtil.getTableColumns(literal);
 		for (final TableColumn column : tableColumns) {
 			final String name = column.getColumnDef().getName();
 			final JvmTypeReference columnType = columnTypeProvider.getColumnTypeReference(column.getColumnDef().getType());
@@ -134,7 +135,7 @@ public class XawCompiler extends XbaseCompiler {
 			}
 			colNum++;
 		}
-		for (final InlineTableRow row : getTableRows(literal)) {
+		for (final InlineTableRow row : xawUtil.getTableRows(literal)) {
 			final Iterator<TableColumn> columnIt = tableColumns.iterator();
 			for (final XExpression column : row.getExpressions()) {
 				internalToJavaStatement(column, b, true);

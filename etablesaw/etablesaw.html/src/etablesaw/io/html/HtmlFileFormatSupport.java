@@ -27,6 +27,7 @@ public class HtmlFileFormatSupport implements FileFormatSupport {
 	public Table[] read(final String name, final Supplier<InputStream> input) throws IOException {
         final HtmlReadOptions builder = HtmlReadOptions.builder(input.get())
                 .tableName(name)
+                .header(true)
                 .build();
 		Table table = new HtmlReader().read(builder);
 		return (table != null ? new Table[]{ table } : new Table[0]);

@@ -16,10 +16,10 @@ import tech.tablesaw.io.ReadOptions;
 import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.selection.Selection;
 
-public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
+public class TablesawDataProvider extends AbstractTablesawDataProvider implements IDataProvider, ColumnTypeProvider {
 
     private Table table;
-    private Table filtered = null;
+    private Table rowFilter = null;
     // null = normal, TRUE = column header, FALSE = row header
     private final Boolean mode;
 
@@ -39,87 +39,131 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
 
     public void setTable(final Table table) {
         this.table = table;
-        filtered = null;
+        rowFilter = null;
     }
 
-    public boolean isFiltered() {
-        return filtered != null;
+    public boolean isRowFiltered() {
+        return rowFilter != null;
     }
 
-    public void applyFilter(final Selection selection) {
-        filtered = (selection != null ? table.where(selection) : null);
+    public void applyRowFilter(final Selection selection) {
+        rowFilter = (selection != null ? table.where(selection) : null);
         fireProviderRowsChanged(-1, -1);
     }
 
     protected Table getDataTable() {
-        return filtered != null ? filtered : table;
+        return rowFilter != null ? rowFilter : table;
     }
 
     // column filter
     
-    private List<String> columnNames = null;
+    private List<String> columnFilter = null;
 
     public boolean hasColumn(String columnName) {
         return getColumnNames().contains(columnName);
     }
 
     public Collection<String> getColumnNames() {
-        return columnNames != null ? columnNames : getDataTable().columnNames();
+        return columnFilter != null ? columnFilter : getDataTable().columnNames();
     }
 
-    public void clearColumnNames() {
-        columnNames = null;
+    public Collection<String> getColumnNames(Iterable<Integer> indices) {
+        List<String> allColumnNames = new ArrayList<String>(getColumnNames());
+        List<String> columnNames = new ArrayList<String>();
+        for (int index : indices) {
+            columnNames.add(allColumnNames.get(index));
+        }
+        return columnNames;
+    }
+
+    public boolean isColumnFiltered() {
+        return columnFilter != null;
+    }
+
+    public void clearColumnFilter() {
+        columnFilter = null;
         fireProviderRowsChanged(-1, -1);
     }
     
     public void setColumnNames(Collection<String> columnNames) {
-        this.columnNames = new ArrayList<>(columnNames);
+        this.columnFilter = new ArrayList<>(columnNames);
         fireProviderRowsChanged(-1, -1);
     }
 
     public void setColumnNames(String... columnNames) {
-        this.columnNames = Arrays.asList(columnNames);
+        this.columnFilter = Arrays.asList(columnNames);
         fireProviderRowsChanged(-1, -1);
+    }
+
+    public void addColumnNames(String... columnNames) {
+        List<String> newColumnNames = new ArrayList<>(getColumnNames());
+        for (int i = 0; i < columnNames.length; i++) {
+            if (! newColumnNames.contains(columnNames[i])) {
+                newColumnNames.add(columnNames[i]);
+            }
+        }
+        this.columnFilter = newColumnNames;
+        fireProviderRowsChanged(-1, -1);
+    }
+
+    public void removeColumnNames(String... columnNames) {
+        if (isColumnFiltered()) {
+            List<String> newColumnNames = new ArrayList<>(getColumnNames());
+            newColumnNames.removeAll(Arrays.asList(columnNames));
+            this.columnFilter = newColumnNames;
+            fireProviderRowsChanged(-1, -1);
+        }
     }
     
     public Column<?> getColumn(int columnIndex) {
-        if (columnNames != null) {
-            return getDataTable().column(columnNames.get(columnIndex));
+        if (columnFilter != null) {
+            return getDataTable().column(columnFilter.get(columnIndex));
         }
         return getDataTable().column(columnIndex);
     }
 
+    int getColumnCount(final Boolean mode) {
+        return (table != null ? (Boolean.FALSE.equals(mode) ? 1 : (columnFilter != null ? columnFilter.size() : getDataTable().columnCount())) : 0);
+    }
     @Override
     public int getColumnCount() {
-        return (table != null ? (Boolean.FALSE.equals(mode) ? 1 : (columnNames != null ? columnNames.size() : getDataTable().columnCount())) : 0);
+        return getColumnCount(mode);
     }
 
     //
     
-    @Override
-    public int getRowCount() {
+    int getRowCount(final Boolean mode) {
         return (table != null ? (Boolean.TRUE.equals(mode) ? 1 : getDataTable().rowCount()) : 0);
     }
-
     @Override
-    public ColumnType getColumnType(final int columnIndex) {
+    public int getRowCount() {
+        return getRowCount(mode);
+    }
+
+    ColumnType getColumnType(final Boolean mode, final int columnIndex) {
         return (table != null ? (Boolean.FALSE.equals(mode) ? IntColumnType.instance() : getColumn(columnIndex).type())
                 : null);
     }
-
     @Override
-    public Object getDataValue(final int columnIndex, final int rowIndex) {
+    public ColumnType getColumnType(final int columnIndex) {
+        return getColumnType(mode, columnIndex);
+    }
+
+    Object getDataValue(final Boolean mode, final int columnIndex, final int rowIndex) {
         if (table != null) {
             final Column<?> column = getColumn(columnIndex);
             return (mode == null ? column.get(rowIndex) : (mode ? column.name() : rowIndex + 1));
         }
         return null;
     }
+    @Override
+    public Object getDataValue(final int columnIndex, final int rowIndex) {
+        return getDataValue(mode, columnIndex, rowIndex);
+    }
     
     private ReadOptions options = CsvReadOptions.builderFromString("").build();
 
-    @Override
-    public void setDataValue(final int columnIndex, final int rowIndex, Object newValue) {
+    void setDataValue(final Boolean mode, final int columnIndex, final int rowIndex, Object newValue) {
         if (table != null) {
             final Column<Object> column = (Column<Object>) getColumn(columnIndex);
             if (mode == null && rowIndex >= 0) {
@@ -146,10 +190,20 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
                     }
                 }
                 String oldName = column.name();
-                column.setName(colName);
-                fireCellChanged(-1, columnIndex, oldName, colName);
+                if (! oldName.equals(colName)) {
+                    column.setName(colName);
+                    if (isColumnFiltered()) {
+                        removeColumnNames(oldName);
+                        addColumnNames(colName);
+                    }
+                    fireCellChanged(-1, columnIndex, oldName, colName);
+                }
             }
         }
+    }
+    @Override
+    public void setDataValue(final int columnIndex, final int rowIndex, Object newValue) {
+        setDataValue(mode, columnIndex, rowIndex, newValue);
     }
 
     public boolean isMissingValue(Column<Object> column, Object newValue) {
@@ -182,6 +236,7 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
 
     private Collection<Listener> listeners = null;
 
+    @Override
     public void addTableChangeListener(final Listener listener) {
         if (listeners == null) {
             listeners = new ArrayList<TablesawDataProvider.Listener>();
@@ -189,6 +244,7 @@ public class TablesawDataProvider implements IDataProvider, ColumnTypeProvider {
         listeners.add(listener);
     }
 
+    @Override
     public void removeTableChangeListener(final Listener listener) {
         if (listeners != null) {
             listeners.remove(listener);

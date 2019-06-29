@@ -1,8 +1,5 @@
 package etablesaw.ui.views;
 
-import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.swt.widgets.Composite;
-
 import etablesaw.ui.TableProvider;
 import tech.tablesaw.api.Table;
 
@@ -20,15 +17,10 @@ public abstract class DerivedTableView extends SimpleTablesawView implements Tab
 		return derivedTables[n];
 	}
 
-	@Override
-	protected void createConfigControls(final Composite configParent) {
-		createTableRegistrySelector("Source: ", configParent, this);
-	}
-
-    protected void addActions() {
-        IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
-        toolBarManager.add(createExportAction(this));
-    }
+//	@Override
+//	protected void createConfigControls(final Composite configParent) {
+//		createTableRegistrySelector("Source: ", configParent, this);
+//	}
 
 	//
 
@@ -41,7 +33,7 @@ public abstract class DerivedTableView extends SimpleTablesawView implements Tab
 	}
 
     protected void selectedTableViewerChanged() {
-        fireTableChanged(true);
+        fireTableChanged();
     }
 
 	@Override
@@ -58,25 +50,23 @@ public abstract class DerivedTableView extends SimpleTablesawView implements Tab
 	    }
 	}
 
-	protected void fireTableChanged(final boolean async) {
-		if (async) {
-			getTableViewerParent().getDisplay().asyncExec(() -> fireTableChanged(false));
-		} else {
-		    for (int i = 0; i < natTablesawViewers.length; i++) {
-		        natTablesawViewers[i].getTableProviderHelper().fireTableChanged(DerivedTableView.this);
-		    }
-		}
+	protected void fireTableChanged(boolean onlyTableDataChanged) {
+        if (onlyTableDataChanged) {
+            fireTableDataChanged();
+        } else {
+            fireTableChanged();         
+        }
 	}
 
-	protected void fireTableDataChanged(final boolean async) {
-		if (async) {
-		    if (! getTableViewerParent().isDisposed()) {
-		        getTableViewerParent().getDisplay().asyncExec(() -> fireTableDataChanged(false));
-		    }
-		} else {
-		    for (int i = 0; i < natTablesawViewers.length; i++) {
-		        natTablesawViewers[i].getTableProviderHelper().fireTableDataChanged(DerivedTableView.this);
-		    }
-		}
+	protected void fireTableChanged() {
+	    for (int i = 0; i < natTablesawViewers.length; i++) {
+	        natTablesawViewers[i].getTableProviderHelper().fireTableChanged(DerivedTableView.this);
+	    }
+	}
+
+	protected void fireTableDataChanged() {
+	    for (int i = 0; i < natTablesawViewers.length; i++) {
+	        natTablesawViewers[i].getTableProviderHelper().fireTableDataChanged(DerivedTableView.this);
+	    }
 	}
 }

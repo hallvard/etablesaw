@@ -43,33 +43,27 @@ public class ResourceChangeHelper implements IResourceChangeListener, IResourceD
         try {
             delta.accept(this);
             if (removed) {
-                editorPart.getSite().getShell().getDisplay().asyncExec(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (editorPart.isDirty()) {
-                            editorPart.getEditorSite().getPage().closeEditor(editorPart, false);
-                        }
+                editorPart.getSite().getShell().getDisplay().asyncExec(() -> {
+                    if (editorPart.isDirty()) {
+                        editorPart.getEditorSite().getPage().closeEditor(editorPart, false);
                     }
                 });
             } else if (changed != null) {
                 if (isEditorInput(changed)) {
-                    editorPart.getSite().getShell().getDisplay().asyncExec(new Runnable() {
-                        @Override
-                        public void run() {
-                            // need this to avoid opening the dialog twice, don't know why
-                            if (changed != null) {
-                                IPath file = changed;
-                                changed = null;
-                                boolean reload = true;
-                                if (editorPart.isDirty()) {
-                                    reload = (Dialog.OK != MessageDialog.open(MessageDialog.WARNING, editorPart.getSite().getShell(), "Reload data?", file.lastSegment() + " has changed outside editor, would you like to reload it?", SWT.SHEET,
-                                            "Keep editing", "Reload data"));
-                                }
-                                if (reload) {
-                                    changeHandler.accept(file);
-                                }
+                    editorPart.getSite().getShell().getDisplay().asyncExec(() -> {
+                        // need this to avoid opening the dialog twice, don't know why
+                        if (changed != null) {
+                            IPath file = changed;
+                            changed = null;
+                            boolean reload = true;
+                            if (editorPart.isDirty()) {
+                                reload = (Dialog.OK != MessageDialog.open(MessageDialog.WARNING, editorPart.getSite().getShell(), "Reload data?", file.lastSegment() + " has changed outside editor, would you like to reload it?", SWT.SHEET,
+                                        "Keep editing", "Reload data"));
                             }
-                        };
+                            if (reload) {
+                                changeHandler.accept(file);
+                            }
+                        }
                     });
                 } else {
                     changeHandler.accept(changed);

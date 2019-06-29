@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 
+import etablesaw.ui.SimpleTableProvider;
 import tech.tablesaw.aggregate.CrossTab;
 import tech.tablesaw.api.CategoricalColumn;
 import tech.tablesaw.api.DoubleColumn;
@@ -69,12 +70,13 @@ public class CrossTableView extends DerivedTableView {
 	@Override
 	protected void configControlUpdated() {
 		super.configControlUpdated();
-		fireTableChanged(true);
+		fireTableChanged();
 	}
 
 	@Override
 	protected void updateTableControls() {
 		final Table table = getViewTable();
+		Table oldTable = derivedTables[0];
 		if (table != null) {
 			final String[] rowCategories = getSelectedStrings(rowCategorySelector);
 			final String[] columnCategories = getSelectedStrings(columnCategorySelector);
@@ -101,7 +103,7 @@ public class CrossTableView extends DerivedTableView {
 			}
 		}
 		super.updateTableControls();
-		fireTableDataChanged(true);
+	    fireTableChanged(SimpleTableProvider.onlyTableDataChanged(oldTable, derivedTables[0]));
 	}
 
     protected boolean isCountMode() {

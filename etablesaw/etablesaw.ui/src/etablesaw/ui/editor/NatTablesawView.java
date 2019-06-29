@@ -1,6 +1,5 @@
 package etablesaw.ui.editor;
 
-import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.swt.widgets.Composite;
 
 import etablesaw.ui.TableProvider;
@@ -13,10 +12,10 @@ public class NatTablesawView extends AbstractTablesawView implements TableProvid
         super(false);
     }
 
-    @Override
-    protected void createConfigControls(final Composite configParent) {
-        createTableRegistrySelector("Source: ", configParent, this);
-    }
+//    @Override
+//    protected void createConfigControls(final Composite configParent) {
+//        createTableRegistrySelector("Source: ", configParent, this);
+//    }
 
     private NatTablesawViewer natTablesawViewer;
 
@@ -25,11 +24,6 @@ public class NatTablesawView extends AbstractTablesawView implements TableProvid
         super.createTableDataControls(parent);
         natTablesawViewer = new NatTablesawViewer();
         natTablesawViewer.createPartControl(parent);
-    }
-
-    protected void addActions() {
-        IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
-        toolBarManager.add(createExportAction(this));
     }
 
     protected Table getTableViewerInput() {

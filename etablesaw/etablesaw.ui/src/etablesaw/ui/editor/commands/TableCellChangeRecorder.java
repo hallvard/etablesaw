@@ -8,22 +8,23 @@ import java.util.function.Supplier;
 
 import org.eclipse.core.commands.ExecutionException;
 
+import etablesaw.ui.editor.AbstractTablesawDataProvider;
 import etablesaw.ui.editor.TablesawDataProvider;
 
 public class TableCellChangeRecorder implements TablesawDataProvider.Listener {
 
-    private TablesawDataProvider dataProvider = null;
+    private AbstractTablesawDataProvider dataProvider = null;
     private Collection<CellChange> allRecordings = null;
     private Collection<CellChange> recordings = null;
     
     public TableCellChangeRecorder() {
     }
 
-    public TableCellChangeRecorder(TablesawDataProvider dataProvider) {
+    public TableCellChangeRecorder(AbstractTablesawDataProvider dataProvider) {
         startRecording(dataProvider);
     }
     
-    public void startRecording(TablesawDataProvider dataProvider) {
+    public void startRecording(AbstractTablesawDataProvider dataProvider) {
         dataProvider.addTableChangeListener(this);
         this.dataProvider = dataProvider;
         recordings = new ArrayList<CellChange>();

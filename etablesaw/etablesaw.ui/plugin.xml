@@ -106,6 +106,20 @@
             >
       </view>
    </extension>
+   
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.views.WebTableView"
+            id="etablesaw.ui.views.WebTableView"
+            allowMultiple="true"
+            name="Web Page"
+            icon="icons/xaw.png"
+            >
+      </view>
+   </extension>
+
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer

@@ -22,7 +22,7 @@ public class ExprSupportFilterStrategy<T> extends ExprSupportHelper implements I
 	    selection = null;
 	    this.filterIndexToObjectMap = filterIndexToObjectMap;
 	    applyExprs(filterIndexToObjectMap.keySet());
-		dataProvider.applyFilter(selection);
+		dataProvider.applyRowFilter(selection);
 		selection = null;
 		this.filterIndexToObjectMap = null;
 	}

@@ -63,6 +63,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
 import etablesaw.ui.Activator;
+import etablesaw.ui.SimpleTableProvider;
 import etablesaw.ui.TableProvider;
 import etablesaw.ui.TableProviderHelper;
 import etablesaw.ui.editor.commands.TableCellChangeRecorder;
@@ -78,10 +79,13 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
 
     public void setInput(final Table input) {
         this.input = input;
+        boolean onlyTableDataChanged = false;
         if (natTable != null) {
+            Table oldTable = bodyDataProvider.getTable();
+            if (oldTable != null && (input == oldTable || SimpleTableProvider.onlyTableDataChanged(oldTable, input))) {
+                onlyTableDataChanged = true;
+            }
             bodyDataProvider.setTable(input);
-            columnHeaderDataProvider.setTable(input);
-            rowHeaderDataProvider.setTable(input);
             final DefaultTablesawColumnLabelAccumulator columnLabelAccumulator = new DefaultTablesawColumnLabelAccumulator(
                     bodyDataLayer, input);
             bodyDataLayer.setConfigLabelAccumulator(columnLabelAccumulator);
@@ -90,11 +94,12 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         if (input != null) {
             clearFilter();
         }
-        refresh(true);
+        refresh(! onlyTableDataChanged);
     }
 
     private NatTable natTable;
-    private TablesawDataProvider bodyDataProvider, columnHeaderDataProvider, rowHeaderDataProvider;
+    private TablesawDataProvider bodyDataProvider;
+    private DelegatingTablesawDataProvider columnHeaderDataProvider, rowHeaderDataProvider;
     private DataLayer bodyDataLayer, columnDataLayer;
     private ColumnHideShowLayer columnHideShowLayer;
     private SelectionLayer selectionLayer;
@@ -149,7 +154,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         
         final ViewportLayer viewportLayer = new ViewportLayer(selectionLayer);
 
-        columnHeaderDataProvider = new TablesawDataProvider(input, true);
+        columnHeaderDataProvider = new DelegatingTablesawDataProvider(bodyDataProvider, true);
         columnDataLayer = new TableCellChangeRecorderDataLayer(columnHeaderDataProvider, defaultColumnWidth, defaultRowHeight);
         AbstractLayer columnHeaderLayer = new ColumnHeaderLayer(columnDataLayer, viewportLayer, selectionLayer);
         // allow editing column header with double-click
@@ -178,7 +183,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
                 }
             });
         }
-        rowHeaderDataProvider = new TablesawDataProvider(input, false);
+        rowHeaderDataProvider = new DelegatingTablesawDataProvider(bodyDataProvider, false);
         final ILayer rowHeaderLayer = new RowHeaderLayer(
                 new DataLayer(rowHeaderDataProvider, defaultColumnWidth, defaultRowHeight), viewportLayer,
                 selectionLayer);
@@ -214,7 +219,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         public void registerCommandHandler(ILayerCommandHandler<?> commandHandler) {
             if (commandHandler instanceof UpdateDataCommandHandler) {
                 TableCellChangeRecorderCommandHandler<UpdateDataCommand> recordingCommandHandler = new TableCellChangeRecorderCommandHandler<UpdateDataCommand>(UpdateDataCommand.class, (UpdateDataCommandHandler) commandHandler);
-                recordingCommandHandler.setDataProvider(() -> (TablesawDataProvider) getDataProvider());
+                recordingCommandHandler.setDataProvider(() -> (AbstractTablesawDataProvider) getDataProvider());
                 recordingCommandHandler.setRecorderConsumer(onTableCellChanges);
                 commandHandler = recordingCommandHandler;
             }
@@ -279,7 +284,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
 
         MultiCheckSelectionShell columnSelector = new MultiCheckSelectionShell(getControl()) {
             protected void createExtraControls(Composite parent) {
-                NatTablesawViewer.this.createExtraControls(parent);
+                NatTablesawViewer.this.createExtraPopupControls(parent);
             }
         };
         columnSelector.setTitle("Show/hide columns");
@@ -288,7 +293,8 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 bodyDataProvider.setColumnNames(columnSelector.getSelections());
-                columnHeaderDataProvider.setColumnNames(columnSelector.getSelections());
+                // clear, since otherwise the filters may end up in the wrong column, since they're index-based
+                clearFilter();
                 refresh(true);
             }
         });
@@ -328,7 +334,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         natTable.configure();
     }
 
-    protected void createExtraControls(Composite parent) {
+    protected void createExtraPopupControls(Composite parent) {
     }
     
     public void refresh(Boolean fireTableChanged) {
@@ -409,14 +415,14 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
     public void setSelection(final ISelection selection) {
         Collection<Rectangle> rectangles = new ArrayList<>();
         if (selection instanceof IStructuredSelection) {
-            Iterator<Object> it = ((IStructuredSelection) selection).iterator();
+            Iterator<?> it = ((IStructuredSelection) selection).iterator();
             while (it.hasNext()) {
                 Object next = it.next();
                 if (next instanceof Rectangle) {
                     rectangles.add((Rectangle) next);
                 }
             }
-        }        
+        }
         selectionLayer.getSelectionModel().clearSelection();
         for (Rectangle rectangle : rectangles) {
             selectionLayer.getSelectionModel().addSelection(rectangle);

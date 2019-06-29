@@ -5,7 +5,7 @@ Bundle-SymbolicName: etablesaw.excel;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
- libs/tablesaw-excel-0.32.4-SNAPSHOT-shaded.jar
+ libs/tablesaw-excel-0.33.3-SNAPSHOT-shaded.jar
 Export-Package: etablesaw.io.xlsx,
  tech.tablesaw.io.xlsx
 Import-Package: etablesaw.io,
