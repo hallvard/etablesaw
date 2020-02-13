@@ -64,14 +64,14 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
             setPartName(file.getName());
             try {
                 load(file, null);
-                resourceChangeHelper = new ResourceChangeHelper(this, this::handleResourceChange);
+                resourceChangeHelper = new EditorResourceChangeHelper(this, this::handleResourceChange);
             } catch (Exception e) {
                 throw new PartInitException(e.getMessage(), e);
             }
         }
     }
 
-    private ResourceChangeHelper resourceChangeHelper;
+    private EditorResourceChangeHelper resourceChangeHelper;
 
     @Override
     public void dispose() {
@@ -236,6 +236,10 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
     @Override
     public void createPartControl(final Composite parent) {
         natTablesawViewer = new NatTablesawViewer() {
+            @Override
+            protected TableProvider getTableProvider() {
+                return NatTablesawEditor.this;
+            }
             @Override
             protected void createExtraPopupControls(Composite parent) {
                 createColumnTypeSelector(parent, colType -> {

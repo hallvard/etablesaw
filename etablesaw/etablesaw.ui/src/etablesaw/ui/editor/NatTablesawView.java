@@ -22,7 +22,12 @@ public class NatTablesawView extends AbstractTablesawView implements TableProvid
     @Override
     protected void createTableDataControls(final Composite parent) {
         super.createTableDataControls(parent);
-        natTablesawViewer = new NatTablesawViewer();
+        natTablesawViewer = new NatTablesawViewer() {
+            @Override
+            protected TableProvider getTableProvider() {
+                return NatTablesawView.this;
+            }
+        };
         natTablesawViewer.createPartControl(parent);
     }
 

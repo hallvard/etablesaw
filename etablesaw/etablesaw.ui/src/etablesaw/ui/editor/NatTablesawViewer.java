@@ -342,11 +342,15 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
             natTable.refresh();
             if (fireTableChanged == null);
             else if (fireTableChanged) {
-                getTableProviderHelper().fireTableChanged(NatTablesawViewer.this);
+                getTableProviderHelper().fireTableChanged(getTableProvider());
             } else {
-                getTableProviderHelper().fireTableDataChanged(NatTablesawViewer.this);
+                getTableProviderHelper().fireTableDataChanged(getTableProvider());
             }
         }
+    }
+
+    protected TableProvider getTableProvider() {
+        return this;
     }
 
     //
