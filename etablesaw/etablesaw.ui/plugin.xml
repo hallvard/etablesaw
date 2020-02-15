@@ -9,7 +9,7 @@
             class="etablesaw.ui.editor.NatTablesawEditor"
             contributorClass="etablesaw.ui.editor.TablesawEditorActionBarContributor"
             default="true"
-            extensions="cvs"
+            extensions="csv,xlsx"
             id="etablesaw.ui.editor.table"
             name="Tablesaw editor"
             icon="icons/xaw.png"
@@ -27,6 +27,18 @@
 
       <view
             category="etablesaw.ui.category"
+            class="etablesaw.ui.views.TableProviderRegistryView"
+            id="etablesaw.ui.views.TableProviderRegistryView"
+            name="Table Registry"
+            icon="icons/xaw.png"
+            >
+      </view>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.views">
+       <view
+            category="etablesaw.ui.category"
             class="etablesaw.ui.editor.NatTablesawView"
             id="etablesaw.ui.NatTablesawView"
             allowMultiple="true"
@@ -35,7 +47,7 @@
             >
       </view>
    </extension>
-
+         
    <extension
          point="org.eclipse.ui.views">
       <view
@@ -60,6 +72,15 @@
 
    <extension
          point="org.eclipse.ui.views">
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.HtmlTemplateTableView"
+            id="etablesaw.ui.HtmlTemplateTableView"
+            allowMultiple="true"
+            name="Web Template"
+            icon="icons/xaw.png"
+            >
+      </view>
       <view
             category="etablesaw.ui.category"
             class="etablesaw.ui.plots.BarPlotView"
