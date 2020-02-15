@@ -119,16 +119,19 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         this.editable = editable;
     }
 
-    private boolean includeFilterRow = true;
-
-    public void setIncludeFilterRow(final boolean includeFilterRow) {
-        this.includeFilterRow = includeFilterRow;
-    }
-
     private FilterRowHeaderComposite<Object> filterRowHeaderComposite;
     private IFilterStrategy<Object> filterStrategy;
 
-    private ExprSupport exprSupport = Activator.getInstance().getExprSupport("xaw");
+    private ExprSupport exprSupport = Activator.getInstance().getExprSupport("*");
+
+    private boolean includeFilterRow = true;
+    
+    public void setIncludeFilterRow(final boolean includeFilterRow) {
+        this.includeFilterRow = includeFilterRow;
+    }
+    public boolean shouldIncludeFilterRow() {
+        return includeFilterRow && exprSupport != null;
+    }
 
     public void createPartControl(final Composite parent) {
         bodyDataProvider = new TablesawDataProvider(input);
@@ -166,7 +169,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
             }
         });
 
-        if (includeFilterRow) {
+        if (shouldIncludeFilterRow()) {
             // adds a UpdateDataCommandHandler (for the filter string)
             final FilterRowHeaderComposite<Object> filterRowHeaderLayer = filterRowHeaderComposite = new FilterRowHeaderComposite<Object>(
                     filterStrategy = new ExprSupportFilterStrategy<Object>(bodyDataProvider, exprSupport),
@@ -277,7 +280,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         displayConverter = new DefaultTablesawDisplayConverter(bodyDataProvider);
         configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
                 displayConverter, DisplayMode.NORMAL, GridRegion.BODY);
-        if (includeFilterRow) {
+        if (shouldIncludeFilterRow()) {
             configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
                     new DefaultDisplayConverter(), DisplayMode.NORMAL, "FILTER_ROW");
         }
@@ -321,7 +324,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
             }
         });
 
-        if (editable && includeFilterRow) {
+        if (editable && shouldIncludeFilterRow()) {
             UpdateDataExprCommandHandler commandHandler = new UpdateDataExprCommandHandler(exprSupport, bodyDataProvider, tableCellChangeRecorder -> onTableCellChanges.accept(tableCellChangeRecorder)) {
                 @Override
                 protected int getColumnNum(ILayer targetLayer, int columnPos) {
