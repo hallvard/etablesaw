@@ -221,7 +221,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 
     private void registerTableProvicer(AbstractTablesawView tablesawView) {
         if (tablesawView instanceof TableProvider || tablesawView == null) {
-			Activator.getInstance().getTableProviderRegistry().registerTableProvider(getPartName(), (TableProvider) this);
+			Activator.getInstance().getTableProviderRegistry().registerTableProvider(getPartName(), (TableProvider) tablesawView);
 		}
     }
 

@@ -10,7 +10,11 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -26,8 +30,16 @@ public class HtmlTemplateTableView extends AbstractTemplateBrowserTableView {
         super.createConfigControls(configParent);
         Label templatePathLabel = new Label(configParent, SWT.NONE);
         templatePathLabel.setText("Template: ");
-        templatePathLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
-        templatePathText = new Text(configParent, SWT.BORDER);
+
+        Composite templatePathComposite = new Composite(configParent, SWT.NONE);
+        templatePathComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        GridLayout templatePathCompositeLayout = new GridLayout(2, false);
+        templatePathCompositeLayout.marginHeight = 0;
+        templatePathCompositeLayout.marginWidth = 0;
+        templatePathCompositeLayout.horizontalSpacing = 0;
+        templatePathComposite.setLayout(templatePathCompositeLayout);
+
+        templatePathText = new Text(templatePathComposite, SWT.BORDER);
         templatePathText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -42,10 +54,17 @@ public class HtmlTemplateTableView extends AbstractTemplateBrowserTableView {
             }
         });
         templatePathText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        Button templatePathButton = new Button(templatePathComposite, SWT.NONE);
+        templatePathButton.setText("...");
+        templatePathButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                selectTemplate(true);                        
+            }
+        });
 
         Label templatePropertiesLabel = new Label(configParent, SWT.NONE);
         templatePropertiesLabel.setText("Properties: ");
-        templatePropertiesLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
         templatePropertiesText = new Text(configParent, SWT.BORDER);
         templatePropertiesText.addKeyListener(new KeyAdapter() {
             @Override
