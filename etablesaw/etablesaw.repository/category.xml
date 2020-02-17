@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/etablesaw.feature_0.1.0.qualifier.jar" id="etablesaw.feature" version="0.1.0.qualifier">
-      <category name="etablesaw.feature"/>
-   </feature>
-   <category-def name="etablesaw.feature" label="Tablesaw Eclipse integration"/>
-</site>
