@@ -254,7 +254,6 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) value=STRING
 	 *     (rule start) (ambiguity) {XAssignment.assignable=}
 	 *     (rule start) (ambiguity) {XBinaryOperation.leftOperand=}
-	 *     (rule start) (ambiguity) {XCastedColumnExpression.target=}
 	 *     (rule start) (ambiguity) {XCastedExpression.target=}
 	 *     (rule start) (ambiguity) {XInstanceOfExpression.expression=}
 	 *     (rule start) (ambiguity) {XMemberFeatureCall.memberCallTarget=}
@@ -320,7 +319,6 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) value=STRING
 	 *     (rule start) (ambiguity) {XAssignment.assignable=}
 	 *     (rule start) (ambiguity) {XBinaryOperation.leftOperand=}
-	 *     (rule start) (ambiguity) {XCastedColumnExpression.target=}
 	 *     (rule start) (ambiguity) {XCastedExpression.target=}
 	 *     (rule start) (ambiguity) {XInstanceOfExpression.expression=}
 	 *     (rule start) (ambiguity) {XMemberFeatureCall.memberCallTarget=}

@@ -52,13 +52,6 @@
          unpack="false"/>
 
    <plugin
-         id="etablesaw.ui.aql"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="etablesaw.xtext"
          download-size="0"
          install-size="0"

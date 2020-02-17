@@ -52,10 +52,10 @@ public abstract class AbstractTablesawDisplayConverter extends DefaultDisplayCon
 			return doubleDisplayValue(doubleValue, DoubleColumnType.isMissingValue(doubleValue));
 		} else if (type instanceof IntColumnType && value instanceof Number) {
 		    final int intValue = ((Number) value).intValue();
-		    return intDisplayValue(intValue, IntColumnType.isMissingValue(intValue));
+		    return intDisplayValue(intValue, IntColumnType.valueIsMissing(intValue));
 		} else if (type instanceof ShortColumnType && value instanceof Number) {
 			final short shortValue = ((Number) value).shortValue();
-			return shortDisplayValue(shortValue, ShortColumnType.isMissingValue(shortValue));
+			return shortDisplayValue(shortValue, ShortColumnType.valueIsMissing(shortValue));
 		} else if (value == null) {
 			return missingDisplayValue();
 		}

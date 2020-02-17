@@ -76,8 +76,6 @@ public class XawFactoryImpl extends EFactoryImpl implements XawFactory
       case XawPackage.XLOCAL_TIME_LITERAL: return createXLocalTimeLiteral();
       case XawPackage.XLOCAL_DATE_LITERAL: return createXLocalDateLiteral();
       case XawPackage.XURL_LITERAL: return createXURLLiteral();
-      case XawPackage.XUNARY_OPERATION: return createXUnaryOperation();
-      case XawPackage.XCASTED_COLUMN_EXPRESSION: return createXCastedColumnExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -202,28 +200,6 @@ public class XawFactoryImpl extends EFactoryImpl implements XawFactory
   {
     XURLLiteralImpl xurlLiteral = new XURLLiteralImpl();
     return xurlLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public XUnaryOperation createXUnaryOperation()
-  {
-    XUnaryOperationImpl xUnaryOperation = new XUnaryOperationImpl();
-    return xUnaryOperation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public XCastedColumnExpression createXCastedColumnExpression()
-  {
-    XCastedColumnExpressionImpl xCastedColumnExpression = new XCastedColumnExpressionImpl();
-    return xCastedColumnExpression;
   }
 
   /**

@@ -209,7 +209,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<!-- 
 	<repositories>
 		<repository>
 			<id>codehaus-snapshots</id>
@@ -236,7 +235,6 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	 -->
 
 	<dependencies>
 	</dependencies>

@@ -11,6 +11,7 @@ import tech.tablesaw.aggregate.AggregateFunction;
 import tech.tablesaw.aggregate.Summarizer;
 import tech.tablesaw.api.CategoricalColumn;
 import tech.tablesaw.api.NumberColumn;
+import tech.tablesaw.api.NumericColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.components.Layout;
@@ -59,7 +60,7 @@ public class BarPlotView extends AbstractPlotView {
 			for (int i = 0; i < numerics.length; i++) {
 				final String name = String.valueOf(numerics[i]);
 				final CategoricalColumn<?> categoricalColumn = table.categoricalColumn(categories[0]);
-				final NumberColumn<?> numberColumn = table.numberColumn(name);
+				NumericColumn<?> numberColumn = table.numberColumn(name);
 				final BarTrace trace = BarTrace.builder(
 						categoricalColumn,
 						numberColumn)

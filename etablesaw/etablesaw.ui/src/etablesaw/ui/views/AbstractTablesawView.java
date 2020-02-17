@@ -62,7 +62,6 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.SaveAsDialog;
-import org.eclipse.ui.internal.UIPlugin;
 import org.eclipse.ui.part.ViewPart;
 
 import etablesaw.ui.Activator;
@@ -70,6 +69,7 @@ import etablesaw.ui.TableProvider;
 import etablesaw.ui.TableProviderRegistry;
 import etablesaw.ui.editor.NatTablesawEditor;
 import etablesaw.ui.util.MultiCheckSelectionCombo;
+import etablesaw.ui.util.Util;
 import tech.tablesaw.aggregate.AggregateFunction;
 import tech.tablesaw.aggregate.AggregateFunctions;
 import tech.tablesaw.api.ColumnType;
@@ -101,6 +101,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 
 	@Override
 	public void dispose() {
+	    registerTableProvicer(null);
 	    viewTable = null;
 	    setTableProvider(null);
 		setAutoSelectTableDataProvider(false);
@@ -183,10 +184,9 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		setDistinctPartName();
 		createConfigControls(configParent);
 		createTableDataControls(parent);
+		configParent.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		updateView();
-		if (this instanceof TableProvider) {
-			Activator.getInstance().getTableProviderRegistry().registerTableProvider(getPartName(), (TableProvider) this);
-		}
+		registerTableProvicer(this);
 		try {
 			updateViewAction = new Action("Refresh", ImageDescriptor.createFromURL(new URL("platform:/plugin/org.eclipse.search/icons/full/elcl16/refresh.png"))) {
 				@Override
@@ -218,6 +218,12 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		//		});
 		addActions();
 	}
+
+    private void registerTableProvicer(AbstractTablesawView tablesawView) {
+        if (tablesawView instanceof TableProvider || tablesawView == null) {
+			Activator.getInstance().getTableProviderRegistry().registerTableProvider(getPartName(), (TableProvider) this);
+		}
+    }
 
 	protected void addActions() {
         addTableRegistrySelectorMenuContribution();
@@ -759,7 +765,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	}
 	
     protected Action createExportAction(final TableProvider tableProvider) {
-        return new Action("Export", ImageDescriptor.createFromFile(UIPlugin.class, "/icons/full/etool16/export_wiz.png")) {
+        return new Action("Export", Util.imageFromPlugin("org.eclipse.ui.ide", "/icons/full/etool16/export_wiz.png")) {
             @Override
             public void run() {
                 exportTable(tableProvider);

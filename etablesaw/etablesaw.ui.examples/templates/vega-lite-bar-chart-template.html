@@ -1,0 +1,20 @@
+{% extends "abstract-vega-lite-template.html" %}
+
+{% block vegaLite %}
+{
+    $schema: "https://vega.github.io/schema/vega-lite/v2.0.json",
+    data: {
+        values: [
+            {% for row in table %}
+            { category: "{{ row.category }}", value: {{ row.value }} }{% if loop.last %}{% else %},{% endif %}
+
+            {% endfor %}
+        ]
+    },
+    mark: 'bar',
+    encoding: {
+      x: { field: 'category', type: 'ordinal' },
+      y: { field: 'value', type: 'quantitative' }
+    }
+}
+{% endblock %}

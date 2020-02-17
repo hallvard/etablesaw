@@ -123,24 +123,6 @@ public interface XawFactory extends EFactory
   XURLLiteral createXURLLiteral();
 
   /**
-   * Returns a new object of class '<em>XUnary Operation</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>XUnary Operation</em>'.
-   * @generated
-   */
-  XUnaryOperation createXUnaryOperation();
-
-  /**
-   * Returns a new object of class '<em>XCasted Column Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>XCasted Column Expression</em>'.
-   * @generated
-   */
-  XCastedColumnExpression createXCastedColumnExpression();
-
-  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

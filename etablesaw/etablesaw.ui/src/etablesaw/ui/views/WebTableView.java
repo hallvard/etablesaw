@@ -6,7 +6,6 @@ import java.net.URL;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.LocationEvent;
 import org.eclipse.swt.browser.LocationListener;
@@ -21,7 +20,6 @@ import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.internal.UIPlugin;
 import org.eclipse.ui.internal.browser.BrowserViewer;
 import org.eclipse.ui.part.ViewPart;
 
@@ -29,6 +27,7 @@ import etablesaw.io.FileFormatSupport;
 import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
 import etablesaw.ui.editor.NatTablesawViewer;
+import etablesaw.ui.util.Util;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.DataFrameReader;
 
@@ -106,7 +105,7 @@ public class WebTableView extends ViewPart implements LocationListener, Progress
         IActionBars actionBars = getViewSite().getActionBars();
         IToolBarManager toolBarManager = actionBars.getToolBarManager();
         Action refreshAction = new Action("Refresh",
-                ImageDescriptor.createFromFile(UIPlugin.class, "/icons/full/elcl16/refresh_nav.png")) {
+                Util.imageFromPlugin("org.eclipse.ui.ide", "/icons/full/elcl16/refresh_nav.png")) {
             @Override
             public void run() {
                 updateTable();

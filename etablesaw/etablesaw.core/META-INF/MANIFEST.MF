@@ -5,10 +5,11 @@ Bundle-SymbolicName: etablesaw.core;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
- libs/tablesaw-core-0.33.3-SNAPSHOT-shaded.jar
+ libs/tablesaw-core-0.37.4-SNAPSHOT-shaded.jar
 Export-Package: com.google.common.cache,
  etablesaw.io,
  etablesaw.io.csv,
+ etablesaw.template,
  it.unimi.dsi.fastutil.doubles,
  tech.tablesaw.aggregate,
  tech.tablesaw.api,

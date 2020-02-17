@@ -76,6 +76,7 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
     @Override
     public void dispose() {
         resourceChangeHelper.dispose();
+        registerTableProvider(null);
         super.dispose();
     }
 
@@ -289,14 +290,18 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
                 setDirty();
             }
         });
-        if (getEditorInput() instanceof IFileEditorInput) {
-            final IFile file = ((IFileEditorInput) getEditorInput()).getFile();
-            Activator.getInstance().getTableProviderRegistry().registerTableProvider(file.getName(), this);
-        }
+        registerTableProvider(this);
         natTablesawViewer.addSelectionChangedListener(selectionChangeListener);
         // support undo and redo
         new UndoRedoActionGroup(getEditorSite(), getUndoContext(), true)
                 .fillActionBars(getEditorSite().getActionBars());
+    }
+
+    private void registerTableProvider(TableProvider tableProvider) {
+        if (getEditorInput() instanceof IFileEditorInput) {
+            final IFile file = ((IFileEditorInput) getEditorInput()).getFile();
+            Activator.getInstance().getTableProviderRegistry().registerTableProvider(file.getName(), tableProvider);
+        }
     }
 
     @Override

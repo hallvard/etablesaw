@@ -15,7 +15,6 @@ import tech.tablesaw.aggregate.CrossTab;
 import tech.tablesaw.api.CategoricalColumn;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.IntColumn;
-import tech.tablesaw.api.NumberColumn;
 import tech.tablesaw.api.NumericColumn;
 import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
@@ -126,7 +125,7 @@ public class CrossTableView extends DerivedTableView {
         }
         // fill numeric columns
         for (int row = 0; row < table.rowCount(); row++) {
-            NumberColumn<?> numberColumn = table.numberColumn(row + 1);
+            NumericColumn<?> numberColumn = table.numberColumn(row + 1);
             for (NumericColumn<?> col : table.numberColumns()) {
                 if (isintColumns) {
                     ((IntColumn) numberColumn).append(((IntColumn) col).getInt(row));

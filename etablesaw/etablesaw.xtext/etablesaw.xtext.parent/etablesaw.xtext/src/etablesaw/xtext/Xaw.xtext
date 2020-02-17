@@ -84,14 +84,14 @@ XURLLiteral returns xbase::XExpression hidden():
 
 // extend with extra casting operator
 
-@Override
-XUnaryOperation returns xbase::XExpression:
-	{XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XUnaryOperation
-	| XCastedColumnExpression;
-
-XCastedColumnExpression returns xbase::XExpression:
-	XCastedExpression (=>({XCastedColumnExpression.target=current} 'of') type=JvmTypeReference)*
-;
+//@Override
+//XUnaryOperation returns xbase::XExpression:
+//	{XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XUnaryOperation
+//	| XCastedColumnExpression;
+//
+//XCastedColumnExpression returns xbase::XExpression:
+//	XCastedExpression (=>({XCastedColumnExpression.target=current} 'of') type=JvmTypeReference)*
+//;
 
 // extend with | and & operator
 
@@ -102,22 +102,22 @@ OpMultiAssign:
     '>' '>'? '>=' |
     '&=' | '|=';
 
-@Override
-XAndExpression returns xbase::XExpression:
-    XSingleAndExpression (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpAnd]) rightOperand=XSingleAndExpression)*;
-
 @Override 
 OpAnd: '&&';
+
+@Override
+XAndExpression returns xbase::XExpression:
+    XSingleAndExpression (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpAnd]) rightOperand=XSingleOrExpression)*;
+
+OpSingleOr: '|';
 
 XSingleOrExpression returns xbase::XExpression:
     XSingleAndExpression (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpSingleOr]) rightOperand=XSingleAndExpression)*;
 
-OpSingleOr: '|';
+OpSingleAnd: '&';
 
 XSingleAndExpression returns xbase::XExpression:
     XEqualityExpression (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpSingleAnd]) rightOperand=XEqualityExpression)*;
-
-OpSingleAnd: '&';
 
 // extend with ? operator
 

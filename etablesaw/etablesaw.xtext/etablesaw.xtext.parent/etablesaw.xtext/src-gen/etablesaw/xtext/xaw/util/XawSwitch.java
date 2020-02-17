@@ -164,22 +164,6 @@ public class XawSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XawPackage.XUNARY_OPERATION:
-      {
-        XUnaryOperation xUnaryOperation = (XUnaryOperation)theEObject;
-        T result = caseXUnaryOperation(xUnaryOperation);
-        if (result == null) result = caseXExpression(xUnaryOperation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XawPackage.XCASTED_COLUMN_EXPRESSION:
-      {
-        XCastedColumnExpression xCastedColumnExpression = (XCastedColumnExpression)theEObject;
-        T result = caseXCastedColumnExpression(xCastedColumnExpression);
-        if (result == null) result = caseXExpression(xCastedColumnExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       default: return defaultCase(theEObject);
     }
   }
@@ -356,38 +340,6 @@ public class XawSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseXURLLiteral(XURLLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XUnary Operation</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XUnary Operation</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXUnaryOperation(XUnaryOperation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XCasted Column Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XCasted Column Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXCastedColumnExpression(XCastedColumnExpression object)
   {
     return null;
   }

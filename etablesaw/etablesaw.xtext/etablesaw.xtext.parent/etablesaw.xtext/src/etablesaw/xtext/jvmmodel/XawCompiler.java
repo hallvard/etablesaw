@@ -18,7 +18,6 @@ import etablesaw.xtext.validation.XawValidator;
 import etablesaw.xtext.xaw.InlineTableRow;
 import etablesaw.xtext.xaw.TableColumn;
 import etablesaw.xtext.xaw.TableLiteral;
-import etablesaw.xtext.xaw.XCastedColumnExpression;
 import etablesaw.xtext.xaw.XLocalDateLiteral;
 import etablesaw.xtext.xaw.XLocalTimeLiteral;
 import etablesaw.xtext.xaw.XURLLiteral;
@@ -30,8 +29,8 @@ public class XawCompiler extends XbaseCompiler {
 	protected void internalToConvertedExpression(final XExpression obj, final ITreeAppendable appendable) {
 		if (obj instanceof TableLiteral) {
 			_toJavaExpression((TableLiteral) obj, appendable);
-		} else if (obj instanceof XCastedColumnExpression) {
-			_toJavaExpression((XCastedColumnExpression) obj, appendable);
+//		} else if (obj instanceof XCastedColumnExpression) {
+//			_toJavaExpression((XCastedColumnExpression) obj, appendable);
 		} else if (obj instanceof XLocalTimeLiteral) {
 			_toJavaExpression((XLocalTimeLiteral) obj, appendable);
 		} else if (obj instanceof XLocalDateLiteral) {
@@ -51,8 +50,8 @@ public class XawCompiler extends XbaseCompiler {
 			_toJavaStatement(expr, appendable, isReferenced);
 		} else if (expr instanceof InlineTableRow) {
 			_toJavaStatement((InlineTableRow) expr, appendable, isReferenced);
-		} else if (expr instanceof XCastedColumnExpression) {
-			_toJavaStatement((XCastedColumnExpression) expr, appendable, isReferenced);
+//		} else if (expr instanceof XCastedColumnExpression) {
+//			_toJavaStatement((XCastedColumnExpression) expr, appendable, isReferenced);
 		} else if (expr instanceof XURLLiteral) {
 			generateComment(expr, appendable, isReferenced);
 		} else if (expr instanceof XLocalDateLiteral || expr instanceof XLocalTimeLiteral) {
@@ -64,10 +63,11 @@ public class XawCompiler extends XbaseCompiler {
 
 	@Override
 	protected boolean internalCanCompileToJavaExpression(final XExpression expression, final ITreeAppendable appendable) {
-		if (expression instanceof XCastedColumnExpression) {
-			final XCastedColumnExpression castedExpression = (XCastedColumnExpression) expression;
-			return internalCanCompileToJavaExpression(castedExpression.getTarget(), appendable);
-		} else if (expression instanceof XLocalDateLiteral || expression instanceof XLocalTimeLiteral) {
+//		if (expression instanceof XCastedColumnExpression) {
+//			final XCastedColumnExpression castedExpression = (XCastedColumnExpression) expression;
+//			return internalCanCompileToJavaExpression(castedExpression.getTarget(), appendable);
+//		} else
+		if (expression instanceof XLocalDateLiteral || expression instanceof XLocalTimeLiteral) {
 			return true;
 		} else if (expression instanceof XURLLiteral) {
 			return true;
@@ -75,13 +75,13 @@ public class XawCompiler extends XbaseCompiler {
 		return super.internalCanCompileToJavaExpression(expression, appendable);
 	}
 
-	@Override
-	protected boolean isVariableDeclarationRequired(final XExpression expr, final ITreeAppendable b, final boolean recursive) {
-		if (expr instanceof XCastedColumnExpression) {
-			return false;
-		}
-		return super.isVariableDeclarationRequired(expr, b, recursive);
-	}
+//	@Override
+//	protected boolean isVariableDeclarationRequired(final XExpression expr, final ITreeAppendable b, final boolean recursive) {
+//		if (expr instanceof XCastedColumnExpression) {
+//			return false;
+//		}
+//		return super.isVariableDeclarationRequired(expr, b, recursive);
+//	}
 
 	final static String defaultTableName = "A table";
 
@@ -152,18 +152,18 @@ public class XawCompiler extends XbaseCompiler {
 	}
 
 	// almost copied from XBaseCompiler
-	protected void _toJavaExpression(final XCastedColumnExpression expr, final ITreeAppendable b) {
-		b.append("((");
-		serialize(columnTypeProvider.getColumnTypeReference(expr.getType()), expr, b);
-		b.append(") ");
-		internalToConvertedExpression(expr.getTarget(), b, getLightweightType(expr));
-		b.append(")");
-	}
+//	protected void _toJavaExpression(final XCastedColumnExpression expr, final ITreeAppendable b) {
+//		b.append("((");
+//		serialize(columnTypeProvider.getColumnTypeReference(expr.getType()), expr, b);
+//		b.append(") ");
+//		internalToConvertedExpression(expr.getTarget(), b, getLightweightType(expr));
+//		b.append(")");
+//	}
 
 	// almost copied from XBaseCompiler
-	protected void _toJavaStatement(final XCastedColumnExpression expr, final ITreeAppendable b, final boolean isReferenced) {
-		internalToJavaStatement(expr.getTarget(), b, isReferenced);
-	}
+//	protected void _toJavaStatement(final XCastedColumnExpression expr, final ITreeAppendable b, final boolean isReferenced) {
+//		internalToJavaStatement(expr.getTarget(), b, isReferenced);
+//	}
 
 	//
 

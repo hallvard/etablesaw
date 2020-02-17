@@ -134,16 +134,6 @@ public class XawAdapterFactory extends AdapterFactoryImpl
         return createXURLLiteralAdapter();
       }
       @Override
-      public Adapter caseXUnaryOperation(XUnaryOperation object)
-      {
-        return createXUnaryOperationAdapter();
-      }
-      @Override
-      public Adapter caseXCastedColumnExpression(XCastedColumnExpression object)
-      {
-        return createXCastedColumnExpressionAdapter();
-      }
-      @Override
       public Adapter caseXExpression(XExpression object)
       {
         return createXExpressionAdapter();
@@ -336,36 +326,6 @@ public class XawAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createXURLLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link etablesaw.xtext.xaw.XUnaryOperation <em>XUnary Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see etablesaw.xtext.xaw.XUnaryOperation
-   * @generated
-   */
-  public Adapter createXUnaryOperationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link etablesaw.xtext.xaw.XCastedColumnExpression <em>XCasted Column Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see etablesaw.xtext.xaw.XCastedColumnExpression
-   * @generated
-   */
-  public Adapter createXCastedColumnExpressionAdapter()
   {
     return null;
   }

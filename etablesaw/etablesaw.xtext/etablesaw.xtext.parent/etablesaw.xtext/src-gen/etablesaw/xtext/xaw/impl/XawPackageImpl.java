@@ -9,12 +9,10 @@ import etablesaw.xtext.xaw.TableColumnDef;
 import etablesaw.xtext.xaw.TableDef;
 import etablesaw.xtext.xaw.TableLiteral;
 import etablesaw.xtext.xaw.TableRowLiteral;
-import etablesaw.xtext.xaw.XCastedColumnExpression;
 import etablesaw.xtext.xaw.XLocalDateLiteral;
 import etablesaw.xtext.xaw.XLocalTimeLiteral;
 import etablesaw.xtext.xaw.XMethod;
 import etablesaw.xtext.xaw.XURLLiteral;
-import etablesaw.xtext.xaw.XUnaryOperation;
 import etablesaw.xtext.xaw.Xaw;
 import etablesaw.xtext.xaw.XawFactory;
 import etablesaw.xtext.xaw.XawPackage;
@@ -116,20 +114,6 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    * @generated
    */
   private EClass xurlLiteralEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass xUnaryOperationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass xCastedColumnExpressionEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -614,66 +598,6 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getXUnaryOperation()
-  {
-    return xUnaryOperationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getXUnaryOperation_Feature()
-  {
-    return (EReference)xUnaryOperationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getXUnaryOperation_Operand()
-  {
-    return (EReference)xUnaryOperationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getXCastedColumnExpression()
-  {
-    return xCastedColumnExpressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getXCastedColumnExpression_Target()
-  {
-    return (EReference)xCastedColumnExpressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getXCastedColumnExpression_Type()
-  {
-    return (EReference)xCastedColumnExpressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public XawFactory getXawFactory()
   {
     return (XawFactory)getEFactoryInstance();
@@ -750,14 +674,6 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
     createEAttribute(xurlLiteralEClass, XURL_LITERAL__PATH);
     createEAttribute(xurlLiteralEClass, XURL_LITERAL__PARAMS);
     createEAttribute(xurlLiteralEClass, XURL_LITERAL__FRAG);
-
-    xUnaryOperationEClass = createEClass(XUNARY_OPERATION);
-    createEReference(xUnaryOperationEClass, XUNARY_OPERATION__FEATURE);
-    createEReference(xUnaryOperationEClass, XUNARY_OPERATION__OPERAND);
-
-    xCastedColumnExpressionEClass = createEClass(XCASTED_COLUMN_EXPRESSION);
-    createEReference(xCastedColumnExpressionEClass, XCASTED_COLUMN_EXPRESSION__TARGET);
-    createEReference(xCastedColumnExpressionEClass, XCASTED_COLUMN_EXPRESSION__TYPE);
   }
 
   /**
@@ -802,8 +718,6 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
     xLocalTimeLiteralEClass.getESuperTypes().add(theXbasePackage.getXExpression());
     xLocalDateLiteralEClass.getESuperTypes().add(theXbasePackage.getXExpression());
     xurlLiteralEClass.getESuperTypes().add(theXbasePackage.getXExpression());
-    xUnaryOperationEClass.getESuperTypes().add(theXbasePackage.getXExpression());
-    xCastedColumnExpressionEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(tableDefEClass, TableDef.class, "TableDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -857,14 +771,6 @@ public class XawPackageImpl extends EPackageImpl implements XawPackage
     initEAttribute(getXURLLiteral_Path(), ecorePackage.getEString(), "path", null, 0, 1, XURLLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getXURLLiteral_Params(), ecorePackage.getEString(), "params", null, 0, -1, XURLLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getXURLLiteral_Frag(), ecorePackage.getEString(), "frag", null, 0, 1, XURLLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(xUnaryOperationEClass, XUnaryOperation.class, "XUnaryOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getXUnaryOperation_Feature(), theTypesPackage.getJvmIdentifiableElement(), null, "feature", null, 0, 1, XUnaryOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getXUnaryOperation_Operand(), theXbasePackage.getXExpression(), null, "operand", null, 0, 1, XUnaryOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(xCastedColumnExpressionEClass, XCastedColumnExpression.class, "XCastedColumnExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getXCastedColumnExpression_Target(), theXbasePackage.getXExpression(), null, "target", null, 0, 1, XCastedColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getXCastedColumnExpression_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, XCastedColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

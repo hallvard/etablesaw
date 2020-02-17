@@ -663,7 +663,7 @@
             >
        </key>
     </extension>
-    
+
     <extension point="etablesaw.ui.exprSupport">
         <exprSupport
             langName="xaw"

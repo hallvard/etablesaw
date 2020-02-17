@@ -18,7 +18,6 @@ import com.google.inject.Inject;
 import etablesaw.xtext.xaw.InlineTableRow;
 import etablesaw.xtext.xaw.TableColumn;
 import etablesaw.xtext.xaw.TableLiteral;
-import etablesaw.xtext.xaw.XCastedColumnExpression;
 import etablesaw.xtext.xaw.XLocalDateLiteral;
 import etablesaw.xtext.xaw.XLocalTimeLiteral;
 import etablesaw.xtext.xaw.XURLLiteral;
@@ -70,16 +69,16 @@ public class XawTypeComputer extends XbaseWithAnnotationsTypeComputer {
 			super.computeTypes(expression, state);
 		} else if (expression instanceof InlineTableRow) {
 			super.computeTypes(expression, state);
-		} else if (expression instanceof XCastedColumnExpression) {
-			// almost copied from XBaseTypeCompiler
-			final XCastedColumnExpression castedExpression = (XCastedColumnExpression) expression;
-			final JvmTypeReference type = columnTypeProvider.getColumnTypeReference(castedExpression.getType());
-			if (type != null) {
-				state.withNonVoidExpectation().computeTypes(castedExpression.getTarget());
-				state.acceptActualType(state.getReferenceOwner().toLightweightTypeReference(type));
-			} else {
-				state.computeTypes(castedExpression.getTarget());
-			}
+//		} else if (expression instanceof XCastedColumnExpression) {
+//			// almost copied from XBaseTypeCompiler
+//			final XCastedColumnExpression castedExpression = (XCastedColumnExpression) expression;
+//			final JvmTypeReference type = columnTypeProvider.getColumnTypeReference(castedExpression.getType());
+//			if (type != null) {
+//				state.withNonVoidExpectation().computeTypes(castedExpression.getTarget());
+//				state.acceptActualType(state.getReferenceOwner().toLightweightTypeReference(type));
+//			} else {
+//				state.computeTypes(castedExpression.getTarget());
+//			}
 		} else if (expression instanceof XLocalTimeLiteral) {
 			state.acceptActualType(getRawTypeForName(LocalTime.class, state));
 		} else if (expression instanceof XLocalDateLiteral) {

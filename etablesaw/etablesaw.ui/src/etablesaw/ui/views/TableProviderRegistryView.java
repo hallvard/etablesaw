@@ -147,7 +147,7 @@ public class TableProviderRegistryView extends ViewPart {
         }
         super.dispose();
     }
-    
+
     protected void addResourceTableProviders(Collection<IFile> files) {
         final TableProviderRegistry tableProviderRegistry = Activator.getInstance().getTableProviderRegistry();
         for (IFile file : files) {
@@ -167,7 +167,7 @@ public class TableProviderRegistryView extends ViewPart {
             keyOrder.remove(newFirstKey);
             keyOrder.add(0, newFirstKey);
         }
-        viewer.refresh();
+        viewer.getControl().getDisplay().asyncExec(viewer::refresh);
     }
 
     @Override

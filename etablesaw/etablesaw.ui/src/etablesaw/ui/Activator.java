@@ -58,9 +58,19 @@ public class Activator extends AbstractUIPlugin {
 		return exprSupports.toArray(new ExprSupport[exprSupports.size()]);
 	}
 
+	public ExprSupport getExprSupport(String... names) {
+	    for (String name : names) {
+	        ExprSupport exprSupport = getExprSupport(name);
+	        if (exprSupport != null) {
+	            return exprSupport;
+	        }
+	    }
+	    return null;
+	}
+
 	public ExprSupport getExprSupport(String name) {
 	    for (ExprSupport exprSupport : getExprSupports()) {
-	        if (exprSupport.getLang().equals(name)) {
+	        if ("*".equals(name) || exprSupport.getLang().equals(name)) {
 	            return exprSupport;
 	        }
 	    }

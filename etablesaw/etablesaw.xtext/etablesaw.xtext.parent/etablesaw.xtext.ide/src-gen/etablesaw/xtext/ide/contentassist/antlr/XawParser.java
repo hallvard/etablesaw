@@ -43,7 +43,6 @@ public class XawParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFRAGMENTAccess().getAlternatives(), "rule__FRAGMENT__Alternatives");
 			builder.put(grammarAccess.getPARAMAccess().getAlternatives_2(), "rule__PARAM__Alternatives_2");
 			builder.put(grammarAccess.getXURLLiteralAccess().getAlternatives_1_1(), "rule__XURLLiteral__Alternatives_1_1");
-			builder.put(grammarAccess.getXUnaryOperationAccess().getAlternatives(), "rule__XUnaryOperation__Alternatives");
 			builder.put(grammarAccess.getOpMultiAssignAccess().getAlternatives(), "rule__OpMultiAssign__Alternatives");
 			builder.put(grammarAccess.getOpMultiAccess().getAlternatives(), "rule__OpMulti__Alternatives");
 			builder.put(grammarAccess.getXLiteralAccess().getAlternatives(), "rule__XLiteral__Alternatives");
@@ -59,6 +58,7 @@ public class XawParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getOpOtherAccess().getAlternatives_5_1(), "rule__OpOther__Alternatives_5_1");
 			builder.put(grammarAccess.getOpOtherAccess().getAlternatives_6_1(), "rule__OpOther__Alternatives_6_1");
 			builder.put(grammarAccess.getOpAddAccess().getAlternatives(), "rule__OpAdd__Alternatives");
+			builder.put(grammarAccess.getXUnaryOperationAccess().getAlternatives(), "rule__XUnaryOperation__Alternatives");
 			builder.put(grammarAccess.getOpUnaryAccess().getAlternatives(), "rule__OpUnary__Alternatives");
 			builder.put(grammarAccess.getOpPostfixAccess().getAlternatives(), "rule__OpPostfix__Alternatives");
 			builder.put(grammarAccess.getXMemberFeatureCallAccess().getAlternatives_1(), "rule__XMemberFeatureCall__Alternatives_1");
@@ -129,11 +129,6 @@ public class XawParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_3(), "rule__XURLLiteral__Group_1_1_1_3__0");
 			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_3_2(), "rule__XURLLiteral__Group_1_1_1_3_2__0");
 			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_4(), "rule__XURLLiteral__Group_1_1_1_4__0");
-			builder.put(grammarAccess.getXUnaryOperationAccess().getGroup_0(), "rule__XUnaryOperation__Group_0__0");
-			builder.put(grammarAccess.getXCastedColumnExpressionAccess().getGroup(), "rule__XCastedColumnExpression__Group__0");
-			builder.put(grammarAccess.getXCastedColumnExpressionAccess().getGroup_1(), "rule__XCastedColumnExpression__Group_1__0");
-			builder.put(grammarAccess.getXCastedColumnExpressionAccess().getGroup_1_0(), "rule__XCastedColumnExpression__Group_1_0__0");
-			builder.put(grammarAccess.getXCastedColumnExpressionAccess().getGroup_1_0_0(), "rule__XCastedColumnExpression__Group_1_0_0__0");
 			builder.put(grammarAccess.getOpMultiAssignAccess().getGroup_5(), "rule__OpMultiAssign__Group_5__0");
 			builder.put(grammarAccess.getOpMultiAssignAccess().getGroup_6(), "rule__OpMultiAssign__Group_6__0");
 			builder.put(grammarAccess.getXAndExpressionAccess().getGroup(), "rule__XAndExpression__Group__0");
@@ -208,6 +203,7 @@ public class XawParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXMultiplicativeExpressionAccess().getGroup_1(), "rule__XMultiplicativeExpression__Group_1__0");
 			builder.put(grammarAccess.getXMultiplicativeExpressionAccess().getGroup_1_0(), "rule__XMultiplicativeExpression__Group_1_0__0");
 			builder.put(grammarAccess.getXMultiplicativeExpressionAccess().getGroup_1_0_0(), "rule__XMultiplicativeExpression__Group_1_0_0__0");
+			builder.put(grammarAccess.getXUnaryOperationAccess().getGroup_0(), "rule__XUnaryOperation__Group_0__0");
 			builder.put(grammarAccess.getXCastedExpressionAccess().getGroup(), "rule__XCastedExpression__Group__0");
 			builder.put(grammarAccess.getXCastedExpressionAccess().getGroup_1(), "rule__XCastedExpression__Group_1__0");
 			builder.put(grammarAccess.getXCastedExpressionAccess().getGroup_1_0(), "rule__XCastedExpression__Group_1_0__0");
@@ -381,9 +377,6 @@ public class XawParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXURLLiteralAccess().getParamsAssignment_1_1_1_3_1(), "rule__XURLLiteral__ParamsAssignment_1_1_1_3_1");
 			builder.put(grammarAccess.getXURLLiteralAccess().getParamsAssignment_1_1_1_3_2_1(), "rule__XURLLiteral__ParamsAssignment_1_1_1_3_2_1");
 			builder.put(grammarAccess.getXURLLiteralAccess().getFragAssignment_1_1_1_4_1(), "rule__XURLLiteral__FragAssignment_1_1_1_4_1");
-			builder.put(grammarAccess.getXUnaryOperationAccess().getFeatureAssignment_0_1(), "rule__XUnaryOperation__FeatureAssignment_0_1");
-			builder.put(grammarAccess.getXUnaryOperationAccess().getOperandAssignment_0_2(), "rule__XUnaryOperation__OperandAssignment_0_2");
-			builder.put(grammarAccess.getXCastedColumnExpressionAccess().getTypeAssignment_1_1(), "rule__XCastedColumnExpression__TypeAssignment_1_1");
 			builder.put(grammarAccess.getXAndExpressionAccess().getFeatureAssignment_1_0_0_1(), "rule__XAndExpression__FeatureAssignment_1_0_0_1");
 			builder.put(grammarAccess.getXAndExpressionAccess().getRightOperandAssignment_1_1(), "rule__XAndExpression__RightOperandAssignment_1_1");
 			builder.put(grammarAccess.getXSingleOrExpressionAccess().getFeatureAssignment_1_0_0_1(), "rule__XSingleOrExpression__FeatureAssignment_1_0_0_1");
@@ -418,6 +411,8 @@ public class XawParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXAdditiveExpressionAccess().getRightOperandAssignment_1_1(), "rule__XAdditiveExpression__RightOperandAssignment_1_1");
 			builder.put(grammarAccess.getXMultiplicativeExpressionAccess().getFeatureAssignment_1_0_0_1(), "rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_1");
 			builder.put(grammarAccess.getXMultiplicativeExpressionAccess().getRightOperandAssignment_1_1(), "rule__XMultiplicativeExpression__RightOperandAssignment_1_1");
+			builder.put(grammarAccess.getXUnaryOperationAccess().getFeatureAssignment_0_1(), "rule__XUnaryOperation__FeatureAssignment_0_1");
+			builder.put(grammarAccess.getXUnaryOperationAccess().getOperandAssignment_0_2(), "rule__XUnaryOperation__OperandAssignment_0_2");
 			builder.put(grammarAccess.getXCastedExpressionAccess().getTypeAssignment_1_1(), "rule__XCastedExpression__TypeAssignment_1_1");
 			builder.put(grammarAccess.getXPostfixOperationAccess().getFeatureAssignment_1_0_1(), "rule__XPostfixOperation__FeatureAssignment_1_0_1");
 			builder.put(grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticAssignment_1_0_0_0_1_1(), "rule__XMemberFeatureCall__ExplicitStaticAssignment_1_0_0_0_1_1");

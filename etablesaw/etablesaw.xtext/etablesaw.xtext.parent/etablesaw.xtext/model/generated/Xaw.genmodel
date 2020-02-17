@@ -57,13 +57,5 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xaw.ecore#//XURLLiteral/params"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xaw.ecore#//XURLLiteral/frag"/>
     </genClasses>
-    <genClasses ecoreClass="Xaw.ecore#//XUnaryOperation">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Xaw.ecore#//XUnaryOperation/feature"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//XUnaryOperation/operand"/>
-    </genClasses>
-    <genClasses ecoreClass="Xaw.ecore#//XCastedColumnExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//XCastedColumnExpression/target"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xaw.ecore#//XCastedColumnExpression/type"/>
-    </genClasses>
   </genPackages>
 </genmodel:GenModel>
