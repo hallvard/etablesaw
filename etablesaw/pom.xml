@@ -90,7 +90,7 @@
 
   <profiles>
     <profile>
-        <id>normal</id>
+        <id>all</id>
         <activation><activeByDefault>true</activeByDefault></activation>
         
 		  <modules>
