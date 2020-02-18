@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="etablesaw.feature"
-      label="Tablesaw Feature"
+      label="Eclipse Tablesaw Feature"
       version="0.1.0.qualifier">
 
    <description url="http://www.example.com/description">
@@ -84,5 +84,12 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+
+   <plugin
+         id="etablesaw.jsplot"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
