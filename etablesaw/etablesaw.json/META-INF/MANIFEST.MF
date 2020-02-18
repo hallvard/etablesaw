@@ -5,7 +5,7 @@ Bundle-SymbolicName: etablesaw.json;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
- libs/tablesaw-json-0.37.4-SNAPSHOT-shaded.jar
+ libs/tablesaw-json-shaded.jar
 Export-Package: etablesaw.io.json,
  tech.tablesaw.io.json
 Import-Package: etablesaw.io,

@@ -12,6 +12,9 @@
     <maven-compile-plugin-version>3.8.0</maven-compile-plugin-version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    
+    <tablesaw.parent.path>/Users/hal/java/git/jtablesaw</tablesaw.parent.path>
+    <tablesaw.version>0.37.4-SNAPSHOT</tablesaw.version>
   </properties>
 
   <repositories>
@@ -85,29 +88,78 @@
      </plugins>
   </build>
 
-  <modules>
-  	<module>etablesaw.target</module>
-  	<module>etablesaw.core</module>
-  	<module>etablesaw.jsplot</module>
-  	<module>tablesaw.smile</module>
-
-  	<module>etablesaw.ui</module>
-  	<!-- 
-  	Must be rewritten for Smile version 2
-  	<module>etablesaw.ui.smile</module>
-  	 -->
-  	<module>etablesaw.ui.tests</module>
-  	<module>etablesaw.xtext/etablesaw.xtext.parent</module>
-
-    <!-- optional file formats -->
-  	<module>etablesaw.excel</module>
-  	<module>etablesaw.json</module>
-  	<module>etablesaw.html</module>
-
-  	<module>etablesaw.feature</module>
-  	<module>etablesaw.repository</module>
-<!-- 
- -->
-
-  </modules>
+  <profiles>
+    <profile>
+        <id>normal</id>
+        <activation><activeByDefault>true</activeByDefault></activation>
+        
+		  <modules>
+		  	<module>etablesaw.target</module>
+		  	<module>etablesaw.core</module>
+		  	<module>etablesaw.jsplot</module>
+		  	<module>tablesaw.smile</module>
+		
+		  	<module>etablesaw.ui</module>
+		  	<!-- 
+		  	Must be rewritten for Smile version 2
+		  	<module>etablesaw.ui.smile</module>
+		  	 -->
+		  	<module>etablesaw.ui.tests</module>
+		  	<module>etablesaw.xtext/etablesaw.xtext.parent</module>
+		
+		    <!-- optional file formats -->
+		  	<module>etablesaw.excel</module>
+		  	<module>etablesaw.json</module>
+		  	<module>etablesaw.html</module>
+		
+		  	<module>etablesaw.feature</module>
+		  	<module>etablesaw.repository</module>
+		<!-- 
+		 -->
+		
+		  </modules>
+    </profile>
+    <profile>
+        <id>parent-only</id>
+        <build>
+            <plugins>
+		        <plugin>
+		            <groupId>com.coderplus.maven.plugins</groupId>
+		            <artifactId>copy-rename-maven-plugin</artifactId>
+		            <version>1.0.1</version>
+		            <executions>
+		              <execution>
+		                <id>copy-tablesaw-libs</id>
+		                <goals><goal>copy</goal></goals>
+		                <configuration>
+		                  <fileSets>
+		                    <fileSet>
+		                      <sourceFile>${tablesaw.parent.path}/core/target/tablesaw-core-${tablesaw.version}-shaded.jar</sourceFile>
+		                      <destinationFile>${basedir}/etablesaw.core/libs/tablesaw-core-shaded.jar</destinationFile>
+		                    </fileSet>
+		                    <fileSet>
+		                      <sourceFile>${tablesaw.parent.path}/excel/target/tablesaw-excel-${tablesaw.version}-shaded.jar</sourceFile>
+		                      <destinationFile>${basedir}/etablesaw.excel/libs/tablesaw-excel-shaded.jar</destinationFile>
+		                    </fileSet>
+		                    <fileSet>
+		                      <sourceFile>${tablesaw.parent.path}/html/target/tablesaw-html-${tablesaw.version}-shaded.jar</sourceFile>
+		                      <destinationFile>${basedir}/etablesaw.html/libs/tablesaw-html-shaded.jar</destinationFile>
+		                    </fileSet>
+		                    <fileSet>
+		                      <sourceFile>${tablesaw.parent.path}/json/target/tablesaw-json-${tablesaw.version}-shaded.jar</sourceFile>
+		                      <destinationFile>${basedir}/etablesaw.json/libs/tablesaw-json-shaded.jar</destinationFile>
+		                    </fileSet>
+		                    <fileSet>
+		                      <sourceFile>${tablesaw.parent.path}/jsplot/target/tablesaw-jsplot-${tablesaw.version}-shaded.jar</sourceFile>
+		                      <destinationFile>${basedir}/etablesaw.jsplot/libs/tablesaw-jsplot-shaded.jar</destinationFile>
+		                    </fileSet>
+		                  </fileSets>
+		                </configuration>            
+		              </execution>
+		            </executions>
+		        </plugin>
+            </plugins>
+        </build>
+    </profile>
+  </profiles>
 </project>
