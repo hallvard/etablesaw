@@ -1,5 +1,13 @@
 package etablesaw.xtext.ui.expr;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Provider;
+import etablesaw.ui.expr.PreparedExpr;
+import etablesaw.xtext.XawRuntimeModule;
+import etablesaw.xtext.jvmmodel.DefaultColumnTypeProvider;
+import etablesaw.xtext.jvmmodel.IColumnTypeProvider;
+import etablesaw.xtext.xaw.Xaw;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringBufferInputStream;
@@ -7,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -18,16 +25,6 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.interpreter.IEvaluationContext;
 import org.eclipse.xtext.xbase.interpreter.IEvaluationResult;
 import org.eclipse.xtext.xbase.interpreter.impl.XbaseInterpreter;
-
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.Provider;
-
-import etablesaw.ui.expr.PreparedExpr;
-import etablesaw.xtext.XawRuntimeModule;
-import etablesaw.xtext.jvmmodel.DefaultColumnTypeProvider;
-import etablesaw.xtext.jvmmodel.IColumnTypeProvider;
-import etablesaw.xtext.xaw.Xaw;
 import tech.tablesaw.api.ColumnType;
 
 public class PreparedXawExpr implements PreparedExpr {
@@ -110,8 +107,18 @@ public class PreparedXawExpr implements PreparedExpr {
         return resource;
 	}
 
-    protected String fixName(String varName) {
-        return varName.replaceAll("[\\W]", "_");
+	private final static char SPECIAL_CHAR_REPLACEMENT = '_';
+
+	protected String fixName(String varName) {
+        StringBuilder fixedName = new StringBuilder();
+        if (! Character.isJavaIdentifierStart(varName.charAt(0))) {
+            fixedName.append(SPECIAL_CHAR_REPLACEMENT);
+        }
+        for (int i = 0; i < varName.length(); i++) {
+            char c = varName.charAt(i);
+            fixedName.append(Character.isJavaIdentifierPart(c) ? c : SPECIAL_CHAR_REPLACEMENT);
+        }
+        return fixedName.toString();
     }
 
     protected String simplifyTypeName(String elementTypeName) {

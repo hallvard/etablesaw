@@ -24,7 +24,7 @@ class XawValidator extends AbstractXawValidator {
 
 	override protected isValueExpectedRecursive(XExpression expr) {
 		val parent = expr.eContainer
-		if (parent instanceof InlineTableRow || parent.eContainer instanceof TableLiteral) {
+		if (parent instanceof InlineTableRow || parent?.eContainer instanceof TableLiteral) {
 			return true
 		}
 		super.isValueExpectedRecursive(expr)
