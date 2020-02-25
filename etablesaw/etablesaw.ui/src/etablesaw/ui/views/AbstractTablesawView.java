@@ -1,5 +1,11 @@
 package etablesaw.ui.views;
 
+import etablesaw.ui.Activator;
+import etablesaw.ui.TableProvider;
+import etablesaw.ui.TableProviderRegistry;
+import etablesaw.ui.editor.NatTablesawEditor;
+import etablesaw.ui.util.MultiCheckSelectionCombo;
+import etablesaw.ui.util.Util;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -9,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -63,13 +68,6 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.part.ViewPart;
-
-import etablesaw.ui.Activator;
-import etablesaw.ui.TableProvider;
-import etablesaw.ui.TableProviderRegistry;
-import etablesaw.ui.editor.NatTablesawEditor;
-import etablesaw.ui.util.MultiCheckSelectionCombo;
-import etablesaw.ui.util.Util;
 import tech.tablesaw.aggregate.AggregateFunction;
 import tech.tablesaw.aggregate.AggregateFunctions;
 import tech.tablesaw.api.ColumnType;
@@ -478,6 +476,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	protected Action spawnViewAction;
 
 	protected void tableProviderChanged(final String key) {
+	    setTitleToolTip(key != null ? "Source table: " + key : "No source table");
         tableProviderChanged(Activator.getInstance().getTableProviderRegistry().getTableProvider(key));
 	}
 
