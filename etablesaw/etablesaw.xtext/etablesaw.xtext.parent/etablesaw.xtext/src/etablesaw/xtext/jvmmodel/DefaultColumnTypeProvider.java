@@ -1,14 +1,11 @@
 package etablesaw.xtext.jvmmodel;
 
+import com.google.inject.Inject;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
-
-import com.google.inject.Inject;
-
 import tech.tablesaw.api.BooleanColumn;
 import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.DateColumn;
@@ -57,7 +54,7 @@ public class DefaultColumnTypeProvider implements IColumnTypeProvider {
     }
     
     public static Class<?> getElementType(final ColumnType columnType) {
-        if (columnType.equals(ColumnType.STRING)) {
+        if (columnType.equals(ColumnType.STRING) || columnType.equals(ColumnType.TEXT)) {
             return String.class;
         } else if (columnType.equals(ColumnType.INTEGER)) {
             return int.class;
@@ -77,7 +74,7 @@ public class DefaultColumnTypeProvider implements IColumnTypeProvider {
         } else if (columnType.equals(ColumnType.LOCAL_DATE)) {
             return LocalDate.class;
         }
-        return null;
+        return Object.class;
     }
     
 	@Inject

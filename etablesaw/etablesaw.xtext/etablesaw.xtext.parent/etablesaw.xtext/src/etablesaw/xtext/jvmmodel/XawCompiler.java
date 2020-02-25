@@ -1,19 +1,6 @@
 package etablesaw.xtext.jvmmodel;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Month;
-import java.util.Iterator;
-
-import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
-import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
-
 import com.google.inject.Inject;
-
 import etablesaw.xtext.validation.XawValidator;
 import etablesaw.xtext.xaw.InlineTableRow;
 import etablesaw.xtext.xaw.TableColumn;
@@ -21,6 +8,16 @@ import etablesaw.xtext.xaw.TableLiteral;
 import etablesaw.xtext.xaw.XLocalDateLiteral;
 import etablesaw.xtext.xaw.XLocalTimeLiteral;
 import etablesaw.xtext.xaw.XURLLiteral;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
+import java.util.Iterator;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 
 @SuppressWarnings("restriction")
 public class XawCompiler extends XbaseCompiler {
@@ -261,9 +258,9 @@ public class XawCompiler extends XbaseCompiler {
                 }
                 urlString = "//" + url.getHost() + urlString;
             }
-            String scheme = url.getScheme();
+            String scheme = url.getScheme(), host = url.getHost();
             if (scheme == null) {
-                scheme = "file";
+                scheme = (host != null ? "https" : "file");
             }
             urlString = scheme + ":" + urlString;
             if (! url.getParams().isEmpty()) {

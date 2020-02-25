@@ -72,14 +72,14 @@ XLocalDateLiteral returns xbase::XExpression:
 	{XLocalDateLiteral} '@' day = INT '-' month = MONTH '-' year = INT
 ;
 
-HOST: (ID | INT) ('.' (ID | INT))*;
+HOST: (ID | INT) ('.' (ID | INT))+;
 SEGMENT: (ID | INT) ('.' (ID | INT))*;
 PATH: '/' (SEGMENT ('/' SEGMENT)*)? ;
 FRAGMENT: (ID | INT);
 PARAM: ID '=' (ID | INT);
 
 XURLLiteral returns xbase::XExpression hidden():
-	{XURLLiteral} ('@' ((url = STRING) | ((scheme = ID ':')? ('//' (host = HOST)? (':' port = INT)?)? path = PATH ('?' params += PARAM ('&' params += PARAM)*)? ('#' frag = FRAGMENT)?)))
+	{XURLLiteral} ('@' ((url = STRING) | ((scheme = ID ':')? (host = HOST (':' port = INT)?)? path = PATH ('?' params += PARAM ('&' params += PARAM)*)? ('#' frag = FRAGMENT)?)))
 ;
 
 // extend with extra casting operator

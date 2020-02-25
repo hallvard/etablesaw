@@ -33,7 +33,17 @@ public class XawValidator extends AbstractXawValidator {
     boolean _xblockexpression = false;
     {
       final EObject parent = expr.eContainer();
-      if (((parent instanceof InlineTableRow) || (parent.eContainer() instanceof TableLiteral))) {
+      boolean _or = false;
+      if ((parent instanceof InlineTableRow)) {
+        _or = true;
+      } else {
+        EObject _eContainer = null;
+        if (parent!=null) {
+          _eContainer=parent.eContainer();
+        }
+        _or = (_eContainer instanceof TableLiteral);
+      }
+      if (_or) {
         return true;
       }
       _xblockexpression = super.isValueExpectedRecursive(expr);

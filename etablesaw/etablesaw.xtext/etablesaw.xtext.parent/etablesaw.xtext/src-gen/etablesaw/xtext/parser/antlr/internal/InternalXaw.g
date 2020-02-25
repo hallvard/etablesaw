@@ -1246,7 +1246,7 @@ ruleHOST returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 					newLeafNode(this_INT_4, grammarAccess.getHOSTAccess().getINTTerminalRuleCall_1_1_1());
 				}
 			)
-		)*
+		)+
 	)
 ;
 
@@ -1525,16 +1525,12 @@ ruleXURLLiteral returns [EObject current=null]
 						}
 					)?
 					(
-						otherlv_5='//'
-						{
-							newLeafNode(otherlv_5, grammarAccess.getXURLLiteralAccess().getSolidusSolidusKeyword_1_1_1_1_0());
-						}
 						(
 							(
 								{
-									newCompositeNode(grammarAccess.getXURLLiteralAccess().getHostHOSTParserRuleCall_1_1_1_1_1_0());
+									newCompositeNode(grammarAccess.getXURLLiteralAccess().getHostHOSTParserRuleCall_1_1_1_1_0_0());
 								}
-								lv_host_6_0=ruleHOST
+								lv_host_5_0=ruleHOST
 								{
 									if ($current==null) {
 										$current = createModelElementForParent(grammarAccess.getXURLLiteralRule());
@@ -1542,22 +1538,22 @@ ruleXURLLiteral returns [EObject current=null]
 									set(
 										$current,
 										"host",
-										lv_host_6_0,
+										lv_host_5_0,
 										"etablesaw.xtext.Xaw.HOST");
 									afterParserOrEnumRuleCall();
 								}
 							)
-						)?
+						)
 						(
-							otherlv_7=':'
+							otherlv_6=':'
 							{
-								newLeafNode(otherlv_7, grammarAccess.getXURLLiteralAccess().getColonKeyword_1_1_1_1_2_0());
+								newLeafNode(otherlv_6, grammarAccess.getXURLLiteralAccess().getColonKeyword_1_1_1_1_1_0());
 							}
 							(
 								(
-									lv_port_8_0=RULE_INT
+									lv_port_7_0=RULE_INT
 									{
-										newLeafNode(lv_port_8_0, grammarAccess.getXURLLiteralAccess().getPortINTTerminalRuleCall_1_1_1_1_2_1_0());
+										newLeafNode(lv_port_7_0, grammarAccess.getXURLLiteralAccess().getPortINTTerminalRuleCall_1_1_1_1_1_1_0());
 									}
 									{
 										if ($current==null) {
@@ -1566,7 +1562,7 @@ ruleXURLLiteral returns [EObject current=null]
 										setWithLastConsumed(
 											$current,
 											"port",
-											lv_port_8_0,
+											lv_port_7_0,
 											"org.eclipse.xtext.xbase.Xbase.INT");
 									}
 								)
@@ -1578,7 +1574,7 @@ ruleXURLLiteral returns [EObject current=null]
 							{
 								newCompositeNode(grammarAccess.getXURLLiteralAccess().getPathPATHParserRuleCall_1_1_1_2_0());
 							}
-							lv_path_9_0=rulePATH
+							lv_path_8_0=rulePATH
 							{
 								if ($current==null) {
 									$current = createModelElementForParent(grammarAccess.getXURLLiteralRule());
@@ -1586,23 +1582,23 @@ ruleXURLLiteral returns [EObject current=null]
 								set(
 									$current,
 									"path",
-									lv_path_9_0,
+									lv_path_8_0,
 									"etablesaw.xtext.Xaw.PATH");
 								afterParserOrEnumRuleCall();
 							}
 						)
 					)
 					(
-						otherlv_10='?'
+						otherlv_9='?'
 						{
-							newLeafNode(otherlv_10, grammarAccess.getXURLLiteralAccess().getQuestionMarkKeyword_1_1_1_3_0());
+							newLeafNode(otherlv_9, grammarAccess.getXURLLiteralAccess().getQuestionMarkKeyword_1_1_1_3_0());
 						}
 						(
 							(
 								{
 									newCompositeNode(grammarAccess.getXURLLiteralAccess().getParamsPARAMParserRuleCall_1_1_1_3_1_0());
 								}
-								lv_params_11_0=rulePARAM
+								lv_params_10_0=rulePARAM
 								{
 									if ($current==null) {
 										$current = createModelElementForParent(grammarAccess.getXURLLiteralRule());
@@ -1610,23 +1606,23 @@ ruleXURLLiteral returns [EObject current=null]
 									add(
 										$current,
 										"params",
-										lv_params_11_0,
+										lv_params_10_0,
 										"etablesaw.xtext.Xaw.PARAM");
 									afterParserOrEnumRuleCall();
 								}
 							)
 						)
 						(
-							otherlv_12='&'
+							otherlv_11='&'
 							{
-								newLeafNode(otherlv_12, grammarAccess.getXURLLiteralAccess().getAmpersandKeyword_1_1_1_3_2_0());
+								newLeafNode(otherlv_11, grammarAccess.getXURLLiteralAccess().getAmpersandKeyword_1_1_1_3_2_0());
 							}
 							(
 								(
 									{
 										newCompositeNode(grammarAccess.getXURLLiteralAccess().getParamsPARAMParserRuleCall_1_1_1_3_2_1_0());
 									}
-									lv_params_13_0=rulePARAM
+									lv_params_12_0=rulePARAM
 									{
 										if ($current==null) {
 											$current = createModelElementForParent(grammarAccess.getXURLLiteralRule());
@@ -1634,7 +1630,7 @@ ruleXURLLiteral returns [EObject current=null]
 										add(
 											$current,
 											"params",
-											lv_params_13_0,
+											lv_params_12_0,
 											"etablesaw.xtext.Xaw.PARAM");
 										afterParserOrEnumRuleCall();
 									}
@@ -1643,16 +1639,16 @@ ruleXURLLiteral returns [EObject current=null]
 						)*
 					)?
 					(
-						otherlv_14='#'
+						otherlv_13='#'
 						{
-							newLeafNode(otherlv_14, grammarAccess.getXURLLiteralAccess().getNumberSignKeyword_1_1_1_4_0());
+							newLeafNode(otherlv_13, grammarAccess.getXURLLiteralAccess().getNumberSignKeyword_1_1_1_4_0());
 						}
 						(
 							(
 								{
 									newCompositeNode(grammarAccess.getXURLLiteralAccess().getFragFRAGMENTParserRuleCall_1_1_1_4_1_0());
 								}
-								lv_frag_15_0=ruleFRAGMENT
+								lv_frag_14_0=ruleFRAGMENT
 								{
 									if ($current==null) {
 										$current = createModelElementForParent(grammarAccess.getXURLLiteralRule());
@@ -1660,7 +1656,7 @@ ruleXURLLiteral returns [EObject current=null]
 									set(
 										$current,
 										"frag",
-										lv_frag_15_0,
+										lv_frag_14_0,
 										"etablesaw.xtext.Xaw.FRAGMENT");
 									afterParserOrEnumRuleCall();
 								}

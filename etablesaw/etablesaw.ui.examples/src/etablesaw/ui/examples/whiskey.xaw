@@ -1,0 +1,23 @@
+xaw etablesaw.ui.examples.Whiskey
+
+table Whiskey {
+	String Distillery,
+	int Body,
+	int Sweetness,
+	int Smoky,
+	int Medicinal,
+	int Tobacco,
+	int Honey,
+	int Spicy,
+	int Winey,
+	int Nutty,
+	int Malty,
+	int Fruity,
+	int Floral
+}
+
+val whiskey = importTable("whiskey.csv") => # Whiskey #
+
+exportTable(whiskey & whiskey.smokyColumn ? [n | n > 0], "nonZeroSmokey")
+
+exportTable(null, "nonNullSmokey")

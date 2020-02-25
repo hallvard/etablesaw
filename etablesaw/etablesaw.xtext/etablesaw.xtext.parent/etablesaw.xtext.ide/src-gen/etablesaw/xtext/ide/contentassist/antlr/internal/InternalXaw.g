@@ -6461,9 +6461,16 @@ rule__HOST__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getHOSTAccess().getGroup_1()); }
-	(rule__HOST__Group_1__0)*
-	{ after(grammarAccess.getHOSTAccess().getGroup_1()); }
+	(
+		{ before(grammarAccess.getHOSTAccess().getGroup_1()); }
+		(rule__HOST__Group_1__0)
+		{ after(grammarAccess.getHOSTAccess().getGroup_1()); }
+	)
+	(
+		{ before(grammarAccess.getHOSTAccess().getGroup_1()); }
+		(rule__HOST__Group_1__0)*
+		{ after(grammarAccess.getHOSTAccess().getGroup_1()); }
+	)
 )
 ;
 finally {
@@ -7191,9 +7198,9 @@ rule__XURLLiteral__Group_1_1_1_1__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXURLLiteralAccess().getSolidusSolidusKeyword_1_1_1_1_0()); }
-	'//'
-	{ after(grammarAccess.getXURLLiteralAccess().getSolidusSolidusKeyword_1_1_1_1_0()); }
+	{ before(grammarAccess.getXURLLiteralAccess().getHostAssignment_1_1_1_1_0()); }
+	(rule__XURLLiteral__HostAssignment_1_1_1_1_0)
+	{ after(grammarAccess.getXURLLiteralAccess().getHostAssignment_1_1_1_1_0()); }
 )
 ;
 finally {
@@ -7206,7 +7213,6 @@ rule__XURLLiteral__Group_1_1_1_1__1
 	}
 :
 	rule__XURLLiteral__Group_1_1_1_1__1__Impl
-	rule__XURLLiteral__Group_1_1_1_1__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -7218,35 +7224,9 @@ rule__XURLLiteral__Group_1_1_1_1__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXURLLiteralAccess().getHostAssignment_1_1_1_1_1()); }
-	(rule__XURLLiteral__HostAssignment_1_1_1_1_1)?
-	{ after(grammarAccess.getXURLLiteralAccess().getHostAssignment_1_1_1_1_1()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__XURLLiteral__Group_1_1_1_1__2
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__XURLLiteral__Group_1_1_1_1__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__XURLLiteral__Group_1_1_1_1__2__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_1_2()); }
-	(rule__XURLLiteral__Group_1_1_1_1_2__0)?
-	{ after(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_1_2()); }
+	{ before(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_1_1()); }
+	(rule__XURLLiteral__Group_1_1_1_1_1__0)?
+	{ after(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_1_1()); }
 )
 ;
 finally {
@@ -7254,53 +7234,53 @@ finally {
 }
 
 
-rule__XURLLiteral__Group_1_1_1_1_2__0
+rule__XURLLiteral__Group_1_1_1_1_1__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__XURLLiteral__Group_1_1_1_1_2__0__Impl
-	rule__XURLLiteral__Group_1_1_1_1_2__1
+	rule__XURLLiteral__Group_1_1_1_1_1__0__Impl
+	rule__XURLLiteral__Group_1_1_1_1_1__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XURLLiteral__Group_1_1_1_1_2__0__Impl
+rule__XURLLiteral__Group_1_1_1_1_1__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getXURLLiteralAccess().getColonKeyword_1_1_1_1_2_0()); }
+	{ before(grammarAccess.getXURLLiteralAccess().getColonKeyword_1_1_1_1_1_0()); }
 	':'
-	{ after(grammarAccess.getXURLLiteralAccess().getColonKeyword_1_1_1_1_2_0()); }
+	{ after(grammarAccess.getXURLLiteralAccess().getColonKeyword_1_1_1_1_1_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XURLLiteral__Group_1_1_1_1_2__1
+rule__XURLLiteral__Group_1_1_1_1_1__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__XURLLiteral__Group_1_1_1_1_2__1__Impl
+	rule__XURLLiteral__Group_1_1_1_1_1__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XURLLiteral__Group_1_1_1_1_2__1__Impl
+rule__XURLLiteral__Group_1_1_1_1_1__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getXURLLiteralAccess().getPortAssignment_1_1_1_1_2_1()); }
-	(rule__XURLLiteral__PortAssignment_1_1_1_1_2_1)
-	{ after(grammarAccess.getXURLLiteralAccess().getPortAssignment_1_1_1_1_2_1()); }
+	{ before(grammarAccess.getXURLLiteralAccess().getPortAssignment_1_1_1_1_1_1()); }
+	(rule__XURLLiteral__PortAssignment_1_1_1_1_1_1)
+	{ after(grammarAccess.getXURLLiteralAccess().getPortAssignment_1_1_1_1_1_1()); }
 )
 ;
 finally {
@@ -21347,30 +21327,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XURLLiteral__HostAssignment_1_1_1_1_1
+rule__XURLLiteral__HostAssignment_1_1_1_1_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getXURLLiteralAccess().getHostHOSTParserRuleCall_1_1_1_1_1_0()); }
+		{ before(grammarAccess.getXURLLiteralAccess().getHostHOSTParserRuleCall_1_1_1_1_0_0()); }
 		ruleHOST
-		{ after(grammarAccess.getXURLLiteralAccess().getHostHOSTParserRuleCall_1_1_1_1_1_0()); }
+		{ after(grammarAccess.getXURLLiteralAccess().getHostHOSTParserRuleCall_1_1_1_1_0_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XURLLiteral__PortAssignment_1_1_1_1_2_1
+rule__XURLLiteral__PortAssignment_1_1_1_1_1_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getXURLLiteralAccess().getPortINTTerminalRuleCall_1_1_1_1_2_1_0()); }
+		{ before(grammarAccess.getXURLLiteralAccess().getPortINTTerminalRuleCall_1_1_1_1_1_1_0()); }
 		RULE_INT
-		{ after(grammarAccess.getXURLLiteralAccess().getPortINTTerminalRuleCall_1_1_1_1_2_1_0()); }
+		{ after(grammarAccess.getXURLLiteralAccess().getPortINTTerminalRuleCall_1_1_1_1_1_1_0()); }
 	)
 ;
 finally {

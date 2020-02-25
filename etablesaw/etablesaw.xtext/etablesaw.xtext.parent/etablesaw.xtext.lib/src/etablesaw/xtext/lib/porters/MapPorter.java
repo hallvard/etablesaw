@@ -1,11 +1,9 @@
 package etablesaw.xtext.lib.porters;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import etablesaw.xtext.lib.XawBase;
 import etablesaw.xtext.lib.XawBase.Exporter;
 import etablesaw.xtext.lib.XawBase.Importer;
+import java.util.HashMap;
+import java.util.Map;
 import tech.tablesaw.api.Table;
 
 public class MapPorter implements Exporter, Importer {

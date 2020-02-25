@@ -692,10 +692,10 @@ public class XawGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cINTTerminalRuleCall_1_1_1 = (RuleCall)cAlternatives_1_1.eContents().get(1);
 		
 		//HOST:
-		//	(ID | INT) ('.' (ID | INT))*;
+		//	(ID | INT) ('.' (ID | INT))+;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(ID | INT) ('.' (ID | INT))*
+		//(ID | INT) ('.' (ID | INT))+
 		public Group getGroup() { return cGroup; }
 		
 		//ID | INT
@@ -707,7 +707,7 @@ public class XawGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getINTTerminalRuleCall_0_1() { return cINTTerminalRuleCall_0_1; }
 		
-		//('.' (ID | INT))*
+		//('.' (ID | INT))+
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'.'
@@ -865,13 +865,12 @@ public class XawGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSchemeIDTerminalRuleCall_1_1_1_0_0_0 = (RuleCall)cSchemeAssignment_1_1_1_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_1_1_1_0_1 = (Keyword)cGroup_1_1_1_0.eContents().get(1);
 		private final Group cGroup_1_1_1_1 = (Group)cGroup_1_1_1.eContents().get(1);
-		private final Keyword cSolidusSolidusKeyword_1_1_1_1_0 = (Keyword)cGroup_1_1_1_1.eContents().get(0);
-		private final Assignment cHostAssignment_1_1_1_1_1 = (Assignment)cGroup_1_1_1_1.eContents().get(1);
-		private final RuleCall cHostHOSTParserRuleCall_1_1_1_1_1_0 = (RuleCall)cHostAssignment_1_1_1_1_1.eContents().get(0);
-		private final Group cGroup_1_1_1_1_2 = (Group)cGroup_1_1_1_1.eContents().get(2);
-		private final Keyword cColonKeyword_1_1_1_1_2_0 = (Keyword)cGroup_1_1_1_1_2.eContents().get(0);
-		private final Assignment cPortAssignment_1_1_1_1_2_1 = (Assignment)cGroup_1_1_1_1_2.eContents().get(1);
-		private final RuleCall cPortINTTerminalRuleCall_1_1_1_1_2_1_0 = (RuleCall)cPortAssignment_1_1_1_1_2_1.eContents().get(0);
+		private final Assignment cHostAssignment_1_1_1_1_0 = (Assignment)cGroup_1_1_1_1.eContents().get(0);
+		private final RuleCall cHostHOSTParserRuleCall_1_1_1_1_0_0 = (RuleCall)cHostAssignment_1_1_1_1_0.eContents().get(0);
+		private final Group cGroup_1_1_1_1_1 = (Group)cGroup_1_1_1_1.eContents().get(1);
+		private final Keyword cColonKeyword_1_1_1_1_1_0 = (Keyword)cGroup_1_1_1_1_1.eContents().get(0);
+		private final Assignment cPortAssignment_1_1_1_1_1_1 = (Assignment)cGroup_1_1_1_1_1.eContents().get(1);
+		private final RuleCall cPortINTTerminalRuleCall_1_1_1_1_1_1_0 = (RuleCall)cPortAssignment_1_1_1_1_1_1.eContents().get(0);
 		private final Assignment cPathAssignment_1_1_1_2 = (Assignment)cGroup_1_1_1.eContents().get(2);
 		private final RuleCall cPathPATHParserRuleCall_1_1_1_2_0 = (RuleCall)cPathAssignment_1_1_1_2.eContents().get(0);
 		private final Group cGroup_1_1_1_3 = (Group)cGroup_1_1_1.eContents().get(3);
@@ -888,26 +887,26 @@ public class XawGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFragFRAGMENTParserRuleCall_1_1_1_4_1_0 = (RuleCall)cFragAssignment_1_1_1_4_1.eContents().get(0);
 		
 		//XURLLiteral xbase::XExpression hidden():
-		//	{XURLLiteral} ('@' (url=STRING | (scheme=ID ':')? ('//' host=HOST? (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&'
+		//	{XURLLiteral} ('@' (url=STRING | (scheme=ID ':')? (host=HOST (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&'
 		//	params+=PARAM)*)? ('#' frag=FRAGMENT)?));
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{XURLLiteral} ('@' (url=STRING | (scheme=ID ':')? ('//' host=HOST? (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&'
+		//{XURLLiteral} ('@' (url=STRING | (scheme=ID ':')? (host=HOST (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&'
 		//params+=PARAM)*)? ('#' frag=FRAGMENT)?))
 		public Group getGroup() { return cGroup; }
 		
 		//{XURLLiteral}
 		public Action getXURLLiteralAction_0() { return cXURLLiteralAction_0; }
 		
-		//'@' (url=STRING | (scheme=ID ':')? ('//' host=HOST? (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&'
-		//params+=PARAM)*)? ('#' frag=FRAGMENT)?)
+		//'@' (url=STRING | (scheme=ID ':')? (host=HOST (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&' params+=PARAM)*)? ('#'
+		//frag=FRAGMENT)?)
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'@'
 		public Keyword getCommercialAtKeyword_1_0() { return cCommercialAtKeyword_1_0; }
 		
-		//url=STRING | (scheme=ID ':')? ('//' host=HOST? (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&' params+=PARAM)*)?
-		//('#' frag=FRAGMENT)?
+		//url=STRING | (scheme=ID ':')? (host=HOST (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&' params+=PARAM)*)? ('#'
+		//frag=FRAGMENT)?
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 		
 		//url=STRING
@@ -916,8 +915,7 @@ public class XawGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getUrlSTRINGTerminalRuleCall_1_1_0_0() { return cUrlSTRINGTerminalRuleCall_1_1_0_0; }
 		
-		//(scheme=ID ':')? ('//' host=HOST? (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&' params+=PARAM)*)? ('#'
-		//frag=FRAGMENT)?
+		//(scheme=ID ':')? (host=HOST (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&' params+=PARAM)*)? ('#' frag=FRAGMENT)?
 		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
 		
 		//(scheme=ID ':')?
@@ -932,29 +930,26 @@ public class XawGrammarAccess extends AbstractGrammarElementFinder {
 		//':'
 		public Keyword getColonKeyword_1_1_1_0_1() { return cColonKeyword_1_1_1_0_1; }
 		
-		//('//' host=HOST? (':' port=INT)?)?
+		//(host=HOST (':' port=INT)?)?
 		public Group getGroup_1_1_1_1() { return cGroup_1_1_1_1; }
 		
-		//'//'
-		public Keyword getSolidusSolidusKeyword_1_1_1_1_0() { return cSolidusSolidusKeyword_1_1_1_1_0; }
-		
-		//host=HOST?
-		public Assignment getHostAssignment_1_1_1_1_1() { return cHostAssignment_1_1_1_1_1; }
+		//host=HOST
+		public Assignment getHostAssignment_1_1_1_1_0() { return cHostAssignment_1_1_1_1_0; }
 		
 		//HOST
-		public RuleCall getHostHOSTParserRuleCall_1_1_1_1_1_0() { return cHostHOSTParserRuleCall_1_1_1_1_1_0; }
+		public RuleCall getHostHOSTParserRuleCall_1_1_1_1_0_0() { return cHostHOSTParserRuleCall_1_1_1_1_0_0; }
 		
 		//(':' port=INT)?
-		public Group getGroup_1_1_1_1_2() { return cGroup_1_1_1_1_2; }
+		public Group getGroup_1_1_1_1_1() { return cGroup_1_1_1_1_1; }
 		
 		//':'
-		public Keyword getColonKeyword_1_1_1_1_2_0() { return cColonKeyword_1_1_1_1_2_0; }
+		public Keyword getColonKeyword_1_1_1_1_1_0() { return cColonKeyword_1_1_1_1_1_0; }
 		
 		//port=INT
-		public Assignment getPortAssignment_1_1_1_1_2_1() { return cPortAssignment_1_1_1_1_2_1; }
+		public Assignment getPortAssignment_1_1_1_1_1_1() { return cPortAssignment_1_1_1_1_1_1; }
 		
 		//INT
-		public RuleCall getPortINTTerminalRuleCall_1_1_1_1_2_1_0() { return cPortINTTerminalRuleCall_1_1_1_1_2_1_0; }
+		public RuleCall getPortINTTerminalRuleCall_1_1_1_1_1_1_0() { return cPortINTTerminalRuleCall_1_1_1_1_1_1_0; }
 		
 		//path=PATH
 		public Assignment getPathAssignment_1_1_1_2() { return cPathAssignment_1_1_1_2; }
@@ -1608,7 +1603,7 @@ public class XawGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//HOST:
-	//	(ID | INT) ('.' (ID | INT))*;
+	//	(ID | INT) ('.' (ID | INT))+;
 	public HOSTElements getHOSTAccess() {
 		return pHOST;
 	}
@@ -1658,7 +1653,7 @@ public class XawGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XURLLiteral xbase::XExpression hidden():
-	//	{XURLLiteral} ('@' (url=STRING | (scheme=ID ':')? ('//' host=HOST? (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&'
+	//	{XURLLiteral} ('@' (url=STRING | (scheme=ID ':')? (host=HOST (':' port=INT)?)? path=PATH ('?' params+=PARAM ('&'
 	//	params+=PARAM)*)? ('#' frag=FRAGMENT)?));
 	public XURLLiteralElements getXURLLiteralAccess() {
 		return pXURLLiteral;

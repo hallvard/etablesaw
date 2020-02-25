@@ -125,7 +125,7 @@ public class XawParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1(), "rule__XURLLiteral__Group_1_1_1__0");
 			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_0(), "rule__XURLLiteral__Group_1_1_1_0__0");
 			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_1(), "rule__XURLLiteral__Group_1_1_1_1__0");
-			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_1_2(), "rule__XURLLiteral__Group_1_1_1_1_2__0");
+			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_1_1(), "rule__XURLLiteral__Group_1_1_1_1_1__0");
 			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_3(), "rule__XURLLiteral__Group_1_1_1_3__0");
 			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_3_2(), "rule__XURLLiteral__Group_1_1_1_3_2__0");
 			builder.put(grammarAccess.getXURLLiteralAccess().getGroup_1_1_1_4(), "rule__XURLLiteral__Group_1_1_1_4__0");
@@ -371,8 +371,8 @@ public class XawParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXLocalDateLiteralAccess().getYearAssignment_6(), "rule__XLocalDateLiteral__YearAssignment_6");
 			builder.put(grammarAccess.getXURLLiteralAccess().getUrlAssignment_1_1_0(), "rule__XURLLiteral__UrlAssignment_1_1_0");
 			builder.put(grammarAccess.getXURLLiteralAccess().getSchemeAssignment_1_1_1_0_0(), "rule__XURLLiteral__SchemeAssignment_1_1_1_0_0");
-			builder.put(grammarAccess.getXURLLiteralAccess().getHostAssignment_1_1_1_1_1(), "rule__XURLLiteral__HostAssignment_1_1_1_1_1");
-			builder.put(grammarAccess.getXURLLiteralAccess().getPortAssignment_1_1_1_1_2_1(), "rule__XURLLiteral__PortAssignment_1_1_1_1_2_1");
+			builder.put(grammarAccess.getXURLLiteralAccess().getHostAssignment_1_1_1_1_0(), "rule__XURLLiteral__HostAssignment_1_1_1_1_0");
+			builder.put(grammarAccess.getXURLLiteralAccess().getPortAssignment_1_1_1_1_1_1(), "rule__XURLLiteral__PortAssignment_1_1_1_1_1_1");
 			builder.put(grammarAccess.getXURLLiteralAccess().getPathAssignment_1_1_1_2(), "rule__XURLLiteral__PathAssignment_1_1_1_2");
 			builder.put(grammarAccess.getXURLLiteralAccess().getParamsAssignment_1_1_1_3_1(), "rule__XURLLiteral__ParamsAssignment_1_1_1_3_1");
 			builder.put(grammarAccess.getXURLLiteralAccess().getParamsAssignment_1_1_1_3_2_1(), "rule__XURLLiteral__ParamsAssignment_1_1_1_3_2_1");

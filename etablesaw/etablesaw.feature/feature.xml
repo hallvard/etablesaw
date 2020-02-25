@@ -80,12 +80,6 @@
          unpack="false"/>
 
    <plugin
-         id="com.github.haifengl.smile.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="etablesaw.jsplot"
          download-size="0"
          install-size="0"

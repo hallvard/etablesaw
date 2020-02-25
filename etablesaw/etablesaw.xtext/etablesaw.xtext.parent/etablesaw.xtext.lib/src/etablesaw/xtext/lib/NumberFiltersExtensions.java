@@ -7,31 +7,31 @@ import tech.tablesaw.selection.Selection;
 public class NumberFiltersExtensions {
 
 	// >
-	public static Selection operator_greaterThan(NumberFilters numbericColumn, double n) {
-	    return numbericColumn.isGreaterThan(n);
+	public static Selection operator_greaterThan(NumberFilters numericColumn, double n) {
+	    return numericColumn.isGreaterThan(n);
 	}
-	public static Selection operator_greaterThan(NumberFilters numbericColumn, NumericColumn<?> numericColumn) {
-	    return numbericColumn.isGreaterThan(numericColumn);
+	public static Selection operator_greaterThan(NumberFilters numericColumn1, NumericColumn<?> numericColumn2) {
+	    return numericColumn1.isGreaterThan(numericColumn2);
 	}
 	// >=
-	public static Selection operator_greaterEqualsThan(NumberFilters numbericColumn, double n) {
-	    return numbericColumn.isGreaterThanOrEqualTo(n);
+	public static Selection operator_greaterEqualsThan(NumberFilters numericColumn, double n) {
+	    return numericColumn.isGreaterThanOrEqualTo(n);
 	}
-	public static Selection operator_greaterEqualsThan(NumberFilters numbericColumn, NumericColumn<?> numericColumn) {
-	    return numbericColumn.isGreaterThanOrEqualTo(numericColumn);
+	public static Selection operator_greaterEqualsThan(NumberFilters numericColumn1, NumericColumn<?> numericColumn2) {
+	    return numericColumn1.isGreaterThanOrEqualTo(numericColumn2);
 	}
 	// <
-	public static Selection operator_lessThan(NumberFilters numbericColumn, double n) {
-	    return numbericColumn.isLessThan(n);
+	public static Selection operator_lessThan(NumberFilters numericColumn, double n) {
+	    return numericColumn.isLessThan(n);
 	}
-	public static Selection operator_lessThan(NumberFilters numbericColumn, NumericColumn<?> numericColumn) {
-	    return numbericColumn.isLessThan(numericColumn);
+	public static Selection operator_lessThan(NumberFilters numericColumn1, NumericColumn<?> numericColumn2) {
+	    return numericColumn1.isLessThan(numericColumn2);
 	}
 	// <=
-	public static Selection operator_lessEqualsThan(NumberFilters numbericColumn, double n) {
-	    return numbericColumn.isLessThanOrEqualTo(n);
+	public static Selection operator_lessEqualsThan(NumberFilters numericColumn, double n) {
+	    return numericColumn.isLessThanOrEqualTo(n);
 	}
-	public static Selection operator_lessEqualsThan(NumberFilters numbericColumn, NumericColumn<?> numericColumn) {
-	    return numbericColumn.isLessThanOrEqualTo(numericColumn);
+	public static Selection operator_lessEqualsThan(NumberFilters numericColumn1, NumericColumn<?> numericColumn2) {
+	    return numericColumn1.isLessThanOrEqualTo(numericColumn2);
 	}
 }

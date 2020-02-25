@@ -30,7 +30,6 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_XImportDeclaration_SemicolonKeyword_2_q;
 	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_a;
 	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_p;
-	protected AbstractElementAlias match_XURLLiteral_SolidusSolidusKeyword_1_1_1_1_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -44,7 +43,6 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_XImportDeclaration_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getXImportDeclarationAccess().getSemicolonKeyword_2());
 		match_XParenthesizedExpression_LeftParenthesisKeyword_0_a = new TokenAlias(true, true, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
 		match_XParenthesizedExpression_LeftParenthesisKeyword_0_p = new TokenAlias(true, false, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
-		match_XURLLiteral_SolidusSolidusKeyword_1_1_1_1_0_q = new TokenAlias(false, true, grammarAccess.getXURLLiteralAccess().getSolidusSolidusKeyword_1_1_1_1_0());
 	}
 	
 	@Override
@@ -102,8 +100,6 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_XParenthesizedExpression_LeftParenthesisKeyword_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XParenthesizedExpression_LeftParenthesisKeyword_0_p.equals(syntax))
 				emit_XParenthesizedExpression_LeftParenthesisKeyword_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XURLLiteral_SolidusSolidusKeyword_1_1_1_1_0_q.equals(syntax))
-				emit_XURLLiteral_SolidusSolidusKeyword_1_1_1_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -214,11 +210,10 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) '#' name=STRING
 	 *     (rule start) (ambiguity) '#' name=ValidID
 	 *     (rule start) (ambiguity) '<' typeArguments+=JvmArgumentTypeReference
-	 *     (rule start) (ambiguity) '@' '//' ':' port=INT
-	 *     (rule start) (ambiguity) '@' '//' host=HOST
-	 *     (rule start) (ambiguity) '@' '//'? path=PATH
 	 *     (rule start) (ambiguity) '@' day=INT
+	 *     (rule start) (ambiguity) '@' host=HOST
 	 *     (rule start) (ambiguity) '@' hour=INT
+	 *     (rule start) (ambiguity) '@' path=PATH
 	 *     (rule start) (ambiguity) '@' scheme=ID
 	 *     (rule start) (ambiguity) '@' url=STRING
 	 *     (rule start) (ambiguity) '[' declaredFormalParameters+=JvmFormalParameter
@@ -279,11 +274,10 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) '#' name=STRING
 	 *     (rule start) (ambiguity) '#' name=ValidID
 	 *     (rule start) (ambiguity) '<' typeArguments+=JvmArgumentTypeReference
-	 *     (rule start) (ambiguity) '@' '//' ':' port=INT
-	 *     (rule start) (ambiguity) '@' '//' host=HOST
-	 *     (rule start) (ambiguity) '@' '//'? path=PATH
 	 *     (rule start) (ambiguity) '@' day=INT
+	 *     (rule start) (ambiguity) '@' host=HOST
 	 *     (rule start) (ambiguity) '@' hour=INT
+	 *     (rule start) (ambiguity) '@' path=PATH
 	 *     (rule start) (ambiguity) '@' scheme=ID
 	 *     (rule start) (ambiguity) '@' url=STRING
 	 *     (rule start) (ambiguity) '[' declaredFormalParameters+=JvmFormalParameter
@@ -325,20 +319,6 @@ public class XawSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {XPostfixOperation.operand=}
 	 */
 	protected void emit_XParenthesizedExpression_LeftParenthesisKeyword_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '//'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) '('* '@' (ambiguity) path=PATH
-	 *     (rule start) '('+ '@' (ambiguity) path=PATH
-	 *     (rule start) '@' (ambiguity) path=PATH
-	 *     scheme=ID ':' (ambiguity) path=PATH
-	 */
-	protected void emit_XURLLiteral_SolidusSolidusKeyword_1_1_1_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

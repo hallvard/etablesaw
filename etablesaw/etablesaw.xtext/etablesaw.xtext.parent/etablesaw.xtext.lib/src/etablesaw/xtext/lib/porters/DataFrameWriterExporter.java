@@ -3,7 +3,6 @@ package etablesaw.xtext.lib.porters;
 import java.io.File;
 import java.io.IOException;
 
-import etablesaw.xtext.lib.XawBase;
 import etablesaw.xtext.lib.XawBase.Exporter;
 import tech.tablesaw.api.Table;
 

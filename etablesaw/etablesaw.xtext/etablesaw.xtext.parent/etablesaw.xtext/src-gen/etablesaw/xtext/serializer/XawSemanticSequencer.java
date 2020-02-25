@@ -883,17 +883,7 @@ public class XawSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer 
 	 *     XExpressionOrVarDeclaration returns XURLLiteral
 	 *
 	 * Constraint:
-	 *     (
-	 *         url=STRING | 
-	 *         (
-	 *             scheme=ID? 
-	 *             host=HOST? 
-	 *             port=INT? 
-	 *             path=PATH 
-	 *             (params+=PARAM params+=PARAM*)? 
-	 *             frag=FRAGMENT?
-	 *         )
-	 *     )
+	 *     (url=STRING | (scheme=ID? (host=HOST port=INT?)? path=PATH (params+=PARAM params+=PARAM*)? frag=FRAGMENT?))
 	 */
 	protected void sequence_XURLLiteral(ISerializationContext context, XURLLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -1,12 +1,18 @@
 package etablesaw.ui.editor;
 
+import etablesaw.io.FileFormatSupport;
+import etablesaw.ui.Activator;
+import etablesaw.ui.TableProvider;
+import etablesaw.ui.editor.commands.AbstractNatTablesawEditorHandler;
+import etablesaw.ui.editor.commands.AddColumnOperation;
+import etablesaw.ui.editor.commands.TableCellChangeRecorder;
+import etablesaw.ui.editor.commands.TableCellsChangedOperation;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Consumer;
-
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.commands.operations.IUndoContext;
@@ -40,14 +46,6 @@ import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.operations.UndoRedoActionGroup;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.part.FileEditorInput;
-
-import etablesaw.io.FileFormatSupport;
-import etablesaw.ui.Activator;
-import etablesaw.ui.TableProvider;
-import etablesaw.ui.editor.commands.AbstractNatTablesawEditorHandler;
-import etablesaw.ui.editor.commands.AddColumnOperation;
-import etablesaw.ui.editor.commands.TableCellChangeRecorder;
-import etablesaw.ui.editor.commands.TableCellsChangedOperation;
 import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
 
@@ -75,7 +73,9 @@ public class NatTablesawEditor extends EditorPart implements TableProvider, ISel
 
     @Override
     public void dispose() {
-        resourceChangeHelper.dispose();
+        if (resourceChangeHelper != null) {
+            resourceChangeHelper.dispose();
+        }
         registerTableProvider(null);
         super.dispose();
     }
