@@ -40,15 +40,6 @@
             icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
             >
       </view>
-      <view
-            category="etablesaw.ui.category"
-            class="etablesaw.ui.smile.RandomForestClassificationView"
-            id="etablesaw.ui.smile.RandomForestClassificationView"
-            allowMultiple="true"
-            name="Knn Classification"
-            icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
-            >
-      </view>
    </extension>
    
 </plugin>

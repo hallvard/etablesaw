@@ -1,11 +1,5 @@
 package etablesaw.ui.views;
 
-import etablesaw.ui.Activator;
-import etablesaw.ui.TableProvider;
-import etablesaw.ui.TableProviderRegistry;
-import etablesaw.ui.editor.NatTablesawEditor;
-import etablesaw.ui.util.MultiCheckSelectionCombo;
-import etablesaw.ui.util.Util;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -15,6 +9,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
+
+import etablesaw.ui.Activator;
+import etablesaw.ui.TableProvider;
+import etablesaw.ui.TableProviderRegistry;
+import etablesaw.ui.editor.NatTablesawEditor;
+import etablesaw.ui.util.MultiCheckSelectionCombo;
+import etablesaw.ui.util.Util;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -589,7 +590,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		};
 		Control control;
 		if (multi) {
-			final MultiCheckSelectionCombo combo = new MultiCheckSelectionCombo(parent, SWT.NONE);
+			final MultiCheckSelectionCombo combo = new MultiCheckSelectionCombo(parent, SWT.NONE, "select columns");
 			combo.setItemsProvider(itemsProvider);
 			combo.addSelectionListener(selectionListener);
 			control = combo;
@@ -683,7 +684,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		Control control;
 		final String[] itemsArray = items.toArray(new String[items.size()]);
 		if (multi) {
-			final MultiCheckSelectionCombo combo = new MultiCheckSelectionCombo(parent, SWT.NONE);
+			final MultiCheckSelectionCombo combo = new MultiCheckSelectionCombo(parent, SWT.NONE, "select aggregate function(s)");
 			combo.setItems(itemsArray);
 			combo.addSelectionListener(selectionListener);
 			control = combo;

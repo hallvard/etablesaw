@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import etablesaw.ui.Activator;
+import etablesaw.ui.TableProvider;
+import etablesaw.ui.TableProviderRegistry;
+import etablesaw.ui.util.ResourceTableProvider;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -21,11 +25,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ResourceTransfer;
 import org.eclipse.ui.part.ViewPart;
-
-import etablesaw.ui.Activator;
-import etablesaw.ui.TableProvider;
-import etablesaw.ui.TableProviderRegistry;
-import etablesaw.ui.util.ResourceTableProvider;
 
 public class TableProviderRegistryView extends ViewPart {
 
@@ -167,7 +166,9 @@ public class TableProviderRegistryView extends ViewPart {
             keyOrder.remove(newFirstKey);
             keyOrder.add(0, newFirstKey);
         }
-        viewer.getControl().getDisplay().asyncExec(viewer::refresh);
+        if (! viewer.getControl().isDisposed()) {
+            viewer.getControl().getDisplay().asyncExec(viewer::refresh);
+        }
     }
 
     @Override

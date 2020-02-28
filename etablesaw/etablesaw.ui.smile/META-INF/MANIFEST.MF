@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Tablesaw UI
+Bundle-Name: Tablesaw Smile UI
 Bundle-SymbolicName: etablesaw.ui.smile;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
@@ -11,12 +11,14 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.13.0",
  org.eclipse.ui.ide;bundle-version="3.13.0"
 Export-Package: etablesaw.ui.smile
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: etablesaw.ui.Activator
 Import-Package: etablesaw.io,
  etablesaw.ui,
  etablesaw.ui.views,
  smile.classification,
  smile.data,
+ smile.data.formula,
+ smile.data.type,
+ smile.data.vector,
  smile.regression,
  tech.tablesaw.api,
  tech.tablesaw.columns,

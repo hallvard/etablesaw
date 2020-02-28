@@ -41,8 +41,7 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @since version 1.0.0.0
 	 */
 	public MultiCheckSelectionCombo(final Composite parent, final int style) {
-		super(parent, style);
-		init();
+		this(parent, style, null);
 	}
 
 	/**
@@ -57,14 +56,14 @@ public class MultiCheckSelectionCombo extends Composite {
 	 * @param style the style of control to construct
 	 * @param defaultText the default text to display when no options are selected
 	 * @throws IllegalArgumentException if the parent is null
-	 * @throws IllegalArgumentException if the defaultText is null
 	 * @throws SWTException if not called from the thread that created the parent
 	 * @since version 1.0.0.0
 	 */
 	public MultiCheckSelectionCombo(final Composite parent, final int style, final String defaultText) {
 		super(parent, style);
-		if (defaultText == null) throw new IllegalArgumentException("Default Text cannot be null");
-		this.defaultText = defaultText;
+		if (defaultText != null) {
+		    this.defaultText = defaultText;		    
+		}
 		init();
 	}
 
