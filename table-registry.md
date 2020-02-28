@@ -6,7 +6,7 @@ Both the table editor and view *provide* the currently filtered and selected tab
 
 The views that *consume* table data from the registry allow the user to select the table source in a **Tables** meny in the view drop-down (the triangle or vertical dots in the upper right corner):
 
-<img src="table-source-selector.png" title="Table source selector" width=400>
+<img src="table-source-selector.png" title="Table source selector" width=400/>
 
 The [xaw](xaw.md) editor supports executing xaw scripts inside the workbench and may take part in this action. The script may *import* tables from the registry or *export* to it, thus when a script has run, the tables exported during the execution may be picked up and shown in other views.
 
@@ -18,4 +18,4 @@ The snapshot below, shows the workbench with several (linked) parts:
 - The Table # 13 view (lower left) uses the `nonNullSmoky` table as its source (selected using the **Tables** meny in the view drop-down, and shown in the view title tool tip). A filter has been added to the `Medicinal` column. The resulting table view is automatically provided through the table registry.
 - The Bar Chart view  (lower right) uses the `Table # 13` table as its source and shows the `Smoky` and `Honey` values for each `Distillery`. If the filter in the Table # 13 view is changed or cleared, the bar chart will update accordingly.  
 
-<img src="whiskey-workbench.png" title="Whiskey Workbench" width=1000>
+<img src="whiskey-workbench.png" title="Whiskey Workbench" width=1000/>
