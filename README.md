@@ -11,6 +11,16 @@ The goal of etablesaw is to turn Eclipse into a workbench for working with data 
 
 Most features are extensible, e.g. it's easy to add new file formats to the editor or new chart views.
 
+The screenshot below illustrates some of etablesaw's features:
+
+- the data frame editor (upper left)
+- xaw script editor (upper middle)
+- table registry view, for linking table data providers and consumer 
+- table viewer with row filter (lower left)
+- bar chart view
+
+<img src="whiskey-workbench.png" title="Whiskey Workbench" width="1000"/>
+
 ## The data frame editor
 
 The **Tablesaw table editor** allow viewing and editing table data. Currently it supports CSV (read/write) and Excel file formats (read only). Rows can be filtered using expression on columns and columns may be hidden. Columns may be updated using expressions, and new ones added. Simple variants of delete and copy & paste are supported.
