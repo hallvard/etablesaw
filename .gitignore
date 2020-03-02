@@ -1,7 +1,4 @@
-bin/
-target/
-*._trace
-*.xtendbin
-*.*~
-*.iml
-src-gen/
+_site/
+.sass-cache/
+.jekyll-metadata
+Gemfile.lock
