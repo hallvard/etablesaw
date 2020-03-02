@@ -1,0 +1,15 @@
+theme: jekyll-theme-minimal
+title: etablesaw
+description: Eclipse integration the tablesaw data frame library for java
+show_downloads: False
+navigation:
+  - title: Home
+    url: /
+  - title: Data frame editor
+    url: table-editor
+  - title: Viewing and plotting table data
+    url: views
+  - title: Linking table providers and consumers
+    url: table-registry
+  - title: Xaw Scripting DSL
+    url: xaw

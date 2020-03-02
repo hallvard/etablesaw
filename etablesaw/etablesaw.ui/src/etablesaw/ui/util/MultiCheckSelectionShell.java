@@ -10,7 +10,6 @@ import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -126,13 +125,29 @@ public class MultiCheckSelectionShell {
 	    this.locationHeightFactor = locationHeightFactor;
 	}
 
+	private boolean useCursorLocation = false;
+	
+	public void setUseCursorLocation(boolean useCursorLocation) {
+        this.useCursorLocation = useCursorLocation;
+    }
+	
 	public void openShell() {
-		final Point p = owner.getParent().toDisplay(owner.getLocation());
-		final Point size = owner.getSize();
-		final int dx = locationXOffset + (int) (size.x * locationWidthFactor);
-        final int dy = locationYOffset + (int) (size.y * locationHeightFactor);
-		final Rectangle shellRect = new Rectangle(p.x + dx, p.y + dy, size.x, 0);
-		final Shell shell = new Shell(owner.getShell(), SWT.BORDER | (title != null ? SWT.TITLE : SWT.NONE));
+	    Point shellPos = null;
+	    if (useCursorLocation) {
+	        Point p = owner.getDisplay().getCursorLocation();
+	        int y = p.y - 20;
+	        if (title != null) {
+	            y -= 20; 
+	        }
+	        shellPos = new Point(p.x - 20, y);
+		} else {
+		    Point p = owner.getParent().toDisplay(owner.getLocation());
+		    final Point size = owner.getSize();
+		    final int dx = locationXOffset + (int) (size.x * locationWidthFactor);
+		    final int dy = locationYOffset + (int) (size.y * locationHeightFactor);
+		    shellPos = new Point(p.x + dx, p.y + dy);
+		}
+	    final Shell shell = new Shell(owner.getShell(), SWT.BORDER | (title != null ? SWT.TITLE : SWT.NONE));
 		if (title != null) {
 		    shell.setText(title);
 		}
@@ -160,7 +175,7 @@ public class MultiCheckSelectionShell {
             }
         });
 		shell.pack();
-		shell.setLocation(shellRect.x, shellRect.y);
+		shell.setLocation(shellPos.x, shellPos.y);
 
 		shell.addListener(SWT.KeyDown, closeListener);
 		shell.addListener(SWT.Deactivate, closeListener);
@@ -198,6 +213,9 @@ public class MultiCheckSelectionShell {
 				if (notifyOnSelection) {
     				for (final SelectionListener listener : selectionListeners) {
     				    listener.widgetSelected(new SelectionEvent(event));
+    				    if (event.doit) {
+    				        closeShell(parent, event);
+    				    }
     				}
 				}
                 forwardEvent(event);

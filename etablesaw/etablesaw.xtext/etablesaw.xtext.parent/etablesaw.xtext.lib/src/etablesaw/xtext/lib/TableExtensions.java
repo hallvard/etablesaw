@@ -1,10 +1,11 @@
 package etablesaw.xtext.lib;
 
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import org.eclipse.xtext.xbase.lib.IntegerRange;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Pure;
-
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
@@ -86,10 +87,20 @@ public class TableExtensions {
 	    return table.dropRange(range.getStart(), range.getEnd());
 	}
 	
-	// =>
+	// table1 => table2
 
     public static <T extends Table> T operator_doubleArrow(final Table table1, final T table2) {
         table2.append(table1);
         return table2;
+    }
+    
+    // table -> fun => column
+
+    public static <R extends Row, T, C extends Column<T>> C operator_doubleArrow(Pair<TypedTable<R>, Function<? super R, ? extends T>> tableFunctionPair, C into) {
+        int rowNum = 0;
+        for (R row : tableFunctionPair.getKey().rows()) {
+            into.set(rowNum, tableFunctionPair.getValue().apply(row));
+        }
+        return into;
     }
 }

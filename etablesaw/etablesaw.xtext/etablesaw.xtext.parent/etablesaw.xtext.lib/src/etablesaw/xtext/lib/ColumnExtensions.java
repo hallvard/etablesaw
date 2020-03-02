@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Pure;
-
 import tech.tablesaw.columns.Column;
 import tech.tablesaw.selection.Selection;
 
@@ -49,10 +48,10 @@ public class ColumnExtensions {
     public static <T> Column<T> operator_singleAnd(Column<T> numericColumn, Predicate<T> pred) {
         return numericColumn.filter(pred);
     }
-	
-	//
 
-	public static <T> Column<T> mapInto(Column<T> column, Function<? super T, ? extends T> fun) {
-	    return column.mapInto(fun, column);
-	}
+	// col1 -> fun => col2
+	
+    public static <T, R, C extends Column<R>> C operator_doubleArrow(Pair<Column<T>, Function<? super T, ? extends R>> columnFunctionPair, C into) {
+        return columnFunctionPair.getKey().mapInto(columnFunctionPair.getValue(), into);
+    }
 }
