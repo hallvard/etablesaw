@@ -4,9 +4,9 @@ The table data registry allows table data providers and consumers to be linked, 
 
 Both the table editor and view *provide* the currently filtered and selected table data through this mechanism. Hence, a bar chart linked to an editor will update when the row selection changes or a filter is applied. The views that *derive* new table data also *provide* the resulting table. This allows e.g. a crosstab to be plotted.
 
-The views that *consume* table data from the registry allow the user to select the table source in a **Tables** meny in the view drop-down (the triangle or vertical dots in the upper right corner):
+The views that *consume* table data from the registry allow the user to select the table source by clicking the link button (double straight arrows):
 
-<img src="table-source-selector.png" title="Table source selector" width="400"/>
+<img src="table-link-source-selector.png" title="Table source selector" width="300"/>
 
 The [xaw](xaw.md) editor supports executing xaw scripts inside the workbench and may take part in this action. The script may *import* tables from the registry or *export* to it, thus when a script has run, the tables exported during the execution may be picked up and shown in other views.
 
