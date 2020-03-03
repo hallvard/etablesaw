@@ -13,7 +13,7 @@ The [xaw](xaw.md) editor supports executing xaw scripts inside the workbench and
 The snapshot below, shows the workbench with several (linked) parts:
 
 - The currently available tables in the registry is shown in the Table Registry view (upper right).
-- The file `whiskey.csv` has been opened in the Table editor (upper left). The current view of this table is automatically provided through the table registry, here the `Row Id` has been filtered (not shown) and is not available to consumers.
+- The file `whiskey.csv` has been opened in the Table editor (upper left). The current view of this table is automatically provided through the table registry, and since the `Row Id` column has been hidden (thus not shown) it is not available to consumers.
 - The script in the xaw editor (upper middle) declares the `Whiskey` table type with only the taste-related columns. The `whiskey.csv` table is imported and populates a new instance of the `Whiskey` table type. Then a new table is created, based on selecting the rows with a `smokeyColumn` value greater than zero. This table is exported with the `nonNullSmoky` key.
 - The Table # 13 view (lower left) uses the `nonNullSmoky` table as its source (selected using the **Tables** meny in the view drop-down, and shown in the view title tool tip). A filter has been added to the `Medicinal` column. The resulting table view is automatically provided through the table registry.
 - The Bar Chart view  (lower right) uses the `Table # 13` table as its source and shows the `Smoky` and `Honey` values for each `Distillery`. If the filter in the Table # 13 view is changed or cleared, the bar chart will update accordingly.  
