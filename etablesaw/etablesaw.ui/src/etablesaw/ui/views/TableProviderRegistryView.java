@@ -7,11 +7,15 @@ import java.util.List;
 
 import etablesaw.ui.Activator;
 import etablesaw.ui.TableProvider;
+import etablesaw.ui.TableProviderHelper;
 import etablesaw.ui.TableProviderRegistry;
 import etablesaw.ui.util.ResourceTableProvider;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.ViewerComparator;
@@ -25,8 +29,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ResourceTransfer;
 import org.eclipse.ui.part.ViewPart;
+import tech.tablesaw.api.Table;
 
-public class TableProviderRegistryView extends ViewPart {
+public class TableProviderRegistryView extends ViewPart implements TableProvider {
 
     private TableViewer viewer;
     
@@ -57,11 +62,23 @@ public class TableProviderRegistryView extends ViewPart {
             @Override
             public Object[] getElements(Object inputElement) {
                 if (inputElement instanceof TableProviderRegistry) {
-                    return super.getElements(((TableProviderRegistry) inputElement).getTableProviderKeys());
+                    Collection<String> tableProviderKeys = ((TableProviderRegistry) inputElement).getTableProviderKeys();
+                    // don't show itself
+                    tableProviderKeys.remove(getTableProviderKey());
+                    return super.getElements(tableProviderKeys);
                 }
                 return super.getElements(inputElement);
             }
         });
+        viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+            @Override
+            public void selectionChanged(SelectionChangedEvent event) {
+                if (tableProviderHelper != null) {
+                    tableProviderHelper.fireTableChanged(TableProviderRegistryView.this);
+                }
+            }
+        });
+        tableProviderRegistry.registerTableProvider(getTableProviderKey(), TableProviderRegistryView.this);
 
         viewer.setComparator(new ViewerComparator() {
             public int compare(org.eclipse.jface.viewers.Viewer viewer, Object key1, Object key2) {
@@ -136,8 +153,13 @@ public class TableProviderRegistryView extends ViewPart {
         viewer.addDropSupport(DND.DROP_MOVE | DND.DROP_COPY, transfers, viewerDropAdapter);
     }
 
+    private String getTableProviderKey() {
+        return getPartName();
+    }
+
     @Override
     public void dispose() {
+        Activator.getInstance().getTableProviderRegistry().registerTableProvider(getTableProviderKey(), null);
         if (resourceTableProviders != null) {
             for (ResourceTableProvider resourceTableProvider : resourceTableProviders) {
                 resourceTableProvider.dispose();
@@ -163,16 +185,49 @@ public class TableProviderRegistryView extends ViewPart {
     
     private void refreshViewer(String newFirstKey) {
         if (newFirstKey != null) {
-            keyOrder.remove(newFirstKey);
+            if (! keyOrder.remove(newFirstKey)) {
+                return;
+            }
             keyOrder.add(0, newFirstKey);
         }
         if (! viewer.getControl().isDisposed()) {
-            viewer.getControl().getDisplay().asyncExec(viewer::refresh);
+            viewer.refresh();
         }
     }
 
     @Override
     public void setFocus() {
         viewer.getControl().setFocus();
+    }
+    
+    @Override
+    public Table getTable() {
+        IStructuredSelection selection = viewer.getStructuredSelection();
+        if (! selection.isEmpty()) {
+            TableProviderRegistry providerRegistry = Activator.getInstance().getTableProviderRegistry();
+            String key = String.valueOf(selection.getFirstElement());
+            TableProvider tableProvider = providerRegistry.getTableProvider(key);
+            if (tableProvider != null) {
+                return tableProvider.getTable();
+            }
+        }
+        return null;
+    }
+    
+    private TableProviderHelper tableProviderHelper = null;
+
+    @Override
+    public void addTableDataProviderListener(Listener listener) {
+        if (tableProviderHelper == null) {
+            tableProviderHelper = new TableProviderHelper();
+        }
+        tableProviderHelper.addTableDataProviderListener(listener);
+    }
+
+    @Override
+    public void removeTableDataProviderListener(Listener listener) {
+        if (tableProviderHelper != null) {
+            tableProviderHelper.removeTableDataProviderListener(listener);
+        }
     }
 }

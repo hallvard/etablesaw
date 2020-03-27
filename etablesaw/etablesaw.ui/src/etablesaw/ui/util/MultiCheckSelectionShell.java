@@ -161,7 +161,7 @@ public class MultiCheckSelectionShell {
 		        closeShell(buttonsParent, event);
 		    }
 		};
-		buttons = createShowHideButtons(buttonsParent);
+		buttons = createButtons(buttonsParent);
 		for (int i = 0; i < buttons.length; i++) {
             buttons[i].addListener(SWT.KeyDown, closeListener);
         }
@@ -191,7 +191,7 @@ public class MultiCheckSelectionShell {
         
     }
 
-    protected Button[] createShowHideButtons(final Composite parent) {
+    protected Button[] createButtons(final Composite parent) {
 		if (toggleButtonText != null) {
 		    final Button toggle = new Button(parent, SWT.BUTTON1);
 		    toggle.setText(toggleButtonText);
@@ -208,17 +208,23 @@ public class MultiCheckSelectionShell {
 			final Option option = options.get(i);
 			button.setText(option.text);
 			button.setSelection(option.selection);
-			button.addListener(SWT.Selection, event -> {
-				option.selection = button.getSelection();
-				if (notifyOnSelection) {
-    				for (final SelectionListener listener : selectionListeners) {
-    				    listener.widgetSelected(new SelectionEvent(event));
-    				    if (event.doit) {
-    				        closeShell(parent, event);
-    				    }
+			button.addListener(SWT.Selection, new Listener() {
+                @Override
+                public void handleEvent(Event event) {
+                  	option.selection = button.getSelection();
+    				if (notifyOnSelection) {
+    				    boolean doit = false;
+                        for (final SelectionListener listener : selectionListeners) {
+                            SelectionEvent selectionEvent = new SelectionEvent(event);
+                            listener.widgetSelected(selectionEvent);
+                            doit |= selectionEvent.doit;
+                        }
+                        if (doit) {
+                            parent.getDisplay().asyncExec(() -> closeShell(parent, event));
+                        }
     				}
-				}
-                forwardEvent(event);
+                    forwardEvent(event);
+                }
 			});
 			buttons[i] = button;
 		}

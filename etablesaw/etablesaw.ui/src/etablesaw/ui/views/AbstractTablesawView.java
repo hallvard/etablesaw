@@ -601,6 +601,13 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		updateTableControls();
 	}
 
+	protected final SelectionListener configControlsUpdatedSelectionAdapter = new SelectionAdapter() {
+	    @Override
+	    public void widgetSelected(final SelectionEvent e) {
+	        configControlUpdated();
+	    }
+	};
+
 	protected Control createColumnControl(final Composite parent, final String label, final Boolean mode, final Class<?> columnClass) {
 		createControlLabel(parent, label);
 		final boolean multi = Boolean.TRUE.equals(mode);
@@ -611,22 +618,16 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			}
 			return getColumnNames(table, columnClass);
 		};
-		final SelectionListener selectionListener = new SelectionAdapter() {
-			@Override
-			public void widgetSelected(final SelectionEvent e) {
-			    configControlUpdated();
-			}
-		};
 		Control control;
 		if (multi) {
 			final MultiCheckSelectionCombo combo = new MultiCheckSelectionCombo(parent, SWT.NONE, "select columns");
 			combo.setItemsProvider(itemsProvider);
-			combo.addSelectionListener(selectionListener);
+			combo.addSelectionListener(configControlsUpdatedSelectionAdapter);
 			control = combo;
 		} else {
 			final Combo combo = new Combo(parent, SWT.READ_ONLY);
 			combo.setItems(itemsProvider.get());
-			combo.addSelectionListener(selectionListener);
+			combo.addSelectionListener(configControlsUpdatedSelectionAdapter);
 			control = combo;
 		}
 		setControlLayout(control);

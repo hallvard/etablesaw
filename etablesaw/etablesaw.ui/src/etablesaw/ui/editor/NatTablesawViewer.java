@@ -7,6 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import etablesaw.ui.Activator;
+import etablesaw.ui.SimpleTableProvider;
+import etablesaw.ui.TableProvider;
+import etablesaw.ui.TableProviderHelper;
+import etablesaw.ui.editor.commands.TableCellChangeRecorder;
+import etablesaw.ui.editor.commands.TableCellChangeRecorderCommandHandler;
+import etablesaw.ui.expr.ExprSupport;
+import etablesaw.ui.util.MultiCheckSelectionShell;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -49,6 +57,7 @@ import org.eclipse.nebula.widgets.nattable.selection.SelectionLayer;
 import org.eclipse.nebula.widgets.nattable.selection.config.DefaultSelectionBindings;
 import org.eclipse.nebula.widgets.nattable.selection.config.DefaultSelectionLayerConfiguration;
 import org.eclipse.nebula.widgets.nattable.selection.event.ISelectionEvent;
+import org.eclipse.nebula.widgets.nattable.sort.SortHeaderLayer;
 import org.eclipse.nebula.widgets.nattable.style.DisplayMode;
 import org.eclipse.nebula.widgets.nattable.ui.binding.UiBindingRegistry;
 import org.eclipse.nebula.widgets.nattable.ui.matcher.CellEditorMouseEventMatcher;
@@ -61,15 +70,6 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-
-import etablesaw.ui.Activator;
-import etablesaw.ui.SimpleTableProvider;
-import etablesaw.ui.TableProvider;
-import etablesaw.ui.TableProviderHelper;
-import etablesaw.ui.editor.commands.TableCellChangeRecorder;
-import etablesaw.ui.editor.commands.TableCellChangeRecorderCommandHandler;
-import etablesaw.ui.expr.ExprSupport;
-import etablesaw.ui.util.MultiCheckSelectionShell;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
 
@@ -133,6 +133,15 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         return includeFilterRow && exprSupport != null;
     }
 
+    private boolean includeSortHeader = true;
+    
+    public void setIncludeSortHeader(final boolean includeSortHeader) {
+        this.includeSortHeader = includeSortHeader;
+    }
+    public boolean shouldIncludeSortHeader() {
+        return includeSortHeader;
+    }
+
     public void createPartControl(final Composite parent) {
         bodyDataProvider = new TablesawDataProvider(input);
         bodyDataLayer = new TableCellChangeRecorderDataLayer(bodyDataProvider, defaultColumnWidth, defaultRowHeight);
@@ -168,6 +177,11 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
                     new CellEditorMouseEventMatcher(GridRegion.COLUMN_HEADER), new MouseEditAction());
             }
         });
+        
+        if (shouldIncludeSortHeader()) {
+            AbstractLayer sortHeaderLayer = new SortHeaderLayer<Object>(columnHeaderLayer, bodyDataProvider);
+            columnHeaderLayer = sortHeaderLayer;
+        }
 
         if (shouldIncludeFilterRow()) {
             // adds a UpdateDataCommandHandler (for the filter string)
@@ -186,6 +200,7 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
                 }
             });
         }
+
         rowHeaderDataProvider = new DelegatingTablesawDataProvider(bodyDataProvider, false);
         final ILayer rowHeaderLayer = new RowHeaderLayer(
                 new DataLayer(rowHeaderDataProvider, defaultColumnWidth, defaultRowHeight), viewportLayer,

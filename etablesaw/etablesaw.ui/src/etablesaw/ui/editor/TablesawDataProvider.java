@@ -3,11 +3,15 @@ package etablesaw.ui.editor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.eclipse.nebula.widgets.nattable.data.IDataProvider;
-
+import org.eclipse.nebula.widgets.nattable.sort.ISortModel;
+import org.eclipse.nebula.widgets.nattable.sort.SortDirectionEnum;
 import tech.tablesaw.api.ColumnType;
+import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.AbstractColumnParser;
 import tech.tablesaw.columns.Column;
@@ -16,10 +20,11 @@ import tech.tablesaw.io.ReadOptions;
 import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.selection.Selection;
 
-public class TablesawDataProvider extends AbstractTablesawDataProvider implements IDataProvider, ColumnTypeProvider {
+public class TablesawDataProvider extends AbstractTablesawDataProvider implements IDataProvider, ColumnTypeProvider, ISortModel, Comparator<Row> {
 
     private Table table;
-    private Table rowFilter = null;
+    private Selection selection = null;
+    private Table tableView = null;
     // null = normal, TRUE = column header, FALSE = row header
     private final Boolean mode;
 
@@ -39,20 +44,40 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
 
     public void setTable(final Table table) {
         this.table = table;
-        rowFilter = null;
+        tableView = null;
+    }
+
+    public boolean isSorted() {
+        return ! sortedColumnIndexes.isEmpty();
     }
 
     public boolean isRowFiltered() {
-        return rowFilter != null;
+        return selection != null;
     }
 
     public void applyRowFilter(final Selection selection) {
-        rowFilter = (selection != null ? table.where(selection) : null);
+        this.selection = selection;
+        updateTableView();
+    }
+
+    private void updateTableView() {
+        if (isSorted() || isRowFiltered()) {
+            tableView = table;
+            if (isRowFiltered()) {
+                tableView = tableView.where(selection);
+            }
+            if (isSorted()) {
+                tableView = tableView.sortOn(this);
+            }
+        } else if (tableView != null) {
+            tableView.clear();
+            tableView = null;
+        }
         fireProviderRowsChanged(-1, -1);
     }
 
     protected Table getDataTable() {
-        return rowFilter != null ? rowFilter : table;
+        return tableView != null ? tableView : table;
     }
 
     // column filter
@@ -227,7 +252,7 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
         }
     }
 
-    //
+    // listeners
 
     public static interface Listener {
         public void providerRowsChanged(int startRow, int endRow);
@@ -266,5 +291,100 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
                 listener.tableCellChanged(row, column, oldValue, newValue);
             }
         }
+    }
+
+    // sorting
+    
+    private List<Integer> sortedColumnIndexes = new ArrayList<>();
+    
+    @Override
+    public List<Integer> getSortedColumnIndexes() {
+        List<Integer> result = new ArrayList<>();
+        for (Integer index : sortedColumnIndexes) {
+            result.add((index < 0 ? -index : index) - 1);
+        }
+        return result;
+    }
+
+    @Override
+    public int compare(Row row1, Row row2) {
+        for (int colNum : getSortedColumnIndexes()) {
+            Object o1 = row1.getObject(colNum);
+            Object o2 = row2.getObject(colNum);
+            Comparator comparator = getColumnComparator(colNum);
+            int diff = comparator.compare(o1, o2);
+            if (diff != 0) {
+                return getSortDirection(colNum) == SortDirectionEnum.DESC ? -diff : diff;
+            }
+        }
+        return 0;
+    }
+
+    private int columnIndexPos(int columnIndex) {
+        int index = columnIndex + 1;
+        for (int i = 0; i < sortedColumnIndexes.size(); i++) {
+            int sortedColumnIndex = sortedColumnIndexes.get(i);
+            if (sortedColumnIndex == index || sortedColumnIndex == -index) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean isColumnIndexSorted(int columnIndex) {
+        return columnIndexPos(columnIndex) >= 0;
+    }
+
+    @Override
+    public SortDirectionEnum getSortDirection(int columnIndex) {
+        int pos = columnIndexPos(columnIndex);
+        if (pos < 0) {
+            return SortDirectionEnum.NONE;
+        } else if (sortedColumnIndexes.get(pos) < 0) {
+            return SortDirectionEnum.DESC;            
+        } else {
+            return SortDirectionEnum.ASC;            
+        }
+    }
+
+    @Override
+    public int getSortOrder(int columnIndex) {
+        return columnIndexPos(columnIndex);
+    }
+
+    @Override
+    public List<Comparator> getComparatorsForColumnIndex(int columnIndex) {
+        return Collections.singletonList(getColumnComparator(columnIndex));
+    }
+
+    @Override
+    public Comparator<?> getColumnComparator(int columnIndex) {
+        Column column = getColumn(columnIndex);
+        return (Object o1, Object o2) -> column.compare(o1, o2);
+    }
+
+    @Override
+    public void sort(int columnIndex, SortDirectionEnum sortDirection, boolean accumulate) {
+        if (! accumulate) {
+            clear();
+        }
+        if (sortDirection == SortDirectionEnum.NONE) {
+            int pos = columnIndexPos(columnIndex);
+            if (pos >= 0) {
+                sortedColumnIndexes.remove(pos);
+            } else {
+                return;
+            }
+        } else {
+            int index = columnIndex + 1;
+            sortedColumnIndexes.add(sortDirection == SortDirectionEnum.DESC ? -index : index);
+        }
+        updateTableView();
+    }
+
+    @Override
+    public void clear() {
+        sortedColumnIndexes.clear();
     }
 }

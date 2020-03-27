@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
 title: etablesaw
-description: Eclipse integration the tablesaw data frame library for java
+description: Eclipse integration for the tablesaw data frame library for java
 show_downloads: False
 navigation:
   - title: Home
