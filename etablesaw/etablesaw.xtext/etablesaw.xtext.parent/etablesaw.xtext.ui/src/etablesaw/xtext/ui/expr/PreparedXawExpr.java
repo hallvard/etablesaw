@@ -1,5 +1,13 @@
 package etablesaw.xtext.ui.expr;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringBufferInputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Provider;
@@ -8,13 +16,6 @@ import etablesaw.xtext.XawRuntimeModule;
 import etablesaw.xtext.jvmmodel.DefaultColumnTypeProvider;
 import etablesaw.xtext.jvmmodel.IColumnTypeProvider;
 import etablesaw.xtext.xaw.Xaw;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringBufferInputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -109,14 +110,29 @@ public class PreparedXawExpr implements PreparedExpr {
 
 	private final static char SPECIAL_CHAR_REPLACEMENT = '_';
 
+	private int fixedNameCount = 0;
+	
 	protected String fixName(String varName) {
         StringBuilder fixedName = new StringBuilder();
+        boolean fixed = false;
         if (! Character.isJavaIdentifierStart(varName.charAt(0))) {
             fixedName.append(SPECIAL_CHAR_REPLACEMENT);
+            fixed = true;
         }
         for (int i = 0; i < varName.length(); i++) {
             char c = varName.charAt(i);
-            fixedName.append(Character.isJavaIdentifierPart(c) ? c : SPECIAL_CHAR_REPLACEMENT);
+            if (Character.isJavaIdentifierPart(c)) {
+                fixedName.append(c);
+            } else {
+                fixedName.append(SPECIAL_CHAR_REPLACEMENT);
+                fixed = true;
+            }
+        }
+        if (fixed) {
+            if (fixedNameCount > 0) {
+                fixedName.append(fixedNameCount);
+            }
+            fixedNameCount++;
         }
         return fixedName.toString();
     }

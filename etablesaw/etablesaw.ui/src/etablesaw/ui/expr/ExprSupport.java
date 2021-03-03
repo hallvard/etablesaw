@@ -1,10 +1,28 @@
 package etablesaw.ui.expr;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import tech.tablesaw.api.BooleanColumn;
 import tech.tablesaw.api.ColumnType;
+import tech.tablesaw.api.DateColumn;
+import tech.tablesaw.api.DateTimeColumn;
+import tech.tablesaw.api.DoubleColumn;
+import tech.tablesaw.api.FloatColumn;
+import tech.tablesaw.api.InstantColumn;
+import tech.tablesaw.api.IntColumn;
+import tech.tablesaw.api.LongColumn;
+import tech.tablesaw.api.ShortColumn;
+import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
+import tech.tablesaw.api.TextColumn;
+import tech.tablesaw.api.TimeColumn;
 import tech.tablesaw.columns.Column;
 
 public abstract class ExprSupport {
@@ -43,5 +61,38 @@ public abstract class ExprSupport {
 
 	public Map<String, Object> getVarValues(final Table table, final int rowNum) {
 		return getVarValues(table, rowNum, new HashMap<String, Object>());
+	}
+	
+	private static Map<ColumnType, Class<?>> columnTypeClasses = new HashMap<>();
+	static {
+		columnTypeClasses.put(ColumnType.BOOLEAN, Boolean.TYPE);
+		
+		columnTypeClasses.put(ColumnType.INTEGER, Integer.TYPE);
+		columnTypeClasses.put(ColumnType.LONG, Long.TYPE);
+		columnTypeClasses.put(ColumnType.SHORT, Short.TYPE);
+		
+		columnTypeClasses.put(ColumnType.DOUBLE, Double.TYPE);
+		columnTypeClasses.put(ColumnType.FLOAT, Float.TYPE);
+		
+		columnTypeClasses.put(ColumnType.STRING, String.class);
+		columnTypeClasses.put(ColumnType.TEXT, String.class);
+
+		columnTypeClasses.put(ColumnType.LOCAL_TIME, LocalTime.class);
+		columnTypeClasses.put(ColumnType.LOCAL_DATE_TIME, LocalDateTime.class);
+		columnTypeClasses.put(ColumnType.LOCAL_DATE, LocalDate.class);
+		columnTypeClasses.put(ColumnType.INSTANT, Instant.class);
+	}
+
+	public static Class<?> getClassForColumnType(ColumnType columnType) {
+		return columnTypeClasses.get(columnType);
+	}
+	
+	public static ColumnType getColumnTypeForClass(Class<?> columnClass) {
+		for (ColumnType columnType : columnTypeClasses.keySet()) {
+			if (columnTypeClasses.get(columnType) == columnClass) {
+				return columnType;
+			}
+		}
+		return null;
 	}
 }

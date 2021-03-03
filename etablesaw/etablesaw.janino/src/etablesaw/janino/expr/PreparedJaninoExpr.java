@@ -1,10 +1,6 @@
 package etablesaw.janino.expr;
 
 import java.lang.reflect.InvocationTargetException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,20 +13,7 @@ import org.codehaus.janino.ExpressionEvaluator;
 import etablesaw.ui.expr.AbstractPreparedStringExpr;
 import etablesaw.ui.expr.ExprSupport;
 import etablesaw.ui.expr.PreparedExpr;
-import tech.tablesaw.api.BooleanColumn;
 import tech.tablesaw.api.ColumnType;
-import tech.tablesaw.api.DateColumn;
-import tech.tablesaw.api.DateTimeColumn;
-import tech.tablesaw.api.DoubleColumn;
-import tech.tablesaw.api.FloatColumn;
-import tech.tablesaw.api.InstantColumn;
-import tech.tablesaw.api.IntColumn;
-import tech.tablesaw.api.LongColumn;
-import tech.tablesaw.api.NumberColumn;
-import tech.tablesaw.api.ShortColumn;
-import tech.tablesaw.api.StringColumn;
-import tech.tablesaw.api.TextColumn;
-import tech.tablesaw.api.TimeColumn;
 
 public class PreparedJaninoExpr extends AbstractPreparedStringExpr implements PreparedExpr {
 
@@ -54,14 +37,20 @@ public class PreparedJaninoExpr extends AbstractPreparedStringExpr implements Pr
 				addDiagnostics(name + " has type " + varTypes.get(name) + ", which is not supported");
 				paramClass = Object.class;
 			}
-			String altName = fixName(name.toUpperCase());
-			if (altName == null) {
-				altName = name.toUpperCase();
-			}
-			if (altName != null && (! altName.equals(name))) {
-				varNameMap.put(name, altName);
-				varNameMap.put(altName, name);
-				name = altName;
+			if (name.equals(colVar)) {
+				varNameMap.put(name, "it");
+				varNameMap.put("it", name);
+				name = "it";
+			} else {
+				String altName = fixName(name.toUpperCase());
+				if (altName == null) {
+					altName = name.toUpperCase();
+				}
+				if (altName != null && (! altName.equals(name))) {
+					varNameMap.put(name, altName);
+					varNameMap.put(altName, name);
+					name = altName;
+				}				
 			}
 			paramNames.add(name);
 			paramTypes.add(paramClass);
