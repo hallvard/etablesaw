@@ -3,13 +3,12 @@ package etablesaw.xtext.lib;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
-import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
 import tech.tablesaw.selection.BitmapBackedSelection;
 import tech.tablesaw.selection.Selection;
 
-public abstract class TypedTable<R extends Row> extends Table {
+public abstract class TypedTable<R extends TypedRow<R>> extends Table {
 
     protected TypedTable(String name, Column<?>... columns) {
         super(name, columns);
@@ -41,11 +40,11 @@ public abstract class TypedTable<R extends Row> extends Table {
     public abstract R row();
 
     public R appendEmptyRow() {
-        R row = row();
-        row.at(this.rowCount());
         for (Column<?> column : columns()) {
             column.appendMissing();
         }
+        R row = row();
+        row.at(this.rowCount());
         return row;
     }
 

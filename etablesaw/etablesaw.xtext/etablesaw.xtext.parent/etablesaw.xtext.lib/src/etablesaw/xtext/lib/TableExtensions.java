@@ -43,7 +43,7 @@ public class TableExtensions {
 	// selection/range
 
 	@Pure
-    public static <R extends Row> TypedTable<R> operator_singleAnd(final TypedTable<R> table, final Predicate<R> predicate) {
+    public static <R extends TypedRow<R>> TypedTable<R> operator_singleAnd(final TypedTable<R> table, final Predicate<R> predicate) {
         Selection selection = table.eval(predicate);
         TypedTable<R> newTable = table.emptyCopy(selection.size());
         Rows.copyRowsToTable(selection, table, newTable);
@@ -68,7 +68,7 @@ public class TableExtensions {
 	}
 
 	@Pure
-	public static  <T extends Table> T  operator_minus(final T table, final Selection selection) {
+	public static <T extends Table> T  operator_minus(final T table, final Selection selection) {
         Selection opposite = new BitmapBackedSelection();
         opposite.addRange(0, table.rowCount());
         opposite.andNot(selection);
@@ -96,7 +96,7 @@ public class TableExtensions {
     
     // table -> fun => column
 
-    public static <R extends Row, T, C extends Column<T>> C operator_doubleArrow(Pair<TypedTable<R>, Function<? super R, ? extends T>> tableFunctionPair, C into) {
+    public static <R extends TypedRow<R>, T, C extends Column<T>> C operator_doubleArrow(Pair<TypedTable<R>, Function<? super R, ? extends T>> tableFunctionPair, C into) {
         int rowNum = 0;
         for (R row : tableFunctionPair.getKey().rows()) {
             into.set(rowNum, tableFunctionPair.getValue().apply(row));

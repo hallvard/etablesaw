@@ -25,7 +25,17 @@ public class ExampleTable extends TypedTable<ExampleTable.Row> {
         return new ExampleTable(name(), nameColumn.emptyCopy(rowSize), countColumn.emptyCopy(rowSize));
     }
 
-    public static class Row extends tech.tablesaw.api.Row {
+    public interface RowData {
+    	public String getName();
+    	public int getCount();
+    	
+    	default public void copyInto(Row row) {
+    		row.setName(getName());
+    		row.setCount(getCount());
+    	}
+    }
+
+    public static class Row extends TypedRow<Row> implements RowData {
 
         private final ExampleTable table;
         
@@ -41,10 +51,14 @@ public class ExampleTable extends TypedTable<ExampleTable.Row> {
         public int getCount() {
             return table.countColumn.get(getRowNumber());
         }
+
+        public Row setName(String name) {
+            table.nameColumn.set(getRowNumber(), name);
+            return this;
+        }
         
-        @Override
-        public Row next() {
-            super.next();
+        public Row setCount(int count) {
+            table.countColumn.set(getRowNumber(), count);
             return this;
         }
     }
@@ -52,6 +66,12 @@ public class ExampleTable extends TypedTable<ExampleTable.Row> {
     @Override
     public Row row() {
         return new Row(this);
+    }
+
+    public Row appendRowCopy(RowData row) {
+    	Row newRow = appendEmptyRow();
+    	row.copyInto(newRow);
+    	return newRow;
     }
 
     public void append(final Row row) {
@@ -65,4 +85,5 @@ public class ExampleTable extends TypedTable<ExampleTable.Row> {
             row.getCount();
         }
     }
+
 }

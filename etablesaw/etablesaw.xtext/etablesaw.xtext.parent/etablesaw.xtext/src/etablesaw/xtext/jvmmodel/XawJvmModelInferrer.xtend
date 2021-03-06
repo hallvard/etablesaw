@@ -22,6 +22,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmAnnotationReferenceBuilder
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import tech.tablesaw.api.Row
+import etablesaw.xtext.lib.TypedRow
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -191,6 +192,17 @@ class XawJvmModelInferrer extends AbstractModelInferrer {
                     append('''return new Row(this);''')
                 ]
             ]
+            members += owner.toMethod("appendRowCopy", typeRef(rowClass)) [
+                parameters += owner.toParameter("row", typeRef(rowInterface))
+                visibility = JvmVisibility.PUBLIC
+                body = [
+                    append('''Row newRow = appendEmptyRow();''')
+                    newLine
+                    append('''row.copyInto(newRow);''')
+                    newLine
+                    append('''return newRow;''')
+                ]
+            ]
             members += owner.toMethod("append", typeRef(clazz)) [
                 parameters += owner.toParameter("row", typeRef(rowInterface))
                 visibility = JvmVisibility.PUBLIC
@@ -212,7 +224,9 @@ class XawJvmModelInferrer extends AbstractModelInferrer {
             static = true
             for (column : tableColumns) {
                 members += owner.toMethod(column.name.columnValueGetterName, column.type.cloneWithProxies) [
-                    visibility = JvmVisibility.PUBLIC
+                    if (! rowClass.isInterface) {
+                    	visibility = JvmVisibility.PUBLIC                    	
+                    }
                     if (rowClass.isInterface) {
                         abstract = true
                     } else { 
@@ -222,8 +236,19 @@ class XawJvmModelInferrer extends AbstractModelInferrer {
                     }
                 ]
             }
-            if (! rowClass.isInterface) {
-                superTypes += typeRef(Row)
+            if (rowClass.isInterface) {
+                members += owner.toMethod("copyInto", typeRef(void)) [
+                	^default = true
+	                parameters += owner.toParameter("row", typeRef(rowClass))
+	                body = [
+		                for (column : tableColumns) {
+		                	append('''row.«column.name.columnValueSetterName»(«column.name.columnValueGetterName»());''')
+	                        newLine
+		                }
+	                ]
+	            ]
+            } else {
+	        	superTypes += typeRef(TypedRow, typeRef(rowClass))
                 members += owner.toField("table", typeRef(clazz)) [
                     visibility = JvmVisibility.PRIVATE
                     final = true
@@ -236,14 +261,14 @@ class XawJvmModelInferrer extends AbstractModelInferrer {
                         append("this.table = table;")
                     ]
                 ]
-                members += owner.toMethod("next", typeRef(it)) [
-                    annotations += overrideAnnotation(clazz)
-                    body = [
-                        append('''super.next();''')
-                        newLine
-                        append('''return this;''')
-                    ]
-                ]
+//                members += owner.toMethod("next", typeRef(it)) [
+//                    annotations += overrideAnnotation(clazz)
+//                    body = [
+//                        append('''super.next();''')
+//                        newLine
+//                        append('''return this;''')
+//                    ]
+//                ]
                 for (column : tableColumns) {
                     members += owner.toMethod(column.name.columnValueSetterName, typeRef(rowClass)) [
                         visibility = JvmVisibility.PUBLIC
