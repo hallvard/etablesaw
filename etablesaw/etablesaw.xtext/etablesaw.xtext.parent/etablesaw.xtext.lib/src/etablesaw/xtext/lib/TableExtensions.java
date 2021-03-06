@@ -6,6 +6,8 @@ import java.util.function.Predicate;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Pure;
+
+import etablesaw.xtext.lib.ExampleTable.RowData;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
@@ -58,6 +60,12 @@ public class TableExtensions {
 	public static <T extends Table> T operator_add(final T table, final Column<?> column) {
 	    table.addColumns(column);
 	    return table;
+	}
+
+	public static <R extends TypedRow<R>> R operator_add(final TypedTable<R> table, final R row) {
+    	R newRow = table.appendEmptyRow();
+    	row.copyInto(newRow);
+    	return newRow;
 	}
 
 	@Pure

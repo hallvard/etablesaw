@@ -38,7 +38,12 @@ public class ExampleTable extends TypedTable<ExampleTable.Row> {
     public static class Row extends TypedRow<Row> implements RowData {
 
         private final ExampleTable table;
-        
+
+    	public void copyInto(Row row) {
+    		row.setName(getName());
+    		row.setCount(getCount());
+    	}
+
         protected Row(final ExampleTable table) {
             super(table);
             this.table = table;

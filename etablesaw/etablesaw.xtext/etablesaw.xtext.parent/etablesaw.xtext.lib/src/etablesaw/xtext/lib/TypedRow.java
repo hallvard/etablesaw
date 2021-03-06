@@ -13,4 +13,6 @@ public abstract class TypedRow<R extends TypedRow<R>> extends Row {
         super.next();
         return this;
     }
+    
+	public abstract void copyInto(R row);
 }

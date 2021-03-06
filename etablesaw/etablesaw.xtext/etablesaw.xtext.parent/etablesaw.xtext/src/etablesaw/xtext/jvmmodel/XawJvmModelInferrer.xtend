@@ -236,17 +236,21 @@ class XawJvmModelInferrer extends AbstractModelInferrer {
                     }
                 ]
             }
+            members += owner.toMethod("copyInto", typeRef(void)) [
+            	if (rowClass.isInterface) {
+	            	^default = true
+            	} else {
+            		annotations += overrideAnnotation(clazz)
+            	}
+                parameters += owner.toParameter("row", typeRef(rowClass))
+                body = [
+	                for (column : tableColumns) {
+	                	append('''row.«column.name.columnValueSetterName»(«column.name.columnValueGetterName»());''')
+                        newLine
+	                }
+                ]
+            ]
             if (rowClass.isInterface) {
-                members += owner.toMethod("copyInto", typeRef(void)) [
-                	^default = true
-	                parameters += owner.toParameter("row", typeRef(rowClass))
-	                body = [
-		                for (column : tableColumns) {
-		                	append('''row.«column.name.columnValueSetterName»(«column.name.columnValueGetterName»());''')
-	                        newLine
-		                }
-	                ]
-	            ]
             } else {
 	        	superTypes += typeRef(TypedRow, typeRef(rowClass))
                 members += owner.toField("table", typeRef(clazz)) [
