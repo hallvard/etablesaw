@@ -48,7 +48,7 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
     }
 
     public boolean isSorted() {
-        return ! sortedColumnIndexes.isEmpty();
+        return ! sortedColumnIndexesWithOrder.isEmpty();
     }
 
     public boolean isRowFiltered() {
@@ -62,12 +62,13 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
 
     private void updateTableView() {
         if (isSorted() || isRowFiltered()) {
-            tableView = table;
-            if (isRowFiltered()) {
-                tableView = tableView.where(selection);
-            }
+            Selection viewSelection = isRowFiltered() ? selection : Selection.withRange(0, getRowCount());
+            tableView = table.where(viewSelection);
             if (isSorted()) {
+                System.out.println(tableView);
                 tableView = tableView.sortOn(this);
+                System.out.println(sortedColumnIndexesWithOrder);
+                System.out.println(tableView);
             }
         } else if (tableView != null) {
             tableView.clear();
@@ -177,10 +178,25 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
     Object getDataValue(final Boolean mode, final int columnIndex, final int rowIndex) {
         if (table != null) {
             final Column<?> column = getColumn(columnIndex);
-            return (mode == null ? column.get(rowIndex) : (mode ? column.name() : rowIndex + 1));
+            return (mode == null ? getColumnDataValue(column, rowIndex) : (mode ? getColumnHeaderDataValue(column) : getRowHeaderDataValue(rowIndex)));
         }
         return null;
     }
+
+    private String columnHeaderDataValueFormat = "%s (%s)";
+    
+	protected String getColumnHeaderDataValue(final Column<?> column) {
+		return String.format(columnHeaderDataValueFormat, column.name(), column.type());
+	}
+
+	protected int getRowHeaderDataValue(final int rowIndex) {
+		return rowIndex + 1;
+	}
+	
+	protected Object getColumnDataValue(final Column<?> column, final int rowIndex) {
+		return column.get(rowIndex);
+	}
+
     @Override
     public Object getDataValue(final int columnIndex, final int rowIndex) {
         return getDataValue(mode, columnIndex, rowIndex);
@@ -295,15 +311,12 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
 
     // sorting
     
+    private List<Integer> sortedColumnIndexesWithOrder = new ArrayList<>();
     private List<Integer> sortedColumnIndexes = new ArrayList<>();
-    
+
     @Override
     public List<Integer> getSortedColumnIndexes() {
-        List<Integer> result = new ArrayList<>();
-        for (Integer index : sortedColumnIndexes) {
-            result.add((index < 0 ? -index : index) - 1);
-        }
-        return result;
+        return sortedColumnIndexes;
     }
 
     @Override
@@ -311,8 +324,13 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
         for (int colNum : getSortedColumnIndexes()) {
             Object o1 = row1.getObject(colNum);
             Object o2 = row2.getObject(colNum);
-            Comparator comparator = getColumnComparator(colNum);
-            int diff = comparator.compare(o1, o2);
+            int diff = 0;
+            if (o1 != null && o2 != null) {
+                Comparator comparator = getColumnComparator(colNum);
+                diff = comparator.compare(o1, o2);
+            } else {
+                diff = (o1 == null ? -1 : 0) + (o2 == null ? 1 : 0);
+            }
             if (diff != 0) {
                 return getSortDirection(colNum) == SortDirectionEnum.DESC ? -diff : diff;
             }
@@ -321,9 +339,9 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
     }
 
     private int columnIndexPos(int columnIndex) {
-        int index = columnIndex + 1;
-        for (int i = 0; i < sortedColumnIndexes.size(); i++) {
-            int sortedColumnIndex = sortedColumnIndexes.get(i);
+        int index = getRowHeaderDataValue(columnIndex);
+        for (int i = 0; i < sortedColumnIndexesWithOrder.size(); i++) {
+            int sortedColumnIndex = sortedColumnIndexesWithOrder.get(i);
             if (sortedColumnIndex == index || sortedColumnIndex == -index) {
                 return i;
             }
@@ -341,7 +359,7 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
         int pos = columnIndexPos(columnIndex);
         if (pos < 0) {
             return SortDirectionEnum.NONE;
-        } else if (sortedColumnIndexes.get(pos) < 0) {
+        } else if (sortedColumnIndexesWithOrder.get(pos) < 0) {
             return SortDirectionEnum.DESC;            
         } else {
             return SortDirectionEnum.ASC;            
@@ -360,8 +378,7 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
 
     @Override
     public Comparator<?> getColumnComparator(int columnIndex) {
-        Column column = getColumn(columnIndex);
-        return (Object o1, Object o2) -> column.compare(o1, o2);
+        return getColumn(columnIndex);
     }
 
     @Override
@@ -372,19 +389,24 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
         if (sortDirection == SortDirectionEnum.NONE) {
             int pos = columnIndexPos(columnIndex);
             if (pos >= 0) {
-                sortedColumnIndexes.remove(pos);
+                sortedColumnIndexesWithOrder.remove(pos);
             } else {
                 return;
             }
         } else {
-            int index = columnIndex + 1;
-            sortedColumnIndexes.add(sortDirection == SortDirectionEnum.DESC ? -index : index);
+            int index = getRowHeaderDataValue(columnIndex);
+            sortedColumnIndexesWithOrder.add(sortDirection == SortDirectionEnum.DESC ? -index : index);
+        }
+        sortedColumnIndexes.clear();
+        for (int index : sortedColumnIndexesWithOrder) {
+            sortedColumnIndexes.add((index < 0 ? -index : index) - 1);
         }
         updateTableView();
     }
 
     @Override
     public void clear() {
+        sortedColumnIndexesWithOrder.clear();
         sortedColumnIndexes.clear();
     }
 }

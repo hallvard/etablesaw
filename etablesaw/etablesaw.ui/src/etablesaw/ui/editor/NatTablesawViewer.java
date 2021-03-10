@@ -59,6 +59,7 @@ import org.eclipse.nebula.widgets.nattable.selection.config.DefaultSelectionLaye
 import org.eclipse.nebula.widgets.nattable.selection.event.ISelectionEvent;
 import org.eclipse.nebula.widgets.nattable.sort.SortHeaderLayer;
 import org.eclipse.nebula.widgets.nattable.style.DisplayMode;
+import org.eclipse.nebula.widgets.nattable.tooltip.NatTableContentTooltip;
 import org.eclipse.nebula.widgets.nattable.ui.binding.UiBindingRegistry;
 import org.eclipse.nebula.widgets.nattable.ui.matcher.CellEditorMouseEventMatcher;
 import org.eclipse.nebula.widgets.nattable.ui.matcher.KeyEventMatcher;
@@ -215,6 +216,19 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
         natTable = new NatTable(parent, NatTable.DEFAULT_STYLE_OPTIONS | SWT.BORDER, gridLayer, false);
         natTable.addConfiguration(new DefaultNatTableStyleConfiguration());
         configure(natTable);
+        
+//        new NatTableContentTooltip(natTable, GridRegion.COLUMN_HEADER) {
+//        	protected String getText(org.eclipse.swt.widgets.Event event) {
+//                int col = this.natTable.getColumnPositionByX(event.x);
+//                int row = this.natTable.getRowPositionByY(event.y);
+//                ILayerCell cell = this.natTable.getCellByPosition(col, row);
+//                System.out.println("@" + row + "," + col + ": " + cell);
+//        		return super.getText(event);
+//        	}
+//        };
+//        new NatTableContentTooltip(natTable, GridRegion.BODY);
+        new NatTableContentTooltip(natTable);
+        
         natTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         
         selectionLayer.addLayerListener(new ILayerListener() {

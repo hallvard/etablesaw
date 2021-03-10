@@ -40,11 +40,11 @@ public abstract class TypedTable<R extends TypedRow<R>> extends Table {
     public abstract R row();
 
     public R appendEmptyRow() {
+    	R row = row();
+    	row.at(this.rowCount());
         for (Column<?> column : columns()) {
             column.appendMissing();
         }
-        R row = row();
-        row.at(this.rowCount());
         return row;
     }
 

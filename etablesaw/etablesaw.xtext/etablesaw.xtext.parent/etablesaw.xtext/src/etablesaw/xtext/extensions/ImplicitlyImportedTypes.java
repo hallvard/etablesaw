@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import etablesaw.xtext.lib.ColumnExtensions;
+import etablesaw.xtext.lib.ColumnLiterals;
+import etablesaw.xtext.lib.ColumnTypeUtil;
 import etablesaw.xtext.lib.DateTimeFillersExtensions;
 import etablesaw.xtext.lib.DateTimeFiltersExtensions;
 import etablesaw.xtext.lib.DoubleColumnExtensions;
@@ -19,7 +21,8 @@ public class ImplicitlyImportedTypes extends org.eclipse.xtext.xbase.scoping.bat
 
 	@Override
 	protected List<Class<?>> getStaticImportClasses() {
-		return sorted(super.getStaticImportClasses()
+		return sorted(super.getStaticImportClasses(),
+				ColumnLiterals.class
 				);
 	}
 

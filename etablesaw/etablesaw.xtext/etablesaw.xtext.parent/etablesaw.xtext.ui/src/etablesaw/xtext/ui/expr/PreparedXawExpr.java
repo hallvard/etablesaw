@@ -15,6 +15,7 @@ import etablesaw.ui.expr.PreparedExpr;
 import etablesaw.xtext.XawRuntimeModule;
 import etablesaw.xtext.jvmmodel.DefaultColumnTypeProvider;
 import etablesaw.xtext.jvmmodel.IColumnTypeProvider;
+import etablesaw.xtext.lib.ColumnTypeUtil;
 import etablesaw.xtext.xaw.Xaw;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -63,7 +64,7 @@ public class PreparedXawExpr implements PreparedExpr {
 	    StringBuilder builder = new StringBuilder("xaw Expr\n\n");
 	    builder.append("def foo(");
 	    for (Map.Entry<String, ColumnType> varType : varTypes.entrySet()) {
-	        String elementTypeName = simplifyTypeName(DefaultColumnTypeProvider.getElementType(varType.getValue()).getName());
+	        String elementTypeName = simplifyTypeName(ColumnTypeUtil.getElementType(varType.getValue()).getName());
             String varName = varType.getKey();
             if (colVar != null && varName.equals(colVar)) {
                 varNameMap.put(colVar, "it");

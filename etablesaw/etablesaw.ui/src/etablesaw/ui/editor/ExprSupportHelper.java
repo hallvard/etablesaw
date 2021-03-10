@@ -53,6 +53,11 @@ public abstract class ExprSupportHelper {
 						preparedExprs.add(null);
 					}
 					preparedExprs.set(tableColumnIndex, expr);
+				} else {
+					System.err.println("Problems preparing " + expr.getExpr() + ":");
+					for (String diag : expr.getDiagnostics()) {
+						System.err.println(" - " + diag);
+					}
 				}
 			}
 		}

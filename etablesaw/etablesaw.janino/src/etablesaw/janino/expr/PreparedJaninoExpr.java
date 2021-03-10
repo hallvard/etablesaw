@@ -69,8 +69,7 @@ public class PreparedJaninoExpr extends AbstractPreparedStringExpr implements Pr
 		Object[] args = new Object[paramNames.size()];
 		for (int argNum = 0; argNum < args.length; argNum++) {
 			String name = paramNames.get(argNum);
-			String altName = varNameMap.get(name);
-			args[argNum] = varValues.get(altName != null ? altName : name);
+			args[argNum] = varValues.get(varNameMap.getOrDefault(name, name));
 		}
 		try {
 			return ee.evaluate(args);

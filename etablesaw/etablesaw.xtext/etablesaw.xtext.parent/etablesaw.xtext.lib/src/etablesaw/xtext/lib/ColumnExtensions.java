@@ -63,9 +63,20 @@ public class ColumnExtensions {
         return numericColumn.filter(pred);
     }
 
+	public static <T, R> Column<R> mapInto(Column<T> column, Function<? super T, ? extends R> fun, Class<R> into) {
+		Column<R> newColumn = ColumnLiterals.createColumn(into, column.size());
+		return column.mapInto(fun, newColumn);
+	}
+
+	public static <T, R> Column<R> mapInto(Column<T> column, Function<? super T, ? extends R> fun, Class<R> into, String name) {
+		Column<R> newColumn = ColumnLiterals.createColumn(into, name, column.size());
+		return column.mapInto(fun, newColumn);
+	}
+
 	// col1 -> fun => col2
-	
-    public static <T, R, C extends Column<R>> C operator_doubleArrow(Pair<Column<T>, Function<? super T, ? extends R>> columnFunctionPair, C into) {
-        return columnFunctionPair.getKey().mapInto(columnFunctionPair.getValue(), into);
-    }
+
+
+//    public static <T, R, C extends Column<R>> C operator_doubleArrow(Pair<Column<T>, Function<? super T, ? extends R>> columnFunctionPair, C into) {
+//        return columnFunctionPair.getKey().mapInto(columnFunctionPair.getValue(), into);
+//    }
 }
