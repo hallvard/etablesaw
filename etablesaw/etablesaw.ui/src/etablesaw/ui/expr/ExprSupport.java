@@ -5,9 +5,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import tech.tablesaw.api.BooleanColumn;
 import tech.tablesaw.api.ColumnType;
@@ -63,6 +66,49 @@ public abstract class ExprSupport {
 		return getVarValues(table, rowNum, new HashMap<String, Object>());
 	}
 	
+	// rewrite simplified expressions
+
+
+	private List<Pattern> patterns = null;
+	private List<String> formats = null;
+	
+	public void addRewritePattern(String pattern, String format) {
+		if (patterns == null) {
+			patterns = new ArrayList<>();
+			formats = new ArrayList<>();
+		}
+		patterns.add(Pattern.compile(pattern));
+		formats.add(format);
+	}
+
+	/**
+	 * Rewrites expr to alternative form, e.g. from shortcut to full form 
+	 * @param expr
+	 * @return
+	 */
+	public String rewriteExpr(String expr) {
+		if (patterns != null) {
+			for (int i = 0; i < patterns.size(); i++) {
+				Matcher matcher = patterns.get(i).matcher(expr);
+				if (matcher.matches()) {
+					Object[] groups = new Object[matcher.groupCount()];
+					for (int j = 0; j < groups.length; j++) {
+						groups[j] = matcher.group(j + 1);
+					}
+					return String.format(formats.get(i), groups);
+				}
+			}
+		}
+		return null;
+	}
+
+	protected String getPossiblyRewrittenExpr(String expr) {
+		String rewritten = rewriteExpr(expr);
+		return (rewritten != null ? rewritten : expr);
+	}
+	
+	//
+
 	private static Map<ColumnType, Class<?>> columnTypeClasses = new HashMap<>();
 	static {
 		columnTypeClasses.put(ColumnType.BOOLEAN, Boolean.TYPE);

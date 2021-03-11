@@ -28,13 +28,15 @@ public class UpdateDataExprCommandHandler extends ExprSupportHelper implements I
     }
 
     private String exprString;
+
+    private final static String updateCellPrefix = ":=";
     
     @Override
     public boolean doCommand(ILayer targetLayer, UpdateDataCommand command) {
         String stringValue = (command.getNewValue() instanceof String ? (String) command.getNewValue() : null); 
-        if (stringValue != null && stringValue.startsWith("=")) {
+		if (stringValue != null && stringValue.startsWith(updateCellPrefix)) {
             return tableCellChangeRecorderHelper.doWithRecording(() -> {
-                this.exprString = stringValue.substring(1);
+                this.exprString = stringValue.substring(updateCellPrefix.length());
                 applyExprs(Collections.singleton(getColumnNum(targetLayer, command.getColumnPosition())));
                 return true;
             });
