@@ -11,23 +11,27 @@ public class JaninoExprSupport extends ExprSupport {
 	private static String INT_REGEX = "\\d+"; 
 	private static String STRING_REGEX = "\".*\"";
 	private static String ANY_REGEX = ".+";
+
+	private static String[] REWRITE_PATTERNS = {
+		// numeric comparison
+		"([<>]=?)(" + INT_REGEX + ")", 	"it%s%s",
+		"==(" + INT_REGEX + ")", 		"it==%s",
+		// equals
+		"==(" + ANY_REGEX + ")", 		"it.equals(%s)",
+		"!=(" + ANY_REGEX + ")", 		"!it.equals(%s)",
+		// compareTo
+		"<>(" + ANY_REGEX + ")", 		"it.compareTo(%s)!=0",
+		"<(" + ANY_REGEX + ")", 		"it.compareTo(%s)<0",
+		">(" + ANY_REGEX + ")", 		"it.compareTo(%s)>0",
+		"<=(" + ANY_REGEX + ")",		 "it.compareTo(%s)<=0",
+		">=(" + ANY_REGEX + ")", 		"it.compareTo(%s)>=0",
+		// regex match
+		"~=/(" + ANY_REGEX + ")/",		"it.matches(\"%s\")",
+		"~~/(" + ANY_REGEX + ")/", 		"it.matches(\"(?:.*)%s(?:.*)\")"
+	};
 	
 	public JaninoExprSupport() {
-		// numeric comparison
-		addRewritePattern("([<>]=?)(" + INT_REGEX + ")", "it%s%s");
-		addRewritePattern("==(" + INT_REGEX + ")", "it==%s");
-		// equals
-		addRewritePattern("==(" + ANY_REGEX + ")", "it.equals(%s)");
-		addRewritePattern("!=(" + ANY_REGEX + ")", "!it.equals(%s)");
-		// compareTo
-		addRewritePattern("<>(" + ANY_REGEX + ")", "it.compareTo(%s)!=0");
-		addRewritePattern("<(" + ANY_REGEX + ")", "it.compareTo(%s)<0");
-		addRewritePattern(">(" + ANY_REGEX + ")", "it.compareTo(%s)>0");
-		addRewritePattern("<=(" + ANY_REGEX + ")", "it.compareTo(%s)<=0");
-		addRewritePattern(">=(" + ANY_REGEX + ")", "it.compareTo(%s)>=0");
-		// regex match
-		addRewritePattern("~=/(" + ANY_REGEX + ")/", "it.matches(\"%s\")");
-		addRewritePattern("~~/(" + ANY_REGEX + ")/", "it.matches(\"(?:.*)%s(?:.*)\")");
+		addRewritePatterns(REWRITE_PATTERNS);
 	}
 	
 	@Override

@@ -81,6 +81,12 @@ public abstract class ExprSupport {
 		formats.add(format);
 	}
 
+	public void addRewritePatterns(String... patterns) {
+		for (int i = 0; i < patterns.length; i += 2) {
+			addRewritePattern(patterns[i], patterns[i + 1]);
+		}
+	}
+
 	/**
 	 * Rewrites expr to alternative form, e.g. from shortcut to full form 
 	 * @param expr

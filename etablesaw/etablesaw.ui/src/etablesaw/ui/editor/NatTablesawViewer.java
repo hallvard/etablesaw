@@ -28,6 +28,7 @@ import org.eclipse.nebula.widgets.nattable.config.AbstractUiBindingConfiguration
 import org.eclipse.nebula.widgets.nattable.config.CellConfigAttributes;
 import org.eclipse.nebula.widgets.nattable.config.DefaultNatTableStyleConfiguration;
 import org.eclipse.nebula.widgets.nattable.config.IConfigRegistry;
+import org.eclipse.nebula.widgets.nattable.config.IConfiguration;
 import org.eclipse.nebula.widgets.nattable.config.IEditableRule;
 import org.eclipse.nebula.widgets.nattable.data.IDataProvider;
 import org.eclipse.nebula.widgets.nattable.data.convert.DefaultDisplayConverter;
@@ -56,9 +57,13 @@ import org.eclipse.nebula.widgets.nattable.reorder.ColumnReorderLayer;
 import org.eclipse.nebula.widgets.nattable.selection.SelectionLayer;
 import org.eclipse.nebula.widgets.nattable.selection.config.DefaultSelectionBindings;
 import org.eclipse.nebula.widgets.nattable.selection.config.DefaultSelectionLayerConfiguration;
+import org.eclipse.nebula.widgets.nattable.selection.config.DefaultSelectionStyleConfiguration;
 import org.eclipse.nebula.widgets.nattable.selection.event.ISelectionEvent;
 import org.eclipse.nebula.widgets.nattable.sort.SortHeaderLayer;
+import org.eclipse.nebula.widgets.nattable.style.CellStyleAttributes;
 import org.eclipse.nebula.widgets.nattable.style.DisplayMode;
+import org.eclipse.nebula.widgets.nattable.style.HorizontalAlignmentEnum;
+import org.eclipse.nebula.widgets.nattable.style.Style;
 import org.eclipse.nebula.widgets.nattable.tooltip.NatTableContentTooltip;
 import org.eclipse.nebula.widgets.nattable.ui.binding.UiBindingRegistry;
 import org.eclipse.nebula.widgets.nattable.ui.matcher.CellEditorMouseEventMatcher;
@@ -71,152 +76,174 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
+
+import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
 
 public class NatTablesawViewer implements TableProvider, ISelectionProvider {
 
-    private Table input;
+	private Table input;
 
-    public void setInput(final Table input) {
-        this.input = input;
-        boolean onlyTableDataChanged = false;
-        if (natTable != null) {
-            Table oldTable = bodyDataProvider.getTable();
-            if (oldTable != null && (input == oldTable || SimpleTableProvider.onlyTableDataChanged(oldTable, input))) {
-                onlyTableDataChanged = true;
-            }
-            bodyDataProvider.setTable(input);
-            final DefaultTablesawColumnLabelAccumulator columnLabelAccumulator = new DefaultTablesawColumnLabelAccumulator(
-                    bodyDataLayer, input);
-            bodyDataLayer.setConfigLabelAccumulator(columnLabelAccumulator);
-            displayConverter.setColumnTypeProvider(bodyDataProvider);
-        }
-        if (input != null) {
-            clearFilter();
-        }
-        refresh(! onlyTableDataChanged);
-    }
+	private DefaultTablesawColumnLabelAccumulator columnLabelAccumulator;
 
-    private NatTable natTable;
-    private TablesawDataProvider bodyDataProvider;
-    private DelegatingTablesawDataProvider columnHeaderDataProvider, rowHeaderDataProvider;
-    private DataLayer bodyDataLayer, columnDataLayer;
-    private ColumnHideShowLayer columnHideShowLayer;
-    private SelectionLayer selectionLayer;
-    private AbstractTablesawDisplayConverter displayConverter;
-    private CornerLayer cornerLayer;
-    private GridLayer gridLayer;
+	public void setInput(final Table input) {
+		this.input = input;
+		boolean onlyTableDataChanged = false;
+		if (natTable != null) {
+			Table oldTable = bodyDataProvider.getTable();
+			if (oldTable != null && (input == oldTable || SimpleTableProvider.onlyTableDataChanged(oldTable, input))) {
+				onlyTableDataChanged = true;
+			}
+			bodyDataProvider.setTable(input);
+			columnLabelAccumulator = new DefaultTablesawColumnLabelAccumulator(bodyDataLayer, input);
+			bodyDataLayer.setConfigLabelAccumulator(columnLabelAccumulator);
+			displayConverter.setColumnTypeProvider(bodyDataProvider);
+		}
+		if (input != null) {
+			clearFilter();
+		}
+		refresh(!onlyTableDataChanged);
+	}
 
-    public SelectionLayer getSelectionLayer() {
-        return selectionLayer;
-    }
-    
-    private final int defaultColumnWidth = 60, defaultRowHeight = 20;
+	private NatTable natTable;
+	private TablesawDataProvider bodyDataProvider;
+	private DelegatingTablesawDataProvider columnHeaderDataProvider, rowHeaderDataProvider;
+	private DataLayer bodyDataLayer, columnDataLayer;
+	private ColumnHideShowLayer columnHideShowLayer;
+	private SelectionLayer selectionLayer;
+	private AbstractTablesawDisplayConverter displayConverter;
+	private CornerLayer cornerLayer;
+	private GridLayer gridLayer;
 
-    private boolean editable = false;
+	public SelectionLayer getSelectionLayer() {
+		return selectionLayer;
+	}
 
-    public void setEditable(final boolean editable) {
-        this.editable = editable;
-    }
+	private final int defaultColumnWidth = 60, defaultRowHeight = 20;
 
-    private FilterRowHeaderComposite<Object> filterRowHeaderComposite;
-    private IFilterStrategy<Object> filterStrategy;
+	private boolean editable = false;
 
-    private ExprSupport exprSupport = Activator.getInstance().getExprSupport("*");
+	public void setEditable(final boolean editable) {
+		this.editable = editable;
+	}
 
-    private boolean includeFilterRow = true;
-    
-    public void setIncludeFilterRow(final boolean includeFilterRow) {
-        this.includeFilterRow = includeFilterRow;
-    }
-    public boolean shouldIncludeFilterRow() {
-        return includeFilterRow && exprSupport != null;
-    }
+	private FilterRowHeaderComposite<Object> filterRowHeaderComposite;
+	private IFilterStrategy<Object> filterStrategy;
 
-    private boolean includeSortHeader = true;
-    
-    public void setIncludeSortHeader(final boolean includeSortHeader) {
-        this.includeSortHeader = includeSortHeader;
-    }
-    public boolean shouldIncludeSortHeader() {
-        return includeSortHeader;
-    }
+	private ExprSupport exprSupport = Activator.getInstance().getExprSupport("*");
 
-    public void createPartControl(final Composite parent) {
-        bodyDataProvider = new TablesawDataProvider(input);
-        bodyDataLayer = new TableCellChangeRecorderDataLayer(bodyDataProvider, defaultColumnWidth, defaultRowHeight);
-        final ColumnReorderLayer columnReorderLayer = new ColumnReorderLayer(bodyDataLayer);
-        columnHideShowLayer = new ColumnHideShowLayer(columnReorderLayer);
+	private boolean includeFilterRow = true;
 
-        selectionLayer = new SelectionLayer(columnHideShowLayer, false);
-        // remove copy action key binding, since we implement it ourselves
-        selectionLayer.addConfiguration(new DefaultSelectionLayerConfiguration() {
-            @Override
-            protected void addSelectionUIBindings() {
-                addConfiguration(new DefaultSelectionBindings() {
-                    @Override
-                    public void configureUiBindings(UiBindingRegistry uiBindingRegistry) {
-                        super.configureUiBindings(uiBindingRegistry);
-                        // remove copy, since we implement it ourselves
-                        uiBindingRegistry.unregisterKeyBinding(new KeyEventMatcher(SWT.MOD1, 'c'));
-                    }
-                });
-            }
-        });
-        
-        final ViewportLayer viewportLayer = new ViewportLayer(selectionLayer);
+	public void setIncludeFilterRow(final boolean includeFilterRow) {
+		this.includeFilterRow = includeFilterRow;
+	}
 
-        columnHeaderDataProvider = new DelegatingTablesawDataProvider(bodyDataProvider, true);
-        columnDataLayer = new TableCellChangeRecorderDataLayer(columnHeaderDataProvider, defaultColumnWidth, defaultRowHeight);
-        AbstractLayer columnHeaderLayer = new ColumnHeaderLayer(columnDataLayer, viewportLayer, selectionLayer);
-        // allow editing column header with double-click
-        columnHeaderLayer.addConfiguration(new DefaultEditBindings() {
-            @Override
-            public void configureUiBindings(final UiBindingRegistry uiBindingRegistry) {
-                uiBindingRegistry.registerDoubleClickBinding(
-                    new CellEditorMouseEventMatcher(GridRegion.COLUMN_HEADER), new MouseEditAction());
-            }
-        });
-        
-        if (shouldIncludeSortHeader()) {
-            AbstractLayer sortHeaderLayer = new SortHeaderLayer<Object>(columnHeaderLayer, bodyDataProvider);
-            columnHeaderLayer = sortHeaderLayer;
-        }
+	public boolean shouldIncludeFilterRow() {
+		return includeFilterRow && exprSupport != null;
+	}
 
-        if (shouldIncludeFilterRow()) {
-            // adds a UpdateDataCommandHandler (for the filter string)
-            final FilterRowHeaderComposite<Object> filterRowHeaderLayer = filterRowHeaderComposite = new FilterRowHeaderComposite<Object>(
-                    filterStrategy = new ExprSupportFilterStrategy<Object>(bodyDataProvider, exprSupport),
-                    columnHeaderLayer, columnHeaderDataProvider, null);
-            filterRowHeaderLayer.addConfiguration(new DefaultEditConfiguration());
-            columnHeaderLayer = filterRowHeaderLayer;
-            addTableChangeListener(new TablesawDataProvider.Listener() {
-                @Override
-                public void providerRowsChanged(final int startRange, final int endRange) {
-                    refresh(false);
-                }
-                @Override
-                public void tableCellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
-                }
-            });
-        }
+	private boolean includeSortHeader = true;
 
-        rowHeaderDataProvider = new DelegatingTablesawDataProvider(bodyDataProvider, false);
-        final ILayer rowHeaderLayer = new RowHeaderLayer(
-                new DataLayer(rowHeaderDataProvider, defaultColumnWidth, defaultRowHeight), viewportLayer,
-                selectionLayer);
+	public void setIncludeSortHeader(final boolean includeSortHeader) {
+		this.includeSortHeader = includeSortHeader;
+	}
 
-        final IDataProvider cornerDataProvider = new DefaultCornerDataProvider(columnHeaderDataProvider,
-                rowHeaderDataProvider);
-        // adds a UpdateDataCommandHandler (for the row header)
-        final DataLayer cornerDataLayer = new TableCellChangeRecorderDataLayer(cornerDataProvider);
-        cornerLayer = new CornerLayer(cornerDataLayer, rowHeaderLayer, columnHeaderLayer);
-        gridLayer = new GridLayer(viewportLayer, columnHeaderLayer, rowHeaderLayer, cornerLayer);
-        natTable = new NatTable(parent, NatTable.DEFAULT_STYLE_OPTIONS | SWT.BORDER, gridLayer, false);
-        natTable.addConfiguration(new DefaultNatTableStyleConfiguration());
-        configure(natTable);
-        
+	public boolean shouldIncludeSortHeader() {
+		return includeSortHeader;
+	}
+
+	public void createPartControl(final Composite parent) {
+		bodyDataProvider = new TablesawDataProvider(input);
+		bodyDataLayer = new TableCellChangeRecorderDataLayer(bodyDataProvider, defaultColumnWidth, defaultRowHeight);
+		
+		final ColumnReorderLayer columnReorderLayer = new ColumnReorderLayer(bodyDataLayer);
+		columnHideShowLayer = new ColumnHideShowLayer(columnReorderLayer);
+
+		selectionLayer = new SelectionLayer(columnHideShowLayer, false);
+		// remove copy action key binding, since we implement it ourselves
+		selectionLayer.addConfiguration(new DefaultSelectionLayerConfiguration() {
+			@Override
+			protected void addSelectionUIBindings() {
+				addConfiguration(new DefaultSelectionBindings() {
+					@Override
+					public void configureUiBindings(UiBindingRegistry uiBindingRegistry) {
+						super.configureUiBindings(uiBindingRegistry);
+						// remove copy, since we implement it ourselves
+						uiBindingRegistry.unregisterKeyBinding(new KeyEventMatcher(SWT.MOD1, 'c'));
+					}
+				});
+			}
+			@Override
+			protected void addSelectionStyleConfig() {
+				addConfiguration(new DefaultSelectionStyleConfiguration() {
+					protected void configureSelectionStyle(IConfigRegistry configRegistry) {
+//            			super.configureSelectionStyle(configRegistry);
+						Style cellStyle = new Style();
+						cellStyle.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, this.selectionBgColor);
+						cellStyle.setAttributeValue(CellStyleAttributes.FOREGROUND_COLOR, this.selectionFgColor);
+						cellStyle.setAttributeValue(CellStyleAttributes.HORIZONTAL_ALIGNMENT, HorizontalAlignmentEnum.LEFT);
+						configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.SELECT);
+					}
+				});
+			}
+		});
+
+		final ViewportLayer viewportLayer = new ViewportLayer(selectionLayer);
+
+		columnHeaderDataProvider = new DelegatingTablesawDataProvider(bodyDataProvider, true);
+		columnDataLayer = new TableCellChangeRecorderDataLayer(columnHeaderDataProvider, defaultColumnWidth,
+				defaultRowHeight);
+		AbstractLayer columnHeaderLayer = new ColumnHeaderLayer(columnDataLayer, viewportLayer, selectionLayer);
+		// allow editing column header with double-click
+		columnHeaderLayer.addConfiguration(new DefaultEditBindings() {
+			@Override
+			public void configureUiBindings(final UiBindingRegistry uiBindingRegistry) {
+				uiBindingRegistry.registerDoubleClickBinding(new CellEditorMouseEventMatcher(GridRegion.COLUMN_HEADER),
+						new MouseEditAction());
+			}
+		});
+
+		if (shouldIncludeSortHeader()) {
+			AbstractLayer sortHeaderLayer = new SortHeaderLayer<Object>(columnHeaderLayer, bodyDataProvider);
+			columnHeaderLayer = sortHeaderLayer;
+		}
+
+		if (shouldIncludeFilterRow()) {
+			// adds a UpdateDataCommandHandler (for the filter string)
+			final FilterRowHeaderComposite<Object> filterRowHeaderLayer = filterRowHeaderComposite = new FilterRowHeaderComposite<Object>(
+					filterStrategy = new ExprSupportFilterStrategy<Object>(bodyDataProvider, exprSupport),
+					columnHeaderLayer, columnHeaderDataProvider, null);
+			filterRowHeaderLayer.addConfiguration(new DefaultEditConfiguration());
+			columnHeaderLayer = filterRowHeaderLayer;
+			addTableChangeListener(new TablesawDataProvider.Listener() {
+				@Override
+				public void providerRowsChanged(final int startRange, final int endRange) {
+					refresh(false);
+				}
+
+				@Override
+				public void tableCellChanged(final int row, final int column, final Object oldValue,
+						final Object newValue) {
+				}
+			});
+		}
+
+		rowHeaderDataProvider = new DelegatingTablesawDataProvider(bodyDataProvider, false);
+		final ILayer rowHeaderLayer = new RowHeaderLayer(
+				new DataLayer(rowHeaderDataProvider, defaultColumnWidth, defaultRowHeight), viewportLayer,
+				selectionLayer);
+
+		final IDataProvider cornerDataProvider = new DefaultCornerDataProvider(columnHeaderDataProvider,
+				rowHeaderDataProvider);
+		// adds a UpdateDataCommandHandler (for the row header)
+		final DataLayer cornerDataLayer = new TableCellChangeRecorderDataLayer(cornerDataProvider);
+		cornerLayer = new CornerLayer(cornerDataLayer, rowHeaderLayer, columnHeaderLayer);
+		gridLayer = new GridLayer(viewportLayer, columnHeaderLayer, rowHeaderLayer, cornerLayer);
+		natTable = new NatTable(parent, NatTable.DEFAULT_STYLE_OPTIONS | SWT.BORDER, gridLayer, false);
+		natTable.addConfiguration(new DefaultNatTableStyleConfiguration());
+		configure(natTable);
+
 //        new NatTableContentTooltip(natTable, GridRegion.COLUMN_HEADER) {
 //        	protected String getText(org.eclipse.swt.widgets.Event event) {
 //                int col = this.natTable.getColumnPositionByX(event.x);
@@ -227,272 +254,299 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
 //        	}
 //        };
 //        new NatTableContentTooltip(natTable, GridRegion.BODY);
-        new NatTableContentTooltip(natTable);
-        
-        natTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-        
-        selectionLayer.addLayerListener(new ILayerListener() {
-            @Override
-            public void handleLayerEvent(ILayerEvent event) {
-                if (event instanceof ISelectionEvent) {
-                    fireSelectionChangedEvent();
-                }
-            }
-        });
-    }
-    
-    private class TableCellChangeRecorderDataLayer extends DataLayer {
-        public TableCellChangeRecorderDataLayer(IDataProvider dataProvider) {
-            super(dataProvider);
-        }
-        public TableCellChangeRecorderDataLayer(IDataProvider dataProvider, int defaultColumnWidth, int defaultRowHeight) {
-            super(dataProvider, defaultColumnWidth, defaultRowHeight);
-        }
-        public void registerCommandHandler(ILayerCommandHandler<?> commandHandler) {
-            if (commandHandler instanceof UpdateDataCommandHandler) {
-                TableCellChangeRecorderCommandHandler<UpdateDataCommand> recordingCommandHandler = new TableCellChangeRecorderCommandHandler<UpdateDataCommand>(UpdateDataCommand.class, (UpdateDataCommandHandler) commandHandler);
-                recordingCommandHandler.setDataProvider(() -> (AbstractTablesawDataProvider) getDataProvider());
-                recordingCommandHandler.setRecorderConsumer(onTableCellChanges);
-                commandHandler = recordingCommandHandler;
-            }
-            super.registerCommandHandler(commandHandler);
-        }
-    }
-    
-    public boolean hasActiveCellEditor() {
-        return natTable != null && natTable.getActiveCellEditor() != null;
-    }
+		new NatTableContentTooltip(natTable);
 
-    private Consumer<TableCellChangeRecorder> onTableCellChanges;
-    
-    public void setOnTableCellChanges(Consumer<TableCellChangeRecorder> onTableCellChanges) {
-        this.onTableCellChanges = onTableCellChanges;
-    }
+		natTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-    public NatTable getControl() {
-        return natTable;
-    }
+		selectionLayer.addLayerListener(new ILayerListener() {
+			@Override
+			public void handleLayerEvent(ILayerEvent event) {
+				if (event instanceof ISelectionEvent) {
+					fireSelectionChangedEvent();
+				}
+			}
+		});
+	}
 
-    public TablesawDataProvider getTablesawDataProvider() {
-        return bodyDataProvider;
-    }
-    
-    public void clearFilter() {
-        if (filterRowHeaderComposite != null) {
-            filterRowHeaderComposite.getFilterRowDataLayer().getFilterRowDataProvider().clearAllFilters();
-        }
-    }
+	private class TableCellChangeRecorderDataLayer extends DataLayer {
+		public TableCellChangeRecorderDataLayer(IDataProvider dataProvider) {
+			super(dataProvider);
+		}
 
-    public void applyFilter() {
-        if (filterRowHeaderComposite != null) {
-            final Map<Integer, Object> filterIndexToObjectMap = filterRowHeaderComposite.getFilterRowDataLayer()
-                    .getFilterRowDataProvider().getFilterIndexToObjectMap();
-            filterStrategy.applyFilter(filterIndexToObjectMap);
-        }
-    }
+		public TableCellChangeRecorderDataLayer(IDataProvider dataProvider, int defaultColumnWidth,
+				int defaultRowHeight) {
+			super(dataProvider, defaultColumnWidth, defaultRowHeight);
+		}
 
-    protected IEditableRule editableRule = new IEditableRule() {
-        @Override
-        public boolean isEditable(final int columnIndex, final int rowIndex) {
-            return editable;
-        }
-        @Override
-        public boolean isEditable(final ILayerCell cell, final IConfigRegistry configRegistry) {
-            return editable;
-        }
-    };
+		public void registerCommandHandler(ILayerCommandHandler<?> commandHandler) {
+			if (commandHandler instanceof UpdateDataCommandHandler) {
+				TableCellChangeRecorderCommandHandler<UpdateDataCommand> recordingCommandHandler = new TableCellChangeRecorderCommandHandler<UpdateDataCommand>(
+						UpdateDataCommand.class, (UpdateDataCommandHandler) commandHandler);
+				recordingCommandHandler.setDataProvider(() -> (AbstractTablesawDataProvider) getDataProvider());
+				recordingCommandHandler.setRecorderConsumer(onTableCellChanges);
+				commandHandler = recordingCommandHandler;
+			}
+			super.registerCommandHandler(commandHandler);
+		}
+	}
 
-    protected void configure(final NatTable natTable) {
-        final IConfigRegistry configRegistry = natTable.getConfigRegistry();
-        configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
-                new DefaultTablesawDisplayConverter(rowHeaderDataProvider), DisplayMode.NORMAL, GridRegion.ROW_HEADER);
-        displayConverter = new DefaultTablesawDisplayConverter(bodyDataProvider);
-        configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
-                displayConverter, DisplayMode.NORMAL, GridRegion.BODY);
-        if (shouldIncludeFilterRow()) {
-            configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
-                    new DefaultDisplayConverter(), DisplayMode.NORMAL, "FILTER_ROW");
-        }
+	public boolean hasActiveCellEditor() {
+		return natTable != null && natTable.getActiveCellEditor() != null;
+	}
 
-        MultiCheckSelectionShell columnSelector = new MultiCheckSelectionShell(getControl()) {
-            protected void createExtraControls(Composite parent) {
-                NatTablesawViewer.this.createExtraPopupControls(parent);
-            }
-        };
-        columnSelector.setTitle("Show/hide columns");
-        columnSelector.setLocationFactors(0.0f,  0.0f);
-        columnSelector.addSelectionListener(new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                bodyDataProvider.setColumnNames(columnSelector.getSelections());
-                // clear, since otherwise the filters may end up in the wrong column, since they're index-based
-                clearFilter();
-                refresh(true);
-            }
-        });
+	private Consumer<TableCellChangeRecorder> onTableCellChanges;
 
-        gridLayer.addConfiguration(new AbstractUiBindingConfiguration() {
-            @Override
-            public void configureUiBindings(UiBindingRegistry uiBindingRegistry) {
-                uiBindingRegistry.registerFirstMouseDownBinding(new MouseEventMatcher(SWT.NONE, GridRegion.CORNER, 1), (natTable, event) -> {
-                    List<String> columnNames = input.columnNames();
-                    columnSelector.setItems(columnNames.toArray(new String[columnNames.size()]));
-                    for (int i = 0; i < columnNames.size(); i++) {
-                        if (bodyDataProvider.hasColumn(columnNames.get(i))) {
-                            columnSelector.select(i);
-                        }
-                    }
-                    columnSelector.openShell();
-                });
-            }
-        });
-        gridLayer.addConfiguration(new AbstractRegistryConfiguration() {            
-            @Override
-            public void configureRegistry(IConfigRegistry configRegistry) {
-              configRegistry.registerConfigAttribute(EditConfigAttributes.CELL_EDITABLE_RULE, editableRule);
-            }
-        });
+	public void setOnTableCellChanges(Consumer<TableCellChangeRecorder> onTableCellChanges) {
+		this.onTableCellChanges = onTableCellChanges;
+	}
 
-        if (editable && shouldIncludeFilterRow()) {
-            UpdateDataExprCommandHandler commandHandler = new UpdateDataExprCommandHandler(exprSupport, bodyDataProvider, tableCellChangeRecorder -> onTableCellChanges.accept(tableCellChangeRecorder)) {
-                @Override
-                protected int getColumnNum(ILayer targetLayer, int columnPos) {
-                    return gridLayer.getColumnIndexByPosition(columnPos);
-                }
-            };
-            // will override the one registered in the layer below
-            filterRowHeaderComposite.registerCommandHandler(commandHandler);
-        }
-        natTable.configure();
-    }
+	public NatTable getControl() {
+		return natTable;
+	}
 
-    protected void createExtraPopupControls(Composite parent) {
-    }
-    
-    public void refresh(Boolean fireTableChanged) {
-        if (natTable != null) {
-            natTable.refresh();
-            if (fireTableChanged == null);
-            else if (fireTableChanged) {
-                getTableProviderHelper().fireTableChanged(getTableProvider());
-            } else {
-                getTableProviderHelper().fireTableDataChanged(getTableProvider());
-            }
-        }
-    }
+	public TablesawDataProvider getTablesawDataProvider() {
+		return bodyDataProvider;
+	}
 
-    protected TableProvider getTableProvider() {
-        return this;
-    }
+	public void clearFilter() {
+		if (filterRowHeaderComposite != null) {
+			filterRowHeaderComposite.getFilterRowDataLayer().getFilterRowDataProvider().clearAllFilters();
+		}
+	}
 
-    //
+	public void applyFilter() {
+		if (filterRowHeaderComposite != null) {
+			final Map<Integer, Object> filterIndexToObjectMap = filterRowHeaderComposite.getFilterRowDataLayer()
+					.getFilterRowDataProvider().getFilterIndexToObjectMap();
+			filterStrategy.applyFilter(filterIndexToObjectMap);
+		}
+	}
 
-    public void addTableChangeListener(final TablesawDataProvider.Listener listener) {
-        bodyDataProvider.addTableChangeListener(listener);
-    }
+	protected IEditableRule editableRule = new IEditableRule() {
+		@Override
+		public boolean isEditable(final int columnIndex, final int rowIndex) {
+			return editable;
+		}
 
-    public void removeTableChangeListener(final TablesawDataProvider.Listener listener) {
-        bodyDataProvider.removeTableChangeListener(listener);
-    }
+		@Override
+		public boolean isEditable(final ILayerCell cell, final IConfigRegistry configRegistry) {
+			return editable;
+		}
+	};
 
-    // TableProvider
+	protected void configure(final NatTable natTable) {
+		final IConfigRegistry configRegistry = natTable.getConfigRegistry();
 
-    @Override
-    public Table getTable() {
-        Table table = null;
-        final Table dataTable = bodyDataProvider.getDataTable();
-        if (dataTable != null) {
-            table = Table.create(dataTable != null ? dataTable.name() : "<no data>");
-            final Collection<Column<?>> columns = new ArrayList<Column<?>>();
-            final Collection<Integer> rowNums = getRows();
-            Collection<String> columnNames = bodyDataProvider.getColumnNames();
-            for (int colNum = 0; colNum < columnNames.size(); colNum++) {
-                final Column<?> modelColumn = bodyDataProvider.getColumn(colNum);
-                final Column<?> column = modelColumn.emptyCopy();
-                for (final int rowNum : rowNums) {
-                    final Object element = modelColumn.get(rowNum);
-                    ((Column<Object>) column).append(element);
-                }
-                columns.add(column);
-            }
-            table.addColumns(columns.toArray(new Column<?>[columns.size()]));
-        }
-        return table;
-    }
+		configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
+				new DefaultTablesawDisplayConverter(rowHeaderDataProvider), DisplayMode.NORMAL, GridRegion.ROW_HEADER);
+		displayConverter = new DefaultTablesawDisplayConverter(bodyDataProvider);
+		configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER, displayConverter,
+				DisplayMode.NORMAL, GridRegion.BODY);
 
-    protected final Collection<Integer> getRows() {
-        final Table dataTable = bodyDataProvider.getDataTable();
-        final Collection<Integer> rows = new ArrayList<>();
-        for (int i = 0; i < dataTable.rowCount(); i++) {
-            rows.add(i);
-        }
-        return rows;
-    }
+		Style defaultAlignmentCellStyle = new Style();
+		defaultAlignmentCellStyle.setAttributeValue(CellStyleAttributes.HORIZONTAL_ALIGNMENT, HorizontalAlignmentEnum.RIGHT);
+		configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, defaultAlignmentCellStyle, DisplayMode.NORMAL);
 
-    private final TableProviderHelper tableProviderHelper = new TableProviderHelper();
+		Style numberAlignmentCellStyle = new Style();
+		numberAlignmentCellStyle.setAttributeValue(CellStyleAttributes.HORIZONTAL_ALIGNMENT, HorizontalAlignmentEnum.RIGHT);
+		configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, numberAlignmentCellStyle, DisplayMode.NORMAL, DefaultTablesawColumnLabelAccumulator.NUMBER_COLUMN_TYPE_CLASS);
 
-    @Override
-    public void addTableDataProviderListener(final TableProvider.Listener listener) {
-        tableProviderHelper.addTableDataProviderListener(listener);
-    }
+		Style timeAlignmentCellStyle = new Style();
+		timeAlignmentCellStyle.setAttributeValue(CellStyleAttributes.HORIZONTAL_ALIGNMENT, HorizontalAlignmentEnum.CENTER);
+		configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, timeAlignmentCellStyle, DisplayMode.NORMAL, DefaultTablesawColumnLabelAccumulator.TIME_COLUMN_TYPE_CLASS);
+		
+		Style stringAlignmentCellStyle = new Style();
+		stringAlignmentCellStyle.setAttributeValue(CellStyleAttributes.HORIZONTAL_ALIGNMENT, HorizontalAlignmentEnum.LEFT);
+		configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, stringAlignmentCellStyle, DisplayMode.NORMAL, DefaultTablesawColumnLabelAccumulator.TEXT_COLUMN_TYPE_CLASS);
 
-    @Override
-    public void removeTableDataProviderListener(final TableProvider.Listener listener) {
-        tableProviderHelper.removeTableDataProviderListener(listener);
-    }
+		if (shouldIncludeFilterRow()) {
+			configRegistry.registerConfigAttribute(CellConfigAttributes.DISPLAY_CONVERTER,
+					new DefaultDisplayConverter(), DisplayMode.NORMAL, "FILTER_ROW");
+		}
 
-    public TableProviderHelper getTableProviderHelper() {
-        return tableProviderHelper;
-    }
+		MultiCheckSelectionShell columnSelector = new MultiCheckSelectionShell(getControl()) {
+			protected void createExtraControls(Composite parent) {
+				NatTablesawViewer.this.createExtraPopupControls(parent);
+			}
+		};
+		columnSelector.setTitle("Show/hide columns");
+		columnSelector.setLocationFactors(0.0f, 0.0f);
+		columnSelector.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				bodyDataProvider.setColumnNames(columnSelector.getSelections());
+				// clear, since otherwise the filters may end up in the wrong column, since
+				// they're index-based
+				clearFilter();
+				refresh(true);
+			}
+		});
 
-    // ISelectionProvider
+		gridLayer.addConfiguration(new AbstractUiBindingConfiguration() {
+			@Override
+			public void configureUiBindings(UiBindingRegistry uiBindingRegistry) {
+				uiBindingRegistry.registerFirstMouseDownBinding(new MouseEventMatcher(SWT.NONE, GridRegion.CORNER, 1),
+						(natTable, event) -> {
+							List<String> columnNames = input.columnNames();
+							columnSelector.setItems(columnNames.toArray(new String[columnNames.size()]));
+							for (int i = 0; i < columnNames.size(); i++) {
+								if (bodyDataProvider.hasColumn(columnNames.get(i))) {
+									columnSelector.select(i);
+								}
+							}
+							columnSelector.openShell();
+						});
+			}
+		});
+		gridLayer.addConfiguration(new AbstractRegistryConfiguration() {
+			@Override
+			public void configureRegistry(IConfigRegistry configRegistry) {
+				configRegistry.registerConfigAttribute(EditConfigAttributes.CELL_EDITABLE_RULE, editableRule);
+			}
+		});
 
-    @Override
-    public void setSelection(final ISelection selection) {
-        Collection<Rectangle> rectangles = new ArrayList<>();
-        if (selection instanceof IStructuredSelection) {
-            Iterator<?> it = ((IStructuredSelection) selection).iterator();
-            while (it.hasNext()) {
-                Object next = it.next();
-                if (next instanceof Rectangle) {
-                    rectangles.add((Rectangle) next);
-                }
-            }
-        }
-        selectionLayer.getSelectionModel().clearSelection();
-        for (Rectangle rectangle : rectangles) {
-            selectionLayer.getSelectionModel().addSelection(rectangle);
-        }
-    }
+		if (editable && shouldIncludeFilterRow()) {
+			UpdateDataExprCommandHandler commandHandler = new UpdateDataExprCommandHandler(exprSupport,
+					bodyDataProvider, tableCellChangeRecorder -> onTableCellChanges.accept(tableCellChangeRecorder)) {
+				@Override
+				protected int getColumnNum(ILayer targetLayer, int columnPos) {
+					return gridLayer.getColumnIndexByPosition(columnPos);
+				}
+			};
+			// will override the one registered in the layer below
+			filterRowHeaderComposite.registerCommandHandler(commandHandler);
+		}
+		natTable.configure();
+	}
 
-    @Override
-    public ISelection getSelection() {
-        return new StructuredSelection(selectionLayer.getSelectionModel().getSelections());
-    }
+	protected void createExtraPopupControls(Composite parent) {
+	}
 
-    protected void fireSelectionChangedEvent() {
-        if (selectionListeners != null && (! selectionListeners.isEmpty())) {
-            SelectionChangedEvent event = new SelectionChangedEvent(this, getSelection());
-            for (final ISelectionChangedListener selectionChangedListener : selectionListeners) {
-                selectionChangedListener.selectionChanged(event);
-            }
-        }
-    }
+	public void refresh(Boolean fireTableChanged) {
+		if (natTable != null) {
+			natTable.refresh();
+			if (fireTableChanged == null)
+				;
+			else if (fireTableChanged) {
+				getTableProviderHelper().fireTableChanged(getTableProvider());
+			} else {
+				getTableProviderHelper().fireTableDataChanged(getTableProvider());
+			}
+		}
+	}
 
-    private Collection<ISelectionChangedListener> selectionListeners;
+	protected TableProvider getTableProvider() {
+		return this;
+	}
 
-    @Override
-    public void addSelectionChangedListener(final ISelectionChangedListener listener) {
-        if (selectionListeners == null) {
-            selectionListeners = new ArrayList<ISelectionChangedListener>();
-        }
-        selectionListeners.add(listener);
-    }
+	//
 
-    @Override
-    public void removeSelectionChangedListener(final ISelectionChangedListener listener) {
-        if (selectionListeners != null) {
-            selectionListeners.remove(listener);
-        }
-    }
+	public void addTableChangeListener(final TablesawDataProvider.Listener listener) {
+		bodyDataProvider.addTableChangeListener(listener);
+	}
+
+	public void removeTableChangeListener(final TablesawDataProvider.Listener listener) {
+		bodyDataProvider.removeTableChangeListener(listener);
+	}
+
+	// TableProvider
+
+	@Override
+	public Table getTable() {
+		Table table = null;
+		final Table dataTable = bodyDataProvider.getDataTable();
+		if (dataTable != null) {
+			table = Table.create(dataTable != null ? dataTable.name() : "<no data>");
+			final Collection<Column<?>> columns = new ArrayList<Column<?>>();
+			final Collection<Integer> rowNums = getRows();
+			Collection<String> columnNames = bodyDataProvider.getColumnNames();
+			for (int colNum = 0; colNum < columnNames.size(); colNum++) {
+				final Column<?> modelColumn = bodyDataProvider.getColumn(colNum);
+				final Column<?> column = modelColumn.emptyCopy();
+				for (final int rowNum : rowNums) {
+					final Object element = modelColumn.get(rowNum);
+					((Column<Object>) column).append(element);
+				}
+				columns.add(column);
+			}
+			table.addColumns(columns.toArray(new Column<?>[columns.size()]));
+		}
+		return table;
+	}
+
+	protected final Collection<Integer> getRows() {
+		final Table dataTable = bodyDataProvider.getDataTable();
+		final Collection<Integer> rows = new ArrayList<>();
+		for (int i = 0; i < dataTable.rowCount(); i++) {
+			rows.add(i);
+		}
+		return rows;
+	}
+
+	private final TableProviderHelper tableProviderHelper = new TableProviderHelper();
+
+	@Override
+	public void addTableDataProviderListener(final TableProvider.Listener listener) {
+		tableProviderHelper.addTableDataProviderListener(listener);
+	}
+
+	@Override
+	public void removeTableDataProviderListener(final TableProvider.Listener listener) {
+		tableProviderHelper.removeTableDataProviderListener(listener);
+	}
+
+	public TableProviderHelper getTableProviderHelper() {
+		return tableProviderHelper;
+	}
+
+	// ISelectionProvider
+
+	@Override
+	public void setSelection(final ISelection selection) {
+		Collection<Rectangle> rectangles = new ArrayList<>();
+		if (selection instanceof IStructuredSelection) {
+			Iterator<?> it = ((IStructuredSelection) selection).iterator();
+			while (it.hasNext()) {
+				Object next = it.next();
+				if (next instanceof Rectangle) {
+					rectangles.add((Rectangle) next);
+				}
+			}
+		}
+		selectionLayer.getSelectionModel().clearSelection();
+		for (Rectangle rectangle : rectangles) {
+			selectionLayer.getSelectionModel().addSelection(rectangle);
+		}
+	}
+
+	@Override
+	public ISelection getSelection() {
+		return new StructuredSelection(selectionLayer.getSelectionModel().getSelections());
+	}
+
+	protected void fireSelectionChangedEvent() {
+		if (selectionListeners != null && (!selectionListeners.isEmpty())) {
+			SelectionChangedEvent event = new SelectionChangedEvent(this, getSelection());
+			for (final ISelectionChangedListener selectionChangedListener : selectionListeners) {
+				selectionChangedListener.selectionChanged(event);
+			}
+		}
+	}
+
+	private Collection<ISelectionChangedListener> selectionListeners;
+
+	@Override
+	public void addSelectionChangedListener(final ISelectionChangedListener listener) {
+		if (selectionListeners == null) {
+			selectionListeners = new ArrayList<ISelectionChangedListener>();
+		}
+		selectionListeners.add(listener);
+	}
+
+	@Override
+	public void removeSelectionChangedListener(final ISelectionChangedListener listener) {
+		if (selectionListeners != null) {
+			selectionListeners.remove(listener);
+		}
+	}
 }

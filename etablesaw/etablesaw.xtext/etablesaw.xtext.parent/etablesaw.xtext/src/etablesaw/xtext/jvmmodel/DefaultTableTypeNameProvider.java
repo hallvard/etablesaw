@@ -27,4 +27,19 @@ public class DefaultTableTypeNameProvider implements ITableTypeNameProvider {
     public String getColumnValueSetterName(String columnName) {
         return "set" + StringExtensions.toFirstUpper(columnName);
     }
+
+	@Override
+	public String getTableRowDataClassName(String tableName) {
+		return "RowData";
+	}
+	
+	@Override
+	public String getTableRowDataImplClassName(String tableName) {
+		return "RowDataImpl";
+	}
+
+	@Override
+	public String getTableRowClassName(String tableName) {
+		return "Row";
+	}
 }

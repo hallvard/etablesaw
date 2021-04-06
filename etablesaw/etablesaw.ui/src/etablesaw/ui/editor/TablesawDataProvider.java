@@ -10,6 +10,9 @@ import java.util.List;
 import org.eclipse.nebula.widgets.nattable.data.IDataProvider;
 import org.eclipse.nebula.widgets.nattable.sort.ISortModel;
 import org.eclipse.nebula.widgets.nattable.sort.SortDirectionEnum;
+
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import it.unimi.dsi.fastutil.ints.IntComparator;
 import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -19,172 +22,194 @@ import tech.tablesaw.columns.numbers.IntColumnType;
 import tech.tablesaw.io.ReadOptions;
 import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.selection.Selection;
+import tech.tablesaw.table.Rows;
 
-public class TablesawDataProvider extends AbstractTablesawDataProvider implements IDataProvider, ColumnTypeProvider, ISortModel, Comparator<Row> {
+public class TablesawDataProvider extends AbstractTablesawDataProvider
+		implements IDataProvider, ColumnTypeProvider, ISortModel, Comparator<Row> {
 
-    private Table table;
-    private Selection selection = null;
-    private Table tableView = null;
-    // null = normal, TRUE = column header, FALSE = row header
-    private final Boolean mode;
+	private Table table;
+	private Selection selection = null;
+	private Table tableView = null;
+	// null = normal, TRUE = column header, FALSE = row header
+	private final Boolean mode;
 
-    public TablesawDataProvider(final Table table) {
-        this(table, null);
-    }
+	public TablesawDataProvider(final Table table) {
+		this(table, null);
+	}
 
-    public TablesawDataProvider(final Table table, final Boolean mode) {
-        super();
-        setTable(table);
-        this.mode = mode;
-    }
+	public TablesawDataProvider(final Table table, final Boolean mode) {
+		super();
+		setTable(table);
+		this.mode = mode;
+	}
 
-    public Table getTable() {
-        return table;
-    }
+	public Table getTable() {
+		return table;
+	}
 
-    public void setTable(final Table table) {
-        this.table = table;
-        tableView = null;
-    }
+	public void setTable(final Table table) {
+		this.table = table;
+		tableView = null;
+	}
 
-    public boolean isSorted() {
-        return ! sortedColumnIndexesWithOrder.isEmpty();
-    }
+	public boolean isSorted() {
+		return !sortedColumnIndexesWithOrder.isEmpty();
+	}
 
-    public boolean isRowFiltered() {
-        return selection != null;
-    }
+	public boolean isRowFiltered() {
+		return selection != null;
+	}
 
-    public void applyRowFilter(final Selection selection) {
-        this.selection = selection;
-        updateTableView();
-    }
+	public void applyRowFilter(final Selection selection) {
+		this.selection = selection;
+		updateTableView();
+	}
 
-    private void updateTableView() {
-        if (isSorted() || isRowFiltered()) {
-            Selection viewSelection = isRowFiltered() ? selection : Selection.withRange(0, getRowCount());
-            tableView = table.where(viewSelection);
-            if (isSorted()) {
-                System.out.println(tableView);
-                tableView = tableView.sortOn(this);
-                System.out.println(sortedColumnIndexesWithOrder);
-                System.out.println(tableView);
-            }
-        } else if (tableView != null) {
-            tableView.clear();
-            tableView = null;
-        }
-        fireProviderRowsChanged(-1, -1);
-    }
+	private void updateTableView() {
+		if (isSorted() || isRowFiltered()) {
+			Selection viewSelection = isRowFiltered() ? selection : Selection.withRange(0, getRowCount());
+			tableView = table.where(viewSelection);
+			if (isSorted()) {
+				tableView = sortTable(tableView);
+			}
+		} else if (tableView != null) {
+			tableView.clear();
+			tableView = null;
+		}
+		fireProviderRowsChanged(-1, -1);
+	}
 
-    protected Table getDataTable() {
-        return tableView != null ? tableView : table;
-    }
+	private Table sortTable(Table table) {
+		Row row1 = new Row(table), row2 = new Row(table);
+		IntComparator rowComparator = (rowNum1, rowNum2) -> {
+			row1.at(rowNum1);
+			row2.at(rowNum2);
+			return compare(row1, row2);
+		};
+		Table newTable = table.emptyCopy(table.rowCount());
+	    int[] rowIndexes = new int[table.rowCount()];
+	    for (int i = 0; i < rowIndexes.length; i++) {
+	      rowIndexes[i] = i;
+	    }
+	    // which sort should we use, parallelQuicksort doesn't seem to work???
+		IntArrays.quickSort(rowIndexes, rowComparator);
+		Rows.copyRowsToTable(rowIndexes, table, newTable);
+		return newTable;
+	}
 
-    // column filter
-    
-    private List<String> columnFilter = null;
+	protected Table getDataTable() {
+		return tableView != null ? tableView : table;
+	}
 
-    public boolean hasColumn(String columnName) {
-        return getColumnNames().contains(columnName);
-    }
+	// column filter
 
-    public Collection<String> getColumnNames() {
-        return columnFilter != null ? columnFilter : getDataTable().columnNames();
-    }
+	private List<String> columnFilter = null;
 
-    public Collection<String> getColumnNames(Iterable<Integer> indices) {
-        List<String> allColumnNames = new ArrayList<String>(getColumnNames());
-        List<String> columnNames = new ArrayList<String>();
-        for (int index : indices) {
-            columnNames.add(allColumnNames.get(index));
-        }
-        return columnNames;
-    }
+	public boolean hasColumn(String columnName) {
+		return getColumnNames().contains(columnName);
+	}
 
-    public boolean isColumnFiltered() {
-        return columnFilter != null;
-    }
+	public Collection<String> getColumnNames() {
+		return columnFilter != null ? columnFilter : getDataTable().columnNames();
+	}
 
-    public void clearColumnFilter() {
-        columnFilter = null;
-        fireProviderRowsChanged(-1, -1);
-    }
-    
-    public void setColumnNames(Collection<String> columnNames) {
-        this.columnFilter = new ArrayList<>(columnNames);
-        fireProviderRowsChanged(-1, -1);
-    }
+	public Collection<String> getColumnNames(Iterable<Integer> indices) {
+		List<String> allColumnNames = new ArrayList<String>(getColumnNames());
+		List<String> columnNames = new ArrayList<String>();
+		for (int index : indices) {
+			columnNames.add(allColumnNames.get(index));
+		}
+		return columnNames;
+	}
 
-    public void setColumnNames(String... columnNames) {
-        this.columnFilter = Arrays.asList(columnNames);
-        fireProviderRowsChanged(-1, -1);
-    }
+	public boolean isColumnFiltered() {
+		return columnFilter != null;
+	}
 
-    public void addColumnNames(String... columnNames) {
-        List<String> newColumnNames = new ArrayList<>(getColumnNames());
-        for (int i = 0; i < columnNames.length; i++) {
-            if (! newColumnNames.contains(columnNames[i])) {
-                newColumnNames.add(columnNames[i]);
-            }
-        }
-        this.columnFilter = newColumnNames;
-        fireProviderRowsChanged(-1, -1);
-    }
+	public void clearColumnFilter() {
+		columnFilter = null;
+		fireProviderRowsChanged(-1, -1);
+	}
 
-    public void removeColumnNames(String... columnNames) {
-        if (isColumnFiltered()) {
-            List<String> newColumnNames = new ArrayList<>(getColumnNames());
-            newColumnNames.removeAll(Arrays.asList(columnNames));
-            this.columnFilter = newColumnNames;
-            fireProviderRowsChanged(-1, -1);
-        }
-    }
-    
-    public Column<?> getColumn(int columnIndex) {
-        if (columnFilter != null) {
-            return getDataTable().column(columnFilter.get(columnIndex));
-        }
-        return getDataTable().column(columnIndex);
-    }
+	public void setColumnNames(Collection<String> columnNames) {
+		this.columnFilter = new ArrayList<>(columnNames);
+		fireProviderRowsChanged(-1, -1);
+	}
 
-    int getColumnCount(final Boolean mode) {
-        return (table != null ? (Boolean.FALSE.equals(mode) ? 1 : (columnFilter != null ? columnFilter.size() : getDataTable().columnCount())) : 0);
-    }
-    @Override
-    public int getColumnCount() {
-        return getColumnCount(mode);
-    }
+	public void setColumnNames(String... columnNames) {
+		this.columnFilter = Arrays.asList(columnNames);
+		fireProviderRowsChanged(-1, -1);
+	}
 
-    //
-    
-    int getRowCount(final Boolean mode) {
-        return (table != null ? (Boolean.TRUE.equals(mode) ? 1 : getDataTable().rowCount()) : 0);
-    }
-    @Override
-    public int getRowCount() {
-        return getRowCount(mode);
-    }
+	public void addColumnNames(String... columnNames) {
+		List<String> newColumnNames = new ArrayList<>(getColumnNames());
+		for (int i = 0; i < columnNames.length; i++) {
+			if (!newColumnNames.contains(columnNames[i])) {
+				newColumnNames.add(columnNames[i]);
+			}
+		}
+		this.columnFilter = newColumnNames;
+		fireProviderRowsChanged(-1, -1);
+	}
 
-    ColumnType getColumnType(final Boolean mode, final int columnIndex) {
-        return (table != null ? (Boolean.FALSE.equals(mode) ? IntColumnType.instance() : getColumn(columnIndex).type())
-                : null);
-    }
-    @Override
-    public ColumnType getColumnType(final int columnIndex) {
-        return getColumnType(mode, columnIndex);
-    }
+	public void removeColumnNames(String... columnNames) {
+		if (isColumnFiltered()) {
+			List<String> newColumnNames = new ArrayList<>(getColumnNames());
+			newColumnNames.removeAll(Arrays.asList(columnNames));
+			this.columnFilter = newColumnNames;
+			fireProviderRowsChanged(-1, -1);
+		}
+	}
 
-    Object getDataValue(final Boolean mode, final int columnIndex, final int rowIndex) {
-        if (table != null) {
-            final Column<?> column = getColumn(columnIndex);
-            return (mode == null ? getColumnDataValue(column, rowIndex) : (mode ? getColumnHeaderDataValue(column) : getRowHeaderDataValue(rowIndex)));
-        }
-        return null;
-    }
+	public Column<?> getColumn(int columnIndex) {
+		if (columnFilter != null) {
+			return getDataTable().column(columnFilter.get(columnIndex));
+		}
+		return getDataTable().column(columnIndex);
+	}
 
-    private String columnHeaderDataValueFormat = "%s (%s)";
-    
+	int getColumnCount(final Boolean mode) {
+		return (table != null ? (Boolean.FALSE.equals(mode) ? 1
+				: (columnFilter != null ? columnFilter.size() : getDataTable().columnCount())) : 0);
+	}
+
+	@Override
+	public int getColumnCount() {
+		return getColumnCount(mode);
+	}
+
+	//
+
+	int getRowCount(final Boolean mode) {
+		return (table != null ? (Boolean.TRUE.equals(mode) ? 1 : getDataTable().rowCount()) : 0);
+	}
+
+	@Override
+	public int getRowCount() {
+		return getRowCount(mode);
+	}
+
+	ColumnType getColumnType(final Boolean mode, final int columnIndex) {
+		return (table != null ? (Boolean.FALSE.equals(mode) ? IntColumnType.instance() : getColumn(columnIndex).type())
+				: null);
+	}
+
+	@Override
+	public ColumnType getColumnType(final int columnIndex) {
+		return getColumnType(mode, columnIndex);
+	}
+
+	Object getDataValue(final Boolean mode, final int columnIndex, final int rowIndex) {
+		if (table != null) {
+			final Column<?> column = getColumn(columnIndex);
+			return (mode == null ? getColumnDataValue(column, rowIndex)
+					: (mode ? getColumnHeaderDataValue(column) : getRowHeaderDataValue(rowIndex)));
+		}
+		return null;
+	}
+
+	private String columnHeaderDataValueFormat = "%s (%s)";
+
 	protected String getColumnHeaderDataValue(final Column<?> column) {
 		return String.format(columnHeaderDataValueFormat, column.name(), column.type());
 	}
@@ -192,221 +217,223 @@ public class TablesawDataProvider extends AbstractTablesawDataProvider implement
 	protected int getRowHeaderDataValue(final int rowIndex) {
 		return rowIndex + 1;
 	}
-	
+
 	protected Object getColumnDataValue(final Column<?> column, final int rowIndex) {
 		return column.get(rowIndex);
 	}
 
-    @Override
-    public Object getDataValue(final int columnIndex, final int rowIndex) {
-        return getDataValue(mode, columnIndex, rowIndex);
-    }
-    
-    private ReadOptions options = CsvReadOptions.builderFromString("").build();
+	@Override
+	public Object getDataValue(final int columnIndex, final int rowIndex) {
+		return getDataValue(mode, columnIndex, rowIndex);
+	}
 
-    void setDataValue(final Boolean mode, final int columnIndex, final int rowIndex, Object newValue) {
-        if (table != null) {
-            final Column<Object> column = (Column<Object>) getColumn(columnIndex);
-            if (mode == null && rowIndex >= 0) {
-                final Object oldValue = (column.isMissing(rowIndex) ? null : column.get(rowIndex));
-                try {
-                    if (isMissingValue(column, newValue)) {
-                        column.setMissing(rowIndex);
-                        newValue = null;
-                    } else {
-                        column.set(rowIndex, newValue);
-                    }
-                } catch (Exception e) {
-                    newValue = setDataValueUsingParser(column, rowIndex, String.valueOf(newValue));
-                }
-                if (oldValue != newValue && (oldValue == null || (! oldValue.equals(newValue)))) {
-                    fireCellChanged(rowIndex, columnIndex, oldValue, newValue);
-                }
-            } else if (mode || rowIndex == -1) {
-                // pretend row -1 is column name
-                String colName = String.valueOf(newValue);
-                for (Column<?> other : table.columns()) {
-                    if (colName.equals(other.name())) {
-                        return;
-                    }
-                }
-                String oldName = column.name();
-                if (! oldName.equals(colName)) {
-                    column.setName(colName);
-                    if (isColumnFiltered()) {
-                        removeColumnNames(oldName);
-                        addColumnNames(colName);
-                    }
-                    fireCellChanged(-1, columnIndex, oldName, colName);
-                }
-            }
-        }
-    }
-    @Override
-    public void setDataValue(final int columnIndex, final int rowIndex, Object newValue) {
-        setDataValue(mode, columnIndex, rowIndex, newValue);
-    }
+	private ReadOptions options = CsvReadOptions.builderFromString("").build();
 
-    public boolean isMissingValue(Column<Object> column, Object newValue) {
-        return newValue == null || newValue instanceof String && ((String) newValue).trim().length() == 0;
-    }
+	void setDataValue(final Boolean mode, final int columnIndex, final int rowIndex, Object newValue) {
+		if (table != null) {
+			final Column<Object> column = (Column<Object>) getColumn(columnIndex);
+			if (mode == null && rowIndex >= 0) {
+				final Object oldValue = (column.isMissing(rowIndex) ? null : column.get(rowIndex));
+				try {
+					if (isMissingValue(column, newValue)) {
+						column.setMissing(rowIndex);
+						newValue = null;
+					} else {
+						column.set(rowIndex, newValue);
+					}
+				} catch (Exception e) {
+					newValue = setDataValueUsingParser(column, rowIndex, String.valueOf(newValue));
+				}
+				if (oldValue != newValue && (oldValue == null || (!oldValue.equals(newValue)))) {
+					fireCellChanged(rowIndex, columnIndex, oldValue, newValue);
+				}
+			} else if (mode || rowIndex == -1) {
+				// pretend row -1 is column name
+				String colName = String.valueOf(newValue);
+				for (Column<?> other : table.columns()) {
+					if (colName.equals(other.name())) {
+						return;
+					}
+				}
+				String oldName = column.name();
+				if (!oldName.equals(colName)) {
+					column.setName(colName);
+					if (isColumnFiltered()) {
+						removeColumnNames(oldName);
+						addColumnNames(colName);
+					}
+					fireCellChanged(-1, columnIndex, oldName, colName);
+				}
+			}
+		}
+	}
 
-    protected Object setDataValueUsingParser(final Column<Object> column, final int rowIndex, String s) {
-        AbstractColumnParser<?> parser = column.type().customParser(options);
-        if (parser.canParse(s)) {
-            Object altValue = parser.parse(s);
-            try {
-                column.set(rowIndex, altValue);
-                return altValue;
-            } catch (Exception e1) {
-                column.setMissing(rowIndex);
-                return null;
-            }
-        } else {
-            column.setMissing(rowIndex);
-            return null;
-        }
-    }
+	@Override
+	public void setDataValue(final int columnIndex, final int rowIndex, Object newValue) {
+		setDataValue(mode, columnIndex, rowIndex, newValue);
+	}
 
-    // listeners
+	public boolean isMissingValue(Column<Object> column, Object newValue) {
+		return newValue == null || newValue instanceof String && ((String) newValue).trim().length() == 0;
+	}
 
-    public static interface Listener {
-        public void providerRowsChanged(int startRow, int endRow);
-        public void tableCellChanged(int row, int column, Object oldValue, Object newValue);
-    }
+	protected Object setDataValueUsingParser(final Column<Object> column, final int rowIndex, String s) {
+		AbstractColumnParser<?> parser = column.type().customParser(options);
+		if (parser.canParse(s)) {
+			Object altValue = parser.parse(s);
+			try {
+				column.set(rowIndex, altValue);
+				return altValue;
+			} catch (Exception e1) {
+				column.setMissing(rowIndex);
+				return null;
+			}
+		} else {
+			column.setMissing(rowIndex);
+			return null;
+		}
+	}
 
-    private Collection<Listener> listeners = null;
+	// listeners
 
-    @Override
-    public void addTableChangeListener(final Listener listener) {
-        if (listeners == null) {
-            listeners = new ArrayList<TablesawDataProvider.Listener>();
-        }
-        listeners.add(listener);
-    }
+	public static interface Listener {
+		public void providerRowsChanged(int startRow, int endRow);
 
-    @Override
-    public void removeTableChangeListener(final Listener listener) {
-        if (listeners != null) {
-            listeners.remove(listener);
-        }
-    }
+		public void tableCellChanged(int row, int column, Object oldValue, Object newValue);
+	}
 
-    protected void fireProviderRowsChanged(final int startRow, final int endRow) {
-        if (listeners != null) {
-            // avoid ConcurrentModificationException
-            for (final Listener listener : new ArrayList<>(listeners)) {
-                listener.providerRowsChanged(startRow, endRow);
-            }
-        }
-    }
+	private Collection<Listener> listeners = null;
 
-    protected void fireCellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
-        if (listeners != null) {
-            for (final Listener listener : listeners) {
-                listener.tableCellChanged(row, column, oldValue, newValue);
-            }
-        }
-    }
+	@Override
+	public void addTableChangeListener(final Listener listener) {
+		if (listeners == null) {
+			listeners = new ArrayList<TablesawDataProvider.Listener>();
+		}
+		listeners.add(listener);
+	}
 
-    // sorting
-    
-    private List<Integer> sortedColumnIndexesWithOrder = new ArrayList<>();
-    private List<Integer> sortedColumnIndexes = new ArrayList<>();
+	@Override
+	public void removeTableChangeListener(final Listener listener) {
+		if (listeners != null) {
+			listeners.remove(listener);
+		}
+	}
 
-    @Override
-    public List<Integer> getSortedColumnIndexes() {
-        return sortedColumnIndexes;
-    }
+	protected void fireProviderRowsChanged(final int startRow, final int endRow) {
+		if (listeners != null) {
+			// avoid ConcurrentModificationException
+			for (final Listener listener : new ArrayList<>(listeners)) {
+				listener.providerRowsChanged(startRow, endRow);
+			}
+		}
+	}
 
-    @Override
-    public int compare(Row row1, Row row2) {
-        for (int colNum : getSortedColumnIndexes()) {
-            Object o1 = row1.getObject(colNum);
-            Object o2 = row2.getObject(colNum);
-            int diff = 0;
-            if (o1 != null && o2 != null) {
-                Comparator comparator = getColumnComparator(colNum);
-                diff = comparator.compare(o1, o2);
-            } else {
-                diff = (o1 == null ? -1 : 0) + (o2 == null ? 1 : 0);
-            }
-            if (diff != 0) {
-                return getSortDirection(colNum) == SortDirectionEnum.DESC ? -diff : diff;
-            }
-        }
-        return 0;
-    }
+	protected void fireCellChanged(final int row, final int column, final Object oldValue, final Object newValue) {
+		if (listeners != null) {
+			for (final Listener listener : listeners) {
+				listener.tableCellChanged(row, column, oldValue, newValue);
+			}
+		}
+	}
 
-    private int columnIndexPos(int columnIndex) {
-        int index = getRowHeaderDataValue(columnIndex);
-        for (int i = 0; i < sortedColumnIndexesWithOrder.size(); i++) {
-            int sortedColumnIndex = sortedColumnIndexesWithOrder.get(i);
-            if (sortedColumnIndex == index || sortedColumnIndex == -index) {
-                return i;
-            }
-        }
-        return -1;
-    }
+	// sorting
 
-    @Override
-    public boolean isColumnIndexSorted(int columnIndex) {
-        return columnIndexPos(columnIndex) >= 0;
-    }
+	private List<Integer> sortedColumnIndexesWithOrder = new ArrayList<>();
+	private List<Integer> sortedColumnIndexes = new ArrayList<>();
 
-    @Override
-    public SortDirectionEnum getSortDirection(int columnIndex) {
-        int pos = columnIndexPos(columnIndex);
-        if (pos < 0) {
-            return SortDirectionEnum.NONE;
-        } else if (sortedColumnIndexesWithOrder.get(pos) < 0) {
-            return SortDirectionEnum.DESC;            
-        } else {
-            return SortDirectionEnum.ASC;            
-        }
-    }
+	@Override
+	public List<Integer> getSortedColumnIndexes() {
+		return sortedColumnIndexes;
+	}
 
-    @Override
-    public int getSortOrder(int columnIndex) {
-        return columnIndexPos(columnIndex);
-    }
+	@Override
+	public int compare(Row row1, Row row2) {
+		for (int colNum : getSortedColumnIndexes()) {
+			Object o1 = row1.getObject(colNum);
+			Object o2 = row2.getObject(colNum);
+			int diff = 0;
+			if (o1 != null && o2 != null) {
+				Comparator comparator = getColumnComparator(colNum);
+				diff = comparator.compare(o1, o2);
+			} else {
+				diff = (o1 == null ? -1 : 0) + (o2 == null ? 1 : 0);
+			}
+			if (diff != 0) {
+				return getSortDirection(colNum) == SortDirectionEnum.DESC ? -diff : diff;
+			}
+		}
+		return 0;
+	}
 
-    @Override
-    public List<Comparator> getComparatorsForColumnIndex(int columnIndex) {
-        return Collections.singletonList(getColumnComparator(columnIndex));
-    }
+	private int columnIndexPos(int columnIndex) {
+		int index = getRowHeaderDataValue(columnIndex);
+		for (int i = 0; i < sortedColumnIndexesWithOrder.size(); i++) {
+			int sortedColumnIndex = sortedColumnIndexesWithOrder.get(i);
+			if (sortedColumnIndex == index || sortedColumnIndex == -index) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
-    @Override
-    public Comparator<?> getColumnComparator(int columnIndex) {
-        return getColumn(columnIndex);
-    }
+	@Override
+	public boolean isColumnIndexSorted(int columnIndex) {
+		return columnIndexPos(columnIndex) >= 0;
+	}
 
-    @Override
-    public void sort(int columnIndex, SortDirectionEnum sortDirection, boolean accumulate) {
-        if (! accumulate) {
-            clear();
-        }
-        if (sortDirection == SortDirectionEnum.NONE) {
-            int pos = columnIndexPos(columnIndex);
-            if (pos >= 0) {
-                sortedColumnIndexesWithOrder.remove(pos);
-            } else {
-                return;
-            }
-        } else {
-            int index = getRowHeaderDataValue(columnIndex);
-            sortedColumnIndexesWithOrder.add(sortDirection == SortDirectionEnum.DESC ? -index : index);
-        }
-        sortedColumnIndexes.clear();
-        for (int index : sortedColumnIndexesWithOrder) {
-            sortedColumnIndexes.add((index < 0 ? -index : index) - 1);
-        }
-        updateTableView();
-    }
+	@Override
+	public SortDirectionEnum getSortDirection(int columnIndex) {
+		int pos = columnIndexPos(columnIndex);
+		if (pos < 0) {
+			return SortDirectionEnum.NONE;
+		} else if (sortedColumnIndexesWithOrder.get(pos) < 0) {
+			return SortDirectionEnum.DESC;
+		} else {
+			return SortDirectionEnum.ASC;
+		}
+	}
 
-    @Override
-    public void clear() {
-        sortedColumnIndexesWithOrder.clear();
-        sortedColumnIndexes.clear();
-    }
+	@Override
+	public int getSortOrder(int columnIndex) {
+		return columnIndexPos(columnIndex);
+	}
+
+	@Override
+	public List<Comparator> getComparatorsForColumnIndex(int columnIndex) {
+		return Collections.singletonList(getColumnComparator(columnIndex));
+	}
+
+	@Override
+	public Comparator<?> getColumnComparator(int columnIndex) {
+		return getColumn(columnIndex);
+	}
+
+	@Override
+	public void sort(int columnIndex, SortDirectionEnum sortDirection, boolean accumulate) {
+		if (!accumulate) {
+			clear();
+		}
+		if (sortDirection == SortDirectionEnum.NONE) {
+			int pos = columnIndexPos(columnIndex);
+			if (pos >= 0) {
+				sortedColumnIndexesWithOrder.remove(pos);
+			} else {
+				return;
+			}
+		} else {
+			int index = getRowHeaderDataValue(columnIndex);
+			sortedColumnIndexesWithOrder.add(sortDirection == SortDirectionEnum.DESC ? -index : index);
+		}
+		sortedColumnIndexes.clear();
+		for (int index : sortedColumnIndexesWithOrder) {
+			sortedColumnIndexes.add((index < 0 ? -index : index) - 1);
+		}
+		updateTableView();
+	}
+
+	@Override
+	public void clear() {
+		sortedColumnIndexesWithOrder.clear();
+		sortedColumnIndexes.clear();
+	}
 }
