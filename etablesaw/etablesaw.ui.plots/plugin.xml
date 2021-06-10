@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.HtmlTemplateTableView"
+            id="etablesaw.ui.HtmlTemplateTableView"
+            allowMultiple="true"
+            name="Web Template"
+            icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
+            >
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.BarPlotView"
+            id="etablesaw.ui.BarPlotView"
+            allowMultiple="true"
+            name="Bar Plot"
+            icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
+            >
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.BarPlotView2"
+            id="etablesaw.ui.BarPlotView2"
+            allowMultiple="true"
+            name="Bar Plot 2"
+            icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
+            >
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.HistogramView"
+            id="etablesaw.ui.HistogramView"
+            allowMultiple="true"
+            name="Histogram"
+            icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
+            >
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.PiePlotView"
+            id="etablesaw.ui.PiePlotView"
+            allowMultiple="true"
+            name="Pie Plot"
+            icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
+            >
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.LinePlotView"
+            id="etablesaw.ui.LinePlotView"
+            allowMultiple="true"
+            name="Line Plot"
+            icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
+            >
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.ScatterPlotView"
+            id="etablesaw.ui.ScatterPlotView"
+            allowMultiple="true"
+            name="Scatter Plot"
+            icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
+            >
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.BubblePlotView"
+            id="etablesaw.ui.BubblePlotView"
+            allowMultiple="true"
+            name="Bubble Plot"
+            icon="platform:/plugin/etablesaw.ui/icons/xaw.png"
+            >
+      </view>
+   </extension>
+
+</plugin>

@@ -6,17 +6,17 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.13.0",
  org.eclipse.core.resources;bundle-version="3.12.0",
- org.eclipse.ui.ide;bundle-version="3.14.0",
- org.eclipse.e4.ui.model.workbench;bundle-version="2.1.0"
+ org.eclipse.jface;bundle-version="3.22.0",
+ org.eclipse.ui.ide;bundle-version="3.18.0"
 Export-Package: etablesaw.ui,
  etablesaw.ui.editor,
  etablesaw.ui.expr,
+ etablesaw.ui.preferences,
+ etablesaw.ui.util,
  etablesaw.ui.views
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: etablesaw.ui.Activator
 Import-Package: etablesaw.io,
- etablesaw.pebble.template,
- etablesaw.template,
  it.unimi.dsi.fastutil.ints,
  org.eclipse.core.commands,
  org.eclipse.core.commands.operations,
