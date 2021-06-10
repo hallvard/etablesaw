@@ -30,16 +30,32 @@ public class TablesawAttributeResolvers {
 
             if (object instanceof Row) {
                 Row row = (Row) object;
-                Object value = null;
-                try {
-                    int colNum = Integer.parseInt(attributeName);
-                    value = row.getObject(colNum);
-                } catch (NumberFormatException e) {
-                    value = row.getObject(attributeName);
-                }
+                Object value = getRowAttributeValue(row, attributeName);
                 return new ResolvedAttribute(value);
             }
             return null;
+        }
+        
+        private Object getRowAttributeValue(Row row, String attributeName) {
+        	// first try attributeName as column index
+        	try {
+        		int colNum = Integer.parseInt(attributeName);
+        		return row.getObject(colNum);
+        	} catch (NumberFormatException e) {
+        	}
+        	// try attributeName as column name
+        	try {
+				return row.getObject(attributeName);
+			} catch (IllegalStateException e) {
+			}
+        	// try attributeName as approx. column name
+        	for (String colName : row.columnNames()) {
+        		if (colName.contains(attributeName)) {
+        			return row.getObject(colName);        			
+        		}
+        	}
+        	// nothing more to try
+        	return null;
         }
     }
 

@@ -477,7 +477,9 @@ public class MultiCheckSelectionCombo extends Composite {
 
 	/**
 	 *
-	 * Selects the item at the given zero-relative index in the receiver's list. If the item at the index was already selected, it remains selected. Indices that are out of range are ignored.
+	 * Selects the item at the given zero-relative index in the receiver's list.
+	 * If the item at the index was already selected, it remains selected.
+	 * Indices that are out of range are ignored.
 	 *
 	 * @param index the index of item to select
 	 * @since version 1.0.0.0
@@ -488,13 +490,42 @@ public class MultiCheckSelectionCombo extends Composite {
 
 	/**
 	 *
-	 * Selects the items at the given zero-relative indices in the receiver's list. If the item at the index was already selected, it remains selected. Indices that are out of range are ignored.
+	 * Selects the item. If the item was already selected, it remains selected.
+	 * Unknown items are ignored.
+	 *
+	 * @param items to select
+	 * @since version 1.0.0.0
+	 */
+	public void select(final String item) {
+		selector.select(selector.indexOf(item));
+	}
+
+	/**
+	 *
+	 * Selects the items at the given zero-relative indices in the receiver's list.
+	 * If the item at the index was already selected, it remains selected.
+	 * Indices that are out of range are ignored.
 	 *
 	 * @param indices the indices of items to select
 	 * @since version 1.0.0.0
 	 */
 	public void select(final int[] indices) {
 	    selector.select(indices);
+	}
+
+	/**
+	 *
+	 * Selects the items. If an item was already selected, it remains selected.
+	 * Unknown items are ignored.
+	 *
+	 * @param items to select
+	 * @since version 1.0.0.0
+	 */
+	public void select(final String[] items) {
+		for (String item : items) {
+			selector.select(selector.indexOf(item));
+		}
+		updateText();
 	}
 
 	/**

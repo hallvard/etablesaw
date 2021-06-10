@@ -49,7 +49,7 @@ public abstract class AbstractTablesawDisplayConverter extends DefaultDisplayCon
 			return booleanDisplayValue((Boolean) value, value == null);
 		} else if (type instanceof DoubleColumnType && value instanceof Number) {
 			final double doubleValue = ((Number) value).doubleValue();
-			return doubleDisplayValue(doubleValue, DoubleColumnType.isMissingValue(doubleValue));
+			return doubleDisplayValue(doubleValue, DoubleColumnType.valueIsMissing(doubleValue));
 		} else if (type instanceof IntColumnType && value instanceof Number) {
 		    final int intValue = ((Number) value).intValue();
 		    return intDisplayValue(intValue, IntColumnType.valueIsMissing(intValue));

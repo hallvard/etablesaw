@@ -25,6 +25,16 @@ public abstract class ExprSupportHelper {
 	}
 
 	protected abstract String getExpr(int columnIndex);
+	
+	/**
+	 * Handle the result of evaluating an expression.
+	 * Result may be either the value or an exception that occurred during evaluation.
+	 * 
+	 * @param rowIndex
+	 * @param columnIndex
+	 * @param result
+	 * @return If evaluation of row should continue
+	 */
 	protected abstract boolean handleResult(int rowIndex, int columnIndex, Object result);
 
 	private Collection<Integer> tableIndices(Collection<Integer> indices) {

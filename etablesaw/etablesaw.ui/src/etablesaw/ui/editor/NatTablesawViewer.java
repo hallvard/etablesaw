@@ -78,6 +78,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
 import tech.tablesaw.api.ColumnType;
+import tech.tablesaw.api.IntColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
 
@@ -469,6 +470,19 @@ public class NatTablesawViewer implements TableProvider, ISelectionProvider {
 				}
 				columns.add(column);
 			}
+			String rowNumColumnNamePrefix = "_rowNum";
+			int rowNumNum = 0;
+			try {
+				while (dataTable.column(rowNumColumnNamePrefix + rowNumNum) != null) {
+					rowNumNum++;
+				}
+			} catch (IllegalStateException e) {
+			}
+			IntColumn rowNumColumn = IntColumn.create(rowNumColumnNamePrefix + rowNumNum);
+			for (final int rowNum : rowNums) {
+				rowNumColumn.append(rowNum);
+			}
+			table.addColumns(rowNumColumn);
 			table.addColumns(columns.toArray(new Column<?>[columns.size()]));
 		}
 		return table;

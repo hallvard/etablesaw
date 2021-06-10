@@ -4,6 +4,11 @@ import java.io.BufferedInputStream;
 import java.io.StringBufferInputStream;
 import java.net.URL;
 
+import etablesaw.io.FileFormatSupport;
+import etablesaw.ui.Activator;
+import etablesaw.ui.TableProvider;
+import etablesaw.ui.editor.NatTablesawViewer;
+import etablesaw.ui.util.Util;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.swt.SWT;
@@ -20,16 +25,10 @@ import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.internal.browser.BrowserViewer;
 import org.eclipse.ui.part.ViewPart;
-
-import etablesaw.io.FileFormatSupport;
-import etablesaw.ui.Activator;
-import etablesaw.ui.TableProvider;
-import etablesaw.ui.editor.NatTablesawViewer;
-import etablesaw.ui.util.Util;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.DataFrameReader;
+import org.eclipse.ui.internal.browser.BrowserViewer;
 
 public class WebTableView extends ViewPart implements LocationListener, ProgressListener, TableProvider {
 

@@ -5,27 +5,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import tech.tablesaw.api.BooleanColumn;
 import tech.tablesaw.api.ColumnType;
-import tech.tablesaw.api.DateColumn;
-import tech.tablesaw.api.DateTimeColumn;
-import tech.tablesaw.api.DoubleColumn;
-import tech.tablesaw.api.FloatColumn;
-import tech.tablesaw.api.InstantColumn;
-import tech.tablesaw.api.IntColumn;
-import tech.tablesaw.api.LongColumn;
-import tech.tablesaw.api.ShortColumn;
-import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
-import tech.tablesaw.api.TextColumn;
-import tech.tablesaw.api.TimeColumn;
 import tech.tablesaw.columns.Column;
 
 public abstract class ExprSupport {
@@ -45,27 +32,44 @@ public abstract class ExprSupport {
 
 	public Map<String, ColumnType> getVarTypes(final Table table) {
 		final Map<String, ColumnType> varTypes = new HashMap<String, ColumnType>();
+		addColumnVarTypes(table, varTypes);
+		addRowVarTypes(table, varTypes);
+		return varTypes;
+	}
+
+	protected void addColumnVarTypes(final Table table, Map<String, ColumnType> varTypes) {
 		for (int colNum = 0; colNum < table.columnCount(); colNum++) {
 			final Column<?> column = table.column(colNum);
 			final ColumnType colType = column.type();
 			varTypes.put(column.name(), colType);
 		}
-		return varTypes;
+	}
+	
+	protected void addRowVarTypes(final Table table, Map<String, ColumnType> varTypes) {
+		varTypes.put("_AT", ColumnType.INTEGER);
+	}
+	
+	public Map<String, Object> getVarValues(final Table table, final int rowNum) {
+		return getVarValues(table, rowNum, new HashMap<String, Object>());
 	}
 
 	public Map<String, Object> getVarValues(final Table table, final int rowNum, final Map<String, Object> varValues) {
+		addColumnVarValues(table, rowNum, varValues);
+		addRowVarValues(table, rowNum, varValues);
+		return varValues;
+	}
+
+	protected void addColumnVarValues(final Table table, int rowNum, final Map<String, Object> varValues) {
 		for (int colNum = 0; colNum < table.columnCount(); colNum++) {
 			final Column<?> column = table.column(colNum);
 			final Object value = column.get(rowNum);
 			varValues.put(column.name(), value);
 		}
-		return varValues;
+	}
+	protected void addRowVarValues(final Table table, int rowNum, final Map<String, Object> varValues) {
+		varValues.put("_AT", rowNum + 1);
 	}
 
-	public Map<String, Object> getVarValues(final Table table, final int rowNum) {
-		return getVarValues(table, rowNum, new HashMap<String, Object>());
-	}
-	
 	// rewrite simplified expressions
 
 

@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
@@ -586,6 +587,16 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		setControlLayout(selector.getControl());
 		return selector;
 	}
+	
+	protected String[] removeColumnNames(String[] columnNames, String[]... columnNamesToRemove) {
+		return removeColumnNames(new ArrayList<>(Arrays.asList(columnNames)), columnNamesToRemove);
+	}
+	protected String[] removeColumnNames(List<String> columnNames, String[]... columnNamesToRemove) {
+		for (String[] columnNames2 : columnNamesToRemove) {
+			columnNames.removeAll(Arrays.asList(columnNames2));			
+		}
+		return columnNames.toArray(new String[columnNames.size()]);
+	}
 
 	protected void setColumnNames(final StructuredViewer columnSelector, final Table table) {
 		columnSelector.setInput(table);
@@ -608,9 +619,7 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 	    }
 	};
 
-	protected Control createColumnControl(final Composite parent, final String label, final Boolean mode, final Class<?> columnClass) {
-		createControlLabel(parent, label);
-		final boolean multi = Boolean.TRUE.equals(mode);
+	protected Supplier<String[]> getTableColumnsProvider(final Class<?> columnClass) {
 		final Supplier<String[]> itemsProvider = () -> {
 			final Table table = getViewTable();
 			if (table == null) {
@@ -618,6 +627,17 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			}
 			return getColumnNames(table, columnClass);
 		};
+		return itemsProvider;
+	}
+
+	protected Control createColumnControl(final Composite parent, final String label, final Boolean mode, final Class<?> columnClass) {		
+		final Supplier<String[]> itemsProvider = getTableColumnsProvider(columnClass);
+		return createColumnControl(parent, label, mode, itemsProvider);
+	}
+
+	protected Control createColumnControl(final Composite parent, final String label, final Boolean mode, Supplier<String[]> itemsProvider) {
+		createControlLabel(parent, label);
+		final boolean multi = Boolean.TRUE.equals(mode);
 		Control control;
 		if (multi) {
 			final MultiCheckSelectionCombo combo = new MultiCheckSelectionCombo(parent, SWT.NONE, "select columns");
@@ -639,18 +659,23 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		swtLabel.setText(label);
     }
 
-	public String[] getColumnNames(final Table table, final Class<?> columnClass) {
+	public String[] getColumnNames(final Table table, final Class<?> columnClass, int count) {
 		final Collection<String> columnNames = new ArrayList<>();
 		if (table != null) {
     		for (final Column<?> column : table.columns()) {
-    			if (columnClass == null || columnClass.isInstance(column)) {
-    				columnNames.add(column.name());
+    			if ((columnClass == null || columnClass.isInstance(column)) && count != 0) {
+					columnNames.add(column.name());
+					count--;
     			}
     		}
 		}
 		return columnNames.toArray(new String[columnNames.size()]);
 	}
 
+	public String[] getColumnNames(final Table table, final Class<?> columnClass) {
+		return getColumnNames(table, columnClass, -1);
+	}
+	
 	protected void setColumnNames(final Control columnCombo, final Table table, final Class<?> columnClass) {
 		final String[] columnNames = getColumnNames(table, columnClass);
 		if (columnCombo instanceof MultiCheckSelectionCombo) {
@@ -659,6 +684,18 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 		} else if (columnCombo instanceof Combo) {
 			((Combo) columnCombo).setItems(columnNames);
 		}
+	}
+
+	protected boolean hasSelection(Control selector, int n) {
+		return hasElements(getSelectedStrings(selector), n);
+	}
+
+	protected boolean hasElements(String[] ss, int n) {
+		return ss != null && ss.length > 0;
+	}
+
+	protected boolean hasElement(String[] ss) {
+		return hasElements(ss, 1);
 	}
 
 	protected String[] getSelectedStrings(final Control selector) {
@@ -670,6 +707,15 @@ public abstract class AbstractTablesawView extends ViewPart implements TableProv
 			return (selectionIndex >= 0 && selectionIndex < combo.getItemCount() ? new String[]{combo.getItem(selectionIndex)} : new String[0]);
 		}
 		return null;
+	}
+	
+	protected void selectStrings(final Control selector, String... columnNames) {
+		if (selector instanceof MultiCheckSelectionCombo) {
+			((MultiCheckSelectionCombo) selector).select(columnNames);
+		} else if (selector instanceof Combo && columnNames.length >= 1) {
+			final Combo combo = (Combo) selector;
+			combo.select(combo.indexOf(columnNames[0]));
+		}
 	}
 
 	protected int[] getSelectedIndices(final Control columnCombo) {

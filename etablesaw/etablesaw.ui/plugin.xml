@@ -92,6 +92,15 @@
       </view>
       <view
             category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.BarPlotView2"
+            id="etablesaw.ui.BarPlotView2"
+            allowMultiple="true"
+            name="Bar Plot 2"
+            icon="icons/xaw.png"
+            >
+      </view>
+      <view
+            category="etablesaw.ui.category"
             class="etablesaw.ui.plots.HistogramView"
             id="etablesaw.ui.HistogramView"
             allowMultiple="true"
@@ -123,6 +132,15 @@
             id="etablesaw.ui.ScatterPlotView"
             allowMultiple="true"
             name="Scatter Plot"
+            icon="icons/xaw.png"
+            >
+      </view>
+      <view
+            category="etablesaw.ui.category"
+            class="etablesaw.ui.plots.BubblePlotView"
+            id="etablesaw.ui.BubblePlotView"
+            allowMultiple="true"
+            name="Bubble Plot"
             icon="icons/xaw.png"
             >
       </view>

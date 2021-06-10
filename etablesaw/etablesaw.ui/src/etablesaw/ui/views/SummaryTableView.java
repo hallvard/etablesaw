@@ -33,7 +33,9 @@ public class SummaryTableView extends DerivedTableView {
 	protected void updateConfigControls() {
 	    super.updateConfigControls();
 	    setColumnNames(numericsSelector, getViewTable(), NumberColumn.class);
+//		selectStrings(numericsSelector, getColumnNames(getViewTable(), NumberColumn.class, -1));
 	    setColumnNames(categorySelector, getViewTable(), CategoricalColumn.class);
+//		selectStrings(categorySelector, getColumnNames(getViewTable(), CategoricalColumn.class, 1));
 	}
 	
 	@Override
